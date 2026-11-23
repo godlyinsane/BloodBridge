@@ -1011,162 +1011,12 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
 // HOME
 // =================================================================
 // =================================================================
-// ELIGIBILITY CHECKER — a short donor-safety questionnaire with a
-// live animated body-fill indicator, ending in a computed eligibility score.
-// =================================================================
-const ELIGIBILITY_QUESTIONS = [
-  { text: "Are you currently taking any medication (e.g., antibiotics, blood thinners)?", note: "Certain medications can affect the quality and safety of donated blood.", good: "No" },
-  { text: "Are you between 18 and 65 years of age?", note: "There are minimum and maximum ages for blood donation safety.", good: "Yes" },
-  { text: "Is your body weight at least 45 kg?", note: "A minimum weight ensures you can donate without risk of weakness afterward.", good: "Yes" },
-  { text: "Have you had any infection, fever, cold, cough, weakness, or fatigue today?", note: "Your body needs its resources to recover when unwell.", good: "No" },
-  { text: "Have you undergone any surgery or major dental procedure in the last 6–12 months?", note: "Recent procedures may involve infection or healing risks.", good: "No" },
-  { text: "Did you have at least 6 hours of sleep last night?", note: "Adequate rest keeps your body stable before donating.", good: "Yes" },
-  { text: "Did you eat a light, non-oily meal 2–3 hours before donating?", note: "This helps maintain stable blood sugar and reduces dizziness.", good: "Yes" },
-  { text: "Have you had any tattoos, piercings, or acupuncture in the last 6 months?", note: "These can carry infection risk if done with unsterile equipment.", good: "No" },
-  { text: "Have you consumed alcohol in the last 24 hours?", note: "Alcohol affects hydration and blood quality.", good: "No" },
-];
-
-function BodyFillIndicator({ level = 0, lastAnswer = null }) {
-  const fill = Math.max(0, Math.min(100, level));
-  const fillColor = lastAnswer === "good" ? "#e7475e" : lastAnswer === "bad" ? "#64748b" : "#d63d55";
-  return (
-    <div style={{ width: 188, maxWidth: "100%", margin: "0 auto", textAlign: "center" }}>
-      <div style={{ position: "relative", width: 176, height: 268, margin: "0 auto", borderRadius: 26, border: "1px solid " + COLORS.panelBorder, background: "radial-gradient(ellipse at 50% 25%,rgba(214,61,85,.09),transparent 65%),linear-gradient(160deg,rgba(255,255,255,.035),rgba(255,255,255,.008))", overflow: "hidden", display: "grid", placeItems: "center" }}>
-        <div style={{ position: "absolute", width: 145, height: 145, top: 20, borderRadius: "50%", background: "radial-gradient(circle,rgba(214,61,85,.12),transparent 70%)" }} />
-        <svg viewBox="0 0 160 250" width="150" height="238" role="img" aria-label={"Donation readiness body indicator, " + fill + " percent"}>
-          <defs>
-            <clipPath id="raktmitraHumanShape">
-              <circle cx="80" cy="25" r="17" />
-              <path d="M62 49 Q80 42 98 49 L105 94 Q106 101 98 103 L93 103 L100 162 Q101 172 91 174 Q82 175 80 164 L77 121 L73 164 Q71 175 62 174 Q52 172 54 162 L61 103 L62 103 Q54 101 55 94 Z" />
-              <path d="M61 55 L39 100 Q35 108 42 112 Q49 115 53 106 L72 72 L88 72 L107 106 Q111 115 118 112 Q125 108 121 100 L99 55 Z" />
-            </clipPath>
-            <linearGradient id="raktmitraLiquid" x1="0" y1="1" x2="0.25" y2="0">
-              <stop offset="0%" stopColor={fillColor} /><stop offset="100%" stopColor="#ff8795" />
-            </linearGradient>
-            <linearGradient id="raktmitraOutline" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor={COLORS.crimson}/><stop offset="100%" stopColor={COLORS.cyan}/>
-            </linearGradient>
-          </defs>
-          <g clipPath="url(#raktmitraHumanShape)">
-            <rect x="20" y="5" width="120" height="190" fill="rgba(148,163,184,.08)" />
-            <motion.rect x="20" width="120" fill="url(#raktmitraLiquid)" initial={false} animate={{ y: 195 - (190 * fill / 100), height: 190 * fill / 100 }} transition={{ duration: .85, ease: [0.22, 1, 0.36, 1] }} opacity=".9" />
-            <motion.path d="M20 100 Q38 93 56 100 T92 100 T128 100 T164 100 L164 205 L20 205 Z" fill="rgba(255,255,255,.18)" initial={false} animate={{ y: 95 - (190 * fill / 100) }} transition={{ duration: .85, ease: [0.22, 1, 0.36, 1] }} />
-          </g>
-          <g fill="none" stroke="url(#raktmitraOutline)" strokeWidth="2.4" strokeLinejoin="round" strokeLinecap="round">
-            <circle cx="80" cy="25" r="17" />
-            <path d="M62 49 Q80 42 98 49 L105 94 Q106 101 98 103 L93 103 L100 162 Q101 172 91 174 Q82 175 80 164 L77 121 L73 164 Q71 175 62 174 Q52 172 54 162 L61 103 L62 103 Q54 101 55 94 Z" />
-            <path d="M62 55 L39 100 Q35 108 42 112 Q49 115 53 106 L72 72 M98 55 L121 100 Q125 108 118 112 Q111 115 107 106 L88 72" />
-          </g>
-          <path d="M70 55 Q80 61 90 55 M80 61 L80 91" stroke="rgba(255,255,255,.7)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-        </svg>
-        <div style={{ position: "absolute", bottom: 11, left: 0, right: 0, fontSize: 10, fontWeight: 850, letterSpacing: 1.2, color: COLORS.textMuted, textTransform: "uppercase" }}>Readiness indicator</div>
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: 13 }}>
-        <span style={{ color: COLORS.textMuted, fontSize: 11 }}>Question progress</span>
-        <motion.span key={fill} initial={{ opacity: .4, y: 4 }} animate={{ opacity: 1, y: 0 }} style={{ fontSize: 21, fontWeight: 850, color: fillColor }}>{fill}%</motion.span>
-      </div>
-      <div style={{ height: 6, borderRadius: 20, overflow: "hidden", background: COLORS.panelBorder, marginTop: 7 }}>
-        <motion.div initial={false} animate={{ width: fill + "%" }} transition={{ duration: .65, ease: "easeOut" }} style={{ height: "100%", borderRadius: 20, background: "linear-gradient(90deg," + fillColor + ",#ff8795)" }} />
-      </div>
-      <div style={{ color: COLORS.textMuted, fontSize: 10, marginTop: 7 }}>{fill === 0 ? "Your body starts clear" : fill >= 80 ? "Strong positive responses" : "Indicator updates with each answer"}</div>
-    </div>
-  );
-}
-function EligibilityChecker() {
-  const [index, setIndex] = useState(0);
-  const [points, setPoints] = useState(0);
-  const [bodyLevel, setBodyLevel] = useState(0);
-  const [lastAnswer, setLastAnswer] = useState(null);
-  const [done, setDone] = useState(false);
-
-  const total = ELIGIBILITY_QUESTIONS.length;
-  const progress = done ? 1 : index / total;
-  const liveScore = index === 0 ? 0 : Math.round((points / index) * 100);
-  const finalScore = Math.round((points / total) * 100);
-
-  const answer = (choice) => {
-    const correct = choice === ELIGIBILITY_QUESTIONS[index].good;
-    setPoints((p) => p + (correct ? 1 : 0));
-    setLastAnswer(correct ? "good" : "bad");
-    setBodyLevel((level) => Math.max(0, Math.min(100, level + (correct ? Math.ceil(100 / total) : -Math.ceil(100 / total)))));
-    if (index + 1 >= total) {
-      setDone(true);
-    } else {
-      setIndex((i) => i + 1);
-    }
-  };
-
-  const restart = () => {
-    setIndex(0);
-    setPoints(0);
-    setBodyLevel(0);
-    setLastAnswer(null);
-    setDone(false);
-  };
-
-  const verdict = finalScore >= 80
-    ? { tone: "good", text: "You're likely eligible to donate. Visit a blood bank for final on-site screening." }
-    : finalScore >= 50
-    ? { tone: "warn", text: "Some factors may affect your eligibility right now — please consult a doctor before donating." }
-    : { tone: "warn", text: "You may not be eligible to donate today. Please consult a doctor before proceeding." };
-
-  return (
-    <Card hover={false} style={{ padding: "28px 26px" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 30, alignItems: "center" }} className="grid2">
-        <div>
-          <SectionLabel>{done ? "Your eligibility analysis" : `Who can donate? · Question ${index + 1} of ${total}`}</SectionLabel>
-
-          <AnimatePresence mode="wait">
-            {!done ? (
-              <motion.div key={index} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}>
-                <h3 className="headline" style={{ fontSize: 19, fontWeight: 700, margin: "0 0 10px", lineHeight: 1.4 }}>
-                  {ELIGIBILITY_QUESTIONS[index].text}
-                </h3>
-                <p style={{ fontSize: 13, color: COLORS.textMuted, lineHeight: 1.6, marginBottom: 18 }}>
-                  {ELIGIBILITY_QUESTIONS[index].note}
-                </p>
-                <div style={{ display: "flex", gap: 10 }}>
-                  <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} style={glowBtn} onClick={() => answer("Yes")}>Yes</motion.button>
-                  <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} style={ghostBtn} onClick={() => answer("No")}>No</motion.button>
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div key="result" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                <h3 className="headline" style={{ fontSize: 21, fontWeight: 700, margin: "0 0 10px" }}>
-                  Your donation eligibility is <CountUp value={finalScore} />%
-                </h3>
-                <p style={{ fontSize: 13.5, color: COLORS.textMuted, lineHeight: 1.6, marginBottom: 16, maxWidth: 420 }}>
-                  {verdict.text}
-                </p>
-                <Pill tone={verdict.tone}>{finalScore >= 80 ? "Looking good" : "Needs a doctor's check"}</Pill>
-                <div style={{ marginTop: 18 }}>
-                  <button style={ghostBtn} onClick={restart}>Start over</button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <p style={{ fontSize: 11, color: COLORS.textMuted, marginTop: 22, lineHeight: 1.5 }}>
-            These answers are for general guidance only — always consult a doctor before donating.
-          </p>
-        </div>
-
-        <div style={{ textAlign: "center" }}>
-          <BodyFillIndicator level={bodyLevel} lastAnswer={lastAnswer} />
-          <div style={{ marginTop: 10, fontSize: 11, color: COLORS.textMuted, textAlign: "center" }}>{done ? "All questions answered" : "Answer to update the body"}</div>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
 function Home({ donors, requests, goTo }) {
   const verified = donors.filter((d) => d.verified).length;
   const available = donors.filter((d) => d.available && d.verified).length;
   const open = requests.filter((r) => r.status === "Open" || r.status === "Matched").length;
   const fulfilled = requests.filter((r) => r.status === "Fulfilled" || r.status === "Completed").length;
-  const [showEligibility, setShowEligibility] = useState(false);
-  const [showDonorMap, setShowDonorMap] = useState(false);
+    const [showDonorMap, setShowDonorMap] = useState(false);
   const groupCounts = useMemo(() => {
     const counts = Object.fromEntries(GROUPS.map((g) => [g, 0]));
     donors.forEach((d) => { if (counts[d.group] !== undefined) counts[d.group]++; });
@@ -1301,9 +1151,7 @@ function Home({ donors, requests, goTo }) {
         </motion.div>
       </section>
 
-      <AnimatePresence>{showEligibility && <motion.div initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} exit={{opacity:0,height:0}} style={{overflow:"hidden",marginBottom:20}}><EligibilityChecker/></motion.div>}</AnimatePresence>
-
-      <section className="home-section">
+            <section className="home-section">
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"end",gap:16,flexWrap:"wrap"}}>
           <div><SectionLabel>Start here</SectionLabel><h2 className="headline section-heading">What do you need today?</h2><p className="section-subtitle">Choose a quick action to get to the right part of RaktMitra.</p></div>
         </div>
