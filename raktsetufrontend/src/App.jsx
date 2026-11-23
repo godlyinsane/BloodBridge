@@ -370,7 +370,7 @@ function CountUp({ value, duration = 900 }) {
 // =================================================================
 // Main component
 // =================================================================
-export default function RaktMitraApp() {
+export default function BloodBridgeApp() {
   const [tab, setTab] = useState("home");
   useEffect(()=>{if(tab!=="requests")return;const timer=window.setTimeout(()=>{document.getElementById("blood-request-sos")?.scrollIntoView({behavior:"smooth",block:"start"});},140);return()=>window.clearTimeout(timer);},[tab]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -617,7 +617,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         <NetworkStatusBanner />
         <div style={{ maxWidth: 1120, margin: "0 auto", padding: "40px 24px 70px" }}>
           <div style={{ marginBottom: 24 }}>
-            <a href="/" style={{ color: COLORS.textMuted, textDecoration: "none", fontSize: 13 }}>← Back to RaktMitra</a>
+            <a href="/" style={{ color: COLORS.textMuted, textDecoration: "none", fontSize: 13 }}>← Back to BloodBridge</a>
           </div>
           <AdminView
             donors={donors} requests={requests} notify={notify} refreshAll={refreshAll}
@@ -668,12 +668,12 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         }}
       />
 
-      {/* Responsive RaktMitra navigation */}
+      {/* Responsive BloodBridge navigation */}
       <div className={`raktsetu-topbar ${theme === "light" ? "theme-light" : "theme-dark"} ${mobileMenuOpen ? "mobile-menu-open" : ""}`} data-theme={theme} style={{ borderBottom: `1px solid ${theme === "light" ? "#e5e7eb" : COLORS.panelBorder}`, position: "sticky", top: 0, zIndex: 20, background: theme === "light" ? "#ffffff" : "#0d0f14" }}>
         <div className="raktsetu-topbar-inner" style={{ maxWidth: 1240, margin: "0 auto", padding: "12px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
-          <button aria-label="RaktMitra home" onClick={() => { setTab("home"); setMobileMenuOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: 0, border: 0, background: "transparent", color: theme === "light" ? "#171923" : "#fff", cursor: "pointer", textAlign: "left" }}>
-            <img src="/raktmitra-logo.svg" alt="RaktMitra logo" width="42" height="42" style={{ display: "block", objectFit: "contain", flexShrink: 0 }} />
-            <span><span className="headline" style={{ display: "block", fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>RaktMitra</span><span style={{ display: "block", fontSize: 9.5, color: theme === "light" ? "#667085" : COLORS.textMuted, letterSpacing: .45, marginTop: 4 }}>BLOOD DONOR NETWORK</span></span>
+          <button aria-label="BloodBridge home" onClick={() => { setTab("home"); setMobileMenuOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: 0, border: 0, background: "transparent", color: theme === "light" ? "#171923" : "#fff", cursor: "pointer", textAlign: "left" }}>
+            <img src="/raktmitra-logo.svg" alt="BloodBridge logo" width="42" height="42" style={{ display: "block", objectFit: "contain", flexShrink: 0 }} />
+            <span><span className="headline" style={{ display: "block", fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>BloodBridge</span><span style={{ display: "block", fontSize: 9.5, color: theme === "light" ? "#667085" : COLORS.textMuted, letterSpacing: .45, marginTop: 4 }}>BLOOD DONOR NETWORK</span></span>
           </button>
           <button type="button" className="raktmitra-menu-toggle" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen(v => !v)} style={{ display:"none", alignItems:"center", justifyContent:"center", width:44, height:44, borderRadius:12, border:`1px solid ${theme === "light" ? "#d0d5dd" : COLORS.panelBorder}`, color:theme === "light"?"#344054":"#fff", background:"transparent", cursor:"pointer", flexShrink:0 }}><span style={{fontSize:25,lineHeight:1}}>{mobileMenuOpen ? "×" : "☰"}</span></button>
           <nav className="raktsetu-nav" aria-label="Main navigation" style={{ display: "flex", alignItems: "center", gap: 20, flex: "1 1 auto", justifyContent: "center", minWidth: 0 }}>
@@ -717,16 +717,16 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
             {tab === "inventory" && <InventoryView theme={theme} />}
             {tab === "camps" && <CampsAndBanksView notify={notify} adminToken={adminToken} goTo={setTab} />}
             {tab === "services" && <FeatureHubPanel notify={notify} />}
-            {tab === "about" && <RaktMitraInfoPage page="about" theme={theme} goTo={setTab} />}
-            {tab === "privacy" && <RaktMitraInfoPage page="privacy" theme={theme} goTo={setTab} />}
-            {tab === "terms" && <RaktMitraInfoPage page="terms" theme={theme} goTo={setTab} />}
+            {tab === "about" && <BloodBridgeInfoPage page="about" theme={theme} goTo={setTab} />}
+            {tab === "privacy" && <BloodBridgeInfoPage page="privacy" theme={theme} goTo={setTab} />}
+            {tab === "terms" && <BloodBridgeInfoPage page="terms" theme={theme} goTo={setTab} />}
 
           </motion.div>
         </AnimatePresence>
       </div>
 
       {tab !== "admin" && (
-        <footer aria-label="RaktMitra site footer" style={{
+        <footer aria-label="BloodBridge site footer" style={{
           background: theme === "light" ? "#f5f7fa" : "linear-gradient(145deg,#10141b 0%,#090b10 100%)",
           color: theme === "light" ? "#17202b" : "#f3f4f6",
           borderTop: "1px solid " + (theme === "light" ? "#e1e5eb" : "rgba(255,255,255,.1)"),
@@ -737,10 +737,10 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
           <div style={{ maxWidth: 1180, margin: "0 auto" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(205px,1fr))", gap: "34px 42px", alignItems: "start" }}>
               <div>
-                <button aria-label="RaktMitra home" onClick={() => { setTab("home"); window.scrollTo({top:0,behavior:"smooth"}); }}
+                <button aria-label="BloodBridge home" onClick={() => { setTab("home"); window.scrollTo({top:0,behavior:"smooth"}); }}
                   style={{ display:"inline-flex",alignItems:"center",gap:10,border:0,padding:0,background:"transparent",color:"inherit",cursor:"pointer",marginBottom:14 }}>
                   <img src="/raktmitra-logo.svg" alt="" width="38" height="38" style={{objectFit:"contain"}} />
-                  <span className="headline" style={{fontSize:23,fontWeight:700,letterSpacing:-.5}}>Rakt<span style={{color:COLORS.crimson}}>Mitra</span></span>
+                  <span className="headline" style={{fontSize:23,fontWeight:700,letterSpacing:-.5}}>Blood<span style={{color:COLORS.crimson}}>Bridge</span></span>
                 </button>
                 <p style={{fontSize:13,lineHeight:1.8,color:theme==="light"?"#596474":"#a8b0bd",margin:"0 0 18px",maxWidth:310}}>
                   Connecting blood donors, recipients and blood banks to help people find the blood they need, when it matters most.
@@ -783,24 +783,24 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
               <div>
                 <h3 style={{fontSize:12,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 17px"}}>Contact us</h3>
                 <div style={{display:"grid",gap:15,fontSize:13}}>
-                  <a href="mailto:support@Raktmitra.com" style={{display:"flex",gap:10,alignItems:"flex-start",color:"inherit",textDecoration:"none",overflowWrap:"anywhere"}}>
+                  <a href="mailto:support.bloodbridge@gmail.com" style={{display:"flex",gap:10,alignItems:"flex-start",color:"inherit",textDecoration:"none",overflowWrap:"anywhere"}}>
                     <MessageCircle size={17} color={COLORS.crimson} style={{flexShrink:0,marginTop:1}} />
-                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Email support</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>support@Raktmitra.com</span></span>
+                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Email support</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>support.bloodbridge@gmail.com</span></span>
                   </a>
-                  <a href="tel:+917893739440" style={{display:"flex",gap:10,alignItems:"flex-start",color:"inherit",textDecoration:"none"}}>
+                  <a href="tel:+919132450XXX" style={{display:"flex",gap:10,alignItems:"flex-start",color:"inherit",textDecoration:"none"}}>
                     <Phone size={17} color={COLORS.crimson} style={{flexShrink:0,marginTop:1}} />
-                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Mobile</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>+91 78937 39440</span></span>
+                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Mobile</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>+91 9132450XXX</span></span>
                   </a>
                   <div style={{display:"flex",gap:10,alignItems:"flex-start"}}>
                     <MapPin size={17} color={COLORS.crimson} style={{flexShrink:0,marginTop:1}} />
-                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Location</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>Bilaspur, India</span></span>
+                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Location</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>VIT Bhopal University, MP</span></span>
                   </div>
                 </div>
               </div>
             </div>
 
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:14,flexWrap:"wrap",borderTop:"1px solid "+(theme==="light"?"#e1e5eb":"rgba(255,255,255,.1)"),marginTop:34,paddingTop:18}}>
-              <span style={{fontSize:11.5,color:theme==="light"?"#737d8b":"#8e98a7"}}>© {new Date().getFullYear()} RaktMitra. Built with <span style={{color:COLORS.crimson}}>♥</span> to help save lives.</span>
+              <span style={{fontSize:11.5,color:theme==="light"?"#737d8b":"#8e98a7"}}>© {new Date().getFullYear()} BloodBridge. Built with <span style={{color:COLORS.crimson}}>♥</span> to help save lives.</span>
               <div style={{display:"flex",gap:18,flexWrap:"wrap"}}>
                 {[["About Us","about"],["Privacy Policy","privacy"],["Terms & Conditions","terms"]].map(([label,destination])=>(
                   <button key={label} onClick={()=>{setTab(destination);window.scrollTo({top:0,behavior:"smooth"});}}
@@ -809,7 +809,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
               </div>
             </div>
             <p style={{fontSize:10.5,lineHeight:1.6,textAlign:"center",color:theme==="light"?"#87909c":"#737d8b",margin:"13px 0 0"}}>
-              RaktMitra is a technology platform and does not replace medical advice or professional blood-bank screening.
+              BloodBridge is a technology platform and does not replace medical advice or professional blood-bank screening.
             </p>
           </div>
         </footer>
@@ -838,7 +838,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 }
 
 
-function RaktMitraInfoPage({ page, theme, goTo }) {
+function BloodBridgeInfoPage({ page, theme, goTo }) {
   const light = theme === "light";
   const ink = light ? "#182230" : "#f4f6f9";
   const muted = light ? "#596474" : "#a8b0bd";
@@ -851,16 +851,16 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
   const bulletStyle = { color: muted, fontSize: 14, lineHeight: 1.8, paddingLeft: 20, margin: "8px 0 0" };
   const content = {
     about: {
-      title: "About RaktMitra",
+      title: "About BloodBridge",
       subtitle: "A student project built around a simple goal: help people find blood donation support more easily.",
     },
     privacy: {
       title: "Privacy Policy",
-      subtitle: "How RaktMitra handles information used by its blood-donation support features.",
+      subtitle: "How BloodBridge handles information used by its blood-donation support features.",
     },
     terms: {
       title: "Terms of Service",
-      subtitle: "By accessing and using RaktMitra, you agree to be bound by these Terms of Service. Please read them carefully.",
+      subtitle: "By accessing and using BloodBridge, you agree to be bound by these Terms of Service. Please read them carefully.",
     }
   }[page];
   return (
@@ -882,7 +882,7 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
           <section style={sectionStyle}>
             <div style={{ color: red, fontSize: 22, marginBottom: 12 }}>♡</div>
             <h2 style={{ margin: "0 0 10px", fontSize: 19 }}>Our Story</h2>
-            <p style={paraStyle}>RaktMitra is an end-semester academic project created to explore how web technology can support blood-donation awareness and help connect donors, recipients, and blood-bank information in one place.</p>
+            <p style={paraStyle}>BloodBridge is an end-semester academic project created to explore how web technology can support blood-donation awareness and help connect donors, recipients, and blood-bank information in one place.</p>
           </section>
         </div>
         <h2 style={{ textAlign: "center", fontSize: 27, color: red, margin: "30px 0 18px" }}>Our Values</h2>
@@ -899,7 +899,7 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
         </div>
         <section style={{...sectionStyle,textAlign:"center"}}>
           <h2 style={{fontSize:26,color:red,margin:"0 0 8px"}}>The Project Team</h2>
-          <p style={paraStyle}>End-Semester Project · Guru Ghasidas Vishwavidyalaya (GGV), Bilaspur</p>
+          <p style={paraStyle}>End-Semester Project · VIT Bhopal University & Surrounding Regional Network</p>
           <div style={{display:"flex",justifyContent:"center",flexWrap:"wrap",gap:12,marginTop:20}}>
             {["Avinash","Deekshith Reddy","Shiva"].map(name=><span key={name} style={{border:"1px solid "+(light?"#edc7cc":"rgba(255,130,145,.28)"),background:light?"#fff4f5":"rgba(196,61,80,.12)",color:light?"#a62c40":"#ff9aaa",borderRadius:30,padding:"12px 22px",fontWeight:750,fontSize:14}}>{name}</span>)}
           </div>
@@ -912,7 +912,7 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
           </div>
           <h1 style={{ fontSize: "clamp(28px, 4vw, 38px)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.5px" }}>Privacy Policy</h1>
           <p style={{ color: muted, fontSize: 15, margin: "0 auto", lineHeight: 1.65 }}>
-            At RaktMitra, we believe in radical transparency. We literally store nothing except what is publicly available on Google regarding blood banks, hospitals, and donation centres.
+            At BloodBridge, we believe in radical transparency. We literally store nothing except what is publicly available on Google regarding blood banks, hospitals, and donation centres.
           </p>
         </div>
 
@@ -928,7 +928,7 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
             },
             {
               title: "3. No Tracking & No Third-Party Selling",
-              body: "We do not track your personal identity, browse history, or sell any information to marketing agencies, brokers, or third parties. RaktMitra exists exclusively as an open community utility to help people find emergency blood resources."
+              body: "We do not track your personal identity, browse history, or sell any information to marketing agencies, brokers, or third parties. BloodBridge exists exclusively as an open community utility to help people find emergency blood resources."
             },
             {
               title: "4. Third-Party Maps & Links",
@@ -936,7 +936,7 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
             },
             {
               title: "5. Contact & Privacy Inquiries",
-              body: "If any public blood bank or hospital listing needs correction or removal from the directory, email us directly at priyanshbhatt20@gmail.com."
+              body: "If any public blood bank or hospital listing needs correction or removal from the directory, email us directly at support.bloodbridge@gmail.com."
             }
           ].map((item) => (
             <section key={item.title} style={{ ...sectionStyle, padding: "22px 24px", marginBottom: 0, borderRadius: 16 }}>
@@ -953,7 +953,7 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
           </div>
           <h1 style={{ fontSize: "clamp(28px, 4vw, 38px)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.5px" }}>Terms of Service</h1>
           <p style={{ color: muted, fontSize: 15, margin: "0 auto", lineHeight: 1.65 }}>
-            By accessing and using RaktMitra, you agree to be bound by these Terms of Service. Please read them carefully.
+            By accessing and using BloodBridge, you agree to be bound by these Terms of Service. Please read them carefully.
           </p>
         </div>
 
@@ -961,11 +961,11 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
           {[
             {
               title: "1. Community Welfare & Zero Liability",
-              body: "RaktMitra is an open community welfare initiative built strictly for public awareness, education, and voluntary social assistance. The operators, developers, contributors, and team members DO NOT assume any legal responsibility, liability, or obligation whatsoever for any outcome, direct or indirect damages, injuries, delays, losses, disputes, or medical complications arising from using or relying on this website. Use of this platform is entirely at your own discretion and risk."
+              body: "BloodBridge is an open community welfare initiative built strictly for public awareness, education, and voluntary social assistance. The operators, developers, contributors, and team members DO NOT assume any legal responsibility, liability, or obligation whatsoever for any outcome, direct or indirect damages, injuries, delays, losses, disputes, or medical complications arising from using or relying on this website. Use of this platform is entirely at your own discretion and risk."
             },
             {
               title: "2. Hospital & Blood Bank Verification",
-              body: "You MUST independently contact and verify all details directly with the responsible hospital, licensed blood bank, or certified healthcare facility before taking any action or traveling. RaktMitra is NOT a licensed medical clinic, hospital, diagnostic center, or blood bank. We do NOT test, extract, screen, collect, store, handle, transport, or issue blood units or blood products."
+              body: "You MUST independently contact and verify all details directly with the responsible hospital, licensed blood bank, or certified healthcare facility before taking any action or traveling. BloodBridge is NOT a licensed medical clinic, hospital, diagnostic center, or blood bank. We do NOT test, extract, screen, collect, store, handle, transport, or issue blood units or blood products."
             },
             {
               title: "3. November 2026 Dataset Scope",
@@ -973,23 +973,23 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
             },
             {
               title: "4. Acceptable Use Policy",
-              body: "RaktMitra is designed to facilitate voluntary community support. You are strictly prohibited from using the platform for: (a) fraudulent blood requests or financial solicitations; (b) commercial resale or paid trade of blood or organs (which is illegal under applicable law); (c) harassment, spam, impersonation, or deceptive practices; or (d) uploading malicious, automated, or misleading data. We reserve the absolute right to restrict, report, or terminate access for any violation without notice."
+              body: "BloodBridge is designed to facilitate voluntary community support. You are strictly prohibited from using the platform for: (a) fraudulent blood requests or financial solicitations; (b) commercial resale or paid trade of blood or organs (which is illegal under applicable law); (c) harassment, spam, impersonation, or deceptive practices; or (d) uploading malicious, automated, or misleading data. We reserve the absolute right to restrict, report, or terminate access for any violation without notice."
             },
             {
               title: "5. Emergency Medical Protocols",
-              body: "RaktMitra must NEVER be used as a replacement for emergency medical services. In any acute medical emergency or life-threatening situation, immediately call national emergency helplines (108 / 102), contact the nearest hospital emergency room, or reach the local state blood council directly."
+              body: "BloodBridge must NEVER be used as a replacement for emergency medical services. In any acute medical emergency or life-threatening situation, immediately call national emergency helplines (108 / 102), contact the nearest hospital emergency room, or reach the local state blood council directly."
             },
             {
               title: "6. Third-Party Integrations",
-              body: "This website may integrate or link to external third-party services including maps, routing, geolocation, public government registries, and telephone protocols. RaktMitra has no control over and assumes zero responsibility for the content, uptime, accuracy, privacy policies, or actions of any third-party service."
+              body: "This website may integrate or link to external third-party services including maps, routing, geolocation, public government registries, and telephone protocols. BloodBridge has no control over and assumes zero responsibility for the content, uptime, accuracy, privacy policies, or actions of any third-party service."
             },
             {
               title: "7. Terms Modifications",
-              body: "We reserve the right to revise or update these terms at any time to reflect platform improvements or statutory guidelines. Continued access or use of RaktMitra after revisions are posted constitutes your explicit acceptance of the updated terms."
+              body: "We reserve the right to revise or update these terms at any time to reflect platform improvements or statutory guidelines. Continued access or use of BloodBridge after revisions are posted constitutes your explicit acceptance of the updated terms."
             },
             {
               title: "8. Contact & Reports",
-              body: "For community suggestions, corrections to unlisted or outdated hospital and blood donation centers, or questions regarding these terms, contact priyanshbhatt20@gmail.com."
+              body: "For community suggestions, corrections to unlisted or outdated hospital and blood donation centers, or questions regarding these terms, contact support.bloodbridge@gmail.com."
             }
           ].map((item) => (
             <section key={item.title} style={{ ...sectionStyle, padding: "22px 24px", marginBottom: 0, borderRadius: 16 }}>
@@ -1001,7 +1001,7 @@ function RaktMitraInfoPage({ page, theme, goTo }) {
       </>}
       <div style={{display:"flex",gap:10,flexWrap:"wrap",marginTop:24}}>
         <button onClick={()=>{goTo("home");window.scrollTo({top:0,behavior:"smooth"});}} style={{border:0,borderRadius:10,background:red,color:"#fff",fontWeight:750,padding:"12px 18px",cursor:"pointer"}}>Back to Home</button>
-        {page!=="about"&&<button onClick={()=>goTo("about")} style={{border:"1px solid "+line,borderRadius:10,background:"transparent",color:ink,fontWeight:700,padding:"12px 18px",cursor:"pointer"}}>About RaktMitra</button>}
+        {page!=="about"&&<button onClick={()=>goTo("about")} style={{border:"1px solid "+line,borderRadius:10,background:"transparent",color:ink,fontWeight:700,padding:"12px 18px",cursor:"pointer"}}>About BloodBridge</button>}
       </div>
     </div>
   );
@@ -1038,7 +1038,7 @@ function Home({ donors, requests, goTo }) {
     { icon: <Droplet size={21} />, title: "Donate Blood", description: "Explore active donation slots, blood shortages, and regional donation requirements.", action: () => goTo("inventory"), tone: "#38bdf8", tag: "Donate", label: "Donate blood" },
     { icon: <MapPin size={21} />, title: "Nearest Blood Bank", description: "Find the closest blood bank with Google Maps turn-by-turn navigation.", action: () => goTo("nearest"), tone: "#0ea5e9", tag: "Live GPS", label: "Locate bank" },
     { icon: <Heart size={21} />, title: "Become a donor", description: "Register as a donor and save lives when emergencies strike.", action: () => goTo("donor"), tone: "#fb7185", tag: "Lifesaver", label: "Register now" },
-    { icon: <Info size={21} />, title: "About Us", description: "Learn about the RaktMitra network, mission, and community values.", action: () => goTo("about"), tone: "#818cf8", tag: "Network", label: "About RaktMitra" },
+    { icon: <Info size={21} />, title: "About Us", description: "Learn about the BloodBridge network, mission, and community values.", action: () => goTo("about"), tone: "#818cf8", tag: "Network", label: "About BloodBridge" },
   ];
 
   return (
@@ -1131,7 +1131,7 @@ function Home({ donors, requests, goTo }) {
             <span style={{fontSize:".76em",letterSpacing:"-1px"}}>Find blood. Give hope.</span>
           </h1>
           <p style={{fontSize:15.5,color:COLORS.textMuted,lineHeight:1.85,maxWidth:520,margin:0}}>
-            RaktMitra brings donors, people seeking blood, and blood banks together. Find compatible donor support, register to help, and explore donation resources in one place.
+            BloodBridge brings donors, people seeking blood, and blood banks together. Find compatible donor support, register to help, and explore donation resources in one place.
           </p>
           <div className="hero-actions">
             <motion.button whileHover={{scale:1.025,y:-2}} whileTap={{scale:.98}} style={glowBtn} onClick={()=>goTo("recipient")}><Search size={16}/> Find blood donors <ArrowRight size={15}/></motion.button>
@@ -1147,13 +1147,13 @@ function Home({ donors, requests, goTo }) {
           <StatCard label="Verified donors" value={verified} icon={<ShieldCheck size={18} color={COLORS.cyan}/>}/>
           <StatCard label="Available verified donors" value={available} icon={<Activity size={18} color={COLORS.good}/>}/>
           <StatCard label="Open requests" value={open} icon={<AlertTriangle size={18} color={COLORS.crimson}/>}/>
-          <div style={{gridColumn:"1 / -1",fontSize:11.5,lineHeight:1.6,color:COLORS.textMuted,padding:"0 4px"}}>Live totals from the records currently loaded by RaktMitra. Availability can change; please confirm details before travelling.</div>
+          <div style={{gridColumn:"1 / -1",fontSize:11.5,lineHeight:1.6,color:COLORS.textMuted,padding:"0 4px"}}>Live totals from the records currently loaded by BloodBridge. Availability can change; please confirm details before travelling.</div>
         </motion.div>
       </section>
 
             <section className="home-section">
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"end",gap:16,flexWrap:"wrap"}}>
-          <div><SectionLabel>Start here</SectionLabel><h2 className="headline section-heading">What do you need today?</h2><p className="section-subtitle">Choose a quick action to get to the right part of RaktMitra.</p></div>
+          <div><SectionLabel>Start here</SectionLabel><h2 className="headline section-heading">What do you need today?</h2><p className="section-subtitle">Choose a quick action to get to the right part of BloodBridge.</p></div>
         </div>
         <div className="quick-grid">
           {quickActions.map((item, i) => (
@@ -1265,7 +1265,7 @@ function Home({ donors, requests, goTo }) {
       </motion.div>}</AnimatePresence>
 
       <section className="home-section">
-        <SectionLabel>Simple, connected, community-focused</SectionLabel><h2 className="headline section-heading">How RaktMitra works</h2><p className="section-subtitle">A clear path from searching for help to connecting with donation support.</p>
+        <SectionLabel>Simple, connected, community-focused</SectionLabel><h2 className="headline section-heading">How BloodBridge works</h2><p className="section-subtitle">A clear path from searching for help to connecting with donation support.</p>
         <div className="how-grid">{[
           {n:"01",title:"Search or register",desc:"Recipients can start a blood request; eligible donors can create a donor profile."},
           {n:"02",title:"Review compatible support",desc:"Use blood-group and location-based tools to explore relevant donor matches."},
@@ -1279,7 +1279,7 @@ function Home({ donors, requests, goTo }) {
           <div style={{display:"flex",gap:10,flexWrap:"wrap"}}><button style={glowBtn} onClick={()=>goTo("donor")}><Heart size={15}/> Join as donor</button><button style={ghostBtn} onClick={()=>goTo("camps")}><Building2 size={15}/> Camps & banks</button></div>
         </div>
       </section>
-      <p style={{fontSize:11.5,color:COLORS.textMuted,lineHeight:1.7,textAlign:"center",margin:"28px 0 0"}}>RaktMitra helps people discover donation support; it does not replace medical advice, donor eligibility assessment, or blood-bank screening.</p>
+      <p style={{fontSize:11.5,color:COLORS.textMuted,lineHeight:1.7,textAlign:"center",margin:"28px 0 0"}}>BloodBridge helps people discover donation support; it does not replace medical advice, donor eligibility assessment, or blood-bank screening.</p>
     </div>
   );
 }
@@ -2134,7 +2134,7 @@ function DeleteProfileSection({ donor, donorToken, notify, onDeleted }) {
     <Card style={{ maxWidth: 420, borderColor: COLORS.crimson + "44" }}>
       <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Delete Profile / Unsubscribe</div>
       <p style={{ fontSize: 13, color: COLORS.textMuted, lineHeight: 1.6, marginBottom: 16 }}>
-        This permanently deletes your donor profile and donation history from RaktMitra. You will no
+        This permanently deletes your donor profile and donation history from BloodBridge. You will no
         longer appear in any matching results. This cannot be undone.
       </p>
       {!confirming ? (
@@ -2925,7 +2925,7 @@ function DeleteRareProfileSection({ donor, donorToken, notify, onDeleted }) {
     <Card style={{ maxWidth: 420, borderColor: COLORS.crimson + "44" }}>
       <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Delete Profile / Unsubscribe</div>
       <p style={{ fontSize: 13, color: COLORS.textMuted, lineHeight: 1.6, marginBottom: 16 }}>
-        This permanently deletes your rare-donor profile and donation history from RaktMitra. This
+        This permanently deletes your rare-donor profile and donation history from BloodBridge. This
         cannot be undone.
       </p>
       {!confirming ? (
@@ -3056,7 +3056,7 @@ function RequestsBoard({ notify, requests, refreshAll }) {
   const callNumber = phone => String(phone || "").replace(/[^\d+]/g, "");
   const shareRequest = r => {
     const phone = callNumber(r.requesterPhone);
-    const text = "RaktMitra blood request: " + (r.group || "") + " · " + (r.units || 1) + " unit(s) needed at " + [r.recipient, r.district || r.city, r.state].filter(Boolean).join(", ") + ". Priority: " + (r.urgency === "High" ? "HIGH / SOS" : "Normal") + ". Please contact the requester to verify availability.";
+    const text = "BloodBridge blood request: " + (r.group || "") + " · " + (r.units || 1) + " unit(s) needed at " + [r.recipient, r.district || r.city, r.state].filter(Boolean).join(", ") + ". Priority: " + (r.urgency === "High" ? "HIGH / SOS" : "Normal") + ". Please contact the requester to verify availability.";
     window.open("https://wa.me/?text=" + encodeURIComponent(text + (phone ? " Contact: " + phone : "")), "_blank", "noopener,noreferrer");
   };
   const RequestCard = ({ r, owned = false }) => {
@@ -3171,7 +3171,7 @@ function RecipientView({ notify, refreshAll, goTo }) {
     "B-":{donate:["B-","B+","AB-","AB+"],receive:["O-","B-"]},"B+":{donate:["B+","AB+"],receive:["O-","O+","B-","B+"]},
     "AB-":{donate:["AB-","AB+"],receive:["O-","A-","B-","AB-"]},"AB+":{donate:["AB+"],receive:GROUPS}
   };
-  const useLocation=()=>{if(!navigator.geolocation){setLocationEnabled(false);notify("Enable location services on your device and allow location access for RaktMitra first.");return;}navigator.geolocation.getCurrentPosition(p=>{setForm(f=>({...f,lat:p.coords.latitude.toFixed(5),lng:p.coords.longitude.toFixed(5)}));setLocationEnabled(true);notify("Your location is enabled. You can now find nearby eligible donors.");},()=>{setLocationEnabled(false);notify("Enable device location and allow location permission for RaktMitra before finding eligible donors.");},{enableHighAccuracy:true,timeout:12000,maximumAge:30000});};
+  const useLocation=()=>{if(!navigator.geolocation){setLocationEnabled(false);notify("Enable location services on your device and allow location access for BloodBridge first.");return;}navigator.geolocation.getCurrentPosition(p=>{setForm(f=>({...f,lat:p.coords.latitude.toFixed(5),lng:p.coords.longitude.toFixed(5)}));setLocationEnabled(true);notify("Your location is enabled. You can now find nearby eligible donors.");},()=>{setLocationEnabled(false);notify("Enable device location and allow location permission for BloodBridge before finding eligible donors.");},{enableHighAccuracy:true,timeout:12000,maximumAge:30000});};
   const searchDonors=async e=>{e.preventDefault();setBusy(true);try{const point=await getRequesterLocation();const list=await loadPublicDonors({state:donorFilters.state,district:donorFilters.district,group:donorFilters.group==="Any blood group"?"":donorFilters.group});const normalize=v=>String(v||"").trim().toLocaleLowerCase().replace(/\s+/g," ");const filtered=list.filter(d=>(donorFilters.group==="Any blood group"||(d.group||d.bloodGroup)===donorFilters.group)&&(!donorFilters.state||normalize(d.state).includes(normalize(donorFilters.state)))&&(!donorFilters.district||[d.district,d.city,d.locality].some(v=>normalize(v).includes(normalize(donorFilters.district))))).map(d=>({...d,distanceKm:point?distanceKm(point,{lat:d.lat,lng:d.lng}):null}));filtered.sort((a,b)=>a.distanceKm==null?(b.distanceKm==null?0:1):b.distanceKm==null?-1:a.distanceKm-b.distanceKm);setDonorResults(filtered);}catch(e){notify(e.message);}finally{setBusy(false);}};
   const searchBanks=async e=>{e.preventDefault();setBusy(true);try{const [legacy,registered]=await Promise.all([api("/blood-banks"),api("/registered-blood-banks/public")]);const oldList=Array.isArray(legacy)?legacy:(legacy.banks||[]);const newList=Array.isArray(registered)?registered:(registered.banks||[]);const list=[...newList,...oldList];setBankResults(list.filter(b=>(!bankFilters.state||(b.state||"").toLowerCase().includes(bankFilters.state.toLowerCase()))&&(!bankFilters.district||[b.district,b.city].filter(Boolean).join(" ").toLowerCase().includes(bankFilters.district.toLowerCase()))));}catch(e){notify(e.message);}finally{setBusy(false);}};
   const runMatch=async e=>{e.preventDefault();const lat=Number(form.lat),lng=Number(form.lng);if(!form.lat.trim()||!form.lng.trim()||!Number.isFinite(lat)||lat < -90||lat > 90||!Number.isFinite(lng)||lng < -180||lng > 180){notify("Enter valid latitude and longitude, or tap Use my location. You can also search with manually entered coordinates.");return;}if(!form.state||!(form.district||form.city)){notify("Select the request state and district to prioritize local donors.");return;}setBusy(true);setAnalysing(true);setMatches(null);try{const compatible=compatibility[form.group]?.receive||[form.group];const list=await loadPublicDonors({state:form.state,district:form.district||form.city,groups:compatible.join(",")});const normalize=v=>String(v||"").trim().toLocaleLowerCase().replace(/\s+/g," ");const withCoords=list.filter(d=>{const group=d.group||d.bloodGroup;const dLat=Number(d.lat),dLng=Number(d.lng);return compatible.includes(group)&&d.available!==false&&d.lat!=null&&d.lng!=null&&Number.isFinite(dLat)&&dLat>=-90&&dLat<=90&&Number.isFinite(dLng)&&dLng>=-180&&dLng<=180;}).map(d=>({...d,distanceKm:distanceKm({lat,lng},{lat:Number(d.lat),lng:Number(d.lng)})}));const wantedDistrict=normalize(form.district||form.city),wantedState=normalize(form.state);const local=withCoords.filter(d=>normalize(d.state)===wantedState&&[d.district,d.city,d.locality].some(v=>normalize(v)===wantedDistrict));const nearby=withCoords.filter(d=>d.distanceKm!=null&&d.distanceKm<=(form.urgency==="High"?25:50));const found=(local.length?local:nearby.length?nearby:withCoords).sort((a,b)=>(a.distanceKm??Infinity)-(b.distanceKm??Infinity));await new Promise(r=>setTimeout(r,150));setMatches(found);if(found.length)notify((local.length?"Local":"Compatible")+" donor matches found: "+found.length+". Confirm donor availability by phone before travelling.");else notify("No compatible donors are listed yet. Try the general donor search or check again later.");}catch(err){notify(err.message||"Could not load public donor records. Please try again.");}finally{setBusy(false);setAnalysing(false);}};
@@ -3190,7 +3190,7 @@ function RecipientView({ notify, refreshAll, goTo }) {
       <Field label="District"><select style={fieldStyle} value={donorFilters.district} onChange={e=>setDonorFilters({...donorFilters,district:e.target.value})}><option value="">All districts</option>{districtsFor(donorFilters.state).map(d=><option key={d} value={d}>{d}</option>)}</select></Field>
       <button disabled={busy} style={{...glowBtn,justifyContent:"center",marginBottom:16}}><Search size={15}/>{busy?"Searching…":"Search donors"}</button></form></Card>
       {donorResults&&<><SectionLabel>{donorResults.length} donor{donorResults.length===1?"":"s"} found</SectionLabel>{locationMessage&&<div role="status" style={{fontSize:12,color:COLORS.textMuted,marginTop:-8}}>{locationMessage}</div>}{donorResults.some(donorHasCoords)&&<Card hover={false} style={{padding:12}}><div style={{fontWeight:800,fontSize:14,padding:"5px 7px 12px"}}>Donor location map</div><DonorLocationsMap center={{lat:Number(donorResults.find(donorHasCoords)?.lat),lng:Number(donorResults.find(donorHasCoords)?.lng)}} donors={donorResults.filter(donorHasCoords).map(d=>({lat:Number(d.lat),lng:Number(d.lng),group:d.group||d.bloodGroup,label:(d.group||d.bloodGroup||"Blood")+" donor"}))} height={300}/></Card>}
-      {!donorResults.length?<Card hover={false}>No donors match those filters. Try a different blood group, state or district.</Card>:<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:12}}>{donorResults.map((d,i)=>{const phone=contactPhone(d);return <Card key={d._id||i} hover={false} style={{padding:16,borderTop:"3px solid "+((d.group||d.bloodGroup)==="O-"?"#d18a2f":(d.group||d.bloodGroup)==="AB-"?"#8b6cc1":"#c52e49")}}><div style={{display:"flex",justifyContent:"space-between",gap:10,alignItems:"flex-start"}}><div style={{minWidth:0}}><b style={{fontSize:17,lineHeight:1.25,overflowWrap:"anywhere"}}>{d.name||"Registered donor"}</b></div><div style={{display:"grid",justifyItems:"center",gap:5,flexShrink:0}}><div style={{padding:"5px 12px",borderRadius:999,display:"inline-flex",alignItems:"center",justifyContent:"center",fontWeight:900,fontSize:13,color:"#ff9b8e",background:"rgba(255,105,89,.16)",border:"1px solid rgba(255,105,89,.42)",boxShadow:"0 3px 12px rgba(255,81,76,.14)"}}>{d.group||d.bloodGroup||"?"}</div><span style={{fontSize:10,color:COLORS.textMuted,fontWeight:750}}>BLOOD TYPE</span></div></div><div style={{fontSize:12,color:COLORS.textMuted,marginTop:12,lineHeight:1.6,display:"flex",gap:6,alignItems:"flex-start"}}><MapPin size={12} style={{verticalAlign:-2}}/> {[d.district,d.city,d.locality,d.state].filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(", ")||"Location not provided"}</div><div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginTop:10,fontSize:12,color:COLORS.textMuted}}>{d.distanceKm!=null?<span><MapPin size={12} style={{verticalAlign:-2}}/> {d.distanceKm<1?Math.round(d.distanceKm*1000)+" m away":d.distanceKm.toFixed(1)+" km away"}</span>:<span><MapPin size={12} style={{verticalAlign:-2}}/> Enable location for distance</span>}{d.available!==false&&<Pill tone="good">Available</Pill>}</div>{phone?<div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:12}}><a href={"tel:"+phone} style={{...glowBtn,display:"inline-flex",alignItems:"center",gap:6,textDecoration:"none",padding:"9px 12px"}}><Phone size={14}/> Call</a><a href={"https://wa.me/"+phone+"?text="+encodeURIComponent("Hello "+(d.name||"donor")+", I found your donor profile on RaktMitra and need to discuss a blood donation request.")} target="_blank" rel="noopener noreferrer" style={{...ghostBtn,display:"inline-flex",alignItems:"center",gap:6,textDecoration:"none",padding:"9px 12px"}}><MessageCircle size={14}/> Chat on WhatsApp</a><span style={{fontSize:12,color:COLORS.textMuted,alignSelf:"center"}}>{d.phone}</span></div>:<div style={{fontSize:12,color:COLORS.textMuted,marginTop:12}}>Contact details are not available for this donor.</div>}</Card>})}</div>}</>}
+      {!donorResults.length?<Card hover={false}>No donors match those filters. Try a different blood group, state or district.</Card>:<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:12}}>{donorResults.map((d,i)=>{const phone=contactPhone(d);return <Card key={d._id||i} hover={false} style={{padding:16,borderTop:"3px solid "+((d.group||d.bloodGroup)==="O-"?"#d18a2f":(d.group||d.bloodGroup)==="AB-"?"#8b6cc1":"#c52e49")}}><div style={{display:"flex",justifyContent:"space-between",gap:10,alignItems:"flex-start"}}><div style={{minWidth:0}}><b style={{fontSize:17,lineHeight:1.25,overflowWrap:"anywhere"}}>{d.name||"Registered donor"}</b></div><div style={{display:"grid",justifyItems:"center",gap:5,flexShrink:0}}><div style={{padding:"5px 12px",borderRadius:999,display:"inline-flex",alignItems:"center",justifyContent:"center",fontWeight:900,fontSize:13,color:"#ff9b8e",background:"rgba(255,105,89,.16)",border:"1px solid rgba(255,105,89,.42)",boxShadow:"0 3px 12px rgba(255,81,76,.14)"}}>{d.group||d.bloodGroup||"?"}</div><span style={{fontSize:10,color:COLORS.textMuted,fontWeight:750}}>BLOOD TYPE</span></div></div><div style={{fontSize:12,color:COLORS.textMuted,marginTop:12,lineHeight:1.6,display:"flex",gap:6,alignItems:"flex-start"}}><MapPin size={12} style={{verticalAlign:-2}}/> {[d.district,d.city,d.locality,d.state].filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(", ")||"Location not provided"}</div><div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginTop:10,fontSize:12,color:COLORS.textMuted}}>{d.distanceKm!=null?<span><MapPin size={12} style={{verticalAlign:-2}}/> {d.distanceKm<1?Math.round(d.distanceKm*1000)+" m away":d.distanceKm.toFixed(1)+" km away"}</span>:<span><MapPin size={12} style={{verticalAlign:-2}}/> Enable location for distance</span>}{d.available!==false&&<Pill tone="good">Available</Pill>}</div>{phone?<div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:12}}><a href={"tel:"+phone} style={{...glowBtn,display:"inline-flex",alignItems:"center",gap:6,textDecoration:"none",padding:"9px 12px"}}><Phone size={14}/> Call</a><a href={"https://wa.me/"+phone+"?text="+encodeURIComponent("Hello "+(d.name||"donor")+", I found your donor profile on BloodBridge and need to discuss a blood donation request.")} target="_blank" rel="noopener noreferrer" style={{...ghostBtn,display:"inline-flex",alignItems:"center",gap:6,textDecoration:"none",padding:"9px 12px"}}><MessageCircle size={14}/> Chat on WhatsApp</a><span style={{fontSize:12,color:COLORS.textMuted,alignSelf:"center"}}>{d.phone}</span></div>:<div style={{fontSize:12,color:COLORS.textMuted,marginTop:12}}>Contact details are not available for this donor.</div>}</Card>})}</div>}</>}
       
     </div>}
     {mode==="compatibility"&&<Card hover={false} style={{padding:"clamp(16px,3vw,28px)"}}><div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap"}}><div><div style={{fontSize:11,fontWeight:850,letterSpacing:1.2,color:"#6ed8b6"}}>RED-CELL COMPATIBILITY</div><h2 className="headline" style={{fontSize:23,margin:"7px 0"}}>Who can donate to whom?</h2></div><select aria-label="Choose blood group" style={{...fieldStyle,maxWidth:190}} value={compatGroup} onChange={e=>setCompatGroup(e.target.value)}>{GROUPS.map(g=><option key={g}>{g}</option>)}</select></div><p style={{fontSize:12.5,color:COLORS.textMuted,lineHeight:1.65}}>Standard red-cell compatibility only. A qualified blood-bank team must confirm compatibility and perform required testing before transfusion.</p><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,255px),1fr))",gap:13,marginTop:18}}><div style={{border:"1px solid #27876d",background:"linear-gradient(145deg,#103e35,#122a2c)",borderRadius:16,padding:17}}><div style={{color:"#82e6bf",fontWeight:850,marginBottom:12}}>↗ Can donate to</div><div style={{display:"flex",gap:7,flexWrap:"wrap"}}>{compatibility[compatGroup].donate.map(g=><span key={g} style={{background:"#1b6c52",border:"1px solid #50c99a",color:"#d4ffed",padding:"7px 11px",borderRadius:8,fontWeight:850,fontSize:12}}>{g}</span>)}</div><div style={{fontSize:11.5,color:"#9ee8ce",marginTop:13}}>{compatGroup==="O-"?"Universal red-cell donor":compatGroup==="AB+"?"Can donate red cells to AB+ recipients":"Standard donor compatibility"}</div></div><div style={{border:"1px solid #497fc7",background:"linear-gradient(145deg,#172f53,#172338)",borderRadius:16,padding:17}}><div style={{color:"#9fc8ff",fontWeight:850,marginBottom:12}}>↓ Can receive from</div><div style={{display:"flex",gap:7,flexWrap:"wrap"}}>{compatibility[compatGroup].receive.map(g=><span key={g} style={{background:"#234b7b",border:"1px solid #6ca7f5",color:"#e2efff",padding:"7px 11px",borderRadius:8,fontWeight:850,fontSize:12}}>{g}</span>)}</div><div style={{fontSize:11.5,color:"#b9d5ff",marginTop:13}}>{compatGroup==="AB+"?"Universal red-cell recipient":compatGroup==="O-"?"Can receive red cells only from O-":"Standard recipient compatibility"}</div></div></div></Card>}
@@ -3525,7 +3525,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
             <button onClick={() => changeTab("banks")} style={buttonStyle(directoryTab === "banks")}><Building2 size={15} /> Hospital blood banks</button>
             <button onClick={() => { changeTab("camps"); setCampFilter("upcoming"); }} style={buttonStyle(directoryTab === "camps")}><Calendar size={15} /> Active blood distribution drives</button>
             <a
-              href="mailto:priyanshbhatt20@gmail.com?subject=Blood%20Donation%20Centre%20or%20Hospital%20Not%20Listed&body=Hi%20RaktMitra%20Team%2C%0A%0AI%20would%20like%20to%20report%20a%20blood%20donation%20centre%20or%20hospital%20that%20is%20not%20mentioned%20on%20the%20platform%3A%0A%0AFacility%20Name%3A%20%0ALocation%2FCity%3A%20%0AContact%20Details%3A%20%0AAdditional%20Info%3A%20%0A"
+              href="mailto:support.bloodbridge@gmail.com?subject=Blood%20Donation%20Centre%20or%20Hospital%20Not%20Listed&body=Hi%20BloodBridge%20Team%2C%0A%0AI%20would%20like%20to%20report%20a%20blood%20donation%20centre%20or%20hospital%20that%20is%20not%20mentioned%20on%20the%20platform%3A%0A%0AFacility%20Name%3A%20%0ALocation%2FCity%3A%20%0AContact%20Details%3A%20%0AAdditional%20Info%3A%20%0A"
               style={{
                 ...buttonStyle(false),
                 borderColor: "rgba(239, 68, 68, 0.4)",
@@ -3845,7 +3845,7 @@ function AdvancedOperationsPanel({ adminToken, notify }) {
   {tab==='risk'&&<Card hover={false}><h3>Human review flags</h3><p style={{fontSize:12,color:COLORS.textMuted}}>Similar requests in seven days; flags never automatically block or deny care.</p>{risk?.flaggedGroups?.length?risk.flaggedGroups.map((r,i)=><div key={i} style={{padding:12,marginBottom:8,background:'rgba(255,59,84,.07)',borderRadius:10}}><Pill tone={r.risk==='High review priority'?'warn':'info'}>{r.risk}</Pill><p>{r.reason}</p><small>{r.count} requests · {r.requestIds.map(x=>String(x).slice(-6)).join(', ')}</small></div>):<p>No repeated patterns flagged.</p>}</Card>}
   {tab==='resilience'&&<Card hover={false}><h3>Blood network what-if simulator</h3><form onSubmit={simulate}><Field label='Extra demand units'><input type='number' min='0' max='100000' style={field} value={scenario.extraDemandUnits} onChange={e=>setScenario({...scenario,extraDemandUnits:e.target.value})}/></Field><Field label='Horizon days'><input type='number' min='1' max='30' style={field} value={scenario.days} onChange={e=>setScenario({...scenario,days:e.target.value})}/></Field><Field label='Close a blood bank (optional)'><select style={field} value={scenario.closedBloodBankId} onChange={e=>setScenario({...scenario,closedBloodBankId:e.target.value})}><option value=''>No closure</option>{banks.map(b=><option key={b._id} value={b._id}>{b.name} — {b.city}</option>)}</select></Field><button style={glowBtn} disabled={busy}>Run scenario</button></form>{simulation&&<table><thead><tr><th>Group</th><th>Available</th><th>Demand</th><th>Gap</th></tr></thead><tbody>{simulation.results.map(r=><tr key={r.group}><td>{r.group}</td><td>{r.availableUnits}</td><td>{r.projectedTotalDemand}</td><td>{r.projectedGap}</td></tr>)}</tbody></table>}</Card>}
   {tab==='audit'&&<Card hover={false}><h3>Operations audit trail</h3>{audit.map(a=><p key={a._id} style={{fontSize:12,borderBottom:'1px solid '+COLORS.panelBorder,paddingBottom:8}}>{new Date(a.occurredAt||a.createdAt).toLocaleString()} · <b>{a.action}</b> · {a.actor} · {a.resourceType} {String(a.resourceId||'').slice(-6)}</p>)}</Card>}
-  {qrUnit&&<div className="raktsetu-qr-dialog" role="dialog" aria-modal="true" style={{position:'fixed',inset:0,zIndex:1000,background:'rgba(0,0,0,.82)',display:'flex',alignItems:'center',justifyContent:'center',padding:20}}><Card hover={false} style={{maxWidth:360,width:'100%',textAlign:'center',background:'#fff',color:'#111'}}><button onClick={()=>setQrUnit(null)} style={{...ghostBtn,float:'right',color:'#111',borderColor:'#ddd'}}>Close</button><div style={{clear:'both'}}/><h3 style={{margin:'8px 0'}}>RaktMitra Blood Unit</h3><div style={{fontWeight:700,fontSize:17}}>{qrUnit.unitCode}</div><div style={{fontSize:13,margin:'5px 0 16px'}}>{qrUnit.group} · {qrUnit.component}</div><QRCodeSVG value={window.location.origin+'/?trace='+encodeURIComponent(qrUnit.unitCode)} size={220} level="M" includeMargin={true}/><p style={{fontSize:12,color:'#444'}}>Scan to open RaktMitra with this trace code. Admin sign-in is required to view the audit history.</p><button style={{...glowBtn,justifyContent:'center'}} onClick={()=>window.print()}>Print QR label</button></Card></div>}
+  {qrUnit&&<div className="raktsetu-qr-dialog" role="dialog" aria-modal="true" style={{position:'fixed',inset:0,zIndex:1000,background:'rgba(0,0,0,.82)',display:'flex',alignItems:'center',justifyContent:'center',padding:20}}><Card hover={false} style={{maxWidth:360,width:'100%',textAlign:'center',background:'#fff',color:'#111'}}><button onClick={()=>setQrUnit(null)} style={{...ghostBtn,float:'right',color:'#111',borderColor:'#ddd'}}>Close</button><div style={{clear:'both'}}/><h3 style={{margin:'8px 0'}}>BloodBridge Blood Unit</h3><div style={{fontWeight:700,fontSize:17}}>{qrUnit.unitCode}</div><div style={{fontSize:13,margin:'5px 0 16px'}}>{qrUnit.group} · {qrUnit.component}</div><QRCodeSVG value={window.location.origin+'/?trace='+encodeURIComponent(qrUnit.unitCode)} size={220} level="M" includeMargin={true}/><p style={{fontSize:12,color:'#444'}}>Scan to open BloodBridge with this trace code. Admin sign-in is required to view the audit history.</p><button style={{...glowBtn,justifyContent:'center'}} onClick={()=>window.print()}>Print QR label</button></Card></div>}
   </div>;
 }
 
@@ -3926,8 +3926,8 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
   const [integration, setIntegration] = useState(null);
   const [diagnostics, setDiagnostics] = useState(null);
   const [coldEvents, setColdEvents] = useState([]);
-  const [notice, setNotice] = useState({ donorId: "", message: "Thank you for being part of the RaktMitra donor community.", email: false, push: false });
-  const [routeForm, setRouteForm] = useState("Bilaspur hospital,22.0797,82.1391\nBlood bank,22.1034,82.1578");
+  const [notice, setNotice] = useState({ donorId: "", message: "Thank you for being part of the BloodBridge donor community.", email: false, push: false });
+  const [routeForm, setRouteForm] = useState("Bhopal hospital,22.0797,82.1391\nBlood bank,22.1034,82.1578");
   const [routeResult, setRouteResult] = useState(null);
   const [coldForm, setColdForm] = useState({ unitCode: "", temperatureC: "4", minC: "2", maxC: "6" });
   const [importText, setImportText] = useState('[\n  {"unitCode":"PARTNER-UNIT-001","bloodBankId":"PASTE_BLOOD_BANK_ID","group":"O+","component":"WholeBlood","collectedAt":"2026-10-01","expiresAt":"2026-11-01"}\n]');
@@ -4059,7 +4059,7 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
   const button = (label, id) => <button key={id} onClick={() => setSection(id)} style={section === id ? glowBtn : ghostBtn}>{label}</button>;
 
   return <div style={{ marginTop: adminMode ? 0 : 10 }}>
-    <SectionLabel>{adminMode ? "RaktMitra feature hub" : "RaktMitra community services"}</SectionLabel>
+    <SectionLabel>{adminMode ? "BloodBridge feature hub" : "BloodBridge community services"}</SectionLabel>
     <p style={{ color: COLORS.textMuted, fontSize: 12.5, lineHeight: 1.65 }}>Appointments · donor engagement · planning intelligence · hospital operations · low-network support. Clinical decisions remain with qualified blood-bank staff.</p>
     {!adminMode && <div style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "14px 0" }}>
       {button(labels.booking, "booking")}{button(labels.map, "map")}
@@ -4093,11 +4093,11 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
     {section === "map" && <Card hover={false}>
       <h3>{labels.map}</h3>
       <p style={{ color: COLORS.textMuted, fontSize: 13, lineHeight: 1.7 }}>Find a listed blood bank, check its address and open directions. The map preview follows your search; it is a location finder, not a live inventory or emergency-dispatch map.</p>
-      <Field label="Search blood banks by name, district or address"><input style={field} value={bankSearch} onChange={event => setBankSearch(event.target.value)} placeholder="e.g. Bilaspur, district hospital" /></Field>
+      <Field label="Search blood banks by name, district or address"><input style={field} value={bankSearch} onChange={event => setBankSearch(event.target.value)} placeholder="e.g. Bhopal, district hospital" /></Field>
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.25fr) minmax(240px,.75fr)", gap: 14, alignItems: "stretch" }} className="grid2">
         <div style={{ border: "1px solid " + COLORS.panelBorder, borderRadius: 14, overflow: "hidden", minHeight: 300, background: COLORS.panel }}>
-          <div style={{ padding: "10px 13px", borderBottom: "1px solid " + COLORS.panelBorder, fontSize: 12, fontWeight: 800 }}>MAP PREVIEW · {visibleBanks[0] ? (visibleBanks[0].city || visibleBanks[0].name) : "Bilaspur, India"}</div>
-          <iframe title="Blood bank location map preview" loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ width: "100%", height: 300, border: 0, display: "block" }} src={"https://maps.google.com/maps?q=" + encodeURIComponent(visibleBanks[0] ? ([visibleBanks[0].name, visibleBanks[0].address, visibleBanks[0].city, visibleBanks[0].state].filter(Boolean).join(", ")) : (bankSearch.trim() || "blood banks in Bilaspur, Chhattisgarh, India")) + "&output=embed"} />
+          <div style={{ padding: "10px 13px", borderBottom: "1px solid " + COLORS.panelBorder, fontSize: 12, fontWeight: 800 }}>MAP PREVIEW · {visibleBanks[0] ? (visibleBanks[0].city || visibleBanks[0].name) : "VIT Bhopal University, MP"}</div>
+          <iframe title="Blood bank location map preview" loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ width: "100%", height: 300, border: 0, display: "block" }} src={"https://maps.google.com/maps?q=" + encodeURIComponent(visibleBanks[0] ? ([visibleBanks[0].name, visibleBanks[0].address, visibleBanks[0].city, visibleBanks[0].state].filter(Boolean).join(", ")) : (bankSearch.trim() || "blood banks in VIT Bhopal University, Sehore, Madhya Pradesh, India")) + "&output=embed"} />
         </div>
         <div style={{ border: "1px solid " + COLORS.panelBorder, borderRadius: 14, padding: 14 }}>
           <b style={{ fontSize: 14 }}>Nearby listing</b>
@@ -4127,7 +4127,7 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
       <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginBottom: 12 }}>{[["email", "Also send email (webhook)"], ["push", "Also send push (webhook)"]].map(([key, label]) => <label key={key} style={{ display: "flex", gap: 7, alignItems: "center", fontSize: 12 }}><input type="checkbox" checked={Boolean(notice[key])} onChange={e => setNotice({ ...notice, [key]: e.target.checked })} />{label}</label>)}</div>
       <button disabled={busy} style={glowBtn}>Send notification</button></form></Card>}
 
-    {adminMode && section === "retention" && <Card hover={false}><h3>Donor retention and re-engagement</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>These are reminder candidates based on recorded dates, not medical eligibility decisions. Always confirm suitability with qualified staff.</p><div style={{ overflowX: "auto" }}><table><thead><tr><th>Donor</th><th>Group</th><th>District</th><th>Days since donation</th><th></th></tr></thead><tbody>{retention.map(d => <tr key={d.id}><td>{d.name}</td><td>{d.group}</td><td>{d.district || d.city || "—"}</td><td>{d.daysSinceDonation}</td><td><button style={{ ...ghostBtn, padding: 6 }} onClick={() => { setNotice({ donorId: d.id, message: "Thank you for supporting your community through RaktMitra. If you wish to donate again, please contact your blood bank to confirm eligibility.", email: false, push: false }); setSection("notifications"); }}>Prepare message</button></td></tr>)}</tbody></table></div>{!retention.length && <p>No donor retention candidates currently.</p>}</Card>}
+    {adminMode && section === "retention" && <Card hover={false}><h3>Donor retention and re-engagement</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>These are reminder candidates based on recorded dates, not medical eligibility decisions. Always confirm suitability with qualified staff.</p><div style={{ overflowX: "auto" }}><table><thead><tr><th>Donor</th><th>Group</th><th>District</th><th>Days since donation</th><th></th></tr></thead><tbody>{retention.map(d => <tr key={d.id}><td>{d.name}</td><td>{d.group}</td><td>{d.district || d.city || "—"}</td><td>{d.daysSinceDonation}</td><td><button style={{ ...ghostBtn, padding: 6 }} onClick={() => { setNotice({ donorId: d.id, message: "Thank you for supporting your community through BloodBridge. If you wish to donate again, please contact your blood bank to confirm eligibility.", email: false, push: false }); setSection("notifications"); }}>Prepare message</button></td></tr>)}</tbody></table></div>{!retention.length && <p>No donor retention candidates currently.</p>}</Card>}
 
     {adminMode && section === "logistics" && <Card hover={false}><h3>Emergency logistics route</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Enter one stop per line as label,latitude,longitude. OSRM road routing is attempted; fallback estimates are clearly labelled and are not live traffic guidance.</p><form onSubmit={optimizeRoute}><Field label="Stops"><textarea required rows={5} style={field} value={routeForm} onChange={e => setRouteForm(e.target.value)} /></Field><button disabled={busy} style={glowBtn}>Calculate route</button></form>{routeResult && <div style={{ marginTop: 14, padding: 12, border: "1px solid " + COLORS.panelBorder, borderRadius: 10 }}><b>{routeResult.distanceKm} km · about {routeResult.durationMinutes} minutes</b><p style={{ fontSize: 12, color: COLORS.textMuted }}>Source: {routeResult.source}</p>{routeResult.waypointOrder?.map(stop => <div key={stop.index} style={{ fontSize: 12, padding: "5px 0" }}>{stop.index}. {stop.label}</div>)}<p style={{ fontSize: 12 }}>{routeResult.disclaimer}</p></div>}</Card>}
 
@@ -4163,7 +4163,7 @@ function DonorDigitalIdPanel({ donor, donorToken, notify }) {
     try {
       const result = await api("/features/donor/certificate/" + appointmentId, {}, donorToken);
       const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
-      const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(result.certificateId)} · RaktMitra</title><style>body{font-family:Arial,sans-serif;background:#f2f4f7;padding:32px;color:#18212b}.certificate{max-width:850px;margin:auto;background:#fff;border:8px double #a51d37;padding:48px;text-align:center}.eyebrow{letter-spacing:4px;color:#a51d37;font-weight:bold}.name{font-size:34px;margin:28px 0 12px}.rule{height:1px;background:#ddd;margin:26px 0}.meta{display:flex;justify-content:space-between;gap:20px;text-align:left;flex-wrap:wrap}.small{font-size:12px;color:#606b78;line-height:1.6}.print{margin:20px auto;display:block;padding:12px 18px;background:#a51d37;color:white;border:0;border-radius:8px;font-size:15px}@media print{body{background:white;padding:0}.certificate{border:8px double #a51d37;max-width:none}.print{display:none}}</style></head><body><main class="certificate"><div class="eyebrow">RAKTSETU · DONATION RECORD</div><h1>Appointment Completion Certificate</h1><p>This record acknowledges the completed appointment of</p><div class="name">${escapeHtml(result.donorName)}</div><p>Blood group: <strong>${escapeHtml(result.bloodGroup || "Not recorded")}</strong></p><p>at <strong>${escapeHtml(result.organization)}</strong></p><div class="rule"></div><div class="meta"><div><strong>Certificate reference</strong><br>${escapeHtml(result.certificateId)}</div><div><strong>Recorded completion</strong><br>${escapeHtml(new Date(result.completedAt).toLocaleString())}</div><div><strong>Record issued</strong><br>${escapeHtml(new Date(result.issuedAt).toLocaleString())}</div></div><p class="small" style="margin-top:28px">${escapeHtml(result.statement)}</p><p class="small">This is a RaktMitra digital record, not a government ID or a replacement for an official blood-bank certificate.</p><button class="print" onclick="window.print()">Print / Save as PDF</button></main></body></html>`;
+      const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(result.certificateId)} · BloodBridge</title><style>body{font-family:Arial,sans-serif;background:#f2f4f7;padding:32px;color:#18212b}.certificate{max-width:850px;margin:auto;background:#fff;border:8px double #a51d37;padding:48px;text-align:center}.eyebrow{letter-spacing:4px;color:#a51d37;font-weight:bold}.name{font-size:34px;margin:28px 0 12px}.rule{height:1px;background:#ddd;margin:26px 0}.meta{display:flex;justify-content:space-between;gap:20px;text-align:left;flex-wrap:wrap}.small{font-size:12px;color:#606b78;line-height:1.6}.print{margin:20px auto;display:block;padding:12px 18px;background:#a51d37;color:white;border:0;border-radius:8px;font-size:15px}@media print{body{background:white;padding:0}.certificate{border:8px double #a51d37;max-width:none}.print{display:none}}</style></head><body><main class="certificate"><div class="eyebrow">RAKTSETU · DONATION RECORD</div><h1>Appointment Completion Certificate</h1><p>This record acknowledges the completed appointment of</p><div class="name">${escapeHtml(result.donorName)}</div><p>Blood group: <strong>${escapeHtml(result.bloodGroup || "Not recorded")}</strong></p><p>at <strong>${escapeHtml(result.organization)}</strong></p><div class="rule"></div><div class="meta"><div><strong>Certificate reference</strong><br>${escapeHtml(result.certificateId)}</div><div><strong>Recorded completion</strong><br>${escapeHtml(new Date(result.completedAt).toLocaleString())}</div><div><strong>Record issued</strong><br>${escapeHtml(new Date(result.issuedAt).toLocaleString())}</div></div><p class="small" style="margin-top:28px">${escapeHtml(result.statement)}</p><p class="small">This is a BloodBridge digital record, not a government ID or a replacement for an official blood-bank certificate.</p><button class="print" onclick="window.print()">Print / Save as PDF</button></main></body></html>`;
       const blob = new Blob([html], { type: "text/html;charset=utf-8" });
       const url = URL.createObjectURL(blob); const a = document.createElement("a");
       a.href = url; a.download = result.certificateId + ".html"; a.click(); URL.revokeObjectURL(url);

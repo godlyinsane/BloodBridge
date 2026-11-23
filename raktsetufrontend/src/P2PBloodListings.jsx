@@ -185,7 +185,7 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
         </div>
 
         <a
-          href="mailto:priyanshbhatt20@gmail.com?subject=Blood%20Donation%20Centre%20or%20Hospital%20Not%20Listed&body=Hi%20RaktMitra%20Team%2C%0A%0AI%20would%20like%20to%20report%20a%20blood%20donation%20centre%20or%20hospital%20that%20is%20not%20mentioned%20on%20the%20platform%3A%0A%0AFacility%20Name%3A%20%0ALocation%2FCity%3A%20%0AContact%20Details%3A%20%0AAdditional%20Info%3A%20%0A"
+          href="mailto:priyanshbhatt20@gmail.com?subject=Blood%20Donation%20Centre%20or%20Hospital%20Not%20Listed&body=Hi%20BloodBridge%20Team%2C%0A%0AI%20would%20like%20to%20report%20a%20blood%20donation%20centre%20or%20hospital%20that%20is%20not%20mentioned%20on%20the%20platform%3A%0A%0AFacility%20Name%3A%20%0ALocation%2FCity%3A%20%0AContact%20Details%3A%20%0AAdditional%20Info%3A%20%0A"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -295,7 +295,7 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
               type="text"
               value={searchCity}
               onChange={(e) => setSearchCity(e.target.value)}
-              placeholder="Filter by city or area (e.g., Delhi, Mumbai, Bilaspur)…"
+              placeholder="Filter by city or area (e.g., Delhi, Mumbai, Bhopal)…"
               style={{
                 width: "100%",
                 boxSizing: "border-box",
@@ -662,7 +662,7 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                       type="text"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      placeholder="e.g. Bilaspur"
+                      placeholder="e.g. Bhopal"
                       maxLength={100}
                       style={{
                         width: "100%",
