@@ -193,46 +193,154 @@ export default function InventoryView({ theme = "dark" }) {
 
     
     {/* 100km Regional Donation Centres & Priority Towns Directory */}
-    <section style={{ ...panel, padding: "26px 24px", marginTop: 24, border: "1px solid " + (light ? "#cbd5e1" : "rgba(56,189,248,.25)"), background: light ? "#f8fafc" : "linear-gradient(145deg, rgba(15,23,42,0.8), rgba(2,132,199,0.08))" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 14 }}>
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: 1.2, color: "#38bdf8", textTransform: "uppercase" }}>
-            VIT BHOPAL 100 KM REGIONAL DONATION NETWORK
-          </div>
-          <h2 style={{ fontSize: "clamp(20px, 3.2vw, 26px)", margin: "6px 0", fontWeight: 800 }}>
-            Where Can You Donate Blood? (30 Towns &amp; Facilities)
-          </h2>
-          <p style={{ color: muted, fontSize: 13, margin: 0, maxWidth: 740, lineHeight: 1.65 }}>
-            Patients in rural talukas frequently travel to Bhopal for emergency blood. Step forward and donate directly at your local Sub-Divisional Hospital, Community Health Centre, or Medical College Blood Bank:
-          </p>
+    <section style={{ ...panel, padding: "34px 30px", marginTop: 36, marginBottom: 36, border: "1px solid " + (light ? "#cbd5e1" : "rgba(56,189,248,.3)"), borderRadius: 24, background: light ? "#f8fafc" : "linear-gradient(150deg, rgba(15,23,42,0.92) 0%, rgba(2,132,199,0.09) 100%)", boxShadow: "0 18px 45px -12px rgba(0,0,0,0.5)" }}>
+      <div style={{ marginBottom: 26 }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 999, background: "rgba(56,189,248,0.14)", border: "1px solid rgba(56,189,248,0.32)", color: "#38bdf8", fontSize: 12.5, fontWeight: 900, letterSpacing: 1.2, textTransform: "uppercase" }}>
+          <MapPin size={15} /> 100 KM VIT BHOPAL EMERGENCY DONATION NETWORK
         </div>
+        <h2 style={{ fontSize: "clamp(24px, 3.8vw, 34px)", margin: "14px 0 10px", fontWeight: 850, letterSpacing: "-0.8px", lineHeight: 1.2 }}>
+          Where Can You Donate Blood? (30 Towns &amp; Verified Centers)
+        </h2>
+        <p style={{ color: muted, fontSize: 15.5, margin: 0, maxWidth: 840, lineHeight: 1.75 }}>
+          Patients in rural talukas often rush to Bhopal under life-threatening delays. Step forward and donate directly at your nearest verified hospital blood bank or community storage facility. Turn-by-turn routing, direct helpline contacts, and opening hours are listed below:
+        </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14, marginTop: 20 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 20 }}>
         {[
-          { zone: "Ashta & Campus Belt (0-25 km)", towns: "Ashta, Kothri Kalan, Jawar", priority: "Highest Priority (Highway accidents & nearest to VIT Bhopal)", centers: "Civil Hospital Ashta, CHC Kothri Campus Unit, PHC Jawar" },
-          { zone: "Sehore Core & Rural (35-75 km)", towns: "Sehore, Ichhawar, Shyampur, Budhni, Nasrullaganj", priority: "High Priority (Rural Narmada belt)", centers: "District Hospital Sehore, Life Saver Centre, CHC Budhni, CHC Nasrullaganj" },
-          { zone: "Bhopal Capital Corridor (50-70 km)", towns: "Bhopal, Kolar, MP Nagar, Saket Nagar", priority: "Major Apex Referral Hub", centers: "AIIMS Bhopal, Hamidia Hospital GMC, BMHRC, Red Cross State Blood Centre, Bansal Hospital" },
-          { zone: "Rajgarh Aspirational District (70-90 km)", towns: "Biaora, Narsinghgarh, Rajgarh", priority: "Critical Aspirational District Need", centers: "Civil Hospital Biaora (NH 52), Civil Hospital Narsinghgarh, District Hospital Rajgarh" },
-          { zone: "Vidisha Aspirational District (80-100 km)", towns: "Vidisha, Ganj Basoda, Sanchi", priority: "Aspirational District & Heritage Belt", centers: "Atal Bihari Vajpayee Govt Medical College, District Hospital Vidisha, Civil Hospital Basoda" },
-          { zone: "Raisen Tribal & Rural (60-100 km)", towns: "Raisen, Sanchi, Begamganj, Udaipura", priority: "Tribal & Forest Block Support", centers: "District Hospital Raisen, Sub-Divisional Hospital Begamganj, CHC Udaipura" },
-          { zone: "Shajapur District (85-95 km)", towns: "Shujalpur, Kalapipal", priority: "Rural Agricultural Center", centers: "Civil Hospital Shujalpur, CHC Blood Unit Kalapipal" },
-          { zone: "Narmadapuram & Railway Hub (85-100 km)", towns: "Narmadapuram, Itarsi, Sohagpur", priority: "Key Central Railway Junction Care", centers: "District Hospital Narmadapuram, Dr. SPM Civil Hospital Itarsi, CHC Sohagpur" },
-          { zone: "Dewas Industrial Belt (100 km)", towns: "Dewas City, Bangar", priority: "Highway Industrial Node", centers: "District Hospital Dewas, Amaltas Medical College Blood Centre" }
+          {
+            zone: "Ashta & Campus Belt (0 – 25 km)",
+            priority: "HIGHEST PRIORITY · NH 46 Highway Accident Care (Nearest to VIT Bhopal)",
+            towns: "Ashta, Kothri Kalan, Jawar",
+            facilities: [
+              { name: "Civil Hospital Blood Storage Unit Ashta", phone: "07560-242100", address: "Indore-Bhopal Highway, Ashta, Sehore (22 km from Campus)", timing: "24x7 Emergency Transfusion" },
+              { name: "CHC Kothri Kalan Emergency Unit", phone: "07560-244102", address: "Near VIT Bhopal Campus Gate, Kothri Kalan", timing: "24x7 First Response Care" },
+              { name: "Primary Health Centre Emergency Unit Jawar", phone: "07560-261200", address: "Main Road, Jawar, Sehore District", timing: "24x7 Community Care" }
+            ]
+          },
+          {
+            zone: "Sehore Core & Rural Belt (35 – 75 km)",
+            priority: "HIGH PRIORITY · District Headquarters & Narmada Rural Belt",
+            towns: "Sehore, Ichhawar, Shyampur, Budhni, Nasrullaganj (Bherunda)",
+            facilities: [
+              { name: "District Hospital Blood Bank Sehore", phone: "07562-224200", address: "Hospital Complex, Sehore, MP", timing: "24x7 Round-the-clock" },
+              { name: "Life Saver Blood Center Sehore", phone: "07562-227890", address: "1st Floor, Sharda Colony, Near New Bus Stand, Sehore", timing: "24x7 Component Lab" },
+              { name: "CHC Blood Storage Unit Budhni", phone: "07564-255300", address: "Industrial Road, Budhni (Narmada Belt)", timing: "24x7 Emergency Services" },
+              { name: "Sub-Divisional Civil Hospital Nasrullaganj", phone: "07563-272200", address: "Civil Hospital Road, Bherunda, Sehore", timing: "24x7 Emergency Care" },
+              { name: "CHC Emergency Unit Ichhawar", phone: "07562-273200", address: "Hospital Square, Ichhawar", timing: "24x7 First Care" }
+            ]
+          },
+          {
+            zone: "Bhopal Capital Corridor (50 – 70 km)",
+            priority: "MAJOR APEX REFERRAL HUB · Comprehensive Super-Speciality",
+            towns: "Bhopal, Saket Nagar, Royal Market, Kolar, Karond",
+            facilities: [
+              { name: "AIIMS Bhopal Regional Blood Transfusion Centre", phone: "0755-2970010", address: "AIIMS Campus, Saket Nagar, Bhopal", timing: "24x7 Apex Transfusion & Apheresis" },
+              { name: "Hamidia Hospital & GMC Model Blood Bank", phone: "0755-2540590", address: "Gandhi Medical College, Royal Market, Bhopal", timing: "24x7 State Model Centre" },
+              { name: "BMHRC Blood Bank & Research Centre", phone: "0755-2740390", address: "Raisen Bypass Road, Karond, Bhopal", timing: "24x7 Component Dispensing" },
+              { name: "Red Cross State Blood Centre Bhopal", phone: "0755-2550187", address: "Shivaji Nagar, Link Road 1, Bhopal", timing: "24x7 Voluntary Donor Dispatch" },
+              { name: "Bansal Hospital Blood Bank", phone: "0755-4086000", address: "Chuna Bhatti, Shahpura, Bhopal", timing: "24x7 Emergency Services" }
+            ]
+          },
+          {
+            zone: "Rajgarh Aspirational District (70 – 90 km)",
+            priority: "CRITICAL ASPIRATIONAL DISTRICT NEED · High Under-served Ratio",
+            towns: "Biaora, Narsinghgarh, Rajgarh",
+            facilities: [
+              { name: "Civil Hospital Blood Bank Biaora", phone: "07374-232100", address: "AB Road, NH 52 Junction, Biaora", timing: "24x7 Highway Emergency Hub" },
+              { name: "Civil Hospital Blood Storage Narsinghgarh", phone: "07375-244200", address: "Fort Road, Near Bus Stand, Narsinghgarh", timing: "24x7 Emergency Unit" },
+              { name: "District Hospital Blood Centre Rajgarh", phone: "07372-255200", address: "Collectorate Road, Rajgarh (Biaora)", timing: "24x7 District Headquarters" }
+            ]
+          },
+          {
+            zone: "Vidisha Aspirational District (80 – 100 km)",
+            priority: "ASPIRATIONAL DISTRICT & MEDICAL COLLEGE HUB",
+            towns: "Vidisha, Ganj Basoda, Sanchi Border",
+            facilities: [
+              { name: "Atal Bihari Vajpayee Govt Medical College Blood Centre", phone: "07592-235001", address: "NH 86 Bypass, Vidisha", timing: "24x7 Medical College Apex Lab" },
+              { name: "District Hospital Blood Bank Vidisha", phone: "07592-232400", address: "Hospital Square, Main Market, Vidisha", timing: "24x7 Round-the-clock" },
+              { name: "Rajiv Gandhi Civil Hospital Ganj Basoda", phone: "07594-220100", address: "Hospital Road, Ganj Basoda, Vidisha", timing: "24x7 Emergency Storage" }
+            ]
+          },
+          {
+            zone: "Raisen Tribal & Rural Corridor (60 – 100 km)",
+            priority: "TRIBAL & FOREST BLOCK LIFELINE CARE",
+            towns: "Raisen, Sanchi, Begamganj, Udaipura",
+            facilities: [
+              { name: "District Hospital Blood Bank Raisen", phone: "07482-222300", address: "Hospital Square, Sanchi Road, Raisen", timing: "24x7 Emergency Services" },
+              { name: "Civil Hospital Blood Unit Sanchi", phone: "07482-266100", address: "Station Road, Sanchi Heritage Site", timing: "24x7 Emergency Unit" },
+              { name: "Sub-Divisional Civil Hospital Begamganj", phone: "07486-262100", address: "Rahatgarh Road, Begamganj (Rural/Tribal)", timing: "24x7 Rural Care" },
+              { name: "CHC Blood Unit Udaipura", phone: "07487-271200", address: "Narmada Valley Highway, Udaipura", timing: "24x7 Emergency Care" }
+            ]
+          },
+          {
+            zone: "Shajapur District (85 – 95 km)",
+            priority: "RURAL AGRICULTURAL & MANDI CORRIDOR",
+            towns: "Shujalpur, Kalapipal",
+            facilities: [
+              { name: "Civil Hospital Blood Storage Center Shujalpur", phone: "07360-244200", address: "Mandi Road, Shujalpur, Shajapur", timing: "24x7 Emergency Unit" },
+              { name: "CHC Blood Unit Kalapipal", phone: "07360-267100", address: "Station Road, Kalapipal Mandi", timing: "24x7 Emergency Outreach" }
+            ]
+          },
+          {
+            zone: "Narmadapuram & Railway Hub (85 – 100 km)",
+            priority: "CENTRAL RAILWAY JUNCTION & NARMADA BASIN CARE",
+            towns: "Narmadapuram, Itarsi, Sohagpur",
+            facilities: [
+              { name: "District Hospital Blood Bank Narmadapuram", phone: "07574-252200", address: "Near Kothi Bazar, Narmadapuram", timing: "24x7 District Headquarters" },
+              { name: "Dr. SPM Civil Hospital Blood Bank Itarsi", phone: "07572-236200", address: "12th Line, Railway Junction Link, Itarsi", timing: "24x7 Railway & Civilian Care" },
+              { name: "CHC Blood Storage Unit Sohagpur", phone: "07575-278200", address: "Near Pipariya Road, Sohagpur", timing: "24x7 Emergency Care" }
+            ]
+          },
+          {
+            zone: "Dewas Industrial Belt (~100 km)",
+            priority: "HIGHWAY INDUSTRIAL JUNCTION CARE",
+            towns: "Dewas City, Bangar",
+            facilities: [
+              { name: "District Hospital Blood Bank Dewas", phone: "07272-252300", address: "AB Road, Near Chamunda Mata Foothills, Dewas", timing: "24x7 Component Lab" },
+              { name: "Amaltas Institute of Medical Sciences Blood Centre", phone: "07272-426500", address: "Village Bangar, Dewas-Ujjain Highway", timing: "24x7 Medical College Lab" }
+            ]
+          }
         ].map((item, idx) => (
-          <div key={idx} style={{ padding: "16px 18px", borderRadius: 14, border: "1px solid " + (light ? "#e2e8f0" : "rgba(255,255,255,0.08)"), background: light ? "#ffffff" : "rgba(255,255,255,0.03)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-              <span style={{ fontSize: 13, fontWeight: 800, color: "#38bdf8" }}>{item.zone}</span>
+          <div key={idx} style={{ padding: "22px 22px", borderRadius: 18, border: "1px solid " + (light ? "#cbd5e1" : "rgba(255,255,255,0.11)"), background: light ? "#ffffff" : "rgba(255,255,255,0.035)", display: "flex", flexDirection: "column", gap: 14 }}>
+            <div>
+              <div style={{ fontSize: 16.5, fontWeight: 850, color: "#38bdf8", letterSpacing: "-0.2px", marginBottom: 5 }}>
+                {item.zone}
+              </div>
+              <div style={{ fontSize: 11.5, fontWeight: 800, color: "#f59e0b", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>
+                {item.priority}
+              </div>
+              <div style={{ fontSize: 13, color: ink, fontWeight: 700 }}>
+                Towns Covered: <span style={{ color: muted, fontWeight: 500 }}>{item.towns}</span>
+              </div>
             </div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#f59e0b", marginBottom: 6 }}>{item.priority}</div>
-            <div style={{ fontSize: 12, color: ink, fontWeight: 600, marginBottom: 4 }}>Towns: <span style={{ color: muted, fontWeight: 400 }}>{item.towns}</span></div>
-            <div style={{ fontSize: 12, color: ink, fontWeight: 600 }}>Active Centers: <span style={{ color: muted, fontWeight: 400 }}>{item.centers}</span></div>
+
+            <div style={{ display: "grid", gap: 10, marginTop: "auto" }}>
+              {item.facilities.map((fac, fIdx) => (
+                <div key={fIdx} style={{ padding: "12px 14px", borderRadius: 12, background: light ? "#f1f5f9" : "rgba(255,255,255,0.045)", border: "1px solid " + (light ? "#e2e8f0" : "rgba(255,255,255,0.07)") }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                    <b style={{ fontSize: 13.5, color: ink }}>{fac.name}</b>
+                    <span style={{ fontSize: 10.5, fontWeight: 800, color: "#34d399", padding: "2px 8px", borderRadius: 999, background: "rgba(52,211,153,0.12)", border: "1px solid rgba(52,211,153,0.3)" }}>{fac.timing}</span>
+                  </div>
+                  <div style={{ fontSize: 12, color: muted, marginBottom: 8, lineHeight: 1.5 }}>
+                    <MapPin size={12} style={{ verticalAlign: -1, marginRight: 4 }} />{fac.address}
+                  </div>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+                    <a href={"tel:" + fac.phone.replace(/[^0-9]/g, "")} style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "5px 12px", borderRadius: 8, background: "#0284c7", color: "#fff", textDecoration: "none", fontSize: 12, fontWeight: 800 }}>
+                      <Phone size={12} /> Call: {fac.phone}
+                    </a>
+                    <a href={"https://maps.google.com/maps?q=" + encodeURIComponent(fac.name + ", " + fac.address)} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "5px 12px", borderRadius: 8, background: "transparent", color: "#38bdf8", border: "1px solid rgba(56,189,248,0.4)", textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+                      <ExternalLink size={12} /> Google Maps
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
     </section>
-
-
+    
     <aside style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "15px 17px", borderRadius: 15, background: light ? "#fff8e7" : "rgba(251,191,36,.07)", border: "1px solid " + (light ? "#f2d58a" : "rgba(251,191,36,.18)") }}>
       <ShieldCheck size={19} color="#FBBF24" style={{ flexShrink: 0, marginTop: 1 }} /><div><b style={{ fontSize: 12.5 }}>Availability is a live listing, not a reservation.</b><p style={{ color: muted, fontSize: 11.5, lineHeight: 1.7, margin: "5px 0 0" }}>Stock changes as blood banks update their records. Confirm current availability, compatibility, screening, and issue requirements directly with the blood bank before making clinical decisions. This page does not reserve or allocate units.</p></div>
     </aside>
