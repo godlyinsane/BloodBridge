@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Activity, Building2, CheckCircle2, ChevronRight, Clock3, Droplet, MapPin, Search, ShieldCheck } from "lucide-react";
+import { Activity, Building2, CheckCircle2, ChevronRight, Clock3, Droplet, MapPin, Search, ShieldCheck, Phone, ExternalLink } from "lucide-react";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || import.meta.env.REACT_APP_API_BASE_URL || (import.meta.env.PROD ? "/api" : "http://localhost:5000/api")).replace(/\/+$/, "");
 const GROUPS = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"];
