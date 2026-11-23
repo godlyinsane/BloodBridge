@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">RaktSetu blood donation symbol</title>
+  <defs>
+    <linearGradient id="drop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4057"/><stop offset="1" stop-color="#b9102b"/></linearGradient>
+  </defs>
+  <path d="M64 7C54 25 27 51 27 77a37 37 0 0 0 74 0C101 51 74 25 64 7Z" fill="url(#drop)"/>
+  <path d="M55 45h18v12h12v17H73v12H55V74H43V57h12Z" fill="#fff"/>
+  <path d="M31 83c10-10 20-14 33-14s23 4 33 14" fill="none" stroke="#10284a" stroke-width="7" stroke-linecap="round"/>
+  <path d="M39 82v10m17-15v13m16-13v13m17-8v10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="20" cy="55" r="7" fill="#c91835"/><circle cx="108" cy="55" r="7" fill="#c91835"/>
+  <path d="M23 65c2 9 7 14 15 17m67-17c-2 9-7 14-15 17" fill="none" stroke="#c91835" stroke-width="5" stroke-linecap="round"/>
+</svg>

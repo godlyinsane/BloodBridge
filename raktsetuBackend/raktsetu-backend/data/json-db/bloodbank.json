@@ -1,0 +1,58 @@
+[
+  {
+    "_id": "bank_664100000000000000000001",
+    "name": "CIMS Regional Blood Bank",
+    "city": "Bilaspur",
+    "district": "Bilaspur",
+    "state": "Chhattisgarh",
+    "phone": "07752-xxxx01",
+    "address": "Chhattisgarh Institute of Medical Sciences, Sardar Patel Hospital Rd, Bilaspur",
+    "lat": 22.0797,
+    "lng": 82.1409,
+    "openingHours": "24x7 Emergency Services",
+    "createdAt": "2026-11-01T00:00:00.000Z",
+    "updatedAt": "2026-11-01T00:00:00.000Z"
+  },
+  {
+    "_id": "bank_664100000000000000000002",
+    "name": "District Hospital Blood Bank",
+    "city": "Bilaspur",
+    "district": "Bilaspur",
+    "state": "Chhattisgarh",
+    "phone": "07752-xxxx02",
+    "address": "Civil Lines, Bilaspur",
+    "lat": 22.0912,
+    "lng": 82.1551,
+    "openingHours": "24x7 Emergency Availability",
+    "createdAt": "2026-11-01T00:00:00.000Z",
+    "updatedAt": "2026-11-01T00:00:00.000Z"
+  },
+  {
+    "_id": "bank_664100000000000000000003",
+    "name": "Indian Red Cross Society Blood Centre",
+    "city": "Raipur",
+    "district": "Raipur",
+    "state": "Chhattisgarh",
+    "phone": "0771-xxxx03",
+    "address": "Kutchery Road, Near Collectorate, Raipur",
+    "lat": 21.2514,
+    "lng": 81.6296,
+    "openingHours": "24x7 Round-the-clock",
+    "createdAt": "2026-11-01T00:00:00.000Z",
+    "updatedAt": "2026-11-01T00:00:00.000Z"
+  },
+  {
+    "_id": "bank_664100000000000000000004",
+    "name": "AIIMS Central Blood Centre",
+    "city": "Raipur",
+    "district": "Raipur",
+    "state": "Chhattisgarh",
+    "phone": "0771-xxxx04",
+    "address": "GE Road, Tatibandh, Raipur",
+    "lat": 21.257,
+    "lng": 81.5794,
+    "openingHours": "24x7 Emergency Transfusion Centre",
+    "createdAt": "2026-11-01T00:00:00.000Z",
+    "updatedAt": "2026-11-01T00:00:00.000Z"
+  }
+]

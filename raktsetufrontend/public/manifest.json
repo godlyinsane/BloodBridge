@@ -1,0 +1,17 @@
+{
+  "short_name": "RaktMitra",
+  "name": "RaktMitra Blood Donation Network",
+  "icons": [
+    {
+      "src": "raktmitra-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0A0B0E",
+  "background_color": "#0A0B0E",
+  "description": "Connect donors and blood requests. Offline mode only provides the app shell; live availability requires a connection."
+}

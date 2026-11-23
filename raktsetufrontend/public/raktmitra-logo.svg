@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">RaktMitra blood donation network</title>
+  <defs><linearGradient id="drop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5268"/><stop offset="1" stop-color="#b9102b"/></linearGradient></defs>
+  <path d="M64 7C54 25 27 51 27 77a37 37 0 0 0 74 0C101 51 74 25 64 7Z" fill="url(#drop)"/>
+  <path d="M55 45h18v12h12v17H73v12H55V74H43V57h12Z" fill="#fff"/>
+  <path d="M20 54l13 8m75-8-13 8M31 83c10-10 20-14 33-14s23 4 33 14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="18" cy="51" r="7" fill="#c91835"/><circle cx="110" cy="51" r="7" fill="#c91835"/>
+</svg>

@@ -1,0 +1,97 @@
+name: RaktSetu CI
+
+on:
+  pull_request:
+    branches: [main, deploy/raktsetu-single-vercel]
+  push:
+    branches: [main, deploy/raktsetu-single-vercel, feat/raktsetu-advanced-operations, feature/advanced-raktsetu-hardening]
+
+jobs:
+  frontend-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: raktsetufrontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: raktsetufrontend/package-lock.json
+      # npm install repairs the existing out-of-sync lockfile while resolving dependencies.
+      - run: npm install
+      - name: Run frontend smoke tests
+        run: npm test
+        env:
+          CI: "true"
+      - run: npm run build
+        env:
+          CI: "false"
+      - name: Install Chromium for mobile end-to-end tests
+        run: npx playwright install --with-deps chromium
+      - name: Run mobile browser end-to-end tests
+        run: npm run test:e2e
+        env:
+          CI: "true"
+          NODE_OPTIONS: --openssl-legacy-provider
+
+  backend-syntax:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: raktsetuBackend/raktsetu-backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: raktsetuBackend/raktsetu-backend/package-lock.json
+      - run: npm ci
+      - name: Run backend safety policy tests
+        run: npm test
+      - name: Check JavaScript syntax
+        run: |
+          find . -path './node_modules' -prune -o -name '*.js' -type f -print0 | xargs -0 -n1 node --check
+  production-smoke:
+    runs-on: ubuntu-latest
+    needs: [frontend-build, backend-syntax]
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify production public routes and API readiness without changing data
+        env:
+          RAKTSETU_PRODUCTION_URL: https://blood-bank-mern-gold.vercel.app
+        run: |
+          node <<'NODE'
+          const base = process.env.RAKTSETU_PRODUCTION_URL;
+          const checks = [
+            { path: '/', check: (r, t) => r.status === 200 && t.includes('RaktSetu | Blood Donation Network') },
+            { path: '/admin', check: (r, t) => r.status === 200 && t.includes('RaktSetu | Blood Donation Network') },
+            { path: '/api/health', check: (r, t) => r.status === 200 && JSON.parse(t).status === 'alive' },
+            { path: '/api/health/ready', check: (r, t) => { const d = JSON.parse(t); return r.status === 200 && d.status === 'ready' && d.database === 'connected'; } },
+            { path: '/api/donors/public', check: (r, t) => r.status === 200 && Array.isArray(JSON.parse(t)) },
+            { path: '/api/requests/public', check: (r, t) => r.status === 200 && Array.isArray(JSON.parse(t)) },
+            { path: '/api/camps', check: (r, t) => r.status === 200 && Array.isArray(JSON.parse(t)) },
+            { path: '/api/blood-banks', check: (r, t) => r.status === 200 && Array.isArray(JSON.parse(t)) },
+            { path: '/api/features/map/banks', check: (r, t) => r.status === 200 && Array.isArray(JSON.parse(t)) },
+            { path: '/api/features/languages', check: (r, t) => { const d = JSON.parse(t); return r.status === 200 && d.supported.some(x => x.code === 'en') && d.supported.some(x => x.code === 'hi'); } },
+          ];
+          let failed = 0;
+          for (const item of checks) {
+            try {
+              const response = await fetch(new URL(item.path, base), { redirect: 'follow', cache: 'no-store' });
+              const body = await response.text();
+              const passed = item.check(response, body);
+              console.log(`${passed ? 'PASS' : 'FAIL'} ${item.path} HTTP ${response.status}`);
+              if (!passed) failed += 1;
+            } catch (error) {
+              console.log(`FAIL ${item.path} ${error.message}`);
+              failed += 1;
+            }
+          }
+          if (failed) process.exit(1);
+          console.log(`Production read-only smoke checks passed: ${checks.length}/${checks.length}.`);
+          NODE
