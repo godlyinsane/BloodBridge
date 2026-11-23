@@ -191,6 +191,48 @@ export default function InventoryView({ theme = "dark" }) {
         </div>}
     </section>
 
+    
+    {/* 100km Regional Donation Centres & Priority Towns Directory */}
+    <section style={{ ...panel, padding: "26px 24px", marginTop: 24, border: "1px solid " + (light ? "#cbd5e1" : "rgba(56,189,248,.25)"), background: light ? "#f8fafc" : "linear-gradient(145deg, rgba(15,23,42,0.8), rgba(2,132,199,0.08))" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 14 }}>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: 1.2, color: "#38bdf8", textTransform: "uppercase" }}>
+            VIT BHOPAL 100 KM REGIONAL DONATION NETWORK
+          </div>
+          <h2 style={{ fontSize: "clamp(20px, 3.2vw, 26px)", margin: "6px 0", fontWeight: 800 }}>
+            Where Can You Donate Blood? (30 Towns &amp; Facilities)
+          </h2>
+          <p style={{ color: muted, fontSize: 13, margin: 0, maxWidth: 740, lineHeight: 1.65 }}>
+            Patients in rural talukas frequently travel to Bhopal for emergency blood. Step forward and donate directly at your local Sub-Divisional Hospital, Community Health Centre, or Medical College Blood Bank:
+          </p>
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14, marginTop: 20 }}>
+        {[
+          { zone: "Ashta & Campus Belt (0-25 km)", towns: "Ashta, Kothri Kalan, Jawar", priority: "Highest Priority (Highway accidents & nearest to VIT Bhopal)", centers: "Civil Hospital Ashta, CHC Kothri Campus Unit, PHC Jawar" },
+          { zone: "Sehore Core & Rural (35-75 km)", towns: "Sehore, Ichhawar, Shyampur, Budhni, Nasrullaganj", priority: "High Priority (Rural Narmada belt)", centers: "District Hospital Sehore, Life Saver Centre, CHC Budhni, CHC Nasrullaganj" },
+          { zone: "Bhopal Capital Corridor (50-70 km)", towns: "Bhopal, Kolar, MP Nagar, Saket Nagar", priority: "Major Apex Referral Hub", centers: "AIIMS Bhopal, Hamidia Hospital GMC, BMHRC, Red Cross State Blood Centre, Bansal Hospital" },
+          { zone: "Rajgarh Aspirational District (70-90 km)", towns: "Biaora, Narsinghgarh, Rajgarh", priority: "Critical Aspirational District Need", centers: "Civil Hospital Biaora (NH 52), Civil Hospital Narsinghgarh, District Hospital Rajgarh" },
+          { zone: "Vidisha Aspirational District (80-100 km)", towns: "Vidisha, Ganj Basoda, Sanchi", priority: "Aspirational District & Heritage Belt", centers: "Atal Bihari Vajpayee Govt Medical College, District Hospital Vidisha, Civil Hospital Basoda" },
+          { zone: "Raisen Tribal & Rural (60-100 km)", towns: "Raisen, Sanchi, Begamganj, Udaipura", priority: "Tribal & Forest Block Support", centers: "District Hospital Raisen, Sub-Divisional Hospital Begamganj, CHC Udaipura" },
+          { zone: "Shajapur District (85-95 km)", towns: "Shujalpur, Kalapipal", priority: "Rural Agricultural Center", centers: "Civil Hospital Shujalpur, CHC Blood Unit Kalapipal" },
+          { zone: "Narmadapuram & Railway Hub (85-100 km)", towns: "Narmadapuram, Itarsi, Sohagpur", priority: "Key Central Railway Junction Care", centers: "District Hospital Narmadapuram, Dr. SPM Civil Hospital Itarsi, CHC Sohagpur" },
+          { zone: "Dewas Industrial Belt (100 km)", towns: "Dewas City, Bangar", priority: "Highway Industrial Node", centers: "District Hospital Dewas, Amaltas Medical College Blood Centre" }
+        ].map((item, idx) => (
+          <div key={idx} style={{ padding: "16px 18px", borderRadius: 14, border: "1px solid " + (light ? "#e2e8f0" : "rgba(255,255,255,0.08)"), background: light ? "#ffffff" : "rgba(255,255,255,0.03)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+              <span style={{ fontSize: 13, fontWeight: 800, color: "#38bdf8" }}>{item.zone}</span>
+            </div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#f59e0b", marginBottom: 6 }}>{item.priority}</div>
+            <div style={{ fontSize: 12, color: ink, fontWeight: 600, marginBottom: 4 }}>Towns: <span style={{ color: muted, fontWeight: 400 }}>{item.towns}</span></div>
+            <div style={{ fontSize: 12, color: ink, fontWeight: 600 }}>Active Centers: <span style={{ color: muted, fontWeight: 400 }}>{item.centers}</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+
     <aside style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "15px 17px", borderRadius: 15, background: light ? "#fff8e7" : "rgba(251,191,36,.07)", border: "1px solid " + (light ? "#f2d58a" : "rgba(251,191,36,.18)") }}>
       <ShieldCheck size={19} color="#FBBF24" style={{ flexShrink: 0, marginTop: 1 }} /><div><b style={{ fontSize: 12.5 }}>Availability is a live listing, not a reservation.</b><p style={{ color: muted, fontSize: 11.5, lineHeight: 1.7, margin: "5px 0 0" }}>Stock changes as blood banks update their records. Confirm current availability, compatibility, screening, and issue requirements directly with the blood bank before making clinical decisions. This page does not reserve or allocate units.</p></div>
     </aside>
