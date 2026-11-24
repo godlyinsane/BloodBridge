@@ -765,20 +765,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                 </div>
               </div>
 
-              <div>
-                <h3 style={{fontSize:12,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 17px"}}>Blood types covered</h3>
-                <p style={{fontSize:12.5,lineHeight:1.65,color:theme==="light"?"#596474":"#a8b0bd",margin:"0 0 14px"}}>
-                  Explore the eight standard ABO/Rh blood groups.
-                </p>
-                <div style={{display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",gap:7,maxWidth:280}}>
-                  {["A+","A-","B+","B-","O+","O-","AB+","AB-"].map(group=>(
-                    <span key={group} style={{display:"grid",placeItems:"center",padding:"8px 4px",borderRadius:9,fontSize:12,fontWeight:800,background:theme==="light"?"#fff":"rgba(255,255,255,.055)",border:"1px solid "+(theme==="light"?"#e2e6ec":"rgba(255,255,255,.11)"),color:theme==="light"?"#a51d32":"#ff9aaa"}}>{group}</span>
-                  ))}
-                </div>
-                <p style={{fontSize:11.5,lineHeight:1.6,color:theme==="light"?"#737d8b":"#8e98a7",margin:"12px 0 0",maxWidth:285}}>
-                  Actual availability depends on verified donor and blood-bank records.
-                </p>
-              </div>
+
 
               <div>
                 <h3 style={{fontSize:12,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 17px"}}>Contact us</h3>
