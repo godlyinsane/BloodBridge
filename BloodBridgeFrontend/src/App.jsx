@@ -1474,7 +1474,75 @@ function Home({ donors, requests, goTo }) {
   const available = donors.filter((d) => d.available && d.verified).length;
   const open = requests.filter((r) => r.status === "Open" || r.status === "Matched").length;
   const fulfilled = requests.filter((r) => r.status === "Fulfilled" || r.status === "Completed").length;
-    const [showDonorMap, setShowDonorMap] = useState(false);
+  const [showDonorMap, setShowDonorMap] = useState(false);
+  const [placesToDonate, setPlacesToDonate] = useState([
+    {
+      name: "District Hospital Blood Bank Sehore",
+      district: "Sehore",
+      category: "Government",
+      address: "Near Bus Stand, Sehore - 466001",
+      phone: "07562-224102",
+      openingHours: "24/7 Walk-in Donation",
+    },
+    {
+      name: "AIIMS Blood Bank Bhopal",
+      district: "Bhopal",
+      category: "Government",
+      address: "Saket Nagar, AIIMS Campus, Bhopal - 462020",
+      phone: "0755-2970000",
+      openingHours: "24 Hours / 7 Days",
+    },
+    {
+      name: "Indian Red Cross Society Blood Centre Bhopal",
+      district: "Bhopal",
+      category: "Red Cross",
+      address: "Red Cross Bhavan, Shivaji Nagar, Link Road No. 1, Bhopal",
+      phone: "0755-2550100",
+      openingHours: "24 Hours / 7 Days",
+    },
+    {
+      name: "Bhopal Memorial Hospital & Research Centre (BMHRC)",
+      district: "Bhopal",
+      category: "Government",
+      address: "Raisen Bypass Road, Karond, Bhopal - 462038",
+      phone: "0755-2740325",
+      openingHours: "24/7 Operations",
+    },
+    {
+      name: "District Hospital Blood Bank Vidisha",
+      district: "Vidisha",
+      category: "Government",
+      address: "Sironj Road, Vidisha - 464001",
+      phone: "07592-232102",
+      openingHours: "24/7 Open",
+    },
+    {
+      name: "District Hospital Blood Bank Raisen",
+      district: "Raisen",
+      category: "Government",
+      address: "Sanchi Road, Raisen - 464551",
+      phone: "07482-222045",
+      openingHours: "24/7 Open",
+    },
+  ]);
+
+  useEffect(() => {
+    let live = true;
+    api("/blood-banks")
+      .then((data) => {
+        if (live && Array.isArray(data) && data.length > 0) {
+          const valid = data.filter(
+            (b) => b.category === "Government" || b.category === "Red Cross" || b.category === "Charitable" || b.category === "Private"
+          );
+          if (valid.length >= 4) {
+            setPlacesToDonate(valid.slice(0, 6));
+          }
+        }
+      })
+      .catch(() => {});
+    return () => { live = false; };
+  }, []);
+
   const groupCounts = useMemo(() => {
     const counts = Object.fromEntries(GROUPS.map((g) => [g, 0]));
     donors.forEach((d) => { if (counts[d.group] !== undefined) counts[d.group]++; });
@@ -1885,10 +1953,130 @@ function Home({ donors, requests, goTo }) {
         ].map((step,i)=><motion.div key={step.n} initial={{opacity:0,y:14}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.07}}><Card style={{height:"100%",padding:22}}><div className="step-number">{step.n}</div><h3 style={{fontSize:16,margin:"0 0 9px"}}>{step.title}</h3><p style={{fontSize:13.5,color:COLORS.textMuted,lineHeight:1.8,margin:0}}>{step.desc}</p></Card></motion.div>)}</div>
       </section>
 
-      <section className="home-section">
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:18,flexWrap:"wrap",padding:"clamp(22px,4vw,36px)",borderRadius:20,border:"1px solid rgba(255,59,84,.25)",background:"linear-gradient(120deg,rgba(255,59,84,.12),rgba(34,211,238,.06))"}}>
-          <div style={{maxWidth:600}}><h2 className="headline" style={{fontSize:"clamp(1.35rem,2.5vw,2rem)",margin:"0 0 9px"}}>A small act can make a life-changing difference.</h2><p style={{color:COLORS.textMuted,fontSize:13.5,lineHeight:1.75,margin:0}}>Join the community, explore donation camps and blood banks, or start a search for blood support.</p></div>
-          <div style={{display:"flex",gap:10,flexWrap:"wrap"}}><button style={glowBtn} onClick={()=>goTo("donor")}><Heart size={15}/> Join as donor</button><button style={ghostBtn} onClick={()=>goTo("camps")}><Building2 size={15}/> Camps & banks</button></div>
+      <section className="home-section" style={{ marginTop: 52 }}>
+        <div style={{
+          padding: "clamp(24px, 4vw, 36px)",
+          borderRadius: 24,
+          border: "1px solid rgba(255, 59, 84, 0.28)",
+          background: "linear-gradient(135deg, rgba(255, 59, 84, 0.12) 0%, rgba(18, 22, 34, 0.82) 50%, rgba(34, 211, 238, 0.06) 100%)",
+          boxShadow: "0 24px 50px -12px rgba(0, 0, 0, 0.65)"
+        }}>
+          {/* Header Row */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 20, flexWrap: "wrap", marginBottom: 26 }}>
+            <div style={{ maxWidth: 620 }}>
+              <SectionLabel>Voluntary Blood Donation</SectionLabel>
+              <h2 className="headline" style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)", margin: "0 0 10px", fontWeight: 800 }}>
+                Donate Blood &amp; Save Lives
+              </h2>
+              <p style={{ color: COLORS.textMuted, fontSize: 14.5, lineHeight: 1.7, margin: 0 }}>
+                Walk into verified regional hospital blood banks, government medical centres, and charitable facilities across Madhya Pradesh accepting voluntary donations.
+              </p>
+            </div>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+              <button
+                type="button"
+                style={{ ...glowBtn, padding: "13px 24px", fontSize: 15, fontWeight: 750 }}
+                onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              >
+                Donate Blood
+              </button>
+              <button
+                type="button"
+                style={{ ...ghostBtn, padding: "13px 20px", fontSize: 15, fontWeight: 700 }}
+                onClick={() => { goTo("nearest"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              >
+                Locate Nearest Centre
+              </button>
+            </div>
+          </div>
+
+          {/* Places where you can donate blood */}
+          <div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
+              <span style={{ fontSize: 13, fontWeight: 750, textTransform: "uppercase", letterSpacing: 0.6, color: COLORS.textMuted }}>
+                Centres &amp; Hospitals Accepting Donations ({placesToDonate.length} Verified Facilities)
+              </span>
+              <button
+                type="button"
+                onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                style={{ background: "transparent", border: 0, color: COLORS.cyan, fontSize: 13.5, fontWeight: 750, cursor: "pointer", padding: 0 }}
+              >
+                View all 48 centres →
+              </button>
+            </div>
+
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))",
+              gap: 14
+            }}>
+              {placesToDonate.map((place, idx) => (
+                <div
+                  key={place.name + idx}
+                  style={{
+                    background: "rgba(16, 20, 30, 0.75)",
+                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    borderRadius: 18,
+                    padding: "18px 20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    transition: "border-color 0.2s, transform 0.2s"
+                  }}
+                >
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                      <span style={{
+                        fontSize: 11,
+                        fontWeight: 800,
+                        textTransform: "uppercase",
+                        letterSpacing: 0.5,
+                        padding: "3px 8px",
+                        borderRadius: 6,
+                        background: place.category === "Government" ? "rgba(16, 185, 129, 0.15)" : place.category === "Red Cross" ? "rgba(239, 68, 68, 0.15)" : "rgba(59, 130, 246, 0.15)",
+                        color: place.category === "Government" ? "#34d399" : place.category === "Red Cross" ? "#f87171" : "#60a5fa",
+                        border: "1px solid rgba(255, 255, 255, 0.08)"
+                      }}>
+                        {place.category || "Verified Centre"}
+                      </span>
+                      <span style={{ fontSize: 12, color: COLORS.textMuted, fontWeight: 600 }}>
+                        {place.district || place.city}
+                      </span>
+                    </div>
+
+                    <h4 style={{ fontSize: 16, fontWeight: 750, margin: "0 0 6px", color: "#f8fafc", lineHeight: 1.35 }}>
+                      {place.name}
+                    </h4>
+                    <p style={{ fontSize: 13, color: COLORS.textMuted, margin: "0 0 14px", lineHeight: 1.5 }}>
+                      {place.address || (place.district + ", Madhya Pradesh")}
+                    </p>
+                  </div>
+
+                  <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)", paddingTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontSize: 12, color: "#34d399", fontWeight: 700, display: "flex", alignItems: "center", gap: 5 }}>
+                      ● Walk-in Donations
+                    </span>
+                    {place.phone ? (
+                      <a
+                        href={`tel:${place.phone.split(/[/,]/)[0].trim()}`}
+                        style={{ fontSize: 12.5, color: COLORS.cyan, textDecoration: "none", fontWeight: 700 }}
+                      >
+                        {place.phone.split(/[/,]/)[0].trim()}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                        style={{ background: "transparent", border: 0, color: COLORS.cyan, fontSize: 12, fontWeight: 700, cursor: "pointer", padding: 0 }}
+                      >
+                        Details
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
       <p style={{fontSize:11.5,color:COLORS.textMuted,lineHeight:1.7,textAlign:"center",margin:"28px 0 0"}}>BloodBridge helps people discover donation support; it does not replace medical advice, donor eligibility assessment, or blood-bank screening.</p>
