@@ -27,7 +27,7 @@ async function rateLimitAppointment(req, res, next) {
   // Persist limits in MongoDB so separate Vercel serverless instances cannot
   // bypass a process-local counter. Only a keyed hash of the client address is stored.
   const address = String(req.ip || req.headers["x-forwarded-for"] || "unknown").split(",")[0].trim().slice(0, 100);
-  const secret = process.env.JWT_SECRET || "raktsetu-rate-limit-fallback";
+  const secret = process.env.JWT_SECRET || "bloodbridge-rate-limit-fallback";
   const fingerprint = appointmentRateLimitFingerprint(address, secret);
   const now = Date.now(), windowMs = 10 * 60 * 1000, max = 5;
   const windowStart = new Date(Math.floor(now / windowMs) * windowMs);
@@ -67,7 +67,7 @@ async function sendNotificationWebhook(channel, donor, message) {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
     // Keep the provider payload minimal; resolve destination addresses in the trusted provider.
-    body: JSON.stringify({ project: "RaktSetu", channel, donorId: String(donor._id), message, requestedAt: new Date().toISOString() }),
+    body: JSON.stringify({ project: "BloodBridge", channel, donorId: String(donor._id), message, requestedAt: new Date().toISOString() }),
     signal: AbortSignal.timeout(10000)
   });
   if (!response.ok) return { sent: false, reason: "Notification provider rejected the request." };
@@ -221,7 +221,7 @@ router.get("/donor/digital-id", requireDonor, async (req, res) => {
   try {
     const donor = await Donor.findById(req.donor.id).select("name group city state verified bloodGroupStatus createdAt");
     if (!donor) return res.status(404).json({ error: "Donor profile not found." });
-    res.json({ id: "RS-" + crypto.createHash("sha256").update(String(donor._id)).digest("hex").slice(0, 10).toUpperCase(), name: donor.name, bloodGroup: donor.group, city: donor.city, state: donor.state, phoneVerified: donor.verified, bloodGroupVerified: donor.bloodGroupStatus === "verified", issuedAt: donor.createdAt, qrPayload: "raktsetu://donor/" + donor._id, disclaimer: "Digital identification only; not a government ID, medical clearance or guarantee of donor eligibility." });
+    res.json({ id: "BB-" + crypto.createHash("sha256").update(String(donor._id)).digest("hex").slice(0, 10).toUpperCase(), name: donor.name, bloodGroup: donor.group, city: donor.city, state: donor.state, phoneVerified: donor.verified, bloodGroupVerified: donor.bloodGroupStatus === "verified", issuedAt: donor.createdAt, qrPayload: "bloodbridge://donor/" + donor._id, disclaimer: "Digital identification only; not a government ID, medical clearance or guarantee of donor eligibility." });
   } catch (err) { res.status(500).json({ error: "Unable to generate donor ID." }); }
 });
 router.get("/donor/certificate/:appointmentId", requireDonor, async (req, res) => {
@@ -337,7 +337,7 @@ router.get("/backup/cron", async (req, res) => {
     const response = await fetch(target, {
       method: "POST",
       headers: { "Content-Type": "application/json", ...(process.env.MONGODB_BACKUP_WEBHOOK_TOKEN ? { Authorization: "Bearer " + process.env.MONGODB_BACKUP_WEBHOOK_TOKEN } : {}) },
-      body: JSON.stringify({ project: "RaktSetu", requestedAt: new Date().toISOString(), requestedBy: "vercel-cron", schedule: "daily" }),
+      body: JSON.stringify({ project: "BloodBridge", requestedAt: new Date().toISOString(), requestedBy: "vercel-cron", schedule: "daily" }),
       signal: AbortSignal.timeout(10000)
     });
     if (!response.ok) return res.status(502).json({ error: "Backup provider did not accept the scheduled trigger." });
@@ -353,7 +353,7 @@ router.post("/backup/trigger", requireAdmin, async (req, res) => {
   try {
     const target = process.env.MONGODB_BACKUP_WEBHOOK;
     if (!isTrustedHttpsUrl(target) || !process.env.MONGODB_BACKUP_WEBHOOK_TOKEN) return res.status(503).json({ error: "Automated backup is not configured. Set MONGODB_BACKUP_WEBHOOK and MONGODB_BACKUP_WEBHOOK_TOKEN for a trusted HTTPS backup service; use your MongoDB provider's managed backups for database snapshots." });
-    const response = await fetch(target, { method: "POST", headers: { "Content-Type": "application/json", ...(process.env.MONGODB_BACKUP_WEBHOOK_TOKEN ? { Authorization: "Bearer " + process.env.MONGODB_BACKUP_WEBHOOK_TOKEN } : {}) }, body: JSON.stringify({ project: "RaktSetu", requestedAt: new Date().toISOString(), requestedBy: actor(req) }), signal: AbortSignal.timeout(10000) });
+    const response = await fetch(target, { method: "POST", headers: { "Content-Type": "application/json", ...(process.env.MONGODB_BACKUP_WEBHOOK_TOKEN ? { Authorization: "Bearer " + process.env.MONGODB_BACKUP_WEBHOOK_TOKEN } : {}) }, body: JSON.stringify({ project: "BloodBridge", requestedAt: new Date().toISOString(), requestedBy: actor(req) }), signal: AbortSignal.timeout(10000) });
     if (!response.ok) return res.status(502).json({ error: "Backup provider did not accept the trigger." });
     await audit(req, "backup.triggered", "backup", "", { status: response.status });
     res.json({ success: true, message: "Backup trigger accepted by configured provider." });

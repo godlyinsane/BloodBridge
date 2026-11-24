@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
-  <title id="title">RaktMitra blood donation network</title>
+  <title id="title">BloodBridge blood donation network</title>
   <defs><linearGradient id="drop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5268"/><stop offset="1" stop-color="#b9102b"/></linearGradient></defs>
   <path d="M64 7C54 25 27 51 27 77a37 37 0 0 0 74 0C101 51 74 25 64 7Z" fill="url(#drop)"/>
   <path d="M55 45h18v12h12v17H73v12H55V74H43V57h12Z" fill="#fff"/>

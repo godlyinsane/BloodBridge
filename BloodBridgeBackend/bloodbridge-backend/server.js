@@ -37,7 +37,7 @@ const bloodListingsRoutes = require("./routes/bloodListings");
 const Donor = require("./models/Donor");
 
 async function cleanupLegacyDistrictDonors() {
-  const migrations = mongoose.connection.collection("raktmitra_migrations");
+  const migrations = mongoose.connection.collection("bloodbridge_migrations");
   const migrationId = "district-donors-cleanup-v2";
   const existing = await migrations.findOne({ _id: migrationId });
   if (existing?.status === "complete") return;
@@ -132,7 +132,7 @@ app.use(cors({
     return callback(new Error("Origin is not allowed by CORS."));
   },
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "x-raktsetu-api-key"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-bloodbridge-api-key"],
   maxAge: 600,
 }));
 app.use(express.json({ limit: "1mb" }));
@@ -147,7 +147,7 @@ app.get("/api/health", (req, res) => {
   });
 });
 app.get("/", (req, res) => {
-  res.json({ status: "RaktMitra backend is running." });
+  res.json({ status: "BloodBridge backend is running." });
 });
 
 // Vercel runs this Express app as a serverless function. Connect lazily and
@@ -203,11 +203,11 @@ app.use((err, req, res, next) => {
 if (process.env.VERCEL !== "1") {
   const PORT = process.env.PORT || 5000;
   if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
-    process.env.JWT_SECRET = "raktmitra-development-secret-key-32-chars-long";
+    process.env.JWT_SECRET = "bloodbridge-development-secret-key-32-chars-long";
   }
   connectToDatabase()
     .then(() => {
-      app.listen(PORT, () => console.log(`RaktMitra backend listening on port ${PORT}`));
+      app.listen(PORT, () => console.log(`BloodBridge backend listening on port ${PORT}`));
     })
     .catch((err) => {
       console.error("Server startup error:", err.message);

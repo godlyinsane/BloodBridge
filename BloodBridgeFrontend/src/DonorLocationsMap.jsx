@@ -44,7 +44,7 @@ export default function DonorLocationsMap({ center, donors = [], height = 340 })
     };
 
     const ensureCss = () => new Promise((resolve) => {
-      let link = document.querySelector('link[data-raktsetu-leaflet-css]');
+      let link = document.querySelector('link[data-bloodbridge-leaflet-css]');
       if (link) {
         if (link.sheet) resolve();
         else { link.addEventListener("load", resolve, { once: true }); link.addEventListener("error", resolve, { once: true }); }
@@ -53,7 +53,7 @@ export default function DonorLocationsMap({ center, donors = [], height = 340 })
       link = document.createElement("link");
       link.rel = "stylesheet";
       link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-      link.setAttribute("data-raktsetu-leaflet-css", "true");
+      link.setAttribute("data-bloodbridge-leaflet-css", "true");
       link.onload = resolve;
       link.onerror = resolve;
       document.head.appendChild(link);
@@ -66,12 +66,12 @@ export default function DonorLocationsMap({ center, donors = [], height = 340 })
 
     if (window.L) initializeAfterCss();
     else {
-      let script = document.querySelector('script[data-raktsetu-leaflet-js]');
+      let script = document.querySelector('script[data-bloodbridge-leaflet-js]');
       if (!script) {
         script = document.createElement("script");
         script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
         script.async = true;
-        script.setAttribute("data-raktsetu-leaflet-js", "true");
+        script.setAttribute("data-bloodbridge-leaflet-js", "true");
         script.onload = initializeAfterCss;
         document.body.appendChild(script);
       } else {

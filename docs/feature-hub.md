@@ -1,6 +1,6 @@
-# RaktSetu Feature Hub
+# BloodBridge Feature Hub
 
-This branch adds the Feature Hub to the existing RaktSetu MERN application. It preserves the existing donor, recipient, camp, blood-bank, admin, inventory and traceability flows. It does **not** add the previously excluded voice assistant or consent-based donor privacy vault.
+This branch adds the Feature Hub to the existing BloodBridge MERN application. It preserves the existing donor, recipient, camp, blood-bank, admin, inventory and traceability flows. It does **not** add the previously excluded voice assistant or consent-based donor privacy vault.
 
 ## Feature areas
 
@@ -10,7 +10,7 @@ This branch adds the Feature Hub to the existing RaktSetu MERN application. It p
 4. **Donor appointment booking:** public booking form with server-side validation, a MongoDB-backed rate limiter shared across serverless instances, idempotent retry references, confirmation status, and offline retry queue.
 5. **Emergency logistics:** OSRM road-route attempt with a clearly labelled straight-line fallback when routing is unavailable. Not live-traffic navigation.
 6. **Donor profile/history:** authenticated donor endpoint and UI showing linked appointment history and eligibility reminder context.
-7. **Digital donor ID/certificates:** QR-enabled donor ID and exportable record for completed appointments. These are RaktSetu records, not government IDs or substitutes for official blood-bank certificates.
+7. **Digital donor ID/certificates:** QR-enabled donor ID and exportable record for completed appointments. These are BloodBridge records, not government IDs or substitutes for official blood-bank certificates.
 8. **Blood-bank map directory:** optional coordinates, address, phone, opening hours and directions links. Existing donor map and camp directory remain intact.
 9. **Request-risk review:** explainable repeated-demand flags for human review only; requests are never automatically denied.
 10. **Language/accessibility:** English/Hindi booking labels, semantic labels and status messages. Clinical/legal text still needs professional translation review.
@@ -40,7 +40,7 @@ Optional feature integrations:
 - `MONGODB_BACKUP_WEBHOOK_TOKEN` (required bearer token for the backup webhook)
 - `CRON_SECRET` (at least 32 characters; Vercel Cron sends this as `Authorization: Bearer <secret>`)
 
-Do not put these secrets in frontend environment variables or commit them to GitHub. Configure them in Vercel Project Settings → Environment Variables. The scheduled backup returns a configuration error until the cron secret, backup webhook URL, and backup webhook token are configured. The external webhook must create/verify the actual backup; RaktSetu does not fabricate a successful backup when the provider is unavailable. Partner integration readiness is reported only when an active, non-expired integration key exists. Appointment rate limits are stored in MongoDB using a keyed hash of the client address, not a raw IP address.
+Do not put these secrets in frontend environment variables or commit them to GitHub. Configure them in Vercel Project Settings → Environment Variables. The scheduled backup returns a configuration error until the cron secret, backup webhook URL, and backup webhook token are configured. The external webhook must create/verify the actual backup; BloodBridge does not fabricate a successful backup when the provider is unavailable. Partner integration readiness is reported only when an active, non-expired integration key exists. Appointment rate limits are stored in MongoDB using a keyed hash of the client address, not a raw IP address.
 
 ## Main API endpoints
 

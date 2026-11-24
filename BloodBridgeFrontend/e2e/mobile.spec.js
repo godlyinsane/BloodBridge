@@ -22,7 +22,7 @@ test.beforeEach(async ({ page }) => {
       data = [{
         _id: "camp-demo",
         title: "Community Donation Camp",
-        organizer: "RaktSetu",
+        organizer: "BloodBridge",
         location: "Bilaspur",
         city: "Bilaspur",
         state: "Chhattisgarh",

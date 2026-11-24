@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 const Donor = require("./models/Donor");
 const BloodBank = require("./models/BloodBank");
 
-const DEMO_PASSWORD = "raktsetu123";
+const DEMO_PASSWORD = "bloodbridge123";
 const demoDonors = [
   ["Aarav Sharma", "9811100001", "O+", "Male", 22.0797, 82.1409, "Bilaspur"],
   ["Ananya Verma", "9811100002", "A+", "Female", 22.0912, 82.1551, "Sarkanda"],

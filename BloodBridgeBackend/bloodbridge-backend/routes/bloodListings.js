@@ -185,7 +185,7 @@ router.post("/:id/reveal-contact", async (req, res) => {
     const cleanPhone = sanitizePhone(listing.phone);
     const intlPhone = cleanPhone.length === 10 ? "91" + cleanPhone : cleanPhone;
     const prefilledText = encodeURIComponent(
-      `Hello ${listing.name}, I saw your blood availability listing (${listing.bloodGroup}) on RaktMitra and would like to connect.`
+      `Hello ${listing.name}, I saw your blood availability listing (${listing.bloodGroup}) on BloodBridge and would like to connect.`
     );
 
     res.json({

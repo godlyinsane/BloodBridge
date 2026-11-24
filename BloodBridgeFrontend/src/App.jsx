@@ -374,28 +374,28 @@ export default function BloodBridgeApp() {
   const [tab, setTab] = useState("home");
   useEffect(()=>{if(tab!=="requests")return;const timer=window.setTimeout(()=>{document.getElementById("blood-request-sos")?.scrollIntoView({behavior:"smooth",block:"start"});},140);return()=>window.clearTimeout(timer);},[tab]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(() => localStorage.getItem("raktmitra-theme") || "dark");
+  const [theme, setTheme] = useState(() => localStorage.getItem("bloodbridge-theme") || "dark");
   const toggleTheme = () => setTheme((current) => {
     const next = current === "dark" ? "light" : "dark";
-    localStorage.setItem("raktmitra-theme", next);
+    localStorage.setItem("bloodbridge-theme", next);
     return next;
   });
   const [donors, setDonors] = useState([]);
   const [requests, setRequests] = useState([]);
   const [toast, setToast] = useState(null);
   const [loadError, setLoadError] = useState(false);
-  const [adminToken, setAdminToken] = useState(() => localStorage.getItem("raktsetu_admin_token"));
-  const [adminUsername, setAdminUsername] = useState(() => localStorage.getItem("raktsetu_admin_user"));
+  const [adminToken, setAdminToken] = useState(() => localStorage.getItem("bloodbridge_admin_token"));
+  const [adminUsername, setAdminUsername] = useState(() => localStorage.getItem("bloodbridge_admin_user"));
 
   const loginAdmin = (token, username) => {
-    localStorage.setItem("raktsetu_admin_token", token);
-    localStorage.setItem("raktsetu_admin_user", username);
+    localStorage.setItem("bloodbridge_admin_token", token);
+    localStorage.setItem("bloodbridge_admin_user", username);
     setAdminToken(token);
     setAdminUsername(username);
   };
   const logoutAdmin = () => {
-    localStorage.removeItem("raktsetu_admin_token");
-    localStorage.removeItem("raktsetu_admin_user");
+    localStorage.removeItem("bloodbridge_admin_token");
+    localStorage.removeItem("bloodbridge_admin_user");
     setAdminToken(null);
     setAdminUsername(null);
   };
@@ -483,9 +483,9 @@ export default function BloodBridgeApp() {
       }
       @media print {
         body * { visibility: hidden !important; }
-        .raktsetu-qr-dialog, .raktsetu-qr-dialog * { visibility: visible !important; }
-        .raktsetu-qr-dialog { position: fixed !important; inset: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 !important; background: #fff !important; }
-        .raktsetu-qr-dialog button { display: none !important; }
+        .bloodbridge-qr-dialog, .bloodbridge-qr-dialog * { visibility: visible !important; }
+        .bloodbridge-qr-dialog { position: fixed !important; inset: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 !important; background: #fff !important; }
+        .bloodbridge-qr-dialog button { display: none !important; }
       }
       .navbtn.active { color: #fff; }
       .nav-account, .nav-theme { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:11px 16px; border-radius:12px; font-size:14.5px; font-weight:750; white-space:nowrap; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
@@ -497,19 +497,19 @@ export default function BloodBridgeApp() {
       .theme-light .navbtn.active { color:#a51d32 !important; }
       .theme-light .navbtn.active::after { background:linear-gradient(90deg,#c72d45,#ef8a99); }
       @media (max-width: 1100px) {
-        .raktsetu-topbar-inner { gap:10px !important; }
-        .raktsetu-nav { order:3; flex:1 0 100% !important; justify-content:flex-start !important; overflow-x:auto; }
-        .raktmitra-account-actions { margin-left:auto; }
+        .bloodbridge-topbar-inner { gap:10px !important; }
+        .bloodbridge-nav { order:3; flex:1 0 100% !important; justify-content:flex-start !important; overflow-x:auto; }
+        .bloodbridge-account-actions { margin-left:auto; }
       }
       @media (max-width: 680px) {
-        .raktsetu-topbar-inner { padding:10px 12px !important; align-items:center !important; }
-        .raktsetu-topbar-inner > div:first-child { flex:1 1 auto !important; min-width:0; }
-        .raktmitra-menu-toggle { display:inline-flex !important; }
-        .raktsetu-nav, .raktmitra-account-actions { display:none !important; }
-        .raktsetu-topbar.mobile-menu-open .raktsetu-nav { display:flex !important; order:3; flex:1 0 100% !important; flex-direction:column; align-items:stretch !important; gap:0 !important; padding:8px 0 !important; border-top:1px solid rgba(255,255,255,.09); }
-        .raktsetu-topbar.mobile-menu-open .raktsetu-nav .navbtn { text-align:left; padding:15px 16px !important; border-radius:0; border-bottom:1px solid rgba(255,255,255,.05); font-size:15px !important; min-height:56px; }
-        .raktsetu-topbar.mobile-menu-open .raktsetu-nav .navbtn.active::after { display:none; }
-        .raktsetu-topbar.mobile-menu-open .raktmitra-account-actions { display:grid !important; order:4; flex:1 0 100%; grid-template-columns:1fr; width:100%; gap:9px !important; padding:10px 0 5px; }
+        .bloodbridge-topbar-inner { padding:10px 12px !important; align-items:center !important; }
+        .bloodbridge-topbar-inner > div:first-child { flex:1 1 auto !important; min-width:0; }
+        .bloodbridge-menu-toggle { display:inline-flex !important; }
+        .bloodbridge-nav, .bloodbridge-account-actions { display:none !important; }
+        .bloodbridge-topbar.mobile-menu-open .bloodbridge-nav { display:flex !important; order:3; flex:1 0 100% !important; flex-direction:column; align-items:stretch !important; gap:0 !important; padding:8px 0 !important; border-top:1px solid rgba(255,255,255,.09); }
+        .bloodbridge-topbar.mobile-menu-open .bloodbridge-nav .navbtn { text-align:left; padding:15px 16px !important; border-radius:0; border-bottom:1px solid rgba(255,255,255,.05); font-size:15px !important; min-height:56px; }
+        .bloodbridge-topbar.mobile-menu-open .bloodbridge-nav .navbtn.active::after { display:none; }
+        .bloodbridge-topbar.mobile-menu-open .bloodbridge-account-actions { display:grid !important; order:4; flex:1 0 100%; grid-template-columns:1fr; width:100%; gap:9px !important; padding:10px 0 5px; }
         .nav-account, .nav-theme { padding:12px 10px; min-height:46px; font-size:13px; gap:7px; white-space:normal; }
         .nav-account svg { display:inline-block; }
       }
@@ -523,84 +523,84 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       button, input, select, textarea { font: inherit; }
       button { touch-action: manipulation; }
       img, svg, canvas { max-width: 100%; }
-      .raktsetu-nav { scrollbar-width: none; }
-      .raktsetu-nav::-webkit-scrollbar { display: none; }
+      .bloodbridge-nav { scrollbar-width: none; }
+      .bloodbridge-nav::-webkit-scrollbar { display: none; }
       @media (max-width: 900px) {
         .grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-        .raktsetu-topbar { overflow-x: clip; }
-        .raktsetu-topbar-inner { width: 100%; max-width: 100vw !important; box-sizing: border-box; padding: 12px 14px !important; gap: 10px !important; align-items: stretch !important; }
-        .raktsetu-topbar-inner > div:first-child { flex: 1 0 100%; min-width: 0; }
-        .raktsetu-nav { flex: 1 1 100%; min-width: 0; max-width: 100%; box-sizing: border-box; }
-        .raktsetu-content { width: 100%; max-width: 100vw !important; box-sizing: border-box; overflow-x: clip; }
-        .raktsetu-topbar-inner > div:first-child .headline { font-size: 20px !important; }
-        .raktsetu-topbar-inner > div:first-child div:last-child { font-size: 9px !important; letter-spacing: .25px !important; }
-        .raktsetu-nav { width: 100%; gap: 18px !important; padding: 4px 0 8px; margin: 0; }
+        .bloodbridge-topbar { overflow-x: clip; }
+        .bloodbridge-topbar-inner { width: 100%; max-width: 100vw !important; box-sizing: border-box; padding: 12px 14px !important; gap: 10px !important; align-items: stretch !important; }
+        .bloodbridge-topbar-inner > div:first-child { flex: 1 0 100%; min-width: 0; }
+        .bloodbridge-nav { flex: 1 1 100%; min-width: 0; max-width: 100%; box-sizing: border-box; }
+        .bloodbridge-content { width: 100%; max-width: 100vw !important; box-sizing: border-box; overflow-x: clip; }
+        .bloodbridge-topbar-inner > div:first-child .headline { font-size: 20px !important; }
+        .bloodbridge-topbar-inner > div:first-child div:last-child { font-size: 9px !important; letter-spacing: .25px !important; }
+        .bloodbridge-nav { width: 100%; gap: 18px !important; padding: 4px 0 8px; margin: 0; }
         .navbtn { flex: 0 0 auto; font-size: 13px !important; padding: 9px 1px !important; min-height: 40px; white-space: nowrap; }
         .navbtn.active::after { bottom: 0; }
-        .raktsetu-content { padding: 22px 14px 40px !important; }
-        .raktsetu-content h1 { font-size: clamp(28px, 8vw, 38px) !important; line-height: 1.12 !important; overflow-wrap: anywhere; }
-        .raktsetu-content h2 { overflow-wrap: anywhere; }
-        .raktsetu-content input, .raktsetu-content select, .raktsetu-content textarea { min-width: 0; max-width: 100%; font-size: 16px !important; }
-        .raktsetu-content button { min-height: 42px; max-width: 100%; }
-        .raktsetu-content table { min-width: 680px; }
-        .raktsetu-content [style*="grid-template-columns"] { min-width: 0; }
-        .raktsetu-content [style*="gap: 26px"] { gap: 14px !important; }
-        .raktsetu-content [style*="padding: 40px 24px 70px"] { padding: 22px 14px 40px !important; }
-        .raktsetu-content [style*="font-size: 52px"] { font-size: clamp(34px, 10vw, 48px) !important; }
-        .raktsetu-content [style*="min-height: 480px"] { min-height: 320px !important; }
-        .raktsetu-content [style*="border-radius: 18px"] { border-radius: 14px !important; }
-        .raktsetu-content [style*="padding: 22px 24px"] { padding: 18px 16px !important; }
-        .raktsetu-content [style*="padding: 28px 32px"] { padding: 20px 16px !important; }
-        .raktsetu-content .bc-wrap { min-height: 250px; border-radius: 14px; }
+        .bloodbridge-content { padding: 22px 14px 40px !important; }
+        .bloodbridge-content h1 { font-size: clamp(28px, 8vw, 38px) !important; line-height: 1.12 !important; overflow-wrap: anywhere; }
+        .bloodbridge-content h2 { overflow-wrap: anywhere; }
+        .bloodbridge-content input, .bloodbridge-content select, .bloodbridge-content textarea { min-width: 0; max-width: 100%; font-size: 16px !important; }
+        .bloodbridge-content button { min-height: 42px; max-width: 100%; }
+        .bloodbridge-content table { min-width: 680px; }
+        .bloodbridge-content [style*="grid-template-columns"] { min-width: 0; }
+        .bloodbridge-content [style*="gap: 26px"] { gap: 14px !important; }
+        .bloodbridge-content [style*="padding: 40px 24px 70px"] { padding: 22px 14px 40px !important; }
+        .bloodbridge-content [style*="font-size: 52px"] { font-size: clamp(34px, 10vw, 48px) !important; }
+        .bloodbridge-content [style*="min-height: 480px"] { min-height: 320px !important; }
+        .bloodbridge-content [style*="border-radius: 18px"] { border-radius: 14px !important; }
+        .bloodbridge-content [style*="padding: 22px 24px"] { padding: 18px 16px !important; }
+        .bloodbridge-content [style*="padding: 28px 32px"] { padding: 20px 16px !important; }
+        .bloodbridge-content .bc-wrap { min-height: 250px; border-radius: 14px; }
       }
 
       /* Mobile-first layout repairs for the Home and Recipient screens. */
       @media (max-width: 680px) {
-        .raktsetu-content, .raktsetu-content * { min-width: 0; }
-        .raktsetu-content p, .raktsetu-content label, .raktsetu-content h1,
-        .raktsetu-content h2, .raktsetu-content h3, .raktsetu-content span,
-        .raktsetu-content button, .raktsetu-content a {
+        .bloodbridge-content, .bloodbridge-content * { min-width: 0; }
+        .bloodbridge-content p, .bloodbridge-content label, .bloodbridge-content h1,
+        .bloodbridge-content h2, .bloodbridge-content h3, .bloodbridge-content span,
+        .bloodbridge-content button, .bloodbridge-content a {
           overflow-wrap: break-word; word-break: normal; hyphens: auto;
         }
-        .raktsetu-content .home-hero {
+        .bloodbridge-content .home-hero {
           grid-template-columns: minmax(0, 1fr) !important; gap: 22px !important;
           min-height: 0 !important; align-items: start !important; margin-bottom: 24px !important;
         }
-        .raktsetu-content .home-hero > div:first-child { left: -14px !important; right: -14px !important; }
-        .raktsetu-content .home-hero h1 {
+        .bloodbridge-content .home-hero > div:first-child { left: -14px !important; right: -14px !important; }
+        .bloodbridge-content .home-hero h1 {
           font-size: clamp(31px, 9vw, 39px) !important; line-height: 1.12 !important; letter-spacing: -0.8px;
         }
-        .raktsetu-content .home-hero h1 br { display: none; }
-        .raktsetu-content .home-hero p { font-size: 14.5px !important; line-height: 1.75 !important; max-width: none !important; }
-        .raktsetu-content .home-hero > div:nth-of-type(3) {
+        .bloodbridge-content .home-hero h1 br { display: none; }
+        .bloodbridge-content .home-hero p { font-size: 14.5px !important; line-height: 1.75 !important; max-width: none !important; }
+        .bloodbridge-content .home-hero > div:nth-of-type(3) {
           grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important;
         }
-        .raktsetu-content .home-hero button {
+        .bloodbridge-content .home-hero button {
           white-space: normal; line-height: 1.35; justify-content: center;
           padding: 12px 13px !important; font-size: 13px !important;
         }
-        .raktsetu-content .recipient-layout {
+        .bloodbridge-content .recipient-layout {
           grid-template-columns: minmax(0, 1fr) !important; gap: 22px !important; align-items: start;
         }
-        .raktsetu-content .recipient-layout > div { width: 100%; min-width: 0; }
-        .raktsetu-content .recipient-layout form > label > div[style*="display: flex"] { flex-wrap: wrap !important; }
-        .raktsetu-content .recipient-layout form > label > div[style*="display: flex"] > input {
+        .bloodbridge-content .recipient-layout > div { width: 100%; min-width: 0; }
+        .bloodbridge-content .recipient-layout form > label > div[style*="display: flex"] { flex-wrap: wrap !important; }
+        .bloodbridge-content .recipient-layout form > label > div[style*="display: flex"] > input {
           flex: 1 1 125px; width: 100%;
         }
-        .raktsetu-content .recipient-layout button, .raktsetu-content .recipient-layout a {
+        .bloodbridge-content .recipient-layout button, .bloodbridge-content .recipient-layout a {
           white-space: normal; line-height: 1.35;
         }
-        .raktsetu-content .recipient-layout [style*="grid-template-columns: 1fr auto"] {
+        .bloodbridge-content .recipient-layout [style*="grid-template-columns: 1fr auto"] {
           grid-template-columns: minmax(0, 1fr) !important; align-items: start !important; gap: 12px !important;
         }
-        .raktsetu-content .recipient-layout [style*="text-align: right"] {
+        .bloodbridge-content .recipient-layout [style*="text-align: right"] {
           align-items: flex-start !important; text-align: left !important;
         }
-        .raktsetu-content .recipient-layout .raktsetu-map, .raktsetu-content .recipient-layout iframe { max-width: 100%; }
+        .bloodbridge-content .recipient-layout .bloodbridge-map, .bloodbridge-content .recipient-layout iframe { max-width: 100%; }
       }
       @media (max-width: 390px) {
         .grid2 { grid-template-columns: 1fr !important; }
-        .raktsetu-nav { gap: 15px !important; }
+        .bloodbridge-nav { gap: 15px !important; }
         .navbtn { font-size: 12.5px !important; }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -671,14 +671,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       />
 
       {/* Responsive BloodBridge navigation */}
-      <div className={`raktsetu-topbar ${theme === "light" ? "theme-light" : "theme-dark"} ${mobileMenuOpen ? "mobile-menu-open" : ""}`} data-theme={theme} style={{ borderBottom: `1px solid ${theme === "light" ? "#e5e7eb" : COLORS.panelBorder}`, position: "sticky", top: 0, zIndex: 20, background: theme === "light" ? "#ffffff" : "#0d0f14" }}>
-        <div className="raktsetu-topbar-inner" style={{ maxWidth: 1240, margin: "0 auto", padding: "12px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
+      <div className={`bloodbridge-topbar ${theme === "light" ? "theme-light" : "theme-dark"} ${mobileMenuOpen ? "mobile-menu-open" : ""}`} data-theme={theme} style={{ borderBottom: `1px solid ${theme === "light" ? "#e5e7eb" : COLORS.panelBorder}`, position: "sticky", top: 0, zIndex: 20, background: theme === "light" ? "#ffffff" : "#0d0f14" }}>
+        <div className="bloodbridge-topbar-inner" style={{ maxWidth: 1240, margin: "0 auto", padding: "12px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
           <button aria-label="BloodBridge home" onClick={() => { setTab("home"); setMobileMenuOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: 0, border: 0, background: "transparent", color: theme === "light" ? "#171923" : "#fff", cursor: "pointer", textAlign: "left" }}>
-            <img src="/raktmitra-logo.svg" alt="BloodBridge logo" width="42" height="42" style={{ display: "block", objectFit: "contain", flexShrink: 0 }} />
+            <img src="/bloodbridge-logo.svg" alt="BloodBridge logo" width="42" height="42" style={{ display: "block", objectFit: "contain", flexShrink: 0 }} />
             <span><span className="headline" style={{ display: "block", fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>BloodBridge</span><span style={{ display: "block", fontSize: 9.5, color: theme === "light" ? "#667085" : COLORS.textMuted, letterSpacing: .45, marginTop: 4 }}>BLOOD DONOR NETWORK</span></span>
           </button>
-          <button type="button" className="raktmitra-menu-toggle" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen(v => !v)} style={{ display:"none", alignItems:"center", justifyContent:"center", width:44, height:44, borderRadius:12, border:`1px solid ${theme === "light" ? "#d0d5dd" : COLORS.panelBorder}`, color:theme === "light"?"#344054":"#fff", background:"transparent", cursor:"pointer", flexShrink:0 }}><span style={{fontSize:25,lineHeight:1}}>{mobileMenuOpen ? "×" : "☰"}</span></button>
-          <nav className="raktsetu-nav" aria-label="Main navigation" style={{ display: "flex", alignItems: "center", gap: 20, flex: "1 1 auto", justifyContent: "center", minWidth: 0 }}>
+          <button type="button" className="bloodbridge-menu-toggle" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen(v => !v)} style={{ display:"none", alignItems:"center", justifyContent:"center", width:44, height:44, borderRadius:12, border:`1px solid ${theme === "light" ? "#d0d5dd" : COLORS.panelBorder}`, color:theme === "light"?"#344054":"#fff", background:"transparent", cursor:"pointer", flexShrink:0 }}><span style={{fontSize:25,lineHeight:1}}>{mobileMenuOpen ? "×" : "☰"}</span></button>
+          <nav className="bloodbridge-nav" aria-label="Main navigation" style={{ display: "flex", alignItems: "center", gap: 20, flex: "1 1 auto", justifyContent: "center", minWidth: 0 }}>
             {[[ "home", "Home" ], [ "camps", "Blood Facilities (Need Blood)" ], [ "nearest", "Nearest Blood Bank" ]].map(([k, label]) => (
               <button
                 key={k}
@@ -699,7 +699,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         </div>
       </div>
 
-      <div className="raktsetu-content" style={{ maxWidth: 1120, margin: "0 auto", padding: "40px 24px 70px", position: "relative" }}>
+      <div className="bloodbridge-content" style={{ maxWidth: 1120, margin: "0 auto", padding: "40px 24px 70px", position: "relative" }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
@@ -741,7 +741,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
               <div>
                 <button aria-label="BloodBridge home" onClick={() => { setTab("home"); window.scrollTo({top:0,behavior:"smooth"}); }}
                   style={{ display:"inline-flex",alignItems:"center",gap:12,border:0,padding:0,background:"transparent",color:"inherit",cursor:"pointer",marginBottom:16 }}>
-                  <img src="/raktmitra-logo.svg" alt="" width="42" height="42" style={{objectFit:"contain"}} />
+                  <img src="/bloodbridge-logo.svg" alt="" width="42" height="42" style={{objectFit:"contain"}} />
                   <span className="headline" style={{fontSize:26,fontWeight:800,letterSpacing:-.5}}>Blood<span style={{color:COLORS.crimson}}>Bridge</span></span>
                 </button>
                 <p style={{fontSize:15,lineHeight:1.8,color:theme==="light"?"#596474":"#a8b0bd",margin:"0 0 18px",maxWidth:340}}>
@@ -1330,15 +1330,15 @@ function Home({ donors, requests, goTo }) {
   ];
 
   return (
-    <div className="rakt-home">
+    <div className="bloodbridge-home">
       <style>{`
-        .rakt-home .home-hero { isolation:isolate; }
-        .rakt-home .hero-copy { min-width:0; }
-        .rakt-home .hero-title { font-size:clamp(2.15rem,4.5vw,3.7rem); line-height:1.06; letter-spacing:-1.8px; }
-        .rakt-home .hero-actions { display:flex; gap:12px; margin-top:26px; flex-wrap:wrap; }
-        .rakt-home .home-section { margin-top:48px; }
-        .rakt-home .quick-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
-        .rakt-home .quick-card-inner {
+        .bloodbridge-home .home-hero { isolation:isolate; }
+        .bloodbridge-home .hero-copy { min-width:0; }
+        .bloodbridge-home .hero-title { font-size:clamp(2.15rem,4.5vw,3.7rem); line-height:1.06; letter-spacing:-1.8px; }
+        .bloodbridge-home .hero-actions { display:flex; gap:12px; margin-top:26px; flex-wrap:wrap; }
+        .bloodbridge-home .home-section { margin-top:48px; }
+        .bloodbridge-home .quick-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
+        .bloodbridge-home .quick-card-inner {
           min-height: 220px;
           height: 100%;
           box-sizing: border-box;
@@ -1353,58 +1353,58 @@ function Home({ donors, requests, goTo }) {
           transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         }
         @media (hover: hover) and (pointer: fine) {
-          .rakt-home .quick-card-inner:hover {
+          .bloodbridge-home .quick-card-inner:hover {
             border-color: var(--card-tone-border, rgba(255, 255, 255, 0.25));
             box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 25px -4px var(--card-tone-glow, rgba(255, 255, 255, 0.15)), 0 12px 28px -8px rgba(0, 0, 0, 0.6);
           }
         }
         @media (hover: none), (pointer: coarse) {
-          .rakt-home .quick-card-inner {
+          .bloodbridge-home .quick-card-inner {
             transform: none !important;
           }
-          .rakt-home .quick-card-inner:active {
+          .bloodbridge-home .quick-card-inner:active {
             border-color: var(--card-tone-border, rgba(255, 255, 255, 0.2));
           }
         }
-        .rakt-home .quick-action-btn {
+        .bloodbridge-home .quick-action-btn {
           transition: filter 0.2s ease, box-shadow 0.2s ease;
           touch-action: manipulation;
           -webkit-tap-highlight-color: transparent;
         }
         @media (hover: hover) and (pointer: fine) {
-          .rakt-home .quick-action-btn:hover {
+          .bloodbridge-home .quick-action-btn:hover {
             filter: brightness(1.2);
             box-shadow: 0 0 16px var(--card-tone-glow, rgba(255, 255, 255, 0.25));
           }
         }
         @media (hover: none), (pointer: coarse) {
-          .rakt-home .quick-action-btn:active {
+          .bloodbridge-home .quick-action-btn:active {
             filter: brightness(0.95);
           }
         }
-        .rakt-home .how-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-        .rakt-home .section-heading { font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2; margin:0 0 8px; }
-        .rakt-home .section-subtitle { color:${COLORS.textMuted}; font-size:14px; line-height:1.7; margin:0 0 20px; max-width:680px; }
-        .rakt-home .quick-card { min-width:0; height:100%; display:flex; flex-direction:column; }
-        .rakt-home .quick-card button { margin-top:auto; align-self:flex-start; }
-        .rakt-home .blood-groups { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:9px; }
-        .rakt-home .blood-group { text-align:center; border:1px solid ${COLORS.panelBorder}; border-radius:12px; padding:13px 5px; background:rgba(255,255,255,.035); }
-        .rakt-home .blood-group strong { display:block; font-size:18px; color:#ff7d90; margin-bottom:4px; }
-        .rakt-home .blood-group span { font-size:11px; color:${COLORS.textMuted}; }
-        .rakt-home .step-number { width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:rgba(255,59,84,.12);color:#ff7d90;font-weight:800;margin-bottom:14px; }
+        .bloodbridge-home .how-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+        .bloodbridge-home .section-heading { font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2; margin:0 0 8px; }
+        .bloodbridge-home .section-subtitle { color:${COLORS.textMuted}; font-size:14px; line-height:1.7; margin:0 0 20px; max-width:680px; }
+        .bloodbridge-home .quick-card { min-width:0; height:100%; display:flex; flex-direction:column; }
+        .bloodbridge-home .quick-card button { margin-top:auto; align-self:flex-start; }
+        .bloodbridge-home .blood-groups { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:9px; }
+        .bloodbridge-home .blood-group { text-align:center; border:1px solid ${COLORS.panelBorder}; border-radius:12px; padding:13px 5px; background:rgba(255,255,255,.035); }
+        .bloodbridge-home .blood-group strong { display:block; font-size:18px; color:#ff7d90; margin-bottom:4px; }
+        .bloodbridge-home .blood-group span { font-size:11px; color:${COLORS.textMuted}; }
+        .bloodbridge-home .step-number { width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:rgba(255,59,84,.12);color:#ff7d90;font-weight:800;margin-bottom:14px; }
         @media(max-width:900px) {
-          .rakt-home .home-hero { grid-template-columns:1fr !important; gap:24px !important; padding-top:18px; }
-          .rakt-home .quick-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-          .rakt-home .blood-groups { grid-template-columns:repeat(4,minmax(0,1fr)); }
+          .bloodbridge-home .home-hero { grid-template-columns:1fr !important; gap:24px !important; padding-top:18px; }
+          .bloodbridge-home .quick-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+          .bloodbridge-home .blood-groups { grid-template-columns:repeat(4,minmax(0,1fr)); }
         }
         @media(max-width:560px) {
-          .rakt-home .home-hero { min-height:unset !important; }
-          .rakt-home .hero-title { letter-spacing:-1px; }
-          .rakt-home .hero-actions { display:grid; grid-template-columns:1fr; }
-          .rakt-home .hero-actions button { width:100%; justify-content:center; }
-          .rakt-home .hero-stats { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; }
-          .rakt-home .quick-grid,.rakt-home .how-grid { grid-template-columns:1fr; }
-          .rakt-home .home-section { margin-top:36px; }
+          .bloodbridge-home .home-hero { min-height:unset !important; }
+          .bloodbridge-home .hero-title { letter-spacing:-1px; }
+          .bloodbridge-home .hero-actions { display:grid; grid-template-columns:1fr; }
+          .bloodbridge-home .hero-actions button { width:100%; justify-content:center; }
+          .bloodbridge-home .hero-stats { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; }
+          .bloodbridge-home .quick-grid,.bloodbridge-home .how-grid { grid-template-columns:1fr; }
+          .bloodbridge-home .home-section { margin-top:36px; }
         }
       `}</style>
 
@@ -1957,20 +1957,20 @@ function DonorView({ notify }) {
   const stateOptions = Object.keys(districtData).sort();
   const districtOptions = state => districtData[state] || [];
 
-  const [donorToken, setDonorToken] = useState(() => localStorage.getItem("raktsetu_donor_token"));
+  const [donorToken, setDonorToken] = useState(() => localStorage.getItem("bloodbridge_donor_token"));
   const [profile, setProfile] = useState(null);
   const [panel, setPanel] = useState("overview"); // overview | verification | edit | password | donation | delete
 
   useEffect(() => {
     const restore = async () => {
-      const token = localStorage.getItem("raktsetu_donor_token");
+      const token = localStorage.getItem("bloodbridge_donor_token");
       if (!token) { setCheckingSession(false); return; }
       try {
         const me = await api("/donors/me", {}, token);
         setProfile(me);
         setDonorToken(token);
       } catch {
-        localStorage.removeItem("raktsetu_donor_token");
+        localStorage.removeItem("bloodbridge_donor_token");
         setDonorToken(null);
       } finally {
         setCheckingSession(false);
@@ -1980,12 +1980,12 @@ function DonorView({ notify }) {
   }, []);
 
   const logIn = (token, donor) => {
-    localStorage.setItem("raktsetu_donor_token", token);
+    localStorage.setItem("bloodbridge_donor_token", token);
     setDonorToken(token);
     setProfile(donor);
   };
   const logOut = () => {
-    localStorage.removeItem("raktsetu_donor_token");
+    localStorage.removeItem("bloodbridge_donor_token");
     setDonorToken(null);
     setProfile(null);
   };
@@ -2613,20 +2613,20 @@ function RareDonorView({ notify }) {
   const [busy, setBusy] = useState(false);
   const [checkingSession, setCheckingSession] = useState(true);
 
-  const [donorToken, setDonorToken] = useState(() => localStorage.getItem("raktsetu_rare_token"));
+  const [donorToken, setDonorToken] = useState(() => localStorage.getItem("bloodbridge_rare_token"));
   const [profile, setProfile] = useState(null);
   const [panel, setPanel] = useState("overview");
 
   useEffect(() => {
     const restore = async () => {
-      const token = localStorage.getItem("raktsetu_rare_token");
+      const token = localStorage.getItem("bloodbridge_rare_token");
       if (!token) { setCheckingSession(false); return; }
       try {
         const me = await api("/rare-donors/me", {}, token);
         setProfile(me);
         setDonorToken(token);
       } catch {
-        localStorage.removeItem("raktsetu_rare_token");
+        localStorage.removeItem("bloodbridge_rare_token");
         setDonorToken(null);
       } finally { setCheckingSession(false); }
     };
@@ -2634,12 +2634,12 @@ function RareDonorView({ notify }) {
   }, []);
 
   const logIn = (token, donor) => {
-    localStorage.setItem("raktsetu_rare_token", token);
+    localStorage.setItem("bloodbridge_rare_token", token);
     setDonorToken(token);
     setProfile(donor);
   };
   const logOut = () => {
-    localStorage.removeItem("raktsetu_rare_token");
+    localStorage.removeItem("bloodbridge_rare_token");
     setDonorToken(null);
     setProfile(null);
   };
@@ -3389,8 +3389,8 @@ function DeleteRareProfileSection({ donor, donorToken, notify, onDeleted }) {
 }
 
 function RequestsBoard({ notify, requests, refreshAll }) {
-  const [requester, setRequester] = useState(() => { try { return JSON.parse(localStorage.getItem("raktmitra_requester") || "null"); } catch { return null; } });
-  const [token, setToken] = useState(() => localStorage.getItem("raktmitra_requester_token") || "");
+  const [requester, setRequester] = useState(() => { try { return JSON.parse(localStorage.getItem("bloodbridge_requester") || "null"); } catch { return null; } });
+  const [token, setToken] = useState(() => localStorage.getItem("bloodbridge_requester_token") || "");
   const [authMode, setAuthMode] = useState("register");
   const [authRecovery, setAuthRecovery] = useState("form");
   const [recovery, setRecovery] = useState({ phone: "", otp: "", newPassword: "", confirmPassword: "" });
@@ -3424,8 +3424,8 @@ function RequestsBoard({ notify, requests, refreshAll }) {
   useEffect(() => { refreshLive(); }, []);
   useEffect(() => { if (token) refreshMine(token); }, [token]);
   const logout = () => {
-    localStorage.removeItem("raktmitra_requester_token");
-    localStorage.removeItem("raktmitra_requester");
+    localStorage.removeItem("bloodbridge_requester_token");
+    localStorage.removeItem("bloodbridge_requester");
     setToken(""); setRequester(null); setMine([]); setView("live"); setAuthMode("login"); setAuthStage("form");
   };
   const sendOtp = async () => {
@@ -3449,8 +3449,8 @@ function RequestsBoard({ notify, requests, refreshAll }) {
           ? { name: auth.name, phone: auth.phone, password: auth.password, otp: auth.otp, district: auth.district || auth.city, city: auth.district || auth.city, state: auth.state }
           : { phone: auth.phone, password: auth.password })
       });
-      localStorage.setItem("raktmitra_requester_token", result.token);
-      localStorage.setItem("raktmitra_requester", JSON.stringify(result.requester));
+      localStorage.setItem("bloodbridge_requester_token", result.token);
+      localStorage.setItem("bloodbridge_requester", JSON.stringify(result.requester));
       setToken(result.token); setRequester(result.requester); setView("dashboard");
       notify(authMode === "register" ? "Requester account created. Welcome to your dashboard!" : "Welcome back!");
       await refreshLive();
@@ -3698,7 +3698,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
   const [showOrganizerForm, setShowOrganizerForm] = useState(false);
   const [proposals, setProposals] = useState([]);
   const [proposalBusy, setProposalBusy] = useState(false);
-  const [organizerToken, setOrganizerToken] = useState(() => localStorage.getItem("raktmitra_camp_organizer_token") || "");
+  const [organizerToken, setOrganizerToken] = useState(() => localStorage.getItem("bloodbridge_camp_organizer_token") || "");
   const [organizerProfile, setOrganizerProfile] = useState(null);
   const [organizerProposals, setOrganizerProposals] = useState([]);
   const [organizerAuthMode, setOrganizerAuthMode] = useState("login");
@@ -3721,7 +3721,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
       setOrganizerProposals(Array.isArray(data) ? data : []);
     } catch (err) {
       if (/session expired|login required/i.test(err.message)) {
-        localStorage.removeItem("raktmitra_camp_organizer_token");
+        localStorage.removeItem("bloodbridge_camp_organizer_token");
         setOrganizerToken(""); setOrganizerProfile(null); setOrganizerProposals([]);
       } else notify(err.message);
     }
@@ -3732,13 +3732,13 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
     api("/camp-organizers/me", {}, organizerToken).then(profile => {
       if (live) { setOrganizerProfile(profile); setOrganizerAuthForm(f => ({ ...f, organizationType: profile.organizationType || f.organizationType, organizationName: profile.organizationName || f.organizationName, organizerName: profile.organizerName || f.organizerName, phone: profile.phone || f.phone, email: profile.email || f.email })); setOrganizerForm(f => ({ ...f, organizationType: profile.organizationType || f.organizationType, organizationName: profile.organizationName || f.organizationName, organizerName: profile.organizerName || f.organizerName, phone: profile.phone || f.phone, email: profile.email || f.email })); }
     }).catch(() => {
-      if (live) { localStorage.removeItem("raktmitra_camp_organizer_token"); setOrganizerToken(""); setOrganizerProfile(null); }
+      if (live) { localStorage.removeItem("bloodbridge_camp_organizer_token"); setOrganizerToken(""); setOrganizerProfile(null); }
     });
     loadOrganizerProposals(organizerToken);
     return () => { live = false; };
   }, [organizerToken]);
   const acceptOrganizerSession = (result) => {
-    localStorage.setItem("raktmitra_camp_organizer_token", result.token);
+    localStorage.setItem("bloodbridge_camp_organizer_token", result.token);
     setOrganizerToken(result.token); setOrganizerProfile(result.organizer);
     setOrganizerAuthStage("form"); setOrganizerAuthMode("login");
     setOrganizerAuthForm(f => ({ ...f, organizationType: result.organizer.organizationType || f.organizationType, organizationName: result.organizer.organizationName || f.organizationName, organizerName: result.organizer.organizerName || f.organizerName, phone: result.organizer.phone || f.phone, email: result.organizer.email || f.email, password: "", confirmPassword: "", otp: "" }));
@@ -3794,7 +3794,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
     } catch (err) { notify(err.message); } finally { setOrganizerAuthBusy(false); }
   };
   const logoutCampOrganizer = () => {
-    localStorage.removeItem("raktmitra_camp_organizer_token");
+    localStorage.removeItem("bloodbridge_camp_organizer_token");
     setOrganizerToken(""); setOrganizerProfile(null); setOrganizerProposals([]);
     setShowOrganizerForm(false); setOrganizerAuthMode("login"); setOrganizerAuthStage("form");
     notify("Logged out of camp organizer portal.");
@@ -4429,7 +4429,7 @@ function AdvancedOperationsPanel({ adminToken, notify }) {
   {tab==='risk'&&<Card hover={false}><h3>Human review flags</h3><p style={{fontSize:12,color:COLORS.textMuted}}>Similar requests in seven days; flags never automatically block or deny care.</p>{risk?.flaggedGroups?.length?risk.flaggedGroups.map((r,i)=><div key={i} style={{padding:12,marginBottom:8,background:'rgba(255,59,84,.07)',borderRadius:10}}><Pill tone={r.risk==='High review priority'?'warn':'info'}>{r.risk}</Pill><p>{r.reason}</p><small>{r.count} requests · {r.requestIds.map(x=>String(x).slice(-6)).join(', ')}</small></div>):<p>No repeated patterns flagged.</p>}</Card>}
   {tab==='resilience'&&<Card hover={false}><h3>Blood network what-if simulator</h3><form onSubmit={simulate}><Field label='Extra demand units'><input type='number' min='0' max='100000' style={field} value={scenario.extraDemandUnits} onChange={e=>setScenario({...scenario,extraDemandUnits:e.target.value})}/></Field><Field label='Horizon days'><input type='number' min='1' max='30' style={field} value={scenario.days} onChange={e=>setScenario({...scenario,days:e.target.value})}/></Field><Field label='Close a blood bank (optional)'><select style={field} value={scenario.closedBloodBankId} onChange={e=>setScenario({...scenario,closedBloodBankId:e.target.value})}><option value=''>No closure</option>{banks.map(b=><option key={b._id} value={b._id}>{b.name} — {b.city}</option>)}</select></Field><button style={glowBtn} disabled={busy}>Run scenario</button></form>{simulation&&<table><thead><tr><th>Group</th><th>Available</th><th>Demand</th><th>Gap</th></tr></thead><tbody>{simulation.results.map(r=><tr key={r.group}><td>{r.group}</td><td>{r.availableUnits}</td><td>{r.projectedTotalDemand}</td><td>{r.projectedGap}</td></tr>)}</tbody></table>}</Card>}
   {tab==='audit'&&<Card hover={false}><h3>Operations audit trail</h3>{audit.map(a=><p key={a._id} style={{fontSize:12,borderBottom:'1px solid '+COLORS.panelBorder,paddingBottom:8}}>{new Date(a.occurredAt||a.createdAt).toLocaleString()} · <b>{a.action}</b> · {a.actor} · {a.resourceType} {String(a.resourceId||'').slice(-6)}</p>)}</Card>}
-  {qrUnit&&<div className="raktsetu-qr-dialog" role="dialog" aria-modal="true" style={{position:'fixed',inset:0,zIndex:1000,background:'rgba(0,0,0,.82)',display:'flex',alignItems:'center',justifyContent:'center',padding:20}}><Card hover={false} style={{maxWidth:360,width:'100%',textAlign:'center',background:'#fff',color:'#111'}}><button onClick={()=>setQrUnit(null)} style={{...ghostBtn,float:'right',color:'#111',borderColor:'#ddd'}}>Close</button><div style={{clear:'both'}}/><h3 style={{margin:'8px 0'}}>BloodBridge Blood Unit</h3><div style={{fontWeight:700,fontSize:17}}>{qrUnit.unitCode}</div><div style={{fontSize:13,margin:'5px 0 16px'}}>{qrUnit.group} · {qrUnit.component}</div><QRCodeSVG value={window.location.origin+'/?trace='+encodeURIComponent(qrUnit.unitCode)} size={220} level="M" includeMargin={true}/><p style={{fontSize:12,color:'#444'}}>Scan to open BloodBridge with this trace code. Admin sign-in is required to view the audit history.</p><button style={{...glowBtn,justifyContent:'center'}} onClick={()=>window.print()}>Print QR label</button></Card></div>}
+  {qrUnit&&<div className="bloodbridge-qr-dialog" role="dialog" aria-modal="true" style={{position:'fixed',inset:0,zIndex:1000,background:'rgba(0,0,0,.82)',display:'flex',alignItems:'center',justifyContent:'center',padding:20}}><Card hover={false} style={{maxWidth:360,width:'100%',textAlign:'center',background:'#fff',color:'#111'}}><button onClick={()=>setQrUnit(null)} style={{...ghostBtn,float:'right',color:'#111',borderColor:'#ddd'}}>Close</button><div style={{clear:'both'}}/><h3 style={{margin:'8px 0'}}>BloodBridge Blood Unit</h3><div style={{fontWeight:700,fontSize:17}}>{qrUnit.unitCode}</div><div style={{fontSize:13,margin:'5px 0 16px'}}>{qrUnit.group} · {qrUnit.component}</div><QRCodeSVG value={window.location.origin+'/?trace='+encodeURIComponent(qrUnit.unitCode)} size={220} level="M" includeMargin={true}/><p style={{fontSize:12,color:'#444'}}>Scan to open BloodBridge with this trace code. Admin sign-in is required to view the audit history.</p><button style={{...glowBtn,justifyContent:'center'}} onClick={()=>window.print()}>Print QR label</button></Card></div>}
   </div>;
 }
 
@@ -4474,7 +4474,7 @@ function OperationsGrowthPanel({ adminToken, notify }) {
     }
     const csv = rows.map(row => row.map(v => '"' + String(v ?? "").replace(/"/g, '""') + '"').join(",")).join("\n");
     const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
-    const a = document.createElement("a"); a.href = url; a.download = "raktsetu-operations-report.csv"; a.click(); URL.revokeObjectURL(url);
+    const a = document.createElement("a"); a.href = url; a.download = "bloodbridge-operations-report.csv"; a.click(); URL.revokeObjectURL(url);
   };
   const btn = (label, id) => <button key={id} onClick={() => setTab(id)} style={tab === id ? glowBtn : ghostBtn}>{label}</button>;
   const alertList = (title, kind, items, labelFn) => <div style={{ marginTop: 14 }}><h4>{title} ({items?.length || 0})</h4>{items?.length ? items.map((item, i) => <div key={item._id || item.unitCode || i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap", borderBottom: "1px solid " + COLORS.panelBorder, padding: "9px 0" }}><span style={{ fontSize: 12 }}>{labelFn(item)}</span><button style={{ ...ghostBtn, padding: "5px 9px" }} onClick={() => acknowledge(kind, item._id || item.unitCode || String(i))}>Acknowledge</button></div>) : <p style={{ color: COLORS.textMuted, fontSize: 12 }}>No current items.</p>}</div>;
@@ -4493,15 +4493,15 @@ function OperationsGrowthPanel({ adminToken, notify }) {
 
 
 function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
-  const [donorToken] = useState(() => localStorage.getItem("raktsetu_donor_token") || "");
+  const [donorToken] = useState(() => localStorage.getItem("bloodbridge_donor_token") || "");
   const [section, setSection] = useState(() => adminMode ? "forecast" : "booking");
-  const [language, setLanguage] = useState(() => localStorage.getItem("raktsetu_language") || "en");
+  const [language, setLanguage] = useState(() => localStorage.getItem("bloodbridge_language") || "en");
   const [banks, setBanks] = useState([]);
   const [camps, setCamps] = useState([]);
   const [bankSearch, setBankSearch] = useState("");
   const visibleBanks = useMemo(() => { const query = bankSearch.trim().toLowerCase(); return banks.filter(bank => !query || [bank.name, bank.city, bank.state, bank.address].some(value => String(value || "").toLowerCase().includes(query))); }, [banks, bankSearch]);
   const [booking, setBooking] = useState({ donorName: "", contact: "", bloodBankName: "", scheduledAt: "", notes: "" });
-  const [queued, setQueued] = useState(() => { try { return JSON.parse(localStorage.getItem("raktsetu_booking_queue") || "[]"); } catch { return []; } });
+  const [queued, setQueued] = useState(() => { try { return JSON.parse(localStorage.getItem("bloodbridge_booking_queue") || "[]"); } catch { return []; } });
   const [donors, setDonors] = useState([]);
   const [retention, setRetention] = useState([]);
   const [forecast, setForecast] = useState(null);
@@ -4549,13 +4549,13 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
     const sync = async () => {
       if (!navigator.onLine) return;
       let pending = [];
-      try { pending = JSON.parse(localStorage.getItem("raktsetu_booking_queue") || "[]"); } catch { pending = []; }
+      try { pending = JSON.parse(localStorage.getItem("bloodbridge_booking_queue") || "[]"); } catch { pending = []; }
       const remaining = [];
       for (const item of pending) {
         try { await api("/features/appointments/book", { method: "POST", body: JSON.stringify(item) }, donorToken); }
         catch { remaining.push(item); }
       }
-      localStorage.setItem("raktsetu_booking_queue", JSON.stringify(remaining));
+      localStorage.setItem("bloodbridge_booking_queue", JSON.stringify(remaining));
       setQueued(remaining);
       if (pending.length && !remaining.length) notify("Saved offline appointment request(s) synced.");
     };
@@ -4576,7 +4576,7 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
     const payload = { ...booking, scheduledAt: new Date(booking.scheduledAt).toISOString(), clientReference };
     const saveForRetry = () => {
       const next = [...queued, payload];
-      localStorage.setItem("raktsetu_booking_queue", JSON.stringify(next)); setQueued(next);
+      localStorage.setItem("bloodbridge_booking_queue", JSON.stringify(next)); setQueued(next);
       setBooking({ donorName: "", contact: "", bloodBankName: "", scheduledAt: "", notes: "" });
     };
     if (!navigator.onLine) {
@@ -4648,7 +4648,7 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
     {!adminMode && <div style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "14px 0" }}>
       {button(labels.booking, "booking")}{button(labels.map, "map")}
       <label style={{ display: "flex", alignItems: "center", gap: 7, color: COLORS.textMuted, fontSize: 12, marginLeft: "auto" }}>Language
-        <select aria-label="Interface language" style={{ ...field, width: 130, padding: "7px 8px" }} value={language} onChange={e => { setLanguage(e.target.value); localStorage.setItem("raktsetu_language", e.target.value); }}>
+        <select aria-label="Interface language" style={{ ...field, width: 130, padding: "7px 8px" }} value={language} onChange={e => { setLanguage(e.target.value); localStorage.setItem("bloodbridge_language", e.target.value); }}>
           <option value="en">English</option><option value="hi">हिन्दी</option>
         </select>
       </label>
@@ -4703,7 +4703,7 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
       </div>{!banks.length && <p style={{ color: COLORS.textMuted, marginTop: 12 }}>No verified public blood-bank locations are currently available. Search the map area or add verified blood-bank records through the registration workflow.</p>}{banks.length > 0 && !visibleBanks.length && <p style={{ color: COLORS.textMuted }}>No blood banks match that search.</p>}
     </Card>}
 
-    {adminMode && section === "forecast" && <Card hover={false}><h3>Trend-adjusted shortage forecast</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>{forecast?.disclaimer || "Loading forecast…"}</p>{forecast?.forecast?.map(f => <div key={f.group} style={{ display: "grid", gridTemplateColumns: "52px 1fr 90px", gap: 12, padding: "10px 0", alignItems: "center", borderBottom: "1px solid " + COLORS.panelBorder }}><b>{f.group}</b><div style={{ fontSize: 12, color: COLORS.textMuted }}>{f.availableUnits} available · 7-day demand {f.projected7DayDemand} · trend {f.trendDirection}</div><Pill tone={f.shortageRisk === "High" ? "warn" : f.shortageRisk === "Moderate" ? "info" : "good"}>{f.shortageRisk}</Pill></div>)}<button style={{ ...ghostBtn, marginTop: 12 }} onClick={() => downloadJson("raktsetu-shortage-forecast.json", forecast)}>Export forecast JSON</button></Card>}
+    {adminMode && section === "forecast" && <Card hover={false}><h3>Trend-adjusted shortage forecast</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>{forecast?.disclaimer || "Loading forecast…"}</p>{forecast?.forecast?.map(f => <div key={f.group} style={{ display: "grid", gridTemplateColumns: "52px 1fr 90px", gap: 12, padding: "10px 0", alignItems: "center", borderBottom: "1px solid " + COLORS.panelBorder }}><b>{f.group}</b><div style={{ fontSize: 12, color: COLORS.textMuted }}>{f.availableUnits} available · 7-day demand {f.projected7DayDemand} · trend {f.trendDirection}</div><Pill tone={f.shortageRisk === "High" ? "warn" : f.shortageRisk === "Moderate" ? "info" : "good"}>{f.shortageRisk}</Pill></div>)}<button style={{ ...ghostBtn, marginTop: 12 }} onClick={() => downloadJson("bloodbridge-shortage-forecast.json", forecast)}>Export forecast JSON</button></Card>}
 
     {adminMode && section === "notifications" && <Card hover={false}><h3>Donor notifications</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Saves an in-app notification. SMS is intentionally deferred for a later release. Email and push are optional and require a configured trusted HTTPS webhook. Do not include sensitive patient details.</p><form onSubmit={sendNotice}>
       <Field label="Donor"><select required style={field} value={notice.donorId} onChange={e => setNotice({ ...notice, donorId: e.target.value })}><option value="">Choose donor</option>{donors.map(d => <option key={d._id} value={d._id}>{d.name} · {d.group}</option>)}</select></Field>
@@ -4719,13 +4719,13 @@ function FeatureHubPanel({ adminMode = false, adminToken, notify }) {
 
     {adminMode && section === "integrations" && <Card hover={false}><h3>Hospital integrations and service readiness</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Partner API keys and scopes remain managed in Advanced Operations. No secrets are displayed here.</p>{integration?.integrations?.map(item => <div key={item.name} style={{ padding: 12, margin: "8px 0", borderRadius: 10, border: "1px solid " + COLORS.panelBorder }}><div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}><b>{item.name}</b><Pill tone={item.configured ? "good" : "warn"}>{item.configured ? "Ready" : "Needs configuration"}</Pill></div><p style={{ color: COLORS.textMuted, fontSize: 12, marginBottom: 0 }}>{item.detail}</p></div>)}<button style={{ ...ghostBtn, marginTop: 10 }} onClick={loadAdmin}>Refresh integration status</button></Card>}
 
-    {adminMode && section === "analytics" && <Card hover={false}><h3>Aggregate decision support</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Counts only; this panel does not export donor or recipient names.</p>{analytics && <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: 10 }}>{[["Request groups", analytics.requests?.length || 0], ["Inventory states", analytics.inventory?.length || 0], ["Donor verification states", analytics.donors?.length || 0], ["Appointment states", analytics.appointments?.length || 0], ["Units expiring in 7 days", analytics.expiringSoon || 0]].map(x => <Card key={x[0]} hover={false} style={{ padding: 12 }}><div style={{ fontSize: 11, color: COLORS.textMuted }}>{x[0]}</div><b style={{ fontSize: 24 }}>{x[1]}</b></Card>)}</div>}<button style={{ ...ghostBtn, marginTop: 12 }} onClick={() => downloadJson("raktsetu-aggregate-analytics.json", analytics)}>Export aggregate JSON</button></Card>}
+    {adminMode && section === "analytics" && <Card hover={false}><h3>Aggregate decision support</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Counts only; this panel does not export donor or recipient names.</p>{analytics && <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: 10 }}>{[["Request groups", analytics.requests?.length || 0], ["Inventory states", analytics.inventory?.length || 0], ["Donor verification states", analytics.donors?.length || 0], ["Appointment states", analytics.appointments?.length || 0], ["Units expiring in 7 days", analytics.expiringSoon || 0]].map(x => <Card key={x[0]} hover={false} style={{ padding: 12 }}><div style={{ fontSize: 11, color: COLORS.textMuted }}>{x[0]}</div><b style={{ fontSize: 24 }}>{x[1]}</b></Card>)}</div>}<button style={{ ...ghostBtn, marginTop: 12 }} onClick={() => downloadJson("bloodbridge-aggregate-analytics.json", analytics)}>Export aggregate JSON</button></Card>}
 
     {adminMode && section === "risk" && <Card hover={false}><h3>Human-reviewed request risk indicators</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>{risk?.disclaimer || "Loading indicators…"}</p>{risk?.flaggedGroups?.map((r, i) => <div key={i} style={{ padding: 12, marginBottom: 8, borderRadius: 10, background: "rgba(255,59,84,.07)" }}><Pill tone={r.priority === "High review priority" ? "warn" : "info"}>{r.priority}</Pill><p>{r.group} · {r.city} · {r.count} open requests · {r.totalUnits} unit(s)</p><small>{r.reason}</small></div>)}{!risk?.flaggedGroups?.length && <p>No repeated patterns currently require review.</p>}</Card>}
 
     {adminMode && section === "import" && <Card hover={false}><h3>Hospital / blood-bank inventory import</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Paste a JSON array of unit records. Every imported unit starts quarantined and pending screening. Use an existing bloodBankId from your database.</p><form onSubmit={importStock}><Field label="Inventory JSON"><textarea required rows={10} style={{ ...field, fontFamily: "monospace", fontSize: 11 }} value={importText} onChange={e => setImportText(e.target.value)} /></Field><button disabled={busy} style={glowBtn}>Validate and import</button></form></Card>}
 
-    {adminMode && section === "backup" && <><Card hover={false}><h3>Backup and disaster recovery</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Automated database backups require a configured trusted HTTPS webhook or managed MongoDB backups. No donor records are exported by this control.</p><button disabled={busy} style={glowBtn} onClick={triggerBackup}>Trigger configured backup</button><button style={{ ...ghostBtn, marginLeft: 8 }} onClick={() => downloadJson("raktsetu-feature-diagnostics.json", diagnostics)}>Export safe diagnostics</button></Card><Card hover={false} style={{ marginTop: 12 }}><h3>Security and runtime diagnostics</h3>{diagnostics && <><p>Runtime: {diagnostics.runtime} · Node {diagnostics.nodeVersion} · Database: {diagnostics.databaseState}</p><div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>{Object.entries(diagnostics.configured || {}).map(([key, value]) => <Pill key={key} tone={value ? "good" : "warn"}>{key}: {value ? "configured" : "not configured"}</Pill>)}</div><p style={{ fontSize: 12, color: COLORS.textMuted }}>{diagnostics.message}</p></>}</Card></>}
+    {adminMode && section === "backup" && <><Card hover={false}><h3>Backup and disaster recovery</h3><p style={{ fontSize: 12, color: COLORS.textMuted }}>Automated database backups require a configured trusted HTTPS webhook or managed MongoDB backups. No donor records are exported by this control.</p><button disabled={busy} style={glowBtn} onClick={triggerBackup}>Trigger configured backup</button><button style={{ ...ghostBtn, marginLeft: 8 }} onClick={() => downloadJson("bloodbridge-feature-diagnostics.json", diagnostics)}>Export safe diagnostics</button></Card><Card hover={false} style={{ marginTop: 12 }}><h3>Security and runtime diagnostics</h3>{diagnostics && <><p>Runtime: {diagnostics.runtime} · Node {diagnostics.nodeVersion} · Database: {diagnostics.databaseState}</p><div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>{Object.entries(diagnostics.configured || {}).map(([key, value]) => <Pill key={key} tone={value ? "good" : "warn"}>{key}: {value ? "configured" : "not configured"}</Pill>)}</div><p style={{ fontSize: 12, color: COLORS.textMuted }}>{diagnostics.message}</p></>}</Card></>}
   </div>;
 }
 
@@ -4747,7 +4747,7 @@ function DonorDigitalIdPanel({ donor, donorToken, notify }) {
     try {
       const result = await api("/features/donor/certificate/" + appointmentId, {}, donorToken);
       const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
-      const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(result.certificateId)} · BloodBridge</title><style>body{font-family:Arial,sans-serif;background:#f2f4f7;padding:32px;color:#18212b}.certificate{max-width:850px;margin:auto;background:#fff;border:8px double #a51d37;padding:48px;text-align:center}.eyebrow{letter-spacing:4px;color:#a51d37;font-weight:bold}.name{font-size:34px;margin:28px 0 12px}.rule{height:1px;background:#ddd;margin:26px 0}.meta{display:flex;justify-content:space-between;gap:20px;text-align:left;flex-wrap:wrap}.small{font-size:12px;color:#606b78;line-height:1.6}.print{margin:20px auto;display:block;padding:12px 18px;background:#a51d37;color:white;border:0;border-radius:8px;font-size:15px}@media print{body{background:white;padding:0}.certificate{border:8px double #a51d37;max-width:none}.print{display:none}}</style></head><body><main class="certificate"><div class="eyebrow">RAKTSETU · DONATION RECORD</div><h1>Appointment Completion Certificate</h1><p>This record acknowledges the completed appointment of</p><div class="name">${escapeHtml(result.donorName)}</div><p>Blood group: <strong>${escapeHtml(result.bloodGroup || "Not recorded")}</strong></p><p>at <strong>${escapeHtml(result.organization)}</strong></p><div class="rule"></div><div class="meta"><div><strong>Certificate reference</strong><br>${escapeHtml(result.certificateId)}</div><div><strong>Recorded completion</strong><br>${escapeHtml(new Date(result.completedAt).toLocaleString())}</div><div><strong>Record issued</strong><br>${escapeHtml(new Date(result.issuedAt).toLocaleString())}</div></div><p class="small" style="margin-top:28px">${escapeHtml(result.statement)}</p><p class="small">This is a BloodBridge digital record, not a government ID or a replacement for an official blood-bank certificate.</p><button class="print" onclick="window.print()">Print / Save as PDF</button></main></body></html>`;
+      const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(result.certificateId)} · BloodBridge</title><style>body{font-family:Arial,sans-serif;background:#f2f4f7;padding:32px;color:#18212b}.certificate{max-width:850px;margin:auto;background:#fff;border:8px double #a51d37;padding:48px;text-align:center}.eyebrow{letter-spacing:4px;color:#a51d37;font-weight:bold}.name{font-size:34px;margin:28px 0 12px}.rule{height:1px;background:#ddd;margin:26px 0}.meta{display:flex;justify-content:space-between;gap:20px;text-align:left;flex-wrap:wrap}.small{font-size:12px;color:#606b78;line-height:1.6}.print{margin:20px auto;display:block;padding:12px 18px;background:#a51d37;color:white;border:0;border-radius:8px;font-size:15px}@media print{body{background:white;padding:0}.certificate{border:8px double #a51d37;max-width:none}.print{display:none}}</style></head><body><main class="certificate"><div class="eyebrow">BLOODBRIDGE · DONATION RECORD</div><h1>Appointment Completion Certificate</h1><p>This record acknowledges the completed appointment of</p><div class="name">${escapeHtml(result.donorName)}</div><p>Blood group: <strong>${escapeHtml(result.bloodGroup || "Not recorded")}</strong></p><p>at <strong>${escapeHtml(result.organization)}</strong></p><div class="rule"></div><div class="meta"><div><strong>Certificate reference</strong><br>${escapeHtml(result.certificateId)}</div><div><strong>Recorded completion</strong><br>${escapeHtml(new Date(result.completedAt).toLocaleString())}</div><div><strong>Record issued</strong><br>${escapeHtml(new Date(result.issuedAt).toLocaleString())}</div></div><p class="small" style="margin-top:28px">${escapeHtml(result.statement)}</p><p class="small">This is a BloodBridge digital record, not a government ID or a replacement for an official blood-bank certificate.</p><button class="print" onclick="window.print()">Print / Save as PDF</button></main></body></html>`;
       const blob = new Blob([html], { type: "text/html;charset=utf-8" });
       const url = URL.createObjectURL(blob); const a = document.createElement("a");
       a.href = url; a.download = result.certificateId + ".html"; a.click(); URL.revokeObjectURL(url);
@@ -4824,7 +4824,7 @@ function AdminLoginGate({ onLogin, notify }) {
 
 function BloodBankPortal({ notify }) {
   const [mode, setMode] = useState("login");
-  const [token, setToken] = useState(() => localStorage.getItem("raktmitra_bloodbank_token") || "");
+  const [token, setToken] = useState(() => localStorage.getItem("bloodbridge_bloodbank_token") || "");
   const [bank, setBank] = useState(null);
   const [busy, setBusy] = useState(false);
   const [login, setLogin] = useState({ email: "", password: "" });
@@ -4845,10 +4845,10 @@ function BloodBankPortal({ notify }) {
     const stock = await api("/registered-blood-banks/inventory", { headers: { Authorization: "Bearer " + t } });
     setInventory(stock.inventory || []);
   };
-  useEffect(() => { if (token) refresh().catch((e) => { localStorage.removeItem("raktmitra_bloodbank_token"); setToken(""); setBank(null); notify(e.message); }); }, []);
+  useEffect(() => { if (token) refresh().catch((e) => { localStorage.removeItem("bloodbridge_bloodbank_token"); setToken(""); setBank(null); notify(e.message); }); }, []);
   const loginBank = async (e) => {
     e.preventDefault(); setBusy(true);
-    try { const result = await api("/registered-blood-banks/login", { method: "POST", body: JSON.stringify(login) }); localStorage.setItem("raktmitra_bloodbank_token", result.token); setToken(result.token); await refresh(result.token); notify("Welcome to your blood bank dashboard."); }
+    try { const result = await api("/registered-blood-banks/login", { method: "POST", body: JSON.stringify(login) }); localStorage.setItem("bloodbridge_bloodbank_token", result.token); setToken(result.token); await refresh(result.token); notify("Welcome to your blood bank dashboard."); }
     catch (e) { notify(e.message); } finally { setBusy(false); }
   };
   const registerBank = async (e) => {
@@ -4899,10 +4899,10 @@ function BloodBankPortal({ notify }) {
     try { await auth("/inventory", { method: "POST", body: JSON.stringify({ ...entry, units: Number(entry.units), collectedAt: entry.collectedAt || null, expiresAt: entry.expiresAt || null }) }); await refresh(); notify("Inventory entry saved."); }
     catch (e) { notify(e.message); } finally { setBusy(false); }
   };
-  const logout = () => { localStorage.removeItem("raktmitra_bloodbank_token"); setToken(""); setBank(null); setInventory([]); };
+  const logout = () => { localStorage.removeItem("bloodbridge_bloodbank_token"); setToken(""); setBank(null); setInventory([]); };
   const field = (label, key, type = "text", required = true) => <label style={{ display: "grid", gap: 6, color: COLORS.textMuted, fontSize: 12, fontWeight: 600 }}>{label}<input required={required} type={key === "phone" ? "tel" : type} inputMode={key === "phone" ? "numeric" : undefined} pattern={key === "phone" ? "[6-9][0-9]{9}" : undefined} maxLength={key === "phone" ? 10 : undefined} value={form[key]} onChange={(e) => setForm({ ...form, [key]: key === "phone" ? sanitizeIndianMobile(e.target.value) : e.target.value })} style={inputStyle} /></label>;
   if (!token || !bank) return <div style={{ maxWidth: 960, margin: "0 auto" }}>
-    <div style={{ borderRadius: 22, padding: "26px 28px", background: "linear-gradient(120deg,#172f71,#244aa2)", color: "#fff", marginBottom: 22 }}><div style={{ fontSize: 12, opacity: .8, letterSpacing: 1 }}>RAKTMITRA • FACILITY PORTAL</div><h1 className="headline" style={{ margin: "10px 0 6px", fontSize: 30 }}>{mode === "register" ? "Blood Bank Registration" : "Blood Bank Login"}</h1><p style={{ margin: 0, opacity: .85, fontSize: 14 }}>Register your facility, verify your mobile with a demo OTP, and manage blood inventory after approval.</p></div>
+    <div style={{ borderRadius: 22, padding: "26px 28px", background: "linear-gradient(120deg,#172f71,#244aa2)", color: "#fff", marginBottom: 22 }}><div style={{ fontSize: 12, opacity: .8, letterSpacing: 1 }}>BLOODBRIDGE • FACILITY PORTAL</div><h1 className="headline" style={{ margin: "10px 0 6px", fontSize: 30 }}>{mode === "register" ? "Blood Bank Registration" : "Blood Bank Login"}</h1><p style={{ margin: 0, opacity: .85, fontSize: 14 }}>Register your facility, verify your mobile with a demo OTP, and manage blood inventory after approval.</p></div>
     <Card hover={false} style={{ maxWidth: 760, margin: "0 auto" }}>
       <div style={{ display: "flex", gap: 8, marginBottom: 22, flexWrap: "wrap" }}><button onClick={() => { setMode("login"); setBankRecoveryStage("form"); }} style={mode === "login" ? glowBtn : ghostBtn}>Login</button><button onClick={() => { setMode("register"); setRegisterStage("form"); }} style={mode === "register" ? glowBtn : ghostBtn}>Register facility</button></div>
       {mode === "login" ? (bankRecoveryStage === "form" ? <form onSubmit={loginBank} style={{ display: "grid", gap: 16 }}>

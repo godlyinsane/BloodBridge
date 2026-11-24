@@ -1,7 +1,7 @@
-/* RaktMitra low-network shell cache.
+/* BloodBridge low-network shell cache.
  * Cache only public static app files. Never cache API responses or donor/patient data.
  */
-const CACHE_NAME = "raktmitra-shell-v1";
+const CACHE_NAME = "bloodbridge-shell-v1";
 const SHELL_URLS = ["/", "/manifest.json"];
 
 self.addEventListener("install", (event) => {
@@ -36,7 +36,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
       .then((keys) => Promise.all(
-        keys.filter((key) => key.startsWith("raktsetu-shell-") && key !== CACHE_NAME)
+        keys.filter((key) => key.startsWith("bloodbridge-shell-") && key !== CACHE_NAME)
           .map((key) => caches.delete(key))
       ))
       .then(() => self.clients.claim())

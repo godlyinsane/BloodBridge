@@ -1,6 +1,6 @@
-# RaktSetu — one Vercel project
+# BloodBridge — one Vercel project
 
-This branch preserves the existing frontend and backend folders but exposes both through one Vercel project and one domain.
+This branch preserves the frontend and backend folders but exposes both through one Vercel project and one domain.
 
 ## Vercel settings
 
@@ -8,7 +8,7 @@ This branch preserves the existing frontend and backend folders but exposes both
 - Framework Preset: Other.
 - Install Command: `npm install`.
 - Build Command: `npm run build`.
-- Output Directory: `raktsetufrontend/build`.
+- Output Directory: `BloodBridgeFrontend/dist`.
 
 ## Required environment variables
 

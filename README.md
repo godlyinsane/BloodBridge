@@ -47,12 +47,12 @@ During medical emergencies, finding compatible blood quickly can be life-or-deat
 2. **Install dependencies:**
    ```bash
    npm install
-   npm --prefix raktsetufrontend install
-   npm --prefix raktsetuBackend/raktsetu-backend install
+   npm --prefix BloodBridgeFrontend install
+   npm --prefix BloodBridgeBackend/bloodbridge-backend install
    ```
 
 3. **Configure Environment Variables:**
-   Create `.env` in `raktsetuBackend/raktsetu-backend/`:
+   Create `.env` in `BloodBridgeBackend/bloodbridge-backend/`:
    ```env
    PORT=5000
    MONGO_URI=your_mongodb_connection_string
@@ -62,7 +62,7 @@ During medical emergencies, finding compatible blood quickly can be life-or-deat
 
 4. **Run the frontend development server:**
    ```bash
-   npm --prefix raktsetufrontend run dev
+   npm --prefix BloodBridgeFrontend run dev
    ```
 
 5. **Run the backend development server:**

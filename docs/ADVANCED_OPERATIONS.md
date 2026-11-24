@@ -1,6 +1,6 @@
-# RaktSetu advanced operations API
+# BloodBridge advanced operations API
 
-These endpoints provide the advanced operations workspace and API foundations for RaktSetu. They are not a substitute for clinical review, validated blood-bank software, road-routing providers, or a security assessment.
+These endpoints provide the advanced operations workspace and API foundations for BloodBridge. They are not a substitute for clinical review, validated blood-bank software, road-routing providers, or a security assessment.
 
 ## Admin endpoints
 All require `Authorization: Bearer <admin-token>`.
@@ -21,7 +21,7 @@ All require `Authorization: Bearer <admin-token>`.
 - `PATCH /api/advanced/integrations/keys/:id/revoke` — revoke an integration key immediately.
 
 ## Hospital / blood-bank integration endpoints
-Send `x-raktsetu-api-key: <key>`:
+Send `x-bloodbridge-api-key: <key>`:
 
 - `GET /api/advanced/integrations/requests` requires `requests:read`.
 - `GET /api/advanced/integrations/inventory` requires `inventory:read`.

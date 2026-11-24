@@ -63,7 +63,7 @@ test("appointment booking validation accepts valid contact/reference and rejects
   const now = new Date("2026-01-01T00:00:00.000Z");
   assert.equal(isValidBookingContact("+91 98765 43210"), true);
   assert.equal(isValidBookingContact("abc"), false);
-  assert.equal(isValidClientReference("raktsetu_retry_123456"), true);
+  assert.equal(isValidClientReference("bloodbridge_retry_123456"), true);
   assert.equal(isValidClientReference("bad"), false);
   assert.equal(isValidAppointmentWindow("2026-02-01T00:00:00.000Z", now), true);
   assert.equal(isValidAppointmentWindow("2025-12-31T00:00:00.000Z", now), false);

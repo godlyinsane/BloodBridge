@@ -2,7 +2,7 @@ const crypto = require("crypto");
 const GROUPS = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"];
 
 function appointmentRateLimitFingerprint(address, secret) {
-  return crypto.createHmac("sha256", String(secret || "raktsetu-rate-limit-fallback"))
+  return crypto.createHmac("sha256", String(secret || "bloodbridge-rate-limit-fallback"))
     .update(String(address || "unknown").slice(0, 100))
     .digest("hex");
 }

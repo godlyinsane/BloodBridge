@@ -1,4 +1,4 @@
-# RaktSetu dependency security review
+# BloodBridge dependency security review
 
 This project uses GitHub Actions to audit the frontend and backend dependency trees.
 

@@ -201,7 +201,7 @@ router.post("/logistics/route", requireAdmin, async (req, res) => {
 // 5) Scoped machine-to-machine integration. Provision keys out-of-band; raw keys are never stored.
 function requireIntegration(scope) {
   return async (req, res, next) => {
-    const raw = req.headers["x-raktsetu-api-key"];
+    const raw = req.headers["x-bloodbridge-api-key"];
     if (typeof raw !== "string" || raw.length < 32 || raw.length > 256) return res.status(401).json({ error: "Integration API key required." });
     try {
       const key = await IntegrationKey.findOne({ keyHash: hashKey(raw), active: true }).select("+keyHash");

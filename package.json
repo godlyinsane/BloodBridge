@@ -1,11 +1,11 @@
 {
-  "name": "raktmitra",
+  "name": "bloodbridge",
   "version": "1.0.0",
   "private": true,
-  "description": "RaktMitra full-stack application deployment entry point",
+  "description": "BloodBridge full-stack application deployment entry point",
   "scripts": {
-    "build": "npm --prefix raktsetufrontend install && npm --prefix raktsetufrontend run build",
-    "start": "npm --prefix raktsetuBackend/raktsetu-backend start"
+    "build": "npm --prefix BloodBridgeFrontend install && npm --prefix BloodBridgeFrontend run build",
+    "start": "npm --prefix BloodBridgeBackend/bloodbridge-backend start"
   },
   "engines": {
     "node": ">=20"

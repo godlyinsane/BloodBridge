@@ -1,7 +1,7 @@
 {
-  "name": "raktmitra-backend",
+  "name": "bloodbridge-backend",
   "version": "1.0.0",
-  "description": "Backend API for RaktMitra - Automated Donor-Recipient Matching System",
+  "description": "Backend API for BloodBridge - Automated Donor-Recipient Matching System",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
