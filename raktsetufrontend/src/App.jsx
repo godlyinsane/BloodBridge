@@ -5,7 +5,7 @@ import {
   CheckCircle2, AlertTriangle, Send, Search, ArrowRight, Radio,
   Sparkles, Gauge, Clock3, UserCheck, ShieldAlert, Shield,
   Phone, MessageCircle, Share2, Calendar, Building2, Plus, Trash2, Timer,
-  Lock, LogOut, Upload, FileText, XCircle, BellRing, ChevronRight, Info, Mail,
+  Lock, LogOut, Upload, FileText, XCircle, BellRing, ChevronRight, Info, Mail, Navigation,
 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { QRCodeSVG } from "qrcode.react";
@@ -1132,12 +1132,171 @@ function Home({ donors, requests, goTo }) {
             <span style={{display:"inline-flex",alignItems:"center",gap:8}}><MapPin size={18} color={COLORS.good}/> Location-based discovery</span>
           </div>
         </motion.div>
-        <motion.div className="hero-stats" style={{position:"relative",display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}} initial={{opacity:0,x:24}} animate={{opacity:1,x:0}} transition={{duration:.6,delay:.12}}>
-          <StatCard label="Registered donors" value={donors.length} icon={<Users size={20} color={COLORS.cyan}/>}/>
-          <StatCard label="Verified donors" value={verified} icon={<ShieldCheck size={20} color={COLORS.cyan}/>}/>
-          <StatCard label="Available verified donors" value={available} icon={<Activity size={20} color={COLORS.good}/>}/>
-          <StatCard label="Open requests" value={open} icon={<AlertTriangle size={20} color={COLORS.crimson}/>}/>
-          <div style={{gridColumn:"1 / -1",fontSize:13.5,lineHeight:1.65,color:COLORS.textMuted,padding:"2px 4px"}}>Live totals from the records currently loaded by BloodBridge. Availability can change; please confirm details before travelling.</div>
+        <motion.div
+          className="hero-graphic-card"
+          initial={{ opacity: 0, scale: 0.96, x: 24 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.65, delay: 0.12 }}
+          style={{
+            position: "relative",
+            background: "linear-gradient(145deg, rgba(22, 27, 38, 0.85) 0%, rgba(12, 15, 22, 0.95) 100%)",
+            border: `1.5px solid rgba(255, 59, 84, 0.25)`,
+            borderRadius: 24,
+            padding: "26px 24px",
+            boxShadow: "0 20px 50px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.12)",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            gap: 18,
+          }}
+        >
+          {/* Subtle Ambient Radial Glow */}
+          <div
+            style={{
+              position: "absolute",
+              top: "-40%",
+              right: "-30%",
+              width: "280px",
+              height: "280px",
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(255,59,84,0.18) 0%, transparent 70%)",
+              pointerEvents: "none",
+            }}
+          />
+
+          {/* Top Live Status Indicator Header */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ position: "relative", display: "flex", width: 12, height: 12 }}>
+                <span style={{ position: "absolute", display: "inline-flex", width: "100%", height: "100%", borderRadius: "50%", background: "#34D399", opacity: 0.75, animation: "ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite" }} />
+                <span style={{ position: "relative", display: "inline-flex", borderRadius: "50%", width: 12, height: 12, background: "#10B981" }} />
+              </span>
+              <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: 0.8, textTransform: "uppercase", color: "#34D399" }}>
+                Active Regional Network
+              </span>
+            </div>
+            <span style={{ fontSize: 12.5, fontWeight: 700, color: COLORS.textMuted, background: "rgba(255,255,255,0.05)", padding: "4px 10px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)" }}>
+              100 KM RADIUS
+            </span>
+          </div>
+
+          {/* Graphical Visualizer: Animated Pulse Radar / Compass */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 16,
+              background: "rgba(10, 12, 18, 0.7)",
+              borderRadius: 18,
+              padding: "18px 20px",
+              border: "1px solid rgba(255,255,255,0.06)",
+              position: "relative",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, rgba(255,59,84,0.2), rgba(34,211,238,0.15))",
+                  border: "1.5px solid rgba(255,59,84,0.4)",
+                  display: "grid",
+                  placeItems: "center",
+                  flexShrink: 0,
+                  boxShadow: "0 0 20px rgba(255,59,84,0.25)",
+                }}
+              >
+                <Activity size={26} color={COLORS.crimson} />
+              </div>
+              <div>
+                <h4 style={{ fontSize: 17.5, fontWeight: 800, margin: "0 0 4px", color: "#F3F4F6" }}>
+                  Verified Hospital &amp; Bank Network
+                </h4>
+                <p style={{ fontSize: 13.5, color: COLORS.textMuted, margin: 0, lineHeight: 1.5 }}>
+                  32+ Certified Facilities across Sehore, Bhopal, Ashta, Raisen &amp; Hoshangabad.
+                </p>
+              </div>
+            </div>
+
+            {/* Visual Pill Matrix: Live Group Support */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, paddingTop: 6 }}>
+              {["O+", "A+", "B+", "AB+", "O-", "A-", "B-", "AB-"].map((grp) => (
+                <div
+                  key={grp}
+                  style={{
+                    background: "rgba(255,255,255,0.035)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: 10,
+                    padding: "7px 4px",
+                    textAlign: "center",
+                    fontSize: 13.5,
+                    fontWeight: 800,
+                    color: grp.includes("-") ? "#ff8293" : "#F3F4F6",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 5,
+                  }}
+                >
+                  <Droplet size={12} color={grp.includes("-") ? COLORS.crimson : COLORS.cyan} fill="currentColor" />
+                  <span>{grp}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Action Links inside the card */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 2 }}>
+            <button
+              type="button"
+              onClick={() => goTo("camps")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                background: "linear-gradient(135deg, rgba(255,59,84,0.18), rgba(255,59,84,0.06))",
+                border: "1px solid rgba(255,59,84,0.35)",
+                color: "#ff7d90",
+                padding: "12px 14px",
+                borderRadius: 12,
+                fontSize: 14.5,
+                fontWeight: 750,
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <Building2 size={16} />
+              <span>Browse 32+ Facilities</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo("nearest")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                background: "linear-gradient(135deg, rgba(34,211,238,0.18), rgba(34,211,238,0.06))",
+                border: "1px solid rgba(34,211,238,0.35)",
+                color: "#38bdf8",
+                padding: "12px 14px",
+                borderRadius: 12,
+                fontSize: 14.5,
+                fontWeight: 750,
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <Navigation size={16} />
+              <span>Find Nearest Bank</span>
+            </button>
+          </div>
+
+          <div style={{ fontSize: 13, color: COLORS.textMuted, textAlign: "center", lineHeight: 1.5, marginTop: -4 }}>
+            Direct Google Maps navigation &amp; telephone contact verified for emergencies.
+          </div>
         </motion.div>
       </section>
 
