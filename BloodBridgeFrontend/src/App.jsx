@@ -368,11 +368,92 @@ function CountUp({ value, duration = 900 }) {
 }
 
 // =================================================================
+// Route definitions & URL synchronization
+// =================================================================
+const ROUTE_MAP = {
+  "": "home",
+  "/": "home",
+  "home": "home",
+  "facilities": "camps",
+  "camps": "camps",
+  "nearestbank": "nearest",
+  "nearest": "nearest",
+  "available": "available",
+  "listings": "available",
+  "requests": "requests",
+  "emergency": "requests",
+  "donor": "donor",
+  "bloodbank": "bloodbank",
+  "hospital": "bloodbank",
+  "features": "services",
+  "services": "services",
+  "about": "about",
+  "privacy": "privacy",
+  "terms": "terms",
+};
+
+const TAB_TO_PATH = {
+  home: "/",
+  camps: "/facilities",
+  nearest: "/nearestbank",
+  available: "/available",
+  requests: "/requests",
+  donor: "/donor",
+  bloodbank: "/bloodbank",
+  services: "/features",
+  about: "/about",
+  privacy: "/privacy",
+  terms: "/terms",
+};
+
+function getTabFromLocation() {
+  if (typeof window === "undefined" || !window.location) return "home";
+  const segment = (window.location.pathname || "/").toLowerCase().split("/").filter(Boolean)[0] || "";
+  return ROUTE_MAP[segment] || "home";
+}
+
+// =================================================================
 // Main component
 // =================================================================
 export default function BloodBridgeApp() {
-  const [tab, setTab] = useState("home");
-  useEffect(()=>{if(tab!=="requests")return;const timer=window.setTimeout(()=>{document.getElementById("blood-request-sos")?.scrollIntoView({behavior:"smooth",block:"start"});},140);return()=>window.clearTimeout(timer);},[tab]);
+  const [tab, setTabState] = useState(() => getTabFromLocation());
+
+  const setTab = useCallback((destination) => {
+    if (typeof destination === "function") {
+      setTabState((prev) => {
+        const next = destination(prev);
+        const targetPath = TAB_TO_PATH[next] || "/";
+        if (typeof window !== "undefined" && window.location.pathname !== targetPath) {
+          window.history.pushState({ tab: next }, "", targetPath);
+        }
+        return next;
+      });
+      return;
+    }
+    const targetPath = TAB_TO_PATH[destination] || "/";
+    if (typeof window !== "undefined" && window.location.pathname !== targetPath) {
+      window.history.pushState({ tab: destination }, "", targetPath);
+    }
+    setTabState(destination);
+  }, []);
+
+  useEffect(() => {
+    const onPopState = () => {
+      const nextTab = getTabFromLocation();
+      setTabState(nextTab);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  useEffect(() => {
+    if (tab !== "requests") return;
+    const timer = window.setTimeout(() => {
+      document.getElementById("blood-request-sos")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 140);
+    return () => window.clearTimeout(timer);
+  }, [tab]);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState(() => localStorage.getItem("bloodbridge-theme") || "dark");
   const toggleTheme = () => setTheme((current) => {
@@ -729,6 +810,111 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       .theme-light .bloodbridge-footer-credit strong {
         color: #0f172a;
       }
+
+      /* Light mode comprehensive overrides */
+      .theme-light {
+        color-scheme: light;
+      }
+      .theme-light, [data-theme="light"] {
+        --text: #0f172a;
+        --text-muted: #64748b;
+      }
+      .theme-light body, .theme-light html {
+        background-color: #f8fafc !important;
+        color: #0f172a !important;
+      }
+      .theme-light .headline, .theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4 {
+        color: #0f172a !important;
+      }
+      .theme-light p {
+        color: #475569 !important;
+      }
+
+      /* Home hero and floating blood cells in light mode */
+      .theme-light .bc-wrap {
+        background: radial-gradient(120% 90% at 50% 40%, #fee2e2 0%, #fef2f2 55%, #f8fafc 100%) !important;
+      }
+      .theme-light .bc-vignette {
+        background: radial-gradient(120% 90% at 50% 40%, transparent 40%, rgba(255, 255, 255, 0.7) 100%) !important;
+      }
+      .theme-light .hero-graphic-card {
+        background: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08) !important;
+      }
+      .theme-light .hero-graphic-card [style*="rgba(10, 12, 18, 0.7)"],
+      .theme-light .hero-graphic-card [style*="rgba(10,12,18,0.7)"] {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+      }
+      .theme-light .hero-graphic-card [style*="rgba(255,255,255,0.035)"],
+      .theme-light .hero-graphic-card [style*="rgba(255, 255, 255, 0.035)"] {
+        background: #ffffff !important;
+        border-color: #cbd5e1 !important;
+      }
+
+      /* Blood facilities directory banner & metric cards in light mode */
+      .theme-light [style*="#11151b"],
+      .theme-light [style*="background: rgb(17, 21, 27)"],
+      .theme-light [style*="background: #11151b"] {
+        background: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+      }
+
+      /* Nearest blood bank map containers & call buttons in light mode */
+      .theme-light [style*="#0f172a"],
+      .theme-light [style*="background: rgb(15, 23, 42)"],
+      .theme-light [style*="background: #0f172a"] {
+        background: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        color: #0f172a !important;
+      }
+      .theme-light [style*="background: linear-gradient(135deg, rgba(2,132,199,0.12), rgba(15,23,42,0.6))"],
+      .theme-light [style*="background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), rgba(15, 23, 42, 0.6))"] {
+        background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), #ffffff) !important;
+        border-color: #bae6fd !important;
+      }
+      .theme-light a[style*="background: rgba(255,255,255,0.08)"],
+      .theme-light a[style*="background: rgba(255, 255, 255, 0.08)"] {
+        background: #f1f5f9 !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+      }
+
+      /* High-contrast text overrides for light mode */
+      .theme-light [style*="color: rgb(243, 244, 246)"],
+      .theme-light [style*="color: #f3f4f6"],
+      .theme-light [style*="color: #F3F4F6"] {
+        color: #0f172a !important;
+      }
+      .theme-light [style*="color: rgb(209, 213, 219)"],
+      .theme-light [style*="color: #d1d5db"] {
+        color: #334155 !important;
+      }
+
+      .theme-light [style*="background: rgba(20, 22, 28, 0.7)"],
+      .theme-light [style*="background: rgba(255, 255, 255, 0.045)"],
+      .theme-light [style*="background: rgba(16, 20, 30, 0.75)"],
+      .theme-light [style*="background: rgba(18, 22, 32, 0.75)"],
+      .theme-light .quick-card-inner {
+        background: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 4px 18px -4px rgba(0, 0, 0, 0.07) !important;
+        color: #0f172a !important;
+      }
+      .theme-light .quick-card-inner h3 {
+        color: #0f172a !important;
+      }
+      .theme-light input, .theme-light select, .theme-light textarea {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+      }
+      .theme-toggle-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      }
     `}</style>
   );
 
@@ -777,12 +963,21 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   }
 
   return (
-    <div style={{
-      fontFamily: "Inter, -apple-system, sans-serif", minHeight: "100vh", color: COLORS.text,
-      background: `radial-gradient(1200px 600px at 15% -10%, rgba(255,59,84,0.10), transparent 60%),
-                   radial-gradient(1000px 500px at 90% 0%, rgba(34,211,238,0.08), transparent 60%),
-                   ${COLORS.bg}`,
-    }}>
+    <div
+      className={theme === "light" ? "theme-light" : "theme-dark"}
+      data-theme={theme}
+      style={{
+        fontFamily: "Inter, -apple-system, sans-serif",
+        minHeight: "100vh",
+        color: theme === "light" ? "#0f172a" : COLORS.text,
+        background: theme === "light"
+          ? "#f8fafc"
+          : `radial-gradient(1200px 600px at 15% -10%, rgba(255,59,84,0.10), transparent 60%),
+             radial-gradient(1000px 500px at 90% 0%, rgba(34,211,238,0.08), transparent 60%),
+             ${COLORS.bg}`,
+        transition: "background 0.25s ease, color 0.25s ease",
+      }}
+    >
       {fontImport}
       <NetworkStatusBanner />
       <EmergencyBanner
@@ -793,32 +988,107 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         }}
       />
 
-      {/* Responsive BloodBridge navigation */}
+      {/* Responsive BloodBridge navigation with Dark/Light toggle */}
       <div className={`bloodbridge-topbar ${theme === "light" ? "theme-light" : "theme-dark"} ${mobileMenuOpen ? "mobile-menu-open" : ""}`} data-theme={theme} style={{ borderBottom: `1px solid ${theme === "light" ? "#e5e7eb" : COLORS.panelBorder}`, position: "sticky", top: 0, zIndex: 20, background: theme === "light" ? "#ffffff" : "#0d0f14" }}>
         <div className="bloodbridge-topbar-inner" style={{ maxWidth: 1240, margin: "0 auto", padding: "12px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
           <button aria-label="BloodBridge home" onClick={() => { setTab("home"); setMobileMenuOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: 0, border: 0, background: "transparent", color: theme === "light" ? "#171923" : "#fff", cursor: "pointer", textAlign: "left" }}>
             <img src="/bloodbridge-logo.svg" alt="BloodBridge logo" width="42" height="42" style={{ display: "block", objectFit: "contain", flexShrink: 0 }} />
             <span><span className="headline" style={{ display: "block", fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>BloodBridge</span><span style={{ display: "block", fontSize: 9.5, color: theme === "light" ? "#667085" : COLORS.textMuted, letterSpacing: .45, marginTop: 4 }}>BLOOD DONOR NETWORK</span></span>
           </button>
-          <button type="button" className="bloodbridge-menu-toggle" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen(v => !v)} style={{ display:"none", alignItems:"center", justifyContent:"center", width:44, height:44, borderRadius:12, border:`1px solid ${theme === "light" ? "#d0d5dd" : COLORS.panelBorder}`, color:theme === "light"?"#344054":"#fff", background:"transparent", cursor:"pointer", flexShrink:0 }}><span style={{fontSize:25,lineHeight:1}}>{mobileMenuOpen ? "×" : "☰"}</span></button>
+          
           <nav className="bloodbridge-nav" aria-label="Main navigation" style={{ display: "flex", alignItems: "center", gap: 20, flex: "1 1 auto", justifyContent: "center", minWidth: 0 }}>
-            {[[ "home", "Home" ], [ "camps", "Blood Facilities (Need Blood)" ], [ "nearest", "Nearest Blood Bank" ]].map(([k, label]) => (
-              <button
+            {[
+              [ "home", "Home", "/" ],
+              [ "camps", "Blood Facilities", "/facilities" ],
+              [ "nearest", "Nearest Blood Bank", "/nearestbank" ]
+            ].map(([k, label, href]) => (
+              <a
                 key={k}
-                type="button"
+                href={href}
                 className={`navbtn ${tab === k ? "active" : ""}`}
-                onClick={() => { setTab(k); setMobileMenuOpen(false); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setTab(k);
+                  setMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 style={{
                   background: "transparent",
                   border: 0,
+                  textDecoration: "none",
                   color: theme === "light" ? (tab === k ? "#a51d32" : "#4b5563") : undefined,
                   touchAction: "manipulation",
+                  cursor: "pointer",
                 }}
               >
                 {label}
-              </button>
+              </a>
             ))}
           </nav>
+
+          {/* Topbar Right Controls: Theme Toggle & Mobile Menu */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {/* Dark mode & light mode toggle option on the top */}
+            <button
+              type="button"
+              className="theme-toggle-btn"
+              onClick={toggleTheme}
+              aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+              title={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 7,
+                height: 38,
+                padding: "0 13px",
+                borderRadius: 20,
+                border: `1px solid ${theme === "light" ? "#d0d5dd" : "rgba(255,255,255,0.14)"}`,
+                background: theme === "light" ? "#f1f5f9" : "rgba(255,255,255,0.06)",
+                color: theme === "light" ? "#1e293b" : "#f1f5f9",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer",
+                transition: "all 0.18s ease",
+                userSelect: "none",
+              }}
+            >
+              {theme === "light" ? (
+                <>
+                  <span style={{ fontSize: 14 }}>🌙</span>
+                  <span style={{ fontSize: 12.5, letterSpacing: 0.2 }}>Dark</span>
+                </>
+              ) : (
+                <>
+                  <span style={{ fontSize: 14 }}>☀️</span>
+                  <span style={{ fontSize: 12.5, letterSpacing: 0.2 }}>Light</span>
+                </>
+              )}
+            </button>
+
+            <button
+              type="button"
+              className="bloodbridge-menu-toggle"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen(v => !v)}
+              style={{
+                display: "none",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 40,
+                height: 40,
+                borderRadius: 12,
+                border: `1px solid ${theme === "light" ? "#d0d5dd" : COLORS.panelBorder}`,
+                color: theme === "light" ? "#344054" : "#fff",
+                background: "transparent",
+                cursor: "pointer",
+                flexShrink: 0,
+              }}
+            >
+              <span style={{ fontSize: 24, lineHeight: 1 }}>{mobileMenuOpen ? "×" : "☰"}</span>
+            </button>
+          </div>
         </div>
       </div>
 
