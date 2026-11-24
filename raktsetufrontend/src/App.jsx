@@ -942,7 +942,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
               {/* Minimal Apple Pill Tagline */}
               <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 18, flexWrap: "wrap", fontSize: 13.5, color: muted }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><CheckCircle2 size={16} color={COLORS.good} /> 100% Free Open Utility</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><ShieldCheck size={16} color={COLORS.cyan} /> 32+ Verified Centers</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><ShieldCheck size={16} color={COLORS.cyan} /> 48+ Verified Centers</span>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><Heart size={16} color={COLORS.crimson} /> Community First</span>
               </div>
             </motion.div>
@@ -1510,7 +1510,7 @@ function Home({ donors, requests, goTo }) {
                   Verified Hospital &amp; Bank Network
                 </h4>
                 <p style={{ fontSize: 13.5, color: COLORS.textMuted, margin: 0, lineHeight: 1.5 }}>
-                  32+ Certified Facilities across Sehore, Bhopal, Ashta, Raisen &amp; Hoshangabad.
+                  48+ Certified Facilities across Sehore, Bhopal, Raisen, Vidisha, Rajgarh, Shajapur, Narmadapuram &amp; Dewas.
                 </p>
               </div>
             </div>
@@ -1564,7 +1564,7 @@ function Home({ donors, requests, goTo }) {
               }}
             >
               <Building2 size={16} />
-              <span>Browse 32+ Facilities</span>
+              <span>Browse 48+ Facilities</span>
             </button>
             <button
               type="button"
@@ -3708,6 +3708,9 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
   const [organizerForm, setOrganizerForm] = useState({ organizationType: "College / University", organizationName: "", organizerName: "", phone: "", email: "", title: "", location: "", city: "", state: "Madhya Pradesh", postalCode: "", date: "", startTime: "09:00", endTime: "13:00", expectedDonors: "50", preferredBloodBank: "", arrangement: "Venue provided by organizer", refreshments: "Organizer will arrange", notes: "" });
   const [form, setForm] = useState({ title: "", organizer: "", location: "", district: "", city: "", state: "", date: "", contactPhone: "" });
   const [bankForm, setBankForm] = useState({ name: "", district: "", city: "", state: "", phone: "", address: "", lat: "", lng: "", openingHours: "" });
+  const [bankDistrictFilter, setBankDistrictFilter] = useState("ALL");
+  const [bankCategoryFilter, setBankCategoryFilter] = useState("ALL");
+  const [bankServiceFilter, setBankServiceFilter] = useState("ALL");
 
   const loadProposals = useCallback(async () => { if (!adminToken) { setProposals([]); return; } try { const data = await api("/camps/proposals/admin", {}, adminToken); setProposals(Array.isArray(data) ? data : []); } catch (err) { notify(err.message); } }, [adminToken, notify]);
 
@@ -3878,7 +3881,46 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
     const db = dateValue(b.date) ? dateValue(b.date).getTime() : Number.MAX_SAFE_INTEGER;
     return campFilter === "past" ? db - da : da - db;
   });
-  const filteredBanks = banks.filter((b) => [b.name, b.city, b.state, b.phone, b.address, b.openingHours].filter(Boolean).join(" ").toLowerCase().includes(query.trim().toLowerCase()));
+  const DISTRICT_OPTIONS = ["ALL", "Sehore", "Bhopal", "Raisen", "Vidisha", "Rajgarh", "Shajapur", "Narmadapuram", "Dewas"];
+  const CATEGORY_OPTIONS = [
+    { id: "ALL", label: "All Types" },
+    { id: "Government", label: "Government" },
+    { id: "Private", label: "Private" },
+    { id: "Charitable", label: "Charitable" },
+    { id: "Red Cross", label: "Red Cross" },
+    { id: "Blood Storage Unit", label: "Storage Units" },
+  ];
+  const SERVICE_OPTIONS = [
+    { id: "ALL", label: "All Services" },
+    { id: "NEED", label: "Need Blood (Sec A)" },
+    { id: "DONATE", label: "Want to Donate (Sec B)" },
+  ];
+
+  const filteredBanks = banks.filter((b) => {
+    if (bankDistrictFilter !== "ALL" && String(b.district || b.city || "").toLowerCase() !== bankDistrictFilter.toLowerCase()) {
+      return false;
+    }
+    if (bankCategoryFilter !== "ALL") {
+      const cat = String(b.category || "").toLowerCase();
+      if (bankCategoryFilter === "Government" && !cat.includes("government")) return false;
+      if (bankCategoryFilter === "Private" && !cat.includes("private")) return false;
+      if (bankCategoryFilter === "Charitable" && !cat.includes("charitable")) return false;
+      if (bankCategoryFilter === "Red Cross" && !cat.includes("red cross")) return false;
+      if (bankCategoryFilter === "Blood Storage Unit" && !cat.includes("storage")) return false;
+    }
+    if (bankServiceFilter !== "ALL") {
+      const srv = String(b.serviceCategory || "").toLowerCase();
+      if (bankServiceFilter === "NEED" && !srv.includes("need")) return false;
+      if (bankServiceFilter === "DONATE" && !srv.includes("donate")) return false;
+    }
+    const q = query.trim().toLowerCase();
+    if (!q) return true;
+    return [b.name, b.city, b.district, b.state, b.phone, b.email, b.address, b.openingHours, b.category, b.facilityType, b.components, b.notes]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase()
+      .includes(q);
+  });
 
   const panel = { border: "1px solid rgba(255,255,255,0.09)", borderRadius: 14, background: "#11151b", boxShadow: "0 5px 18px rgba(0,0,0,0.12)" };
   const buttonStyle = (active) => ({ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 13px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : COLORS.textMuted, background: active ? "linear-gradient(135deg, " + COLORS.crimson + ", " + COLORS.crimsonDeep + ")" : "rgba(255,255,255,0.035)", border: active ? "1px solid rgba(255,90,110,0.35)" : "1px solid rgba(255,255,255,0.08)", boxShadow: active ? "0 8px 22px rgba(255,59,84,0.18)" : "none", textDecoration: "none" });
@@ -4146,37 +4188,200 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                 })}
               </div>)}
 
+        {directoryTab === "banks" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 18 }}>
+            {/* Filter Group 1: District Filter */}
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 900, color: COLORS.textMuted, marginRight: 4, letterSpacing: 0.8, textTransform: "uppercase" }}>
+                District:
+              </span>
+              {DISTRICT_OPTIONS.map((d) => {
+                const count = d === "ALL" ? banks.length : banks.filter(b => (b.district || b.city || "").toLowerCase() === d.toLowerCase()).length;
+                return (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() => setBankDistrictFilter(d)}
+                    style={{
+                      ...buttonStyle(bankDistrictFilter === d),
+                      padding: "6px 11px",
+                      fontSize: 12,
+                      borderRadius: 10,
+                    }}
+                  >
+                    {d === "ALL" ? `All Districts (${banks.length})` : `${d} (${count})`}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Filter Group 2: Type & Service Filter */}
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 900, color: COLORS.textMuted, marginRight: 4, letterSpacing: 0.8, textTransform: "uppercase" }}>
+                Type:
+              </span>
+              {CATEGORY_OPTIONS.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setBankCategoryFilter(c.id)}
+                  style={{
+                    ...buttonStyle(bankCategoryFilter === c.id),
+                    padding: "6px 11px",
+                    fontSize: 12,
+                    borderRadius: 10,
+                  }}
+                >
+                  {c.label}
+                </button>
+              ))}
+
+              <span style={{ width: 1, height: 18, background: "rgba(255,255,255,0.12)", margin: "0 6px" }} />
+
+              <span style={{ fontSize: 11, fontWeight: 900, color: COLORS.textMuted, marginRight: 4, letterSpacing: 0.8, textTransform: "uppercase" }}>
+                Service:
+              </span>
+              {SERVICE_OPTIONS.map((s) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => setBankServiceFilter(s.id)}
+                  style={{
+                    ...buttonStyle(bankServiceFilter === s.id),
+                    padding: "6px 11px",
+                    fontSize: 12,
+                    borderRadius: 10,
+                    background: bankServiceFilter === s.id
+                      ? "linear-gradient(135deg, #0284c7, #0369a1)"
+                      : "rgba(255,255,255,0.035)",
+                    borderColor: bankServiceFilter === s.id ? "#38bdf8" : "rgba(255,255,255,0.08)",
+                    color: bankServiceFilter === s.id ? "#ffffff" : COLORS.textMuted,
+                  }}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {directoryTab === "banks" && (banksLoading
           ? <div style={{ ...panel, padding: 34, textAlign: "center", color: COLORS.textMuted }}>Loading blood bank directory…</div>
           : filteredBanks.length === 0
             ? <div style={{ ...panel, padding: "40px 22px", textAlign: "center" }}>
                 <div style={{ width: 52, height: 52, borderRadius: 16, margin: "0 auto 13px", display: "grid", placeItems: "center", color: COLORS.cyan, background: "rgba(34,211,238,0.1)" }}><Building2 size={23} /></div>
-                <div style={{ fontSize: 17, fontWeight: 800 }}>{query ? "No blood banks match your search" : "No blood banks listed yet"}</div>
-                <p style={{ color: COLORS.textMuted, fontSize: 12.5, lineHeight: 1.7, maxWidth: 430, margin: "8px auto 0" }}>{query ? "Try a different bank name, district or state." : "Registered blood banks will appear here with their location and public contact details."}</p>
-                {query && <button onClick={() => setQuery("")} style={{ ...buttonStyle(false), marginTop: 15 }}>Clear search</button>}
+                <div style={{ fontSize: 17, fontWeight: 800 }}>{query || bankDistrictFilter !== "ALL" || bankCategoryFilter !== "ALL" ? "No blood banks match your filters" : "No blood banks listed yet"}</div>
+                <p style={{ color: COLORS.textMuted, fontSize: 12.5, lineHeight: 1.7, maxWidth: 430, margin: "8px auto 0" }}>Try choosing "All Districts" or clearing search keywords.</p>
+                {(query || bankDistrictFilter !== "ALL" || bankCategoryFilter !== "ALL" || bankServiceFilter !== "ALL") && (
+                  <button
+                    onClick={() => { setQuery(""); setBankDistrictFilter("ALL"); setBankCategoryFilter("ALL"); setBankServiceFilter("ALL"); }}
+                    style={{ ...buttonStyle(false), marginTop: 15 }}
+                  >
+                    Reset all filters
+                  </button>
+                )}
               </div>
             : <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 14 }} className="grid2">
                 {filteredBanks.map((b, i) => {
-                  const place = [b.address, b.city, b.state].filter(Boolean).join(", ");
-                  const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent([b.name, place].filter(Boolean).join(" "));
-                  return <motion.article key={b._id || b.name + i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(i * 0.04, 0.24) }}
-                    style={{ ...panel, padding: 19, display: "flex", flexDirection: "column", minWidth: 0 }}>
-                    <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                      <div style={{ width: 52, height: 52, minWidth: 52, borderRadius: 14, display: "grid", placeItems: "center", color: COLORS.cyan, background: "rgba(34,211,238,0.1)", border: "1px solid rgba(34,211,238,0.13)" }}><Building2 size={24} /></div>
-                      <div style={{ minWidth: 0, flex: 1 }}>
-                        <div style={{ fontSize: 18, lineHeight: 1.35, fontWeight: 800, overflowWrap: "anywhere" }}>{b.name}</div>
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 7, color: COLORS.cyan, fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.7 }}><ShieldCheck size={14} /> Directory listing</div>
+                  const place = [b.address, b.city, b.district, b.state].filter(Boolean).join(", ");
+                  const mapsUrl = (b.lat != null && b.lng != null)
+                    ? `https://www.google.com/maps/search/?api=1&query=${Number(b.lat).toFixed(6)},${Number(b.lng).toFixed(6)}`
+                    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([b.name, place].filter(Boolean).join(" "))}`;
+                  const phoneNumbers = String(b.phone || "").split(",").map(p => p.trim()).filter(Boolean);
+                  const isStorage = (b.category || "").toLowerCase().includes("storage") || (b.facilityType || "").toLowerCase().includes("storage");
+                  const isGov = (b.category || "").toLowerCase().includes("government");
+                  const isRedCross = (b.category || "").toLowerCase().includes("red cross");
+                  const isCharitable = (b.category || "").toLowerCase().includes("charitable");
+                  const badgeColor = isRedCross ? COLORS.crimson : isGov ? COLORS.cyan : isCharitable ? COLORS.good : isStorage ? "#f59e0b" : "#a855f7";
+
+                  return (
+                    <motion.article key={b._id || b.name + i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(i * 0.03, 0.24) }}
+                      style={{ ...panel, padding: 20, display: "flex", flexDirection: "column", minWidth: 0, gap: 14 }}>
+                      <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                        <div style={{ width: 48, height: 48, minWidth: 48, borderRadius: 12, display: "grid", placeItems: "center", color: badgeColor, background: badgeColor + "18", border: "1px solid " + badgeColor + "33" }}>
+                          <Building2 size={22} />
+                        </div>
+                        <div style={{ minWidth: 0, flex: 1 }}>
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 6 }}>
+                            <span style={{ fontSize: 10.5, fontWeight: 850, padding: "3px 8px", borderRadius: 6, background: badgeColor + "22", color: badgeColor, border: "1px solid " + badgeColor + "44", textTransform: "uppercase" }}>
+                              {b.category || "Hospital Blood Bank"}
+                            </span>
+                            {b.district && (
+                              <span style={{ fontSize: 10.5, fontWeight: 750, padding: "3px 8px", borderRadius: 6, background: "rgba(255,255,255,0.06)", color: "#d1d5db" }}>
+                                📍 {b.district}
+                              </span>
+                            )}
+                            <span style={{ fontSize: 10.5, fontWeight: 750, padding: "3px 8px", borderRadius: 6, background: isStorage ? "rgba(245,158,11,0.15)" : "rgba(52,211,153,0.15)", color: isStorage ? "#fbbf24" : "#34d399" }}>
+                              {isStorage ? "Need Blood Only (Issue)" : "Issue & Donation (Sec A & B)"}
+                            </span>
+                          </div>
+                          <h3 style={{ fontSize: 17.5, lineHeight: 1.35, fontWeight: 800, margin: 0, color: "#f3f4f6", overflowWrap: "anywhere" }}>
+                            {b.name}
+                          </h3>
+                          <div style={{ fontSize: 12, color: COLORS.textMuted, marginTop: 4 }}>
+                            {b.facilityType || "Blood Bank Facility"}
+                          </div>
+                        </div>
+                        {adminToken && <button onClick={() => removeBank(b._id)} aria-label={"Remove " + b.name} style={{ background: "transparent", border: 0, color: COLORS.textMuted, cursor: "pointer", padding: 5 }}><Trash2 size={16} /></button>}
                       </div>
-                      {adminToken && <button onClick={() => removeBank(b._id)} aria-label={"Remove " + b.name} style={{ background: "transparent", border: 0, color: COLORS.textMuted, cursor: "pointer", padding: 5 }}><Trash2 size={16} /></button>}
-                    </div>
-                    <div style={{ height: 1, background: "rgba(255,255,255,0.07)", margin: "16px 0 14px" }} />
-                    <div style={{ display: "flex", flexDirection: "column", gap: 12, color: COLORS.textMuted, fontSize: 14.5, lineHeight: 1.6 }}>
-                      <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}><MapPin size={17} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 2 }} /><span>{place || "Location not provided"}</span></div>
-                      {b.phone && <div style={{ display: "flex", gap: 10, alignItems: "center" }}><Phone size={16} color={COLORS.cyan} /><a href={"tel:" + String(b.phone).replace(/[^\d+]/g, "")} style={{ color: COLORS.text, textDecoration: "none", fontWeight: 650 }}>{b.phone}</a></div>}
-                      {b.openingHours && <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}><Clock3 size={16} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 2 }} /><span>{b.openingHours}</span></div>}
-                    </div>
-                    <div style={{ marginTop: "auto", paddingTop: 20 }}><a href={mapsUrl} target="_blank" rel="noreferrer" style={{ ...buttonStyle(false), textDecoration: "none", width: "100%", boxSizing: "border-box", fontSize: 14.5, padding: "11px 16px" }}><MapPin size={16} /> View location <ArrowRight size={15} /></a></div>
-                  </motion.article>;
+
+                      {b.components && (
+                        <div style={{ padding: "8px 12px", borderRadius: 8, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", fontSize: 12, color: "#9ca3af", display: "flex", gap: 6, alignItems: "center" }}>
+                          <Droplet size={13} color={COLORS.crimson} style={{ flexShrink: 0 }} />
+                          <span><strong>Components:</strong> {b.components}</span>
+                        </div>
+                      )}
+
+                      <div style={{ display: "flex", flexDirection: "column", gap: 10, color: COLORS.textMuted, fontSize: 13.5, lineHeight: 1.55 }}>
+                        <div style={{ display: "flex", gap: 9, alignItems: "flex-start" }}>
+                          <MapPin size={16} color={badgeColor} style={{ flexShrink: 0, marginTop: 2 }} />
+                          <span>{b.address || place || "Location not provided"}</span>
+                        </div>
+                        {phoneNumbers.length > 0 && (
+                          <div style={{ display: "flex", gap: 9, alignItems: "center", flexWrap: "wrap" }}>
+                            <Phone size={15} color={COLORS.good} style={{ flexShrink: 0 }} />
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                              {phoneNumbers.map((p, idx) => (
+                                <a key={idx} href={"tel:" + p.replace(/[^\d+]/g, "")} style={{ color: "#f3f4f6", textDecoration: "none", fontWeight: 700, padding: "2px 7px", borderRadius: 6, background: "rgba(255,255,255,0.06)" }}>
+                                  {p}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {b.email && (
+                          <div style={{ display: "flex", gap: 9, alignItems: "center" }}>
+                            <Mail size={15} color={COLORS.cyan} style={{ flexShrink: 0 }} />
+                            <a href={"mailto:" + b.email.split(",")[0].trim()} style={{ color: "#38bdf8", textDecoration: "none", fontSize: 12.5, overflowWrap: "anywhere" }}>
+                              {b.email}
+                            </a>
+                          </div>
+                        )}
+                        {b.openingHours && (
+                          <div style={{ display: "flex", gap: 9, alignItems: "center" }}>
+                            <Clock3 size={15} color={COLORS.cyan} style={{ flexShrink: 0 }} />
+                            <span>{b.openingHours}</span>
+                          </div>
+                        )}
+                        {b.notes && (
+                          <div style={{ fontSize: 12, color: "#9ca3af", fontStyle: "italic", borderLeft: "2px solid rgba(255,255,255,0.15)", paddingLeft: 8 }}>
+                            ℹ {b.notes}
+                          </div>
+                        )}
+                      </div>
+
+                      <div style={{ marginTop: "auto", paddingTop: 14, display: "grid", gridTemplateColumns: phoneNumbers.length > 0 ? "1fr 1fr" : "1fr", gap: 8 }}>
+                        {phoneNumbers.length > 0 && (
+                          <a href={"tel:" + phoneNumbers[0].replace(/[^\d+]/g, "")} style={{ ...buttonStyle(false), textDecoration: "none", boxSizing: "border-box", fontSize: 13, padding: "9px 12px", background: "rgba(52,211,153,0.12)", color: "#34d399", borderColor: "rgba(52,211,153,0.3)" }}>
+                            <Phone size={14} /> Call Direct
+                          </a>
+                        )}
+                        <a href={mapsUrl} target="_blank" rel="noreferrer" style={{ ...buttonStyle(false), textDecoration: "none", boxSizing: "border-box", fontSize: 13, padding: "9px 12px" }}>
+                          <MapPin size={14} /> Maps &amp; Directions
+                        </a>
+                      </div>
+                    </motion.article>
+                  );
                 })}
               </div>)}
       </section>

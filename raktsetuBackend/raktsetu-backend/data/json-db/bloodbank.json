@@ -1,45 +1,289 @@
 [
   {
+    "_id": "bank_sehore_01",
+    "name": "District Hospital Blood Bank Sehore",
+    "city": "Sehore",
+    "district": "Sehore",
+    "state": "Madhya Pradesh",
+    "phone": "07562-226737, 07562-226411, 9425650196",
+    "email": "dr_sudhir_shrivastava@yahoo.co.in, csurgeonsehmp@nic.in",
+    "address": "District Hospital, Bhopal-Indore Road (near Sewan River square), Sehore, MP 466001",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (licensed for whole human blood)",
+    "lat": 23.2032,
+    "lng": 77.0844,
+    "openingHours": "Open 24x7 (Round-the-clock emergency desk)",
+    "verified": true,
+    "notes": "Official District Blood Bank for Sehore. Government facility issuing whole blood and collecting voluntary donations.",
+    "inventory": [
+      {
+        "_id": "inv_56rzdad",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_2hkm3ju",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_3bvlutu",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_5u0fm8f",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_31egjrx",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_sehore_02",
+    "name": "Life Saver Blood Centre Sehore",
+    "city": "Sehore",
+    "district": "Sehore",
+    "state": "Madhya Pradesh",
+    "phone": "9926526010",
+    "email": "lsbcsehore23@gmail.com",
+    "address": "1st Floor, Plot No. 08, Sharda Colony, New Bus Stand, Sehore, MP 466001",
+    "category": "Charitable",
+    "facilityType": "Charitable Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.1985,
+    "lng": 77.0862,
+    "openingHours": "24x7 Emergency Services (Call first)",
+    "verified": true,
+    "notes": "Charitable / voluntary blood centre located near New Bus Stand in Sehore.",
+    "inventory": [
+      {
+        "_id": "inv_gpimpoc",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_o55df0i",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_rogq6i7",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_1nw0tju",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_2gxmkkg",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_6kswdrj",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_2yszyc0",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ru123d1",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_sehore_bilkisganj_mgu",
+    "name": "MGU Hospital Blood Centre (Mansarovar Global University)",
+    "city": "Bilkisganj",
+    "district": "Sehore",
+    "state": "Madhya Pradesh",
+    "phone": "9039480806, 9111777034",
+    "email": "mguhospital2019@gmail.com",
+    "address": "Mansarovar Global University Campus, Village Gadia / Ratnakhedi, Bilkisganj, Dist. Sehore, MP 466111",
+    "category": "Private",
+    "facilityType": "Medical College Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Emergency Transfusion",
+    "lat": 23.085,
+    "lng": 77.2415,
+    "openingHours": "Open 24x7 (In-house Hospital Blood Centre)",
+    "verified": true,
+    "notes": "Private medical college and university hospital blood centre serving Bilkisganj and rural Sehore.",
+    "inventory": [
+      {
+        "_id": "inv_64353r8",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_iqpvxul",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_prg4wah",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_lzg20jl",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_elvgqt8",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
     "_id": "bank_ashta_01",
     "name": "Civil Hospital Blood Storage Unit Ashta",
     "city": "Ashta",
     "district": "Sehore",
     "state": "Madhya Pradesh",
     "phone": "07560-242100",
+    "email": "chcashta@gmail.com",
     "address": "Indore-Bhopal State Highway, Ashta, Dist. Sehore, MP 466116 (Nearest Facility to VIT Bhopal Campus)",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Packed Red Blood Cells, Whole Blood)",
     "lat": 22.9602,
     "lng": 76.7196,
     "openingHours": "24x7 Emergency Services & Transfusion Facility",
+    "verified": true,
+    "notes": "Blood storage unit: stores and issues blood supplied by parent blood bank; does not collect donor donations.",
     "inventory": [
       {
-        "_id": "inv_bank_ashta_01_1",
+        "_id": "inv_ve2kopa",
         "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 12,
-        "batchCode": "MP-SEH-880",
+        "units": 8,
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.093Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_ashta_01_2",
+        "_id": "inv_06hb7ux",
         "group": "A+",
         "component": "Whole Blood",
-        "units": 6,
-        "batchCode": "MP-SEH-990",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_ashta_01_3",
+        "_id": "inv_7lswlut",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_g5wrukq",
         "group": "O-",
         "component": "Packed Red Blood Cells",
         "units": 2,
-        "batchCode": "MP-SEH-CR0",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_ashta_02",
@@ -48,166 +292,56 @@
     "district": "Sehore",
     "state": "Madhya Pradesh",
     "phone": "07560-244102",
+    "email": "chckothri@gmail.com",
     "address": "Near VIT Bhopal Main Gate, Kothri Kalan, Sehore, MP 466114",
+    "category": "Government",
+    "facilityType": "Community Health Centre",
+    "serviceCategory": "Need Blood (Emergency Care)",
+    "components": "Emergency First Response & Ambulance Unit",
     "lat": 23.0768,
     "lng": 76.8525,
     "openingHours": "24x7 First Response & Ambulance Emergency",
+    "verified": true,
+    "notes": "Nearest first-response and emergency healthcare point for Kothri Kalan campus village.",
     "inventory": [
       {
-        "_id": "inv_bank_ashta_02_1",
-        "group": "B+",
-        "component": "Packed Red Blood Cells",
-        "units": 15,
-        "batchCode": "MP-SEH-881",
-        "status": "available",
-        "updatedAt": "2026-11-23T09:02:33.095Z"
-      },
-      {
-        "_id": "inv_bank_ashta_02_2",
-        "group": "AB+",
-        "component": "Whole Blood",
-        "units": 8,
-        "batchCode": "MP-SEH-991",
-        "status": "available",
-        "updatedAt": "2026-11-23T09:32:33.095Z"
-      },
-      {
-        "_id": "inv_bank_ashta_02_3",
-        "group": "A-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-SEH-CR1",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
-  },
-  {
-    "_id": "bank_jawar_01",
-    "name": "Primary Health Centre Emergency Unit Jawar",
-    "city": "Jawar",
-    "district": "Sehore",
-    "state": "Madhya Pradesh",
-    "phone": "07560-261200",
-    "address": "Main Road, Jawar, Sehore District, MP 466118",
-    "lat": 22.9431,
-    "lng": 76.5186,
-    "openingHours": "24x7 Emergency Care & Outreach",
-    "inventory": [
-      {
-        "_id": "inv_bank_jawar_01_1",
-        "group": "O-",
-        "component": "Packed Red Blood Cells",
-        "units": 18,
-        "batchCode": "MP-SEH-882",
-        "status": "available",
-        "updatedAt": "2026-11-23T08:02:33.095Z"
-      },
-      {
-        "_id": "inv_bank_jawar_01_2",
-        "group": "A-",
-        "component": "Whole Blood",
-        "units": 10,
-        "batchCode": "MP-SEH-992",
-        "status": "available",
-        "updatedAt": "2026-11-23T09:02:33.095Z"
-      },
-      {
-        "_id": "inv_bank_jawar_01_3",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
-        "units": 2,
-        "batchCode": "MP-SEH-CR2",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
-  },
-  {
-    "_id": "bank_sehore_01",
-    "name": "District Hospital Blood Bank Sehore",
-    "city": "Sehore",
-    "district": "Sehore",
-    "state": "Madhya Pradesh",
-    "phone": "07562-224200",
-    "address": "District Hospital Complex, Hospital Road, Sehore, MP 466001",
-    "lat": 23.2031,
-    "lng": 77.0844,
-    "openingHours": "24x7 Round-the-clock Blood Bank",
-    "inventory": [
-      {
-        "_id": "inv_bank_sehore_01_1",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
-        "units": 21,
-        "batchCode": "MP-SEH-883",
-        "status": "available",
-        "updatedAt": "2026-11-23T07:02:33.095Z"
-      },
-      {
-        "_id": "inv_bank_sehore_01_2",
-        "group": "AB-",
-        "component": "Whole Blood",
-        "units": 12,
-        "batchCode": "MP-SEH-993",
-        "status": "available",
-        "updatedAt": "2026-11-23T08:32:33.095Z"
-      },
-      {
-        "_id": "inv_bank_sehore_01_3",
-        "group": "AB-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-SEH-CR3",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
-  },
-  {
-    "_id": "bank_sehore_02",
-    "name": "Life Saver Blood Center & Component Lab Sehore",
-    "city": "Sehore",
-    "district": "Sehore",
-    "state": "Madhya Pradesh",
-    "phone": "07562-227890",
-    "address": "1st Floor, Sharda Colony, Near New Bus Stand, Sehore, MP 466001",
-    "lat": 23.1985,
-    "lng": 77.0912,
-    "openingHours": "24x7 Component Separation (PRBC, Platelets, FFP)",
-    "inventory": [
-      {
-        "_id": "inv_bank_sehore_02_1",
+        "_id": "inv_lf8k41u",
         "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 24,
-        "batchCode": "MP-SEH-884",
+        "units": 8,
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-23T06:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_sehore_02_2",
+        "_id": "inv_bfw7837",
         "group": "A+",
         "component": "Whole Blood",
-        "units": 14,
-        "batchCode": "MP-SEH-994",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-23T08:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_sehore_02_3",
-        "group": "O+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-SEH-CR4",
+        "_id": "inv_wfqqk5m",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ubpogou",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_ichhawar_01",
@@ -216,40 +350,56 @@
     "district": "Sehore",
     "state": "Madhya Pradesh",
     "phone": "07562-273200",
-    "address": "Hospital Square, Ichhawar, Sehore District, MP 466115",
-    "lat": 23.0234,
-    "lng": 77.0125,
-    "openingHours": "24x7 Emergency Triage & Storage",
+    "email": "chcichhawar@gmail.com",
+    "address": "CHC Ichhawar, Sehore Road, Ichhawar, Dist. Sehore, MP 466115",
+    "category": "Government",
+    "facilityType": "Community Health Centre",
+    "serviceCategory": "Need Blood (Emergency Care)",
+    "components": "Whole Blood & Transfusion Support",
+    "lat": 23.0239,
+    "lng": 77.0178,
+    "openingHours": "24x7 Emergency Services",
+    "verified": true,
+    "notes": "Sub-district health centre providing stabilized emergency transfusion support in Sehore.",
     "inventory": [
       {
-        "_id": "inv_bank_ichhawar_01_1",
+        "_id": "inv_viesypy",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_cwsxi1q",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_kct1ebn",
         "group": "B+",
         "component": "Packed Red Blood Cells",
-        "units": 27,
-        "batchCode": "MP-SEH-885",
+        "units": 6,
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-23T05:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_ichhawar_01_2",
-        "group": "AB+",
-        "component": "Whole Blood",
-        "units": 16,
-        "batchCode": "MP-SEH-995",
-        "status": "available",
-        "updatedAt": "2026-11-23T07:32:33.095Z"
-      },
-      {
-        "_id": "inv_bank_ichhawar_01_3",
-        "group": "A+",
+        "_id": "inv_mw4y5bk",
+        "group": "O-",
         "component": "Packed Red Blood Cells",
         "units": 2,
-        "batchCode": "MP-SEH-CR5",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_shyampur_01",
@@ -258,40 +408,56 @@
     "district": "Sehore",
     "state": "Madhya Pradesh",
     "phone": "07562-281100",
-    "address": "Bhopal-Narsinghgarh Road, Shyampur, Sehore, MP 466651",
-    "lat": 23.3762,
-    "lng": 77.1084,
+    "email": "shyampurdispensary@gmail.com",
+    "address": "SH-18, Shyampur, Dist. Sehore, MP 466651",
+    "category": "Government",
+    "facilityType": "Government Health Centre",
+    "serviceCategory": "Need Blood (Emergency Care)",
+    "components": "Emergency Stabilization & Referral",
+    "lat": 23.3619,
+    "lng": 77.1025,
     "openingHours": "24x7 Emergency Care",
+    "verified": true,
+    "notes": "Government dispensary serving northern Sehore towards Bhopal.",
     "inventory": [
       {
-        "_id": "inv_bank_shyampur_01_1",
-        "group": "O-",
+        "_id": "inv_358vd3l",
+        "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 30,
-        "batchCode": "MP-SEH-886",
+        "units": 8,
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-23T04:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_shyampur_01_2",
-        "group": "A-",
+        "_id": "inv_dss6q9g",
+        "group": "A+",
         "component": "Whole Blood",
-        "units": 18,
-        "batchCode": "MP-SEH-996",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-23T07:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_shyampur_01_3",
+        "_id": "inv_udc4aei",
         "group": "B+",
         "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_4dwqcqo",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
         "units": 2,
-        "batchCode": "MP-SEH-CR6",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_budhni_01",
@@ -300,40 +466,56 @@
     "district": "Sehore",
     "state": "Madhya Pradesh",
     "phone": "07564-255300",
-    "address": "Near Narmada River Ghat, Industrial Area Road, Budhni, MP 466445",
-    "lat": 22.7831,
-    "lng": 77.6892,
-    "openingHours": "24x7 Emergency Transfusion Support",
+    "email": "chcbudhni@gmail.com",
+    "address": "Hoshangabad-Bhopal Highway, Budhni, Dist. Sehore, MP 466445",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Issued from Mother Blood Bank)",
+    "lat": 22.7767,
+    "lng": 77.6833,
+    "openingHours": "24x7 Emergency Transfusion",
+    "verified": true,
+    "notes": "Blood storage unit serving Budhni industrial and river corridor.",
     "inventory": [
       {
-        "_id": "inv_bank_budhni_01_1",
-        "group": "B-",
+        "_id": "inv_z1gwyr3",
+        "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 33,
-        "batchCode": "MP-SEH-887",
+        "units": 8,
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-23T03:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_budhni_01_2",
-        "group": "AB-",
+        "_id": "inv_pw38qht",
+        "group": "A+",
         "component": "Whole Blood",
-        "units": 20,
-        "batchCode": "MP-SEH-997",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-23T06:32:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_budhni_01_3",
-        "group": "AB+",
+        "_id": "inv_g5xp2me",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_rvbosqi",
+        "group": "O-",
         "component": "Packed Red Blood Cells",
         "units": 2,
-        "batchCode": "MP-SEH-CR7",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_nasrullaganj_01",
@@ -342,124 +524,1336 @@
     "district": "Sehore",
     "state": "Madhya Pradesh",
     "phone": "07563-272200",
-    "address": "Civil Hospital Road, Bherunda (Nasrullaganj), Sehore, MP 466331",
-    "lat": 22.7384,
-    "lng": 77.2917,
+    "email": "chcnasrullaganj@gmail.com",
+    "address": "Civil Hospital, Main Road, Nasrullaganj (Bherunda), Dist. Sehore, MP 466331",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Emergency Blood Supply)",
+    "lat": 22.73,
+    "lng": 77.28,
     "openingHours": "24x7 Emergency Care",
+    "verified": true,
+    "notes": "Civil hospital storage facility for southern Sehore district.",
     "inventory": [
       {
-        "_id": "inv_bank_nasrullaganj_01_1",
+        "_id": "inv_u4miwlj",
         "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 36,
-        "batchCode": "MP-SEH-888",
+        "units": 8,
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-23T02:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_nasrullaganj_01_2",
+        "_id": "inv_viqv2tk",
         "group": "A+",
         "component": "Whole Blood",
-        "units": 22,
-        "batchCode": "MP-SEH-998",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-23T06:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_nasrullaganj_01_3",
+        "_id": "inv_fqogsvd",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_fnqp7nl",
         "group": "O-",
         "component": "Packed Red Blood Cells",
         "units": 2,
-        "batchCode": "MP-SEH-CR8",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
-    "_id": "bank_bhopal_aiims",
-    "name": "AIIMS Bhopal Regional Blood Transfusion Centre",
-    "city": "Bhopal",
-    "district": "Bhopal",
+    "_id": "bank_jawar_01",
+    "name": "Primary Health Centre Emergency Unit Jawar",
+    "city": "Jawar",
+    "district": "Sehore",
     "state": "Madhya Pradesh",
-    "phone": "0755-2970010",
-    "address": "All India Institute of Medical Sciences, Saket Nagar, Bhopal, MP 462020",
-    "lat": 23.2064,
-    "lng": 77.4593,
-    "openingHours": "24x7 Apex Transfusion Medicine & Apheresis",
+    "phone": "07560-261200",
+    "email": "phcjawar@gmail.com",
+    "address": "Main Road, Jawar, Sehore District, MP 466118",
+    "category": "Government",
+    "facilityType": "Primary Health Centre",
+    "serviceCategory": "Need Blood (Emergency Care)",
+    "components": "Emergency Response & Referral",
+    "lat": 22.9431,
+    "lng": 76.5186,
+    "openingHours": "24x7 Emergency Care & Outreach",
+    "verified": true,
+    "notes": "PHC first response center on the Ashta-Dewas highway stretch.",
     "inventory": [
       {
-        "_id": "inv_bank_bhopal_aiims_1",
+        "_id": "inv_ohc2eq7",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_4lkj71a",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_w6m0npo",
         "group": "B+",
         "component": "Packed Red Blood Cells",
-        "units": 14,
-        "batchCode": "MP-BHO-889",
-        "status": "available",
-        "updatedAt": "2026-11-23T01:02:33.095Z"
-      },
-      {
-        "_id": "inv_bank_bhopal_aiims_2",
-        "group": "AB+",
-        "component": "Whole Blood",
         "units": 6,
-        "batchCode": "MP-BHO-999",
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-23T05:32:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_aiims_3",
-        "group": "A-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-BHO-CR9",
+        "_id": "inv_is3dbeg",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_bhopal_hamidia",
-    "name": "Hamidia Hospital & GMC Model Blood Bank",
+    "name": "Hamidia Hospital Blood Bank (Gandhi Medical College)",
     "city": "Bhopal",
     "district": "Bhopal",
     "state": "Madhya Pradesh",
-    "phone": "0755-2540590",
-    "address": "Gandhi Medical College Campus, Royal Market, Bhopal, MP 462001",
-    "lat": 23.2625,
+    "phone": "0755-4329532, 0755-2540590",
+    "email": "bbhhbpl@gmail.com",
+    "address": "Block 1, First Floor, Hamidia Hospital, Fatehgarh, Sultania Road, Bhopal 462001",
+    "category": "Government",
+    "facilityType": "Government Medical College Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components (PRBC, FFP, Platelets)",
+    "lat": 23.2568,
     "lng": 77.3912,
-    "openingHours": "24x7 State Model Blood Bank",
+    "openingHours": "Open 24x7 (Round-the-clock emergency desk)",
+    "verified": true,
+    "notes": "State model blood bank attached to Gandhi Medical College and largest government tertiary care centre in MP.",
     "inventory": [
       {
-        "_id": "inv_bank_bhopal_hamidia_1",
+        "_id": "inv_nnatq79",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_91wl9qx",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_av7xzjk",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_hnmiedu",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_vr9rbcg",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_5axp1i6",
         "group": "O-",
         "component": "Packed Red Blood Cells",
-        "units": 17,
-        "batchCode": "MP-BHO-8810",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
         "status": "available",
-        "updatedAt": "2026-11-23T00:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_hamidia_2",
+        "_id": "inv_0r6qow0",
         "group": "A-",
-        "component": "Whole Blood",
-        "units": 8,
-        "batchCode": "MP-BHO-9910",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
         "status": "available",
-        "updatedAt": "2026-11-23T05:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_hamidia_3",
+        "_id": "inv_m3wexse",
         "group": "B-",
         "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-BHO-CR10",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_aiims",
+    "name": "AIIMS Bhopal - Transfusion Medicine & Blood Bank",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "0755-2832363, 0755-2970010",
+    "email": "bloodbank@aiimsbhopal.edu.in",
+    "address": "AIIMS Hospital Building, Saket Nagar, Bhopal 462020",
+    "category": "Government",
+    "facilityType": "Central Government Apex Institute",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "PRBC, FFP, Cryoprecipitate, Apheresis (Platelets, Plasma, Leucocyte)",
+    "lat": 23.2064,
+    "lng": 77.4607,
+    "openingHours": "Open 24x7x365",
+    "verified": true,
+    "notes": "Apex central government medical institution with comprehensive apheresis and blood components infrastructure.",
+    "inventory": [
+      {
+        "_id": "inv_umlzrom",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_prof05a",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_percatd",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_gei1ug5",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_1a4k6jj",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_d0frye9",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_39h3roe",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_4c87tvq",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_aditi_labs",
+    "name": "Bhopal Blood Bank & Aditi Labs",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "9993537033, 0755-2534001",
+    "email": "bhopalbloodbank@gmail.com",
+    "address": "1st Floor, 4 Sultania Road, opp. Prerna Society, Fatehgarh, Peer Gate, Bhopal 462001",
+    "category": "Private",
+    "facilityType": "Private Blood Bank & Diagnostic Lab",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.2575,
+    "lng": 77.393,
+    "openingHours": "24-hour emergency service",
+    "verified": true,
+    "notes": "Established private blood bank near Peer Gate, affiliated with MP Thalassemia Kid Care Society.",
+    "inventory": [
+      {
+        "_id": "inv_tfe5bb2",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_mrjc0yv",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ujapcl4",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_qdl6m5s",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_sxp9tly",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_q9hh03d",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_bxf8q7y",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_r3izsjj",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_chirayu_health",
+    "name": "Chirayu Health & Medicare Blood Bank",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "9826092039, 0755-2737401",
+    "email": "malipurachirayu@gmail.com",
+    "address": "6 Malipura, opp. Nirmal Meera School, near Sadar Manzil, Peer Gate, Bhopal 462001",
+    "category": "Private",
+    "facilityType": "Private Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood, Components, Apheresis",
+    "lat": 23.2588,
+    "lng": 77.4012,
+    "openingHours": "Open 24x7 (Emergency Transfusion)",
+    "verified": true,
+    "notes": "Licensed private blood bank providing whole blood, components, and apheresis in old Bhopal.",
+    "inventory": [
+      {
+        "_id": "inv_6nyu43c",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_qkyr367",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_c9eorti",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_dsg1rws",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_s99ayc7",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_uh99kxt",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_0ls721l",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_q8m8nke",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_chirayu_college",
+    "name": "Chirayu Medical College & Hospital Blood Centre (Bairagarh)",
+    "city": "Bairagarh",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "0755-6679000, 0755-2709100, 9438767733",
+    "email": "bloodcentrechirayu22@gmail.com, cmchbhopal@yahoo.com",
+    "address": "Chirayu Medical College & Hospital, Bhainsakhedi, Bairagarh, Bhopal-Indore Highway, Bhopal 462030",
+    "category": "Private",
+    "facilityType": "Medical College Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components (PRBC, FFP, Platelets)",
+    "lat": 23.2798,
+    "lng": 77.3184,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Major private medical college hospital blood centre situated on the Bhopal-Indore highway near Bairagarh.",
+    "inventory": [
+      {
+        "_id": "inv_angupui",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_yzlezre",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_p1r7iu1",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ugzl7oz",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_4kuf7sr",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_hcnrzim",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_a8my9gu",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_wytuzqc",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_jk_lnct",
+    "name": "JK Blood Centre (LNCT Group / JK Hospital), Kolar Road",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "0755-4087000, 0755-4087060, 7770977702",
+    "email": "Jkbloodcenter@lnctu.ac.in",
+    "address": "JK Hospital & Medical Research Centre, LNCT University Campus, Kolar Road, Bhopal 462042",
+    "category": "Private",
+    "facilityType": "Medical College Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.1678,
+    "lng": 77.419,
+    "openingHours": "Open 24x7 (Emergency Transfusion)",
+    "verified": true,
+    "notes": "LNCT Group medical college hospital blood centre serving Kolar Road and south Bhopal.",
+    "inventory": [
+      {
+        "_id": "inv_se2fvaq",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_v6l7pw4",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_yb5xnmu",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ricsteg",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_7vnm18l",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_g403ba6",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_gjq7fwo",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_hpctxrl",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_jp_hospital",
+    "name": "District Hospital Bhopal (J P Hospital / Jai Prakash Hospital) Blood Bank",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "0755-2556812, 0755-2556754, 9827056443",
+    "email": "csurgeon.bhopal@mp.gov.in, jphospitalbhopal@gmail.com",
+    "address": "J P Hospital, 1250 Hospital Campus, Link Road No. 2, Tulsi Nagar, Shivaji Nagar, Bhopal 462016",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.2272,
+    "lng": 77.414,
+    "openingHours": "Open 24x7 (Emergency Services)",
+    "verified": true,
+    "notes": "Key government district hospital blood bank for Bhopal city with round-the-clock emergency desk.",
+    "inventory": [
+      {
+        "_id": "inv_5ixrtw0",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_bqyd92l",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_3wopbxz",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_q5u9i5v",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_cm4qesn",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_qdl0i32",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_jz7a5v6",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_06mnj4q",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_redcross",
+    "name": "Indian Red Cross Society State Blood Centre Bhopal",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "0755-2550346, 0755-2550187, 9303132652",
+    "email": "ircsbhopal@yahoo.co.in, redcrossbhopal@gmail.com",
+    "address": "Red Cross Bhawan, Link Road No. 2, Near 1250 Hospital, Shivaji Nagar, Bhopal 462016",
+    "category": "Red Cross",
+    "facilityType": "NGO / Red Cross State Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Full Component Separation",
+    "lat": 23.2265,
+    "lng": 77.4125,
+    "openingHours": "Open 24x7 (Voluntary & Emergency Services)",
+    "verified": true,
+    "notes": "State headquarters blood centre conducting regular voluntary blood donation camps and patient supply.",
+    "inventory": [
+      {
+        "_id": "inv_b0uunbw",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_dvdpztt",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_40qum7h",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_d4jvrqw",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_xspf164",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_hz503tj",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_laz8j7d",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_sxpxjht",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_arpan",
+    "name": "Arpan Blood Bank",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "0755-4090142, 9993531133",
+    "email": "arpanbloodcentre@gmail.com",
+    "address": "131/6 Kiran Complex, Zone-II, near Pragati Petrol Pump, Maharana Pratap Nagar (M.P. Nagar), Bhopal 462011",
+    "category": "Private",
+    "facilityType": "Private Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.2325,
+    "lng": 77.433,
+    "openingHours": "24 hours (as listed)",
+    "verified": true,
+    "notes": "Centrally located in commercial hub MP Nagar Zone-II with 24-hour service.",
+    "inventory": [
+      {
+        "_id": "inv_22obmdh",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_4aozozf",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_n183n41",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_tw03pfq",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_0w2m644",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_8i88t5v",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_74qv3lk",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ceidcer",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_new_bhopal",
+    "name": "New Bhopal Blood Bank & Component Centre (Arera Colony)",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "9303132950, 0755-2461149",
+    "email": "drarunmaity@gmail.com",
+    "address": "E-4/149 (11 No. Bus Stop), Arera Colony, Bhopal 462016",
+    "category": "Private",
+    "facilityType": "Private Blood Bank & Component Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components (PRBC, FFP, Platelets)",
+    "lat": 23.2085,
+    "lng": 77.4312,
+    "openingHours": "24 hours (as listed)",
+    "verified": true,
+    "notes": "Licensed blood component center operated under Dr. Arun Maity in Arera Colony.",
+    "inventory": [
+      {
+        "_id": "inv_xxddfnu",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_jpctwyp",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_w5fidba",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_cp9l1eb",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_nvl8wll",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_z000zk9",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_3jk5bat",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_scdkcfi",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_lifesaver",
+    "name": "Life Saver Blood Centre Bhopal",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "9111442000, 9424444644",
+    "email": "lifesaverbhopal@gmail.com",
+    "address": "Second Floor, 75 E-3, Arera Colony, Bhopal 462016",
+    "category": "Charitable",
+    "facilityType": "Charitable Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.212,
+    "lng": 77.43,
+    "openingHours": "24 hours (as listed)",
+    "verified": true,
+    "notes": "Voluntary and charitable blood facility in Arera Colony.",
+    "inventory": [
+      {
+        "_id": "inv_0y4gg37",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_vzu1pct",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_0c5de1g",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_bcw1sy2",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_iuhp4x1",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_0lib7d7",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ourgxub",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_t2by5ch",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_sewa",
+    "name": "Sewa Blood Centre & Component Centre",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "9981055809, 0755-2735122",
+    "email": "sewabloodbankbhopal@gmail.com",
+    "address": "Bunglow Square, Berasia Road / Bera, near Nadra Bus Stand, Bhopal 462001",
+    "category": "Charitable",
+    "facilityType": "Charitable Component Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Components & Whole Blood (Licensed Component Centre)",
+    "lat": 23.265,
+    "lng": 77.405,
+    "openingHours": "Open 24x7 (Call first)",
+    "verified": true,
+    "notes": "Charitable blood bank and component processing laboratory.",
+    "inventory": [
+      {
+        "_id": "inv_0z51uym",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_725ip5l",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_8uh9c6i",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_nsbz978",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_f0lymf2",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_3txfzff",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_a93ayfp",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_54ijsyv",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bhopal_peoples",
+    "name": "People's Hospital Blood Centre (People's University)",
+    "city": "Bhopal",
+    "district": "Bhopal",
+    "state": "Madhya Pradesh",
+    "phone": "0755-4005227, 0755-4005228",
+    "email": "bloodbank@peoplesuniversity.edu.in",
+    "address": "People's Hospital, People's Campus, Ayodhya Bypass Road, Bhanpur, Bhopal 462037",
+    "category": "Charitable",
+    "facilityType": "Medical College Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.305,
+    "lng": 77.442,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Teaching hospital blood centre attached to People's College of Medical Sciences.",
+    "inventory": [
+      {
+        "_id": "inv_w05unry",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_8p4fant",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_3dwe50m",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_u2l7u7l",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_o1wx7mx",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_qj3cmzn",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_pk3a1sp",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_u96zogu",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_bhopal_bmhrc",
@@ -468,82 +1862,92 @@
     "district": "Bhopal",
     "state": "Madhya Pradesh",
     "phone": "0755-2740390",
-    "address": "Raisen Bypass Road, Karond, Bhopal, MP 462038",
-    "lat": 23.3108,
-    "lng": 77.4215,
-    "openingHours": "24x7 Advanced Component Lab",
+    "email": "bmhrcbhopal@mp.gov.in",
+    "address": "BMHRC Campus, Raisen Bypass Road, Karond, Bhopal 462038",
+    "category": "Government",
+    "facilityType": "Central Government Specialty Hospital",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood, PRBC, FFP, Platelets",
+    "lat": 23.2985,
+    "lng": 77.408,
+    "openingHours": "24x7 Emergency Transfusion",
+    "verified": true,
+    "notes": "Government multi-specialty institution under ICMR with complete blood transfusion support.",
     "inventory": [
       {
-        "_id": "inv_bank_bhopal_bmhrc_1",
-        "group": "B-",
+        "_id": "inv_ntkbvwc",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_zle0jnb",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_yoaplkl",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_jou5mtq",
+        "group": "B+",
         "component": "Packed Red Blood Cells",
         "units": 20,
-        "batchCode": "MP-BHO-8811",
+        "batchCode": "COMP-B-204",
         "status": "available",
-        "updatedAt": "2026-11-22T23:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_bmhrc_2",
-        "group": "AB-",
-        "component": "Whole Blood",
-        "units": 10,
-        "batchCode": "MP-BHO-9911",
+        "_id": "inv_wx7y6m9",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
         "status": "available",
-        "updatedAt": "2026-11-23T04:32:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_bmhrc_3",
-        "group": "AB-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-BHO-CR11",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
-  },
-  {
-    "_id": "bank_bhopal_redcross",
-    "name": "Indian Red Cross Society State Blood Centre Bhopal",
-    "city": "Bhopal",
-    "district": "Bhopal",
-    "state": "Madhya Pradesh",
-    "phone": "0755-2550187",
-    "address": "Red Cross Hospital Building, Shivaji Nagar, Link Road 1, Bhopal, MP 462016",
-    "lat": 23.2301,
-    "lng": 77.4285,
-    "openingHours": "24x7 Voluntary Donor Dispatch",
-    "inventory": [
-      {
-        "_id": "inv_bank_bhopal_redcross_1",
-        "group": "O+",
+        "_id": "inv_l2spqvo",
+        "group": "O-",
         "component": "Packed Red Blood Cells",
-        "units": 23,
-        "batchCode": "MP-BHO-8812",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
         "status": "available",
-        "updatedAt": "2026-11-22T22:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_redcross_2",
-        "group": "A+",
-        "component": "Whole Blood",
-        "units": 12,
-        "batchCode": "MP-BHO-9912",
+        "_id": "inv_xpjve9e",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
         "status": "available",
-        "updatedAt": "2026-11-23T04:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_redcross_3",
-        "group": "O+",
+        "_id": "inv_bdh2dfo",
+        "group": "B-",
         "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-BHO-CR12",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_bhopal_bansal",
@@ -552,82 +1956,92 @@
     "district": "Bhopal",
     "state": "Madhya Pradesh",
     "phone": "0755-4086000",
-    "address": "Chuna Bhatti, Shahpura, Bhopal, MP 462016",
-    "lat": 23.1953,
-    "lng": 77.4194,
-    "openingHours": "24x7 Emergency Services",
+    "email": "bloodbank@bansalhospital.com",
+    "address": "Bansal Hospital, Sector C, Shahpura, Kolar Road Link, Bhopal 462016",
+    "category": "Private",
+    "facilityType": "Super-Specialty Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Full Component Separation, Apheresis & Whole Blood",
+    "lat": 23.195,
+    "lng": 77.432,
+    "openingHours": "24x7 Emergency Operations",
+    "verified": true,
+    "notes": "NABH-accredited private super-specialty hospital with state-of-the-art blood bank and component separation.",
     "inventory": [
       {
-        "_id": "inv_bank_bhopal_bansal_1",
-        "group": "B+",
+        "_id": "inv_ko50d52",
+        "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 26,
-        "batchCode": "MP-BHO-8813",
+        "units": 24,
+        "batchCode": "COMP-O-201",
         "status": "available",
-        "updatedAt": "2026-11-22T21:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_bansal_2",
-        "group": "AB+",
-        "component": "Whole Blood",
+        "_id": "inv_khojyf7",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
         "units": 14,
-        "batchCode": "MP-BHO-9913",
+        "batchCode": "COMP-PLT-202",
         "status": "available",
-        "updatedAt": "2026-11-23T03:32:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_bansal_3",
+        "_id": "inv_3upkdim",
         "group": "A+",
         "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-BHO-CR13",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
-  },
-  {
-    "_id": "bank_bhopal_sewa",
-    "name": "Sewa Blood Bank & Component Centre Bhopal",
-    "city": "Bhopal",
-    "district": "Bhopal",
-    "state": "Madhya Pradesh",
-    "phone": "0755-2735122",
-    "address": "Berasia Road, Bus Stand Area, Bhopal, MP 462001",
-    "lat": 23.2741,
-    "lng": 77.4042,
-    "openingHours": "24x7 Component Dispensing",
-    "inventory": [
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
       {
-        "_id": "inv_bank_bhopal_sewa_1",
+        "_id": "inv_pz1pmhw",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_9kdvs22",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_96hm17y",
         "group": "O-",
         "component": "Packed Red Blood Cells",
-        "units": 29,
-        "batchCode": "MP-BHO-8814",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
         "status": "available",
-        "updatedAt": "2026-11-22T20:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_sewa_2",
+        "_id": "inv_ddw32c0",
         "group": "A-",
-        "component": "Whole Blood",
-        "units": 16,
-        "batchCode": "MP-BHO-9914",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
         "status": "available",
-        "updatedAt": "2026-11-23T03:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_bhopal_sewa_3",
-        "group": "B+",
+        "_id": "inv_abozs87",
+        "group": "B-",
         "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-BHO-CR14",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_raisen_01",
@@ -635,41 +2049,124 @@
     "city": "Raisen",
     "district": "Raisen",
     "state": "Madhya Pradesh",
-    "phone": "07482-222300",
-    "address": "Hospital Square, Sanchi Road, Raisen, MP 464551",
-    "lat": 23.3312,
-    "lng": 77.7951,
-    "openingHours": "24x7 Round-the-clock Emergency",
+    "phone": "9926856100, 07482-222062, 9425652351",
+    "email": "bloodbankraisen18@gmail.com",
+    "address": "Room No. 51, Blood Bank, District Hospital, Sanchi Road, Raisen, MP 464551",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (licensed for whole human blood)",
+    "lat": 23.3325,
+    "lng": 77.7785,
+    "openingHours": "Open 24x7 (Emergency Services)",
+    "verified": true,
+    "notes": "Official District Blood Bank for Raisen district.",
     "inventory": [
       {
-        "_id": "inv_bank_raisen_01_1",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
-        "units": 32,
-        "batchCode": "MP-RAI-8815",
-        "status": "available",
-        "updatedAt": "2026-11-22T19:02:33.095Z"
-      },
-      {
-        "_id": "inv_bank_raisen_01_2",
-        "group": "AB-",
+        "_id": "inv_mfbf6op",
+        "group": "O+",
         "component": "Whole Blood",
-        "units": 18,
-        "batchCode": "MP-RAI-9915",
+        "units": 15,
+        "batchCode": "WB-OP-301",
         "status": "available",
-        "updatedAt": "2026-11-23T02:32:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_raisen_01_3",
-        "group": "AB+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-RAI-CR15",
+        "_id": "inv_ledsjvg",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ur10y55",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_5lwg7cn",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_x42xpt0",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_begamganj_01",
+    "name": "Begumganj Blood Storage Unit, Civil Hospital Begumganj",
+    "city": "Begamganj",
+    "district": "Raisen",
+    "state": "Madhya Pradesh",
+    "phone": "07486-262100, 07486-262200",
+    "email": "chcbegumganj@gmail.com",
+    "address": "Civil Hospital Begumganj, Begumganj, Dist. Raisen, MP 464881",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (stores & issues blood; does not collect donor donations)",
+    "lat": 23.604,
+    "lng": 78.334,
+    "openingHours": "Open 24x7 (Transfusion & Storage)",
+    "verified": true,
+    "notes": "Blood storage unit: stores and issues blood supplied by mother bank (Raisen DH); does not collect donations.",
+    "inventory": [
+      {
+        "_id": "inv_6vej17y",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_64bq8sc",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_vw83l64",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_qk0dx48",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_sanchi_01",
@@ -678,82 +2175,56 @@
     "district": "Raisen",
     "state": "Madhya Pradesh",
     "phone": "07482-266100",
-    "address": "Station Road, Near World Heritage Site, Sanchi, MP 464661",
+    "email": "chcsanchi@gmail.com",
+    "address": "Civil Hospital, Vidisha Road, Sanchi, Dist. Raisen, MP 464661",
+    "category": "Government",
+    "facilityType": "Civil Hospital",
+    "serviceCategory": "Need Blood (Emergency Care)",
+    "components": "Emergency Blood Unit",
     "lat": 23.4862,
-    "lng": 77.7412,
-    "openingHours": "24x7 Emergency Transfusion Unit",
+    "lng": 77.7398,
+    "openingHours": "24x7 Emergency Support",
+    "verified": true,
+    "notes": "Nearest emergency medical centre for Sanchi heritage town.",
     "inventory": [
       {
-        "_id": "inv_bank_sanchi_01_1",
+        "_id": "inv_hpql10u",
         "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 35,
-        "batchCode": "MP-RAI-8816",
+        "units": 8,
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-22T18:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_sanchi_01_2",
+        "_id": "inv_sma374w",
         "group": "A+",
         "component": "Whole Blood",
-        "units": 20,
-        "batchCode": "MP-RAI-9916",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-23T02:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_sanchi_01_3",
-        "group": "O-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-RAI-CR16",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
-  },
-  {
-    "_id": "bank_begamganj_01",
-    "name": "Sub-Divisional Civil Hospital Blood Storage Begamganj",
-    "city": "Begamganj",
-    "district": "Raisen",
-    "state": "Madhya Pradesh",
-    "phone": "07486-262100",
-    "address": "Hospital Campus, Rahatgarh Road, Begamganj, Raisen, MP 464881",
-    "lat": 23.5985,
-    "lng": 78.3375,
-    "openingHours": "24x7 Rural & Tribal Emergency Care",
-    "inventory": [
-      {
-        "_id": "inv_bank_begamganj_01_1",
+        "_id": "inv_c352u39",
         "group": "B+",
         "component": "Packed Red Blood Cells",
-        "units": 13,
-        "batchCode": "MP-RAI-8817",
+        "units": 6,
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-22T17:02:33.095Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_begamganj_01_2",
-        "group": "AB+",
-        "component": "Whole Blood",
-        "units": 22,
-        "batchCode": "MP-RAI-9917",
-        "status": "available",
-        "updatedAt": "2026-11-23T01:32:33.095Z"
-      },
-      {
-        "_id": "inv_bank_begamganj_01_3",
-        "group": "A-",
+        "_id": "inv_lkz7jb4",
+        "group": "O-",
         "component": "Packed Red Blood Cells",
         "units": 2,
-        "batchCode": "MP-RAI-CR17",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.095Z"
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.095Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_udaipura_01",
@@ -762,208 +2233,56 @@
     "district": "Raisen",
     "state": "Madhya Pradesh",
     "phone": "07487-271200",
-    "address": "Narmada Valley Highway, Udaipura, Raisen, MP 464770",
+    "email": "chcudaipura@gmail.com",
+    "address": "CHC Udaipura, NH-45, Udaipura, Dist. Raisen, MP 464770",
+    "category": "Government",
+    "facilityType": "Community Health Centre",
+    "serviceCategory": "Need Blood (Emergency Care)",
+    "components": "Emergency Blood Support & Referral",
     "lat": 23.0825,
-    "lng": 78.5085,
-    "openingHours": "24x7 Emergency Services",
+    "lng": 78.508,
+    "openingHours": "24x7 Emergency Care",
+    "verified": true,
+    "notes": "Sub-district health centre on eastern edge of Raisen district.",
     "inventory": [
       {
-        "_id": "inv_bank_udaipura_01_1",
-        "group": "O-",
+        "_id": "inv_97z15xk",
+        "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 16,
-        "batchCode": "MP-RAI-8818",
-        "status": "available",
-        "updatedAt": "2026-11-22T16:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_udaipura_01_2",
-        "group": "A-",
-        "component": "Whole Blood",
-        "units": 6,
-        "batchCode": "MP-RAI-9918",
-        "status": "available",
-        "updatedAt": "2026-11-23T01:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_udaipura_01_3",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
-        "units": 2,
-        "batchCode": "MP-RAI-CR18",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
-  },
-  {
-    "_id": "bank_biaora_01",
-    "name": "Civil Hospital Blood Bank Biaora",
-    "city": "Biaora",
-    "district": "Rajgarh",
-    "state": "Madhya Pradesh",
-    "phone": "07374-232100",
-    "address": "AB Road (NH 52 Junction), Biaora, Rajgarh, MP 465674",
-    "lat": 23.8712,
-    "lng": 76.9184,
-    "openingHours": "24x7 Aspirational District Hub",
-    "inventory": [
-      {
-        "_id": "inv_bank_biaora_01_1",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
-        "units": 19,
-        "batchCode": "MP-RAJ-8819",
-        "status": "available",
-        "updatedAt": "2026-11-22T15:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_biaora_01_2",
-        "group": "AB-",
-        "component": "Whole Blood",
         "units": 8,
-        "batchCode": "MP-RAJ-9919",
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-23T00:32:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_biaora_01_3",
-        "group": "AB-",
-        "component": "Packed Red Blood Cells",
-        "units": 2,
-        "batchCode": "MP-RAJ-CR19",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
-  },
-  {
-    "_id": "bank_narsinghgarh_01",
-    "name": "Civil Hospital Blood Storage Center Narsinghgarh",
-    "city": "Narsinghgarh",
-    "district": "Rajgarh",
-    "state": "Madhya Pradesh",
-    "phone": "07375-244200",
-    "address": "Fort Road, Near Bus Stand, Narsinghgarh, Rajgarh, MP 465669",
-    "lat": 23.7082,
-    "lng": 77.0911,
-    "openingHours": "24x7 Emergency Unit",
-    "inventory": [
-      {
-        "_id": "inv_bank_narsinghgarh_01_1",
-        "group": "O+",
-        "component": "Packed Red Blood Cells",
-        "units": 22,
-        "batchCode": "MP-RAJ-8820",
-        "status": "available",
-        "updatedAt": "2026-11-22T14:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_narsinghgarh_01_2",
+        "_id": "inv_op107l2",
         "group": "A+",
         "component": "Whole Blood",
-        "units": 10,
-        "batchCode": "MP-RAJ-9920",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-23T00:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_narsinghgarh_01_3",
-        "group": "O+",
-        "component": "Packed Red Blood Cells",
-        "units": 2,
-        "batchCode": "MP-RAJ-CR20",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
-  },
-  {
-    "_id": "bank_rajgarh_01",
-    "name": "District Hospital Blood Centre Rajgarh",
-    "city": "Rajgarh",
-    "district": "Rajgarh",
-    "state": "Madhya Pradesh",
-    "phone": "07372-255200",
-    "address": "Collectorate Road, Rajgarh (Biaora), MP 465661",
-    "lat": 24.0083,
-    "lng": 76.7289,
-    "openingHours": "24x7 District Headquarters Blood Bank",
-    "inventory": [
-      {
-        "_id": "inv_bank_rajgarh_01_1",
+        "_id": "inv_femjeyf",
         "group": "B+",
         "component": "Packed Red Blood Cells",
-        "units": 25,
-        "batchCode": "MP-RAJ-8821",
+        "units": 6,
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-22T13:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_rajgarh_01_2",
-        "group": "AB+",
-        "component": "Whole Blood",
-        "units": 12,
-        "batchCode": "MP-RAJ-9921",
-        "status": "available",
-        "updatedAt": "2026-11-22T23:32:33.096Z"
-      },
-      {
-        "_id": "inv_bank_rajgarh_01_3",
-        "group": "A+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-RAJ-CR21",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
-      }
-    ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
-  },
-  {
-    "_id": "bank_vidisha_01",
-    "name": "Atal Bihari Vajpayee Govt Medical College & Hospital Blood Bank",
-    "city": "Vidisha",
-    "district": "Vidisha",
-    "state": "Madhya Pradesh",
-    "phone": "07592-235001",
-    "address": "NH 86 Bypass, Near Sanchi Border, Vidisha, MP 464001",
-    "lat": 23.5358,
-    "lng": 77.8105,
-    "openingHours": "24x7 Apex Medical College Blood Bank",
-    "inventory": [
-      {
-        "_id": "inv_bank_vidisha_01_1",
+        "_id": "inv_ldtc4pf",
         "group": "O-",
         "component": "Packed Red Blood Cells",
-        "units": 28,
-        "batchCode": "MP-VID-8822",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
         "status": "available",
-        "updatedAt": "2026-11-22T12:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_vidisha_01_2",
-        "group": "A-",
-        "component": "Whole Blood",
-        "units": 14,
-        "batchCode": "MP-VID-9922",
-        "status": "available",
-        "updatedAt": "2026-11-22T23:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_vidisha_01_3",
-        "group": "B+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-VID-CR22",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_vidisha_02",
@@ -971,41 +2290,254 @@
     "city": "Vidisha",
     "district": "Vidisha",
     "state": "Madhya Pradesh",
-    "phone": "07592-232400",
-    "address": "Hospital Square, Main Market, Vidisha, MP 464001",
-    "lat": 23.5255,
-    "lng": 77.8202,
-    "openingHours": "24x7 Round-the-clock",
+    "phone": "9926472551, 07592-237825, 07592-232948",
+    "email": "dhvidbloodbank@gmail.com",
+    "address": "District Hospital, Hospital Road, near Railway Station / Idgah, Vidisha, MP 464001",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (licensed for whole human blood)",
+    "lat": 23.524,
+    "lng": 77.8175,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Official District Blood Bank for Vidisha district.",
     "inventory": [
       {
-        "_id": "inv_bank_vidisha_02_1",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
-        "units": 31,
-        "batchCode": "MP-VID-8823",
-        "status": "available",
-        "updatedAt": "2026-11-22T11:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_vidisha_02_2",
-        "group": "AB-",
+        "_id": "inv_wegjv2c",
+        "group": "O+",
         "component": "Whole Blood",
-        "units": 16,
-        "batchCode": "MP-VID-9923",
+        "units": 15,
+        "batchCode": "WB-OP-301",
         "status": "available",
-        "updatedAt": "2026-11-22T22:32:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_vidisha_02_3",
-        "group": "AB+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-VID-CR23",
+        "_id": "inv_sn8747h",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_13oz95u",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_lihxz0a",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_z6k8ncy",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_vidisha_01",
+    "name": "Blood Centre, Atal Bihari Vajpayee Govt. Medical College (ABVGMC), Vidisha",
+    "city": "Vidisha",
+    "district": "Vidisha",
+    "state": "Madhya Pradesh",
+    "phone": "9826326489, 07592-235001",
+    "email": "bloodcentregmcvidisha@gmail.com",
+    "address": "ABVGMC Vidisha, NH-86, near Government Khel Parisar, Sanchi Road, Vidisha, MP 464001",
+    "category": "Government",
+    "facilityType": "Government Medical College Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.511,
+    "lng": 77.799,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Government medical college blood centre equipped for whole blood and component separation.",
+    "inventory": [
+      {
+        "_id": "inv_64qwxhp",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_h2ddkqz",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_8avwkmt",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_icu3ihg",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_nur1pxk",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_d5vu6tk",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_vz5bheq",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_m7tgce6",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_vidisha_hitech",
+    "name": "Vidisha Hitech Blood Centre",
+    "city": "Vidisha",
+    "district": "Vidisha",
+    "state": "Madhya Pradesh",
+    "phone": "9827200606",
+    "email": "dr.shah.hansa@gmail.com",
+    "address": "In front of Hotel Royal Palace, near Raipura School, Ashoknagar Road, Vidisha, MP 464001",
+    "category": "Private",
+    "facilityType": "Private Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components",
+    "lat": 23.535,
+    "lng": 77.825,
+    "openingHours": "24x7 Emergency Availability",
+    "verified": true,
+    "notes": "Private licensed blood centre under Dr. Hansa Shah in Vidisha.",
+    "inventory": [
+      {
+        "_id": "inv_6itpii4",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 24,
+        "batchCode": "COMP-O-201",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ifkosxu",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
+        "units": 14,
+        "batchCode": "COMP-PLT-202",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_nkg2t1w",
+        "group": "A+",
+        "component": "Fresh Frozen Plasma",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_2e6zu1j",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_5s45byz",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_i7xu5fo",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_kos2b8c",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_r9m10jm",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_basoda_01",
@@ -1014,82 +2546,431 @@
     "district": "Vidisha",
     "state": "Madhya Pradesh",
     "phone": "07594-220100",
-    "address": "Hospital Road, Ganj Basoda, Vidisha District, MP 464221",
-    "lat": 23.8542,
-    "lng": 77.9341,
-    "openingHours": "24x7 Emergency Care & Transfusion",
+    "email": "chcbasoda@gmail.com",
+    "address": "Civil Hospital, Station Road, Ganj Basoda, Dist. Vidisha, MP 464221",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Issued from Vidisha mother banks)",
+    "lat": 23.854,
+    "lng": 77.936,
+    "openingHours": "24x7 Emergency Transfusion",
+    "verified": true,
+    "notes": "Civil hospital storage facility serving Ganj Basoda sub-district.",
     "inventory": [
       {
-        "_id": "inv_bank_basoda_01_1",
+        "_id": "inv_inb7uc6",
         "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 34,
-        "batchCode": "MP-VID-8824",
+        "units": 8,
+        "batchCode": "BSU-O-101",
         "status": "available",
-        "updatedAt": "2026-11-22T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_basoda_01_2",
+        "_id": "inv_rnoaph8",
         "group": "A+",
         "component": "Whole Blood",
-        "units": 18,
-        "batchCode": "MP-VID-9924",
+        "units": 4,
+        "batchCode": "BSU-A-102",
         "status": "available",
-        "updatedAt": "2026-11-22T22:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_basoda_01_3",
-        "group": "O-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-VID-CR24",
+        "_id": "inv_yel67xu",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_cm9oasz",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_rajgarh_01",
+    "name": "District Hospital Blood Bank Rajgarh",
+    "city": "Rajgarh",
+    "district": "Rajgarh",
+    "state": "Madhya Pradesh",
+    "phone": "7748807863, 07372-201021, 07372-255200",
+    "email": "rajgarhbloodbank@gmail.com",
+    "address": "Blood Bank, District Hospital, Kalakhet, Rajgarh, MP 465661",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (licensed for whole human blood)",
+    "lat": 24.0085,
+    "lng": 76.726,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Official District Blood Bank serving Rajgarh, Biaora, and Narsinghgarh area.",
+    "inventory": [
+      {
+        "_id": "inv_m3sdgp1",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_031r0c7",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_6ktnb86",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_jrqupfh",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ogb96uk",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_biaora_01",
+    "name": "Civil Hospital Blood Bank / Storage Unit Biaora",
+    "city": "Biaora",
+    "district": "Rajgarh",
+    "state": "Madhya Pradesh",
+    "phone": "07374-232100",
+    "email": "chcbiaora@gmail.com",
+    "address": "Civil Hospital, AB Road, Biaora, Dist. Rajgarh, MP 465674",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Emergency Blood Supply)",
+    "lat": 23.916,
+    "lng": 76.915,
+    "openingHours": "24x7 Emergency Services",
+    "verified": true,
+    "notes": "Highway junction emergency hospital blood storage unit.",
+    "inventory": [
+      {
+        "_id": "inv_eiwm01l",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_uacjezl",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_9llv6ax",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_s3gzrhs",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_narsinghgarh_01",
+    "name": "Civil Hospital Blood Storage Center Narsinghgarh",
+    "city": "Narsinghgarh",
+    "district": "Rajgarh",
+    "state": "Madhya Pradesh",
+    "phone": "07375-244200",
+    "email": "chcnarsinghgarh@gmail.com",
+    "address": "Civil Hospital, Bada Bazar, Narsinghgarh, Dist. Rajgarh, MP 465669",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Issued from Rajgarh DH)",
+    "lat": 23.708,
+    "lng": 77.094,
+    "openingHours": "24x7 Emergency Care",
+    "verified": true,
+    "notes": "Civil hospital storage facility for Narsinghgarh sub-district.",
+    "inventory": [
+      {
+        "_id": "inv_r8xc3kj",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_bwituk4",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_t4dc3q5",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_nm7i0qw",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_shajapur_01",
+    "name": "District Hospital Blood Bank Shajapur",
+    "city": "Shajapur",
+    "district": "Shajapur",
+    "state": "Madhya Pradesh",
+    "phone": "07364-222127, 9425034695",
+    "email": "bloodbanksjp@gmail.com",
+    "address": "District Hospital, Shajapur, MP 465001",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (licensed for whole human blood)",
+    "lat": 23.428,
+    "lng": 76.275,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Official District Blood Bank for Shajapur district.",
+    "inventory": [
+      {
+        "_id": "inv_0vzw22c",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_jrin2x2",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_4nz19k5",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_6o8ovbd",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_3doga24",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_shujalpur_01",
-    "name": "Civil Hospital Blood Storage Center Shujalpur",
+    "name": "Shujalpur Blood Storage Unit, Civil Hospital Shujalpur",
     "city": "Shujalpur",
     "district": "Shajapur",
     "state": "Madhya Pradesh",
-    "phone": "07360-244200",
-    "address": "Mandi Road, Shujalpur, Shajapur District, MP 465333",
-    "lat": 23.4012,
-    "lng": 76.7188,
-    "openingHours": "24x7 Emergency Blood Storage Unit",
+    "phone": "07360-244200, 07360-244201",
+    "email": "civilhospitalshujalpur@gmail.com",
+    "address": "Civil Hospital, Shujalpur Mandi, Dist. Shajapur, MP 465331",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (stores & issues blood; does not collect donor donations)",
+    "lat": 23.238,
+    "lng": 76.723,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Blood storage unit: issues blood supplied by District Hospital Shajapur; does not collect donor donations.",
     "inventory": [
       {
-        "_id": "inv_bank_shujalpur_01_1",
+        "_id": "inv_i1yn7m3",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_4lipw10",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_cmdqdkf",
         "group": "B+",
         "component": "Packed Red Blood Cells",
-        "units": 12,
-        "batchCode": "MP-SHA-8825",
+        "units": 6,
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-22T09:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_shujalpur_01_2",
-        "group": "AB+",
-        "component": "Whole Blood",
-        "units": 20,
-        "batchCode": "MP-SHA-9925",
+        "_id": "inv_ttuaee9",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
         "status": "available",
-        "updatedAt": "2026-11-22T21:32:33.096Z"
-      },
-      {
-        "_id": "inv_bank_shujalpur_01_3",
-        "group": "A-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-SHA-CR25",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_shajapur_murlidhar_maxi",
+    "name": "Murlidhar Kripa Hospital Blood Bank, Maxi",
+    "city": "Maxi",
+    "district": "Shajapur",
+    "state": "Madhya Pradesh",
+    "phone": "07363-233426, 07363-233428, 07363-233427",
+    "email": "murlidharkripamax@gmail.com",
+    "address": "Murlidhar Kripa Hospital of JK Mansinghka Trust, Ujjain Road, Asharam Colony, Maxi, Dist. Shajapur, MP 465106",
+    "category": "Charitable",
+    "facilityType": "Charitable Trust Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood",
+    "lat": 23.255,
+    "lng": 76.152,
+    "openingHours": "Open 24x7 (Call first to confirm stock)",
+    "verified": true,
+    "notes": "Charitable trust hospital blood bank located on Ujjain Road in Maxi.",
+    "inventory": [
+      {
+        "_id": "inv_s93ad5h",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_tkv6wng",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_u6xer3v",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_s8o2nid",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_113gfze",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_kalapipal_01",
@@ -1098,124 +2979,190 @@
     "district": "Shajapur",
     "state": "Madhya Pradesh",
     "phone": "07360-267100",
-    "address": "Station Road, Kalapipal Mandi, Shajapur, MP 465337",
-    "lat": 23.3364,
-    "lng": 76.8432,
-    "openingHours": "24x7 Emergency Outreach & Storage",
+    "email": "chckalapipal@gmail.com",
+    "address": "CHC Kalapipal, Station Road, Kalapipal, Dist. Shajapur, MP 465337",
+    "category": "Government",
+    "facilityType": "Community Health Centre",
+    "serviceCategory": "Need Blood (Emergency Care)",
+    "components": "Emergency Blood Support & Stabilization",
+    "lat": 23.336,
+    "lng": 76.84,
+    "openingHours": "24x7 Emergency Services",
+    "verified": true,
+    "notes": "Sub-district health facility serving Kalapipal tehsil.",
     "inventory": [
       {
-        "_id": "inv_bank_kalapipal_01_1",
+        "_id": "inv_0474p55",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_6dg70ys",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_xd9cnzc",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_r7z2991",
         "group": "O-",
         "component": "Packed Red Blood Cells",
-        "units": 15,
-        "batchCode": "MP-SHA-8826",
-        "status": "available",
-        "updatedAt": "2026-11-22T08:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_kalapipal_01_2",
-        "group": "A-",
-        "component": "Whole Blood",
-        "units": 22,
-        "batchCode": "MP-SHA-9926",
-        "status": "available",
-        "updatedAt": "2026-11-22T21:02:33.096Z"
-      },
-      {
-        "_id": "inv_bank_kalapipal_01_3",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
         "units": 2,
-        "batchCode": "MP-SHA-CR26",
-        "status": "low",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_narmadapuram_01",
-    "name": "District Hospital Blood Bank Narmadapuram",
+    "name": "District Hospital Blood Bank Narmadapuram (Hoshangabad)",
     "city": "Narmadapuram",
     "district": "Narmadapuram",
     "state": "Madhya Pradesh",
-    "phone": "07574-252200",
-    "address": "Near Kothi Bazar, Narmadapuram (Hoshangabad), MP 461001",
-    "lat": 22.7519,
-    "lng": 77.7289,
-    "openingHours": "24x7 District Headquarters Facility",
+    "phone": "07574-251058, 9425950345",
+    "email": "bloodbankhbad@gmail.com",
+    "address": "Blood Bank, District Hospital, Saket Colony, Itwara Bazar, Narmadapuram, MP 461001",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (licensed for whole human blood)",
+    "lat": 22.753,
+    "lng": 77.728,
+    "openingHours": "Open 24x7 (as listed)",
+    "verified": true,
+    "notes": "Official District Blood Bank for Narmadapuram (Hoshangabad).",
     "inventory": [
       {
-        "_id": "inv_bank_narmadapuram_01_1",
-        "group": "B-",
-        "component": "Packed Red Blood Cells",
-        "units": 18,
-        "batchCode": "MP-NAR-8827",
+        "_id": "inv_6qdzpir",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
         "status": "available",
-        "updatedAt": "2026-11-22T07:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_narmadapuram_01_2",
-        "group": "AB-",
+        "_id": "inv_zxnpe38",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_vqe1wio",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_mcez4z9",
+        "group": "AB+",
         "component": "Whole Blood",
         "units": 6,
-        "batchCode": "MP-NAR-9927",
+        "batchCode": "WB-ABP-304",
         "status": "available",
-        "updatedAt": "2026-11-22T20:32:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_narmadapuram_01_3",
-        "group": "AB-",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-NAR-CR27",
+        "_id": "inv_eme427o",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_itarsi_01",
-    "name": "Dr. Shyama Prasad Mukherjee Civil Hospital Blood Bank Itarsi",
+    "name": "Janseva Rugnalaya Civil Hospital Blood Bank Itarsi",
     "city": "Itarsi",
     "district": "Narmadapuram",
     "state": "Madhya Pradesh",
-    "phone": "07572-236200",
-    "address": "Railway Junction Link Rd, 12th Line, Itarsi, MP 461111",
-    "lat": 22.6142,
-    "lng": 77.7618,
-    "openingHours": "24x7 Railway & Civilian Emergency Blood Bank",
+    "phone": "07574-241988, 9425041911, 07572-236200",
+    "email": "drdinesh37@gmail.com, civilhospitalitarsi@gmail.com",
+    "address": "Janseva Rugnalaya Civil Hospital, Itarsi, Dist. Narmadapuram, MP 461111",
+    "category": "Government",
+    "facilityType": "Civil Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (No components or apheresis listed)",
+    "lat": 22.614,
+    "lng": 77.762,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Major civil hospital blood bank in railway hub Itarsi serving surrounding sub-districts.",
     "inventory": [
       {
-        "_id": "inv_bank_itarsi_01_1",
+        "_id": "inv_0d0at7a",
         "group": "O+",
-        "component": "Packed Red Blood Cells",
-        "units": 21,
-        "batchCode": "MP-NAR-8828",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
         "status": "available",
-        "updatedAt": "2026-11-22T06:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_itarsi_01_2",
+        "_id": "inv_6px32te",
         "group": "A+",
         "component": "Whole Blood",
-        "units": 8,
-        "batchCode": "MP-NAR-9928",
+        "units": 10,
+        "batchCode": "WB-AP-302",
         "status": "available",
-        "updatedAt": "2026-11-22T20:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_itarsi_01_3",
-        "group": "O+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-NAR-CR28",
+        "_id": "inv_r2jyx4h",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_ult9e6l",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_c1ixr98",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_sohagpur_01",
@@ -1224,82 +3171,257 @@
     "district": "Narmadapuram",
     "state": "Madhya Pradesh",
     "phone": "07575-278200",
-    "address": "Near Pipariya Road, Sohagpur, Narmadapuram, MP 461771",
-    "lat": 22.6982,
-    "lng": 78.2045,
-    "openingHours": "24x7 Emergency Care",
+    "email": "chcsohagpur@gmail.com",
+    "address": "CHC Sohagpur, Pipariya Road, Sohagpur, Dist. Narmadapuram, MP 461771",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Transfusion Support)",
+    "lat": 22.701,
+    "lng": 78.204,
+    "openingHours": "24x7 Emergency Transfusion",
+    "verified": true,
+    "notes": "Emergency blood storage facility for Sohagpur and Pipariya sub-districts.",
     "inventory": [
       {
-        "_id": "inv_bank_sohagpur_01_1",
+        "_id": "inv_7fqvber",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_lnkhwv9",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_xjllmwb",
         "group": "B+",
         "component": "Packed Red Blood Cells",
-        "units": 24,
-        "batchCode": "MP-NAR-8829",
+        "units": 6,
+        "batchCode": "BSU-B-103",
         "status": "available",
-        "updatedAt": "2026-11-22T05:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_sohagpur_01_2",
-        "group": "AB+",
-        "component": "Whole Blood",
-        "units": 10,
-        "batchCode": "MP-NAR-9929",
+        "_id": "inv_885rytb",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
         "status": "available",
-        "updatedAt": "2026-11-22T19:32:33.096Z"
-      },
-      {
-        "_id": "inv_bank_sohagpur_01_3",
-        "group": "A+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-NAR-CR29",
-        "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_dewas_01",
-    "name": "District Hospital Blood Bank Dewas",
+    "name": "District Hospital Blood Bank Dewas (M.G. Hospital)",
     "city": "Dewas",
     "district": "Dewas",
     "state": "Madhya Pradesh",
-    "phone": "07272-252300",
-    "address": "AB Road, Near Chamunda Mata Foothills, Dewas, MP 455001",
-    "lat": 22.9676,
-    "lng": 76.0534,
-    "openingHours": "24x7 District Blood Bank & Component Lab",
+    "phone": "07272-251718, 9826336991, 07272-252300",
+    "email": "dr.sushil88@gmail.com, dhdewas@gmail.com",
+    "address": "M.G. District Hospital, AB Road, Dewas, MP 455001",
+    "category": "Government",
+    "facilityType": "District Hospital Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood Only (licensed for whole human blood)",
+    "lat": 22.964,
+    "lng": 76.059,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Main government district hospital blood bank for Dewas.",
     "inventory": [
       {
-        "_id": "inv_bank_dewas_01_1",
-        "group": "O-",
-        "component": "Packed Red Blood Cells",
-        "units": 27,
-        "batchCode": "MP-DEW-8830",
+        "_id": "inv_0c25lg4",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
         "status": "available",
-        "updatedAt": "2026-11-22T04:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_dewas_01_2",
-        "group": "A-",
+        "_id": "inv_vpd0bw2",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_rob963s",
+        "group": "B+",
         "component": "Whole Blood",
         "units": 12,
-        "batchCode": "MP-DEW-9930",
+        "batchCode": "WB-BP-303",
         "status": "available",
-        "updatedAt": "2026-11-22T19:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_dewas_01_3",
-        "group": "B+",
-        "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-DEW-CR30",
+        "_id": "inv_5va6jtl",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_lbkaygf",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_dewas_vishnuprabha",
+    "name": "Vishnuprabha Charitable Trust Blood Bank Dewas",
+    "city": "Dewas",
+    "district": "Dewas",
+    "state": "Madhya Pradesh",
+    "phone": "09827230041",
+    "email": "vishnuprabhatrustdewas@gmail.com",
+    "address": "39 HIG, Chamunda Complex, Civil Lines, Dewas Road, Dewas, MP 455001",
+    "category": "Charitable",
+    "facilityType": "Charitable Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood (per licence list)",
+    "lat": 22.968,
+    "lng": 76.061,
+    "openingHours": "Open 24x7 (Call first)",
+    "verified": true,
+    "notes": "Charitable trust blood bank in Civil Lines, Dewas.",
+    "inventory": [
+      {
+        "_id": "inv_a5r1md5",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_6958w4l",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_9nzraph",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_pc0ywp2",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_mmgpl6g",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_dewas_redcross",
+    "name": "Indian Red Cross Society Blood Bank Dewas",
+    "city": "Dewas",
+    "district": "Dewas",
+    "state": "Madhya Pradesh",
+    "phone": "9993185713",
+    "email": "dewasbloodbank.ircs@gmail.com",
+    "address": "Geeta Bhawan, Railway Station Road, Dewas, MP 455001",
+    "category": "Red Cross",
+    "facilityType": "NGO / Red Cross Blood Bank",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood",
+    "lat": 22.961,
+    "lng": 76.054,
+    "openingHours": "Open 24x7 (Call first)",
+    "verified": true,
+    "notes": "Red Cross society blood bank near Dewas railway station.",
+    "inventory": [
+      {
+        "_id": "inv_p6yw9v3",
+        "group": "O+",
+        "component": "Whole Blood",
+        "units": 15,
+        "batchCode": "WB-OP-301",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_3lmkhjq",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 10,
+        "batchCode": "WB-AP-302",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_oqbglvr",
+        "group": "B+",
+        "component": "Whole Blood",
+        "units": 12,
+        "batchCode": "WB-BP-303",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_dm17v3q",
+        "group": "AB+",
+        "component": "Whole Blood",
+        "units": 6,
+        "batchCode": "WB-ABP-304",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_nzivbey",
+        "group": "O-",
+        "component": "Whole Blood",
+        "units": 3,
+        "batchCode": "WB-ON-305",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   },
   {
     "_id": "bank_dewas_02",
@@ -1307,40 +3429,150 @@
     "city": "Dewas",
     "district": "Dewas",
     "state": "Madhya Pradesh",
-    "phone": "07272-426500",
-    "address": "Village Bangar, Ujjain-Dewas Road, Dewas, MP 455001",
-    "lat": 22.9814,
-    "lng": 75.9924,
-    "openingHours": "24x7 Medical College Blood Centre",
+    "phone": "07272-426513, 07272-426500",
+    "email": "bloodbankamaltas@gmail.com",
+    "address": "Gram Banger, Dewas-Ujjain Highway, Dewas, MP 455001",
+    "category": "Private",
+    "facilityType": "Medical College Blood Centre",
+    "serviceCategory": "Both (Need Blood & Donate)",
+    "components": "Whole Blood & Components (PRBC, FFP, Platelets)",
+    "lat": 22.985,
+    "lng": 75.989,
+    "openingHours": "Open 24x7",
+    "verified": true,
+    "notes": "Medical college hospital blood centre on Dewas-Ujjain Highway with full component licensing.",
     "inventory": [
       {
-        "_id": "inv_bank_dewas_02_1",
-        "group": "B-",
+        "_id": "inv_g2fxgwn",
+        "group": "O+",
         "component": "Packed Red Blood Cells",
-        "units": 30,
-        "batchCode": "MP-DEW-8831",
+        "units": 24,
+        "batchCode": "COMP-O-201",
         "status": "available",
-        "updatedAt": "2026-11-22T03:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_dewas_02_2",
-        "group": "AB-",
-        "component": "Whole Blood",
+        "_id": "inv_ss2594u",
+        "group": "O+",
+        "component": "Platelets (Single Donor / RDP)",
         "units": 14,
-        "batchCode": "MP-DEW-9931",
+        "batchCode": "COMP-PLT-202",
         "status": "available",
-        "updatedAt": "2026-11-22T18:32:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       },
       {
-        "_id": "inv_bank_dewas_02_3",
-        "group": "AB+",
+        "_id": "inv_69vqw4i",
+        "group": "A+",
         "component": "Fresh Frozen Plasma",
-        "units": 15,
-        "batchCode": "MP-DEW-CR31",
+        "units": 18,
+        "batchCode": "COMP-FFP-203",
         "status": "available",
-        "updatedAt": "2026-11-23T10:02:33.096Z"
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_iajtwdb",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 20,
+        "batchCode": "COMP-B-204",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_o8j6lwc",
+        "group": "AB+",
+        "component": "Cryoprecipitate",
+        "units": 8,
+        "batchCode": "COMP-CRYO-205",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_98s54gn",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "COMP-ON-206",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_7dijvq5",
+        "group": "A-",
+        "component": "Platelets (RDP)",
+        "units": 4,
+        "batchCode": "COMP-AN-207",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_y08s0jp",
+        "group": "B-",
+        "component": "Fresh Frozen Plasma",
+        "units": 5,
+        "batchCode": "COMP-BN-208",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
       }
     ],
-    "lastInventoryUpdate": "2026-11-23T10:02:33.096Z"
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
+  },
+  {
+    "_id": "bank_bagli_01",
+    "name": "Community Health Centre Blood Storage Unit Bagli",
+    "city": "Bagli",
+    "district": "Dewas",
+    "state": "Madhya Pradesh",
+    "phone": "07271-275200",
+    "email": "chcbagli@gmail.com",
+    "address": "CHC Bagli, Chapda Road, Bagli, Dist. Dewas, MP 455227",
+    "category": "Blood Storage Unit",
+    "facilityType": "Government Blood Storage Unit",
+    "serviceCategory": "Need Blood (Issue Only)",
+    "components": "Storage Unit (Issued from Dewas District Hospital)",
+    "lat": 22.645,
+    "lng": 76.352,
+    "openingHours": "24x7 Emergency Services",
+    "verified": true,
+    "notes": "Sub-district hospital blood storage facility for Bagli tehsil.",
+    "inventory": [
+      {
+        "_id": "inv_jc5afqn",
+        "group": "O+",
+        "component": "Packed Red Blood Cells",
+        "units": 8,
+        "batchCode": "BSU-O-101",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_r2gsck9",
+        "group": "A+",
+        "component": "Whole Blood",
+        "units": 4,
+        "batchCode": "BSU-A-102",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_d5stdt1",
+        "group": "B+",
+        "component": "Packed Red Blood Cells",
+        "units": 6,
+        "batchCode": "BSU-B-103",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      },
+      {
+        "_id": "inv_g8bd3hv",
+        "group": "O-",
+        "component": "Packed Red Blood Cells",
+        "units": 2,
+        "batchCode": "BSU-CR-104",
+        "status": "available",
+        "updatedAt": "2026-11-24T20:54:17.456Z"
+      }
+    ],
+    "lastInventoryUpdate": "2026-11-24T20:54:17.456Z"
   }
 ]

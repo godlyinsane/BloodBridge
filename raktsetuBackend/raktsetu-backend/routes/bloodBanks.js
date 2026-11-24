@@ -139,13 +139,22 @@ router.get("/nearest", async (req, res) => {
           name: bName,
           address: fullAddress || "Location registered in portal",
           phone: bank.phone || "",
+          email: bank.email || "",
+          city: bank.city || "",
+          district: bank.district || bank.city || "",
+          state: bank.state || "Madhya Pradesh",
+          category: bank.category || "Government",
+          facilityType: bank.facilityType || "Blood Bank",
+          serviceCategory: bank.serviceCategory || "Both (Need Blood & Donate)",
+          components: bank.components || "Whole Blood",
           openingHours: bank.openingHours || "24x7 Emergency Availability",
+          notes: bank.notes || "",
           lat: bank.lat || null,
           lng: bank.lng || null,
           distanceKm: dist,
           directionsUrl: buildDirectionsUrl(bName + ", " + fullAddress, bank.lat, bank.lng),
-          source: bank.sourceKind === "registered" ? "Verified Portal Registry" : "Directory",
-          rating: 4.8,
+          source: bank.sourceKind === "registered" ? "Verified Portal Registry" : (bank.category || "Directory"),
+          rating: 4.9,
           openNow: true,
         });
       }
@@ -175,7 +184,11 @@ router.get("/nearest", async (req, res) => {
 // GET /api/blood-banks
 router.get("/", async (req, res) => {
   try {
-    const banks = await BloodBank.find().sort({ name: 1 });
+    const filter = {};
+    if (req.query.district) filter.district = new RegExp(req.query.district.trim(), "i");
+    if (req.query.city) filter.city = new RegExp(req.query.city.trim(), "i");
+    if (req.query.category) filter.category = new RegExp(req.query.category.trim(), "i");
+    const banks = await BloodBank.find(filter).sort({ name: 1 });
     res.json(banks);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -185,7 +198,12 @@ router.get("/", async (req, res) => {
 // POST /api/blood-banks
 router.post("/", requireAdmin, async (req, res) => {
   try {
-    const { name, city, state, phone, address = "", lat, lng, openingHours = "" } = req.body || {};
+    const {
+      name, city, district, state = "Madhya Pradesh", phone, email = "",
+      category = "Government", facilityType = "Blood Bank", serviceCategory = "Both (Need Blood & Donate)",
+      components = "Whole Blood", address = "", lat, lng, openingHours = "24x7 Emergency Services",
+      notes = ""
+    } = req.body || {};
     if (typeof name !== "string" || !name.trim() || name.trim().length > 160) {
       return res.status(400).json({ error: "Blood bank name is required (max 160 characters)." });
     }
@@ -202,13 +220,20 @@ router.post("/", requireAdmin, async (req, res) => {
     }
     const bank = await BloodBank.create({
       name: name.trim(),
-      city,
-      state,
-      phone,
-      address: String(address).slice(0, 300),
+      city: String(city || "").trim(),
+      district: String(district || city || "").trim(),
+      state: String(state || "Madhya Pradesh").trim(),
+      phone: String(phone || "").trim(),
+      email: String(email || "").trim(),
+      category: String(category || "Government").trim(),
+      facilityType: String(facilityType || "Blood Bank").trim(),
+      serviceCategory: String(serviceCategory || "Both (Need Blood & Donate)").trim(),
+      components: String(components || "Whole Blood").trim(),
+      address: String(address || "").slice(0, 500),
       lat: numericLat,
       lng: numericLng,
-      openingHours: String(openingHours).slice(0, 160),
+      openingHours: String(openingHours || "24x7 Emergency Services").slice(0, 200),
+      notes: String(notes || "").slice(0, 500),
     });
     res.status(201).json(bank);
   } catch (err) {

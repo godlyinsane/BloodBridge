@@ -27,12 +27,26 @@ const demoDonors = [
   ["Manoj Agarwal", "9811100015", "O-", "Male", 22.1322, 82.1189, "Gatoura"],
 ];
 
-const SEED_BANKS = [
-  { name: "CIMS Blood Bank", city: "Bilaspur", state: "Chhattisgarh", phone: "07752-411000" },
-  { name: "District Hospital Blood Bank", city: "Bilaspur", state: "Chhattisgarh", phone: "07752-234567" },
-  { name: "Indian Red Cross Society Blood Bank", city: "Raipur", state: "Chhattisgarh", phone: "0771-2445566" },
-  { name: "AIIMS Raipur Blood Bank", city: "Raipur", state: "Chhattisgarh", phone: "0771-2577000" },
-];
+const path = require("path");
+const fs = require("fs");
+
+let SEED_BANKS = [];
+try {
+  const jsonDbPath = path.resolve(__dirname, "./data/json-db/bloodbank.json");
+  if (fs.existsSync(jsonDbPath)) {
+    SEED_BANKS = JSON.parse(fs.readFileSync(jsonDbPath, "utf8"));
+  }
+} catch (e) {
+  console.warn("Could not load local bloodbank.json, falling back to default seed banks.");
+}
+if (!SEED_BANKS.length) {
+  SEED_BANKS = [
+    { name: "District Hospital Blood Bank Sehore", city: "Sehore", district: "Sehore", state: "Madhya Pradesh", phone: "07562-226737" },
+    { name: "AIIMS Bhopal - Transfusion Medicine & Blood Bank", city: "Bhopal", district: "Bhopal", state: "Madhya Pradesh", phone: "0755-2832363" },
+    { name: "Hamidia Hospital Blood Bank (Gandhi Medical College)", city: "Bhopal", district: "Bhopal", state: "Madhya Pradesh", phone: "0755-4329532" },
+    { name: "Indian Red Cross Society State Blood Centre Bhopal", city: "Bhopal", district: "Bhopal", state: "Madhya Pradesh", phone: "0755-2550346" },
+  ];
+}
 
 async function seed() {
   if (!process.env.MONGO_URI) throw new Error("MONGO_URI is required.");
@@ -60,7 +74,7 @@ async function seed() {
   for (const bank of SEED_BANKS) {
     await BloodBank.findOneAndUpdate({ name: bank.name, city: bank.city }, { $set: bank }, { upsert: true, new: true });
   }
-  console.log(`Upserted ${SEED_BANKS.length} sample blood banks without deleting existing records.`);
+  console.log(`Upserted ${SEED_BANKS.length} verified blood banks into database.`);
   await mongoose.disconnect();
 }
 

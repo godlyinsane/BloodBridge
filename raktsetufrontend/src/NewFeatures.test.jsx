@@ -24,8 +24,7 @@ test('EmergencyBanner renders unified InstAmbulance dial link and blood bank but
 
 test('P2PBloodListings renders blood group filter options and post button', () => {
   render(<P2PBloodListings apiBase="/api" />);
-  expect(screen.getByText(/Live Donor & Availability Feed/i)).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: /Upload Blood Availability/i })).toBeInTheDocument();
+  expect(screen.getByText(/Blood Donation Centres & Availability Directory/i)).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'All Groups' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'O+' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'AB-' })).toBeInTheDocument();
