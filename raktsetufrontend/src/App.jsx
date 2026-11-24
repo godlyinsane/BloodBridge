@@ -5,7 +5,7 @@ import {
   CheckCircle2, AlertTriangle, Send, Search, ArrowRight, Radio,
   Sparkles, Gauge, Clock3, UserCheck, ShieldAlert, Shield,
   Phone, MessageCircle, Share2, Calendar, Building2, Plus, Trash2, Timer,
-  Lock, LogOut, Upload, FileText, XCircle, BellRing, ChevronRight, Info, Mail, Navigation,
+  Lock, LogOut, Upload, FileText, XCircle, BellRing, ChevronRight, Info, Mail, Navigation, Compass,
 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { QRCodeSVG } from "qrcode.react";
