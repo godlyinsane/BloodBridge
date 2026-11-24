@@ -855,50 +855,346 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
   return (
     <div style={{ color: ink, paddingBottom: 20 }}>
       {page === "about" && (
-        <section style={{ background: "linear-gradient(120deg,#9f2033,#e75b4d)", color: "#fff", borderRadius: 18, padding: "clamp(24px,5vw,44px)", marginBottom: 26 }}>
-          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 1.5, textTransform: "uppercase", opacity: .85, marginBottom: 10 }}>RAKTMITRA · INFORMATION</div>
-          <h1 style={{ fontSize: "clamp(28px,4vw,38px)", lineHeight: 1.15, margin: "0 0 12px" }}>{content.title}</h1>
-          <p style={{ maxWidth: 760, margin: 0, lineHeight: 1.8, fontSize: 15, color: "rgba(255,255,255,.9)" }}>{content.subtitle}</p>
-        </section>
+        <div style={{ maxWidth: 1040, margin: "0 auto", padding: "10px 0 40px" }}>
+          {/* Apple-style Hero Showcase */}
+          <section
+            style={{
+              position: "relative",
+              textAlign: "center",
+              padding: "clamp(48px, 8vw, 84px) 24px clamp(36px, 6vw, 60px)",
+              overflow: "hidden",
+              borderRadius: 32,
+              background: light
+                ? "radial-gradient(circle at 50% 0%, #ffffff 0%, #f4f6fa 100%)"
+                : "radial-gradient(circle at 50% -20%, rgba(255, 59, 84, 0.18) 0%, rgba(34, 211, 238, 0.08) 50%, rgba(13, 16, 23, 0.95) 100%)",
+              border: `1px solid ${light ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.08)"}`,
+              boxShadow: light ? "0 20px 60px rgba(0,0,0,0.04)" : "0 30px 80px rgba(0,0,0,0.6)",
+              marginBottom: 32,
+            }}
+          >
+            {/* Ambient glass glow */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "80%",
+                height: 1,
+                background: "linear-gradient(90deg, transparent, rgba(255,59,84,0.6), transparent)",
+              }}
+            />
+
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "7px 18px",
+                  borderRadius: 999,
+                  background: light ? "rgba(255,59,84,0.08)" : "rgba(255,59,84,0.12)",
+                  border: `1px solid ${light ? "rgba(255,59,84,0.2)" : "rgba(255,59,84,0.3)"}`,
+                  color: "#ff6579",
+                  fontSize: 12.5,
+                  fontWeight: 800,
+                  letterSpacing: 1.5,
+                  textTransform: "uppercase",
+                  marginBottom: 24,
+                }}
+              >
+                <Sparkles size={14} /> The Philosophy Behind BloodBridge
+              </div>
+
+              <h1
+                className="headline"
+                style={{
+                  fontSize: "clamp(36px, 6vw, 64px)",
+                  fontWeight: 900,
+                  letterSpacing: "-2px",
+                  lineHeight: 1.05,
+                  margin: "0 auto 22px",
+                  maxWidth: 820,
+                  background: light
+                    ? "linear-gradient(180deg, #111827 0%, #374151 100%)"
+                    : "linear-gradient(180deg, #FFFFFF 20%, #9CA3AF 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Built to connect human lives when seconds matter most.
+              </h1>
+
+              <p
+                style={{
+                  fontSize: "clamp(16px, 2.2vw, 20px)",
+                  lineHeight: 1.6,
+                  color: muted,
+                  maxWidth: 680,
+                  margin: "0 auto 36px",
+                  fontWeight: 450,
+                  letterSpacing: "-0.2px",
+                }}
+              >
+                An engineering project engineered with clarity, speed, and zero friction — bridging people in need with certified blood banks and emergency hospitals.
+              </p>
+
+              {/* Minimal Apple Pill Tagline */}
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 18, flexWrap: "wrap", fontSize: 13.5, color: muted }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><CheckCircle2 size={16} color={COLORS.good} /> 100% Free Open Utility</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><ShieldCheck size={16} color={COLORS.cyan} /> 32+ Verified Centers</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><Heart size={16} color={COLORS.crimson} /> Community First</span>
+              </div>
+            </motion.div>
+          </section>
+
+          {/* 3 Large Apple-style Bento Highlights */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))", gap: 20, marginBottom: 32 }}>
+            {/* Bento Card 1: The Mission */}
+            <motion.div
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                background: light ? "#ffffff" : "rgba(255,255,255,0.035)",
+                border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                borderRadius: 26,
+                padding: "36px 30px",
+                display: "flex",
+                flexDirection: "column",
+                boxShadow: light ? "0 10px 30px rgba(0,0,0,0.03)" : "none",
+              }}
+            >
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 16,
+                  background: "linear-gradient(135deg, rgba(255,59,84,0.2), rgba(255,59,84,0.05))",
+                  border: "1px solid rgba(255,59,84,0.3)",
+                  display: "grid",
+                  placeItems: "center",
+                  color: COLORS.crimson,
+                  marginBottom: 22,
+                }}
+              >
+                <Heart size={26} fill="rgba(255,59,84,0.2)" />
+              </div>
+              <h3 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 12px", color: ink, letterSpacing: "-0.5px" }}>
+                Our Core Mission
+              </h3>
+              <p style={{ fontSize: 15.5, lineHeight: 1.7, color: muted, margin: 0 }}>
+                In critical emergencies, families often waste precious hours making chaotic phone calls to find available blood units. BloodBridge replaces this uncertainty with an instant, verified directory mapped with live GPS coordinates, direct emergency phone contacts, and operating hours.
+              </p>
+            </motion.div>
+
+            {/* Bento Card 2: The Architecture */}
+            <motion.div
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                background: light ? "#ffffff" : "rgba(255,255,255,0.035)",
+                border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                borderRadius: 26,
+                padding: "36px 30px",
+                display: "flex",
+                flexDirection: "column",
+                boxShadow: light ? "0 10px 30px rgba(0,0,0,0.03)" : "none",
+              }}
+            >
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 16,
+                  background: "linear-gradient(135deg, rgba(34,211,238,0.2), rgba(34,211,238,0.05))",
+                  border: "1px solid rgba(34,211,238,0.3)",
+                  display: "grid",
+                  placeItems: "center",
+                  color: COLORS.cyan,
+                  marginBottom: 22,
+                }}
+              >
+                <Compass size={26} />
+              </div>
+              <h3 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 12px", color: ink, letterSpacing: "-0.5px" }}>
+                Precision &amp; Accessibility
+              </h3>
+              <p style={{ fontSize: 15.5, lineHeight: 1.7, color: muted, margin: 0 }}>
+                Designed with a mobile-first, high-legibility interface that runs smoothly even on entry-level smartphones and spotty cellular connections. Zero tracking, zero advertisements, and no bloated login barriers for people seeking emergency help.
+              </p>
+            </motion.div>
+
+            {/* Bento Card 3: The Geographic Scope */}
+            <motion.div
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                background: light ? "#ffffff" : "rgba(255,255,255,0.035)",
+                border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                borderRadius: 26,
+                padding: "36px 30px",
+                display: "flex",
+                flexDirection: "column",
+                boxShadow: light ? "0 10px 30px rgba(0,0,0,0.03)" : "none",
+              }}
+            >
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 16,
+                  background: "linear-gradient(135deg, rgba(52,211,153,0.2), rgba(52,211,153,0.05))",
+                  border: "1px solid rgba(52,211,153,0.3)",
+                  display: "grid",
+                  placeItems: "center",
+                  color: COLORS.good,
+                  marginBottom: 22,
+                }}
+              >
+                <MapPin size={26} />
+              </div>
+              <h3 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 12px", color: ink, letterSpacing: "-0.5px" }}>
+                100 KM Regional Network
+              </h3>
+              <p style={{ fontSize: 15.5, lineHeight: 1.7, color: muted, margin: 0 }}>
+                Covering every major medical hub and community centre within 100 km of VIT Bhopal — including Sehore, Ashta, Bhopal, Hoshangabad, Raisen, Mandideep, and surrounding rural towns.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Apple-style Editorial Quote / Statement Section */}
+          <section
+            style={{
+              position: "relative",
+              borderRadius: 30,
+              padding: "clamp(36px, 5vw, 54px) clamp(24px, 4vw, 44px)",
+              background: light
+                ? "linear-gradient(135deg, #fff5f6 0%, #ffffff 100%)"
+                : "linear-gradient(135deg, rgba(255,59,84,0.1) 0%, rgba(18,22,30,0.8) 100%)",
+              border: `1.5px solid ${light ? "rgba(255,59,84,0.2)" : "rgba(255,59,84,0.25)"}`,
+              marginBottom: 32,
+              textAlign: "left",
+            }}
+          >
+            <div style={{ maxWidth: 840 }}>
+              <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: 1.5, color: COLORS.crimson, textTransform: "uppercase", marginBottom: 14 }}>
+                The Story Behind BloodBridge
+              </div>
+              <h2
+                style={{
+                  fontSize: "clamp(24px, 3.8vw, 36px)",
+                  fontWeight: 850,
+                  letterSpacing: "-0.8px",
+                  lineHeight: 1.25,
+                  margin: "0 0 16px",
+                  color: ink,
+                }}
+              >
+                Technology is at its finest when it directly serves human life.
+              </h2>
+              <p style={{ fontSize: 16.5, lineHeight: 1.8, color: muted, margin: 0 }}>
+                BloodBridge originated as an end-semester Engineering Projects in Community Service (EPICS) initiative at VIT Bhopal University. Rather than crafting another theoretical software demonstration, this platform was developed to address the real-world healthcare fragmentation observed across Madhya Pradesh's central district belt.
+              </p>
+            </div>
+          </section>
+
+          {/* Designer / Author Signature Showcase — Apple Style Credit */}
+          <section
+            style={{
+              background: light ? "#ffffff" : "rgba(20, 24, 34, 0.75)",
+              border: `1px solid ${light ? "#e2e6ec" : "rgba(255,255,255,0.09)"}`,
+              borderRadius: 30,
+              padding: "clamp(32px, 5vw, 48px) clamp(20px, 4vw, 36px)",
+              textAlign: "center",
+              boxShadow: light ? "0 14px 40px rgba(0,0,0,0.04)" : "0 20px 50px rgba(0,0,0,0.4)",
+            }}
+          >
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "7px 16px",
+                borderRadius: 999,
+                background: "rgba(255,59,84,0.12)",
+                border: "1px solid rgba(255,59,84,0.3)",
+                color: "#ff7085",
+                fontSize: 12.5,
+                fontWeight: 800,
+                letterSpacing: 1.2,
+                textTransform: "uppercase",
+                marginBottom: 18,
+              }}
+            >
+              EPICS Project · VIT Bhopal University
+            </div>
+
+            <h2
+              className="headline"
+              style={{
+                fontSize: "clamp(28px, 4vw, 40px)",
+                fontWeight: 900,
+                letterSpacing: "-1px",
+                margin: "0 0 10px",
+                color: ink,
+              }}
+            >
+              Made by <span style={{ color: COLORS.crimson }}>Priyansh Bhatt</span> for EPICS
+            </h2>
+
+            <p style={{ fontSize: 16.5, color: muted, maxWidth: 580, margin: "0 auto 28px", lineHeight: 1.65 }}>
+              Engineering Projects in Community Service (EPICS) · School of Computing Science and Engineering, VIT Bhopal University.
+            </p>
+
+            <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: 14 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "12px 24px",
+                  borderRadius: 20,
+                  background: light ? "#f9fafb" : "rgba(255,255,255,0.04)",
+                  border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                }}
+              >
+                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#34D399" }} />
+                <span style={{ fontSize: 15, fontWeight: 750, color: ink }}>Priyansh Bhatt</span>
+                <span style={{ fontSize: 13, color: muted }}>· Lead Developer &amp; Researcher</span>
+              </div>
+            </div>
+
+            <div style={{ marginTop: 32, display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                style={{
+                  ...glowBtn,
+                  fontSize: 15,
+                  padding: "13px 24px",
+                  borderRadius: 14,
+                }}
+              >
+                <Building2 size={18} />
+                <span>Explore Facilities</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => { goTo("nearest"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                style={{
+                  ...ghostBtn,
+                  fontSize: 15,
+                  padding: "13px 24px",
+                  borderRadius: 14,
+                }}
+              >
+                <Navigation size={18} />
+                <span>Locate Nearest Blood Bank</span>
+              </button>
+            </div>
+          </section>
+        </div>
       )}
-      {page === "about" && <>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 18, marginBottom: 26 }}>
-          <section style={sectionStyle}>
-            <div style={{ color: red, fontSize: 22, marginBottom: 12 }}>◎</div>
-            <h2 style={{ margin: "0 0 10px", fontSize: 19 }}>Our Mission</h2>
-            <p style={paraStyle}>Make it easier for people to discover donor and blood-bank information, explore available support, and connect during a time-sensitive need. We aim to make the search process clearer and more accessible.</p>
-          </section>
-          <section style={sectionStyle}>
-            <div style={{ color: red, fontSize: 22, marginBottom: 12 }}>♡</div>
-            <h2 style={{ margin: "0 0 10px", fontSize: 19 }}>Our Story</h2>
-            <p style={paraStyle}>BloodBridge is an end-semester academic project created to explore how web technology can support blood-donation awareness and help connect donors, recipients, and blood-bank information in one place.</p>
-          </section>
-        </div>
-        <h2 style={{ textAlign: "center", fontSize: 27, color: red, margin: "30px 0 18px" }}>Our Values</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(190px,1fr))", gap: 14, marginBottom: 30 }}>
-          {[
-            ["Compassion","Treat every request with empathy and respect."],
-            ["Trust & Responsibility","Present information clearly and encourage responsible use."],
-            ["Community","Support collaboration among donors, recipients and blood banks."],
-            ["Accessibility","Keep key discovery features straightforward and easy to navigate."]
-          ].map(([title,desc])=><section key={title} style={{...sectionStyle,textAlign:"center",padding:"23px 18px"}}>
-            <div style={{color:red,fontSize:22,marginBottom:10}}>{title==="Compassion"?"♡":title==="Community"?"♧":title==="Accessibility"?"◎":"◇"}</div>
-            <h3 style={{fontSize:15,margin:"0 0 8px"}}>{title}</h3><p style={{...paraStyle,fontSize:13,margin:0}}>{desc}</p>
-          </section>)}
-        </div>
-        <section style={{...sectionStyle,textAlign:"center"}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,padding:"6px 14px",borderRadius:999,background:"rgba(255,59,84,0.12)",border:"1px solid rgba(255,59,84,0.28)",color:"#ff7085",fontSize:12,fontWeight:800,letterSpacing:1,textTransform:"uppercase",marginBottom:14}}>
-            EPICS PROJECT · VIT BHOPAL UNIVERSITY
-          </div>
-          <h2 style={{fontSize:26,color:red,margin:"0 0 8px"}}>Made by Priyansh Bhatt for EPICS</h2>
-          <p style={paraStyle}>Engineering Projects in Community Service (EPICS) · VIT Bhopal University</p>
-          <div style={{display:"flex",justifyContent:"center",flexWrap:"wrap",gap:12,marginTop:20}}>
-            <span style={{border:"1px solid "+(light?"#edc7cc":"rgba(255,130,145,.38)"),background:light?"#fff4f5":"rgba(196,61,80,.16)",color:light?"#a62c40":"#ff9aaa",borderRadius:30,padding:"12px 28px",fontWeight:800,fontSize:15}}>
-              Priyansh Bhatt (Lead Developer &amp; Researcher)
-            </span>
-          </div>
-        </section>
-      </>}
       {page === "privacy" && <>
         <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 34px" }}>
           <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 48, height: 48, borderRadius: 12, background: "rgba(255,59,84,0.1)", border: "1px solid rgba(255,59,84,0.25)", color: red, marginBottom: 12 }}>
