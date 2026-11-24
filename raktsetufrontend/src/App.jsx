@@ -677,7 +677,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
           </button>
           <button type="button" className="raktmitra-menu-toggle" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen(v => !v)} style={{ display:"none", alignItems:"center", justifyContent:"center", width:44, height:44, borderRadius:12, border:`1px solid ${theme === "light" ? "#d0d5dd" : COLORS.panelBorder}`, color:theme === "light"?"#344054":"#fff", background:"transparent", cursor:"pointer", flexShrink:0 }}><span style={{fontSize:25,lineHeight:1}}>{mobileMenuOpen ? "×" : "☰"}</span></button>
           <nav className="raktsetu-nav" aria-label="Main navigation" style={{ display: "flex", alignItems: "center", gap: 20, flex: "1 1 auto", justifyContent: "center", minWidth: 0 }}>
-            {[[ "home", "Home" ], [ "camps", "Blood Facilities (Need Blood)" ], [ "nearest", "Nearest Blood Bank" ], [ "inventory", "Donate Blood" ]].map(([k, label]) => (
+            {[[ "home", "Home" ], [ "camps", "Blood Facilities (Need Blood)" ], [ "nearest", "Nearest Blood Bank" ]].map(([k, label]) => (
               <button
                 key={k}
                 type="button"
@@ -754,7 +754,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                 <h3 style={{fontSize:12,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 17px"}}>Quick links</h3>
                 <div style={{display:"grid",gap:12}}>
                   {[
-                    ["Home","home"],["Donor Registration","donor"],
+                    ["Home","home"],
                     ["Emergency Requests","requests"],["Camps & Blood Banks","camps"],["Features","services"]
                   ].map(([label,destination])=>(
                     <button key={label} onClick={()=>{setTab(destination);window.scrollTo({top:0,behavior:"smooth"});}}
@@ -1035,9 +1035,7 @@ function Home({ donors, requests, goTo }) {
 
   const quickActions = [
     { icon: <Building2 size={21} />, title: "Need Blood? Explore Facilities", description: "Explore verified hospitals, government blood banks, and emergency facility contacts.", action: () => goTo("camps"), tone: COLORS.crimson, tag: "Need Blood", label: "Find facilities" },
-    { icon: <Droplet size={21} />, title: "Donate Blood", description: "Explore active donation slots, blood shortages, and regional donation requirements.", action: () => goTo("inventory"), tone: "#38bdf8", tag: "Donate", label: "Donate blood" },
     { icon: <MapPin size={21} />, title: "Nearest Blood Bank", description: "Find the closest blood bank with Google Maps turn-by-turn navigation.", action: () => goTo("nearest"), tone: "#0ea5e9", tag: "Live GPS", label: "Locate bank" },
-    { icon: <Heart size={21} />, title: "Become a donor", description: "Register as a donor and save lives when emergencies strike.", action: () => goTo("donor"), tone: "#fb7185", tag: "Lifesaver", label: "Register now" },
     { icon: <Info size={21} />, title: "About Us", description: "Learn about the BloodBridge network, mission, and community values.", action: () => goTo("about"), tone: "#818cf8", tag: "Network", label: "About BloodBridge" },
   ];
 
@@ -1134,8 +1132,7 @@ function Home({ donors, requests, goTo }) {
             BloodBridge brings donors, people seeking blood, and blood banks together. Find compatible donor support, register to help, and explore donation resources in one place.
           </p>
           <div className="hero-actions">
-            <motion.button whileHover={{scale:1.025,y:-2}} whileTap={{scale:.98}} style={ghostBtn} onClick={()=>goTo("donor")}><Heart size={16}/> Become a donor</motion.button>
-          </div>
+            </div>
           <div style={{display:"flex",gap:16,flexWrap:"wrap",marginTop:22,color:COLORS.textMuted,fontSize:12}}>
             <span style={{display:"inline-flex",alignItems:"center",gap:6}}><ShieldCheck size={15} color={COLORS.cyan}/> Verification-aware donor listings</span>
             <span style={{display:"inline-flex",alignItems:"center",gap:6}}><MapPin size={15} color={COLORS.good}/> Location-based discovery</span>
