@@ -99,13 +99,13 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: 1.2, color: "#38bdf8", textTransform: "uppercase" }}>
+            <div style={{ fontSize: 13, fontWeight: 900, letterSpacing: 1.2, color: "#38bdf8", textTransform: "uppercase" }}>
               GOOGLE MAPS &amp; GEOLOCATION ASSISTANT
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 3.8vw, 30px)", margin: "4px 0", fontWeight: 800 }}>
+            <h2 style={{ fontSize: "clamp(26px, 4.2vw, 34px)", margin: "6px 0", fontWeight: 850 }}>
               Find Nearest Blood Bank
             </h2>
-            <p style={{ color: "#9ca3af", fontSize: 13, margin: 0, maxWidth: 620, lineHeight: 1.6 }}>
+            <p style={{ color: "#9ca3af", fontSize: 15.5, margin: 0, maxWidth: 660, lineHeight: 1.65 }}>
               Instant live GPS matching with Google Maps directions, phone contacts, and operating hours. If location is denied, enter your city or pincode.
             </p>
           </div>
@@ -118,19 +118,19 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: 8,
+              gap: 10,
               background: "#0284c7",
               color: "#ffffff",
               border: "1px solid #38bdf8",
-              padding: "12px 20px",
-              borderRadius: 12,
+              padding: "14px 24px",
+              borderRadius: 14,
               fontWeight: 800,
-              fontSize: 14,
+              fontSize: 16,
               cursor: "pointer",
               boxShadow: "0 4px 18px rgba(2,132,199,0.4)",
             }}
           >
-            <Compass size={17} />
+            <Compass size={19} />
             <span>Use My Current Location</span>
           </button>
         </div>
@@ -266,10 +266,10 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
                 {/* Bank Name and Distance Badge */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
                   <div>
-                    <span style={{ fontSize: 10, fontWeight: 800, color: "#38bdf8", letterSpacing: 0.8, textTransform: "uppercase" }}>
+                    <span style={{ fontSize: 11.5, fontWeight: 850, color: "#38bdf8", letterSpacing: 0.8, textTransform: "uppercase" }}>
                       {bank.source || "BLOOD BANK"}
                     </span>
-                    <h3 style={{ fontSize: 16, margin: "4px 0 0", fontWeight: 800, color: "#f3f4f6" }}>
+                    <h3 style={{ fontSize: 18.5, margin: "5px 0 0", fontWeight: 800, color: "#f3f4f6" }}>
                       {bank.name}
                     </h3>
                   </div>
@@ -281,9 +281,9 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
                         border: "1px solid #0284c7",
                         color: "#38bdf8",
                         fontWeight: 900,
-                        fontSize: 12.5,
-                        padding: "4px 10px",
-                        borderRadius: 8,
+                        fontSize: 14,
+                        padding: "5px 12px",
+                        borderRadius: 10,
                         flexShrink: 0,
                       }}
                     >
@@ -295,19 +295,19 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
                 </div>
 
                 {/* Address */}
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12.5, color: "#d1d5db", lineHeight: 1.5 }}>
-                  <MapPin size={15} color="#38bdf8" style={{ flexShrink: 0, marginTop: 2 }} />
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 14.5, color: "#d1d5db", lineHeight: 1.55 }}>
+                  <MapPin size={17} color="#38bdf8" style={{ flexShrink: 0, marginTop: 2 }} />
                   <span>{bank.address}</span>
                 </div>
 
                 {/* Opening Hours */}
-                <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#9ca3af" }}>
-                  <Clock size={14} color="#34d399" />
+                <div style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 14, color: "#9ca3af" }}>
+                  <Clock size={16} color="#34d399" />
                   <span>{bank.openingHours || "24x7 Emergency Services"}</span>
                 </div>
 
                 {/* Action Buttons: Phone & Get Directions */}
-                <div style={{ marginTop: "auto", paddingTop: 10, display: "flex", gap: 8, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                <div style={{ marginTop: "auto", paddingTop: 14, display: "flex", gap: 10, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                   {bank.phone && (
                     <a
                       href={`tel:${String(bank.phone).replace(/[^\d+]/g, "")}`}
@@ -317,18 +317,18 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
                         display: "inline-flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        gap: 6,
+                        gap: 8,
                         background: "rgba(255,255,255,0.08)",
                         color: "#ffffff",
                         textDecoration: "none",
                         fontWeight: 800,
-                        fontSize: 12.5,
-                        padding: "9px 12px",
-                        borderRadius: 8,
+                        fontSize: 14.5,
+                        padding: "11px 14px",
+                        borderRadius: 10,
                         border: "1px solid rgba(255,255,255,0.15)",
                       }}
                     >
-                      <Phone size={13} />
+                      <Phone size={15} />
                       <span>Call</span>
                     </a>
                   )}
@@ -343,14 +343,14 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      gap: 6,
+                      gap: 8,
                       background: "#0284c7",
                       color: "#ffffff",
                       textDecoration: "none",
                       fontWeight: 800,
-                      fontSize: 12.5,
-                      padding: "9px 14px",
-                      borderRadius: 8,
+                      fontSize: 14.5,
+                      padding: "11px 16px",
+                      borderRadius: 10,
                       boxShadow: "0 2px 8px rgba(2,132,199,0.3)",
                     }}
                   >

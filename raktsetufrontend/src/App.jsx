@@ -138,14 +138,14 @@ const glowBtn = {
   background: `linear-gradient(135deg, ${COLORS.crimson}, ${COLORS.crimsonDeep})`,
   color: "#fff",
   border: "none",
-  borderRadius: 12,
-  padding: "13px 24px",
-  fontSize: 14.5,
-  fontWeight: 600,
+  borderRadius: 14,
+  padding: "15px 28px",
+  fontSize: 16,
+  fontWeight: 700,
   cursor: "pointer",
   display: "inline-flex",
   alignItems: "center",
-  gap: 8,
+  gap: 10,
   boxShadow: "0 8px 30px rgba(255,59,84,0.35)",
 };
 
@@ -153,19 +153,19 @@ const ghostBtn = {
   background: "rgba(255,255,255,0.04)",
   color: COLORS.text,
   border: `1px solid ${COLORS.panelBorder}`,
-  borderRadius: 12,
-  padding: "12px 22px",
-  fontSize: 14,
-  fontWeight: 600,
+  borderRadius: 14,
+  padding: "14px 26px",
+  fontSize: 15.5,
+  fontWeight: 650,
   cursor: "pointer",
 };
 
 const inputStyle = {
   width: "100%",
-  padding: "12px 14px",
-  borderRadius: 10,
+  padding: "14px 16px",
+  borderRadius: 12,
   border: `1px solid ${COLORS.panelBorder}`,
-  fontSize: 14.5,
+  fontSize: 16,
   fontFamily: "Inter, sans-serif",
   color: COLORS.text,
   background: "rgba(255,255,255,0.03)",
@@ -453,26 +453,28 @@ export default function BloodBridgeApp() {
         letter-spacing: -0.04em;
       }
       body {
-        font-size: 16px;
+        font-size: 17.5px;
+        line-height: 1.65;
       }
       p {
-        line-height: 1.7;
+        line-height: 1.75;
         font-weight: 450;
+        font-size: 15.5px;
         letter-spacing: -0.01em;
       }
       .navbtn {
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", sans-serif !important;
-        font-size: 15px !important;
+        font-size: 16.5px !important;
         font-weight: 700 !important;
         letter-spacing: -0.015em;
       }
       input:focus, select:focus { border-color: ${COLORS.cyan} !important; box-shadow: 0 0 0 3px rgba(34,211,238,0.15); }
       table { border-collapse: collapse; width: 100%; }
-      th, td { text-align: left; padding: 12px 14px; font-size: 13px; }
-      th { color: ${COLORS.textMuted}; font-weight: 600; border-bottom: 1px solid ${COLORS.panelBorder}; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+      th, td { text-align: left; padding: 14px 16px; font-size: 15px; }
+      th { color: ${COLORS.textMuted}; font-weight: 700; border-bottom: 1px solid ${COLORS.panelBorder}; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; }
       td { border-bottom: 1px solid rgba(255,255,255,0.05); color: ${COLORS.text}; }
-      .navbtn { background:none; border:none; cursor:pointer; font-size:14px; font-weight:600;
-                padding:9px 4px; color:${COLORS.textMuted}; position: relative; transition: color 0.18s ease; }
+      .navbtn { background:none; border:none; cursor:pointer; font-size:16.5px; font-weight:700;
+                padding:10px 6px; color:${COLORS.textMuted}; position: relative; transition: color 0.18s ease; }
       @media (hover: hover) and (pointer: fine) {
         .navbtn:hover { color: #fff; }
       }
@@ -486,7 +488,7 @@ export default function BloodBridgeApp() {
         .raktsetu-qr-dialog button { display: none !important; }
       }
       .navbtn.active { color: #fff; }
-      .nav-account, .nav-theme { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:40px; padding:10px 13px; border-radius:12px; font-size:12px; font-weight:750; white-space:nowrap; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
+      .nav-account, .nav-theme { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:11px 16px; border-radius:12px; font-size:14.5px; font-weight:750; white-space:nowrap; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
       .nav-account:hover, .nav-theme:hover { transform:translateY(-1px); }
       .nav-account.primary { border:1px solid #c92d45; color:#fff; background:linear-gradient(135deg,#d83a50,#a91e35); box-shadow:0 7px 20px rgba(190,35,60,.2); }
       .nav-account.secondary:hover, .nav-theme:hover { background:rgba(180,40,60,.08) !important; }
@@ -738,27 +740,27 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(205px,1fr))", gap: "34px 42px", alignItems: "start" }}>
               <div>
                 <button aria-label="BloodBridge home" onClick={() => { setTab("home"); window.scrollTo({top:0,behavior:"smooth"}); }}
-                  style={{ display:"inline-flex",alignItems:"center",gap:10,border:0,padding:0,background:"transparent",color:"inherit",cursor:"pointer",marginBottom:14 }}>
-                  <img src="/raktmitra-logo.svg" alt="" width="38" height="38" style={{objectFit:"contain"}} />
-                  <span className="headline" style={{fontSize:23,fontWeight:700,letterSpacing:-.5}}>Blood<span style={{color:COLORS.crimson}}>Bridge</span></span>
+                  style={{ display:"inline-flex",alignItems:"center",gap:12,border:0,padding:0,background:"transparent",color:"inherit",cursor:"pointer",marginBottom:16 }}>
+                  <img src="/raktmitra-logo.svg" alt="" width="42" height="42" style={{objectFit:"contain"}} />
+                  <span className="headline" style={{fontSize:26,fontWeight:800,letterSpacing:-.5}}>Blood<span style={{color:COLORS.crimson}}>Bridge</span></span>
                 </button>
-                <p style={{fontSize:13,lineHeight:1.8,color:theme==="light"?"#596474":"#a8b0bd",margin:"0 0 18px",maxWidth:310}}>
+                <p style={{fontSize:15,lineHeight:1.8,color:theme==="light"?"#596474":"#a8b0bd",margin:"0 0 18px",maxWidth:340}}>
                   Connecting blood donors, recipients and blood banks to help people find the blood they need, when it matters most.
                 </p>
-                <div style={{display:"inline-flex",alignItems:"center",gap:8,fontSize:11.5,fontWeight:700,color:theme==="light"?"#a51d32":"#ff8a9a",background:theme==="light"?"#fff0f2":"rgba(255,59,84,.09)",border:"1px solid "+(theme==="light"?"#f4cbd2":"rgba(255,59,84,.22)"),borderRadius:30,padding:"7px 11px"}}>
-                  <Heart size={13} fill="currentColor" /> Every donation can make a difference
+                <div style={{display:"inline-flex",alignItems:"center",gap:8,fontSize:13,fontWeight:750,color:theme==="light"?"#a51d32":"#ff8a9a",background:theme==="light"?"#fff0f2":"rgba(255,59,84,.09)",border:"1px solid "+(theme==="light"?"#f4cbd2":"rgba(255,59,84,.22)"),borderRadius:30,padding:"8px 14px"}}>
+                  <Heart size={15} fill="currentColor" /> Every donation can make a difference
                 </div>
               </div>
 
               <div>
-                <h3 style={{fontSize:12,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 17px"}}>Quick links</h3>
-                <div style={{display:"grid",gap:12}}>
+                <h3 style={{fontSize:14,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 18px"}}>Quick links</h3>
+                <div style={{display:"grid",gap:14}}>
                   {[
                     ["Home","home"],
                     ["Emergency Requests","requests"],["Camps & Blood Banks","camps"],["Features","services"]
                   ].map(([label,destination])=>(
                     <button key={label} onClick={()=>{setTab(destination);window.scrollTo({top:0,behavior:"smooth"});}}
-                      style={{display:"block",width:"fit-content",border:0,padding:0,background:"transparent",color:theme==="light"?"#4b5563":"#c5cbd4",fontSize:13,textAlign:"left",cursor:"pointer",transition:"color .18s"}}>
+                      style={{display:"block",width:"fit-content",border:0,padding:0,background:"transparent",color:theme==="light"?"#4b5563":"#c5cbd4",fontSize:15,fontWeight:600,textAlign:"left",cursor:"pointer",transition:"color .18s"}}>
                       <span style={{color:COLORS.crimson,marginRight:8}}>›</span>{label}
                     </button>
                   ))}
@@ -768,34 +770,34 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 
               <div>
-                <h3 style={{fontSize:12,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 17px"}}>Contact us</h3>
-                <div style={{display:"grid",gap:15,fontSize:13}}>
-                  <a href="mailto:support.bloodbridge@gmail.com" style={{display:"flex",gap:10,alignItems:"flex-start",color:"inherit",textDecoration:"none",overflowWrap:"anywhere"}}>
-                    <MessageCircle size={17} color={COLORS.crimson} style={{flexShrink:0,marginTop:1}} />
+                <h3 style={{fontSize:14,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 18px"}}>Contact us</h3>
+                <div style={{display:"grid",gap:16,fontSize:14.5}}>
+                  <a href="mailto:support.bloodbridge@gmail.com" style={{display:"flex",gap:12,alignItems:"flex-start",color:"inherit",textDecoration:"none",overflowWrap:"anywhere"}}>
+                    <MessageCircle size={19} color={COLORS.crimson} style={{flexShrink:0,marginTop:2}} />
                     <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Email support</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>support.bloodbridge@gmail.com</span></span>
                   </a>
-                  <a href="tel:+919132450XXX" style={{display:"flex",gap:10,alignItems:"flex-start",color:"inherit",textDecoration:"none"}}>
-                    <Phone size={17} color={COLORS.crimson} style={{flexShrink:0,marginTop:1}} />
+                  <a href="tel:+919132450XXX" style={{display:"flex",gap:12,alignItems:"flex-start",color:"inherit",textDecoration:"none"}}>
+                    <Phone size={19} color={COLORS.crimson} style={{flexShrink:0,marginTop:2}} />
                     <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Mobile</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>+91 9132450XXX</span></span>
                   </a>
-                  <div style={{display:"flex",gap:10,alignItems:"flex-start"}}>
-                    <MapPin size={17} color={COLORS.crimson} style={{flexShrink:0,marginTop:1}} />
+                  <div style={{display:"flex",gap:12,alignItems:"flex-start"}}>
+                    <MapPin size={19} color={COLORS.crimson} style={{flexShrink:0,marginTop:2}} />
                     <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Location</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>VIT Bhopal University, MP</span></span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:14,flexWrap:"wrap",borderTop:"1px solid "+(theme==="light"?"#e1e5eb":"rgba(255,255,255,.1)"),marginTop:34,paddingTop:18}}>
-              <span style={{fontSize:11.5,color:theme==="light"?"#737d8b":"#8e98a7"}}>© {new Date().getFullYear()} BloodBridge · Made by Priyansh Bhatt for EPICS. Built with <span style={{color:COLORS.crimson}}>♥</span> to help save lives.</span>
-              <div style={{display:"flex",gap:18,flexWrap:"wrap"}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:16,flexWrap:"wrap",borderTop:"1px solid "+(theme==="light"?"#e1e5eb":"rgba(255,255,255,.1)"),marginTop:34,paddingTop:20}}>
+              <span style={{fontSize:14,fontWeight:600,color:theme==="light"?"#596474":"#a8b0bd"}}>© {new Date().getFullYear()} BloodBridge · Made by Priyansh Bhatt for EPICS. Built with <span style={{color:COLORS.crimson}}>♥</span> to help save lives.</span>
+              <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
                 {[["About Us","about"],["Privacy Policy","privacy"],["Terms & Conditions","terms"]].map(([label,destination])=>(
                   <button key={label} onClick={()=>{setTab(destination);window.scrollTo({top:0,behavior:"smooth"});}}
-                    style={{border:0,padding:0,background:"transparent",color:theme==="light"?"#596474":"#a8b0bd",fontSize:11.5,cursor:"pointer"}}>{label}</button>
+                    style={{border:0,padding:0,background:"transparent",color:theme==="light"?"#596474":"#a8b0bd",fontSize:14,fontWeight:600,cursor:"pointer"}}>{label}</button>
                 ))}
               </div>
             </div>
-            <p style={{fontSize:10.5,lineHeight:1.6,textAlign:"center",color:theme==="light"?"#87909c":"#737d8b",margin:"13px 0 0"}}>
+            <p style={{fontSize:13,lineHeight:1.65,textAlign:"center",color:theme==="light"?"#717b87":"#8e98a7",margin:"14px 0 0"}}>
               BloodBridge is a technology platform and does not replace medical advice or professional blood-bank screening.
             </p>
           </div>
@@ -1113,29 +1115,29 @@ function Home({ donors, requests, goTo }) {
       <section className="home-hero grid2" style={{ position:"relative", minHeight:500, display:"grid", gridTemplateColumns:"1.15fr .85fr", gap:34, alignItems:"center", marginBottom:16, padding:"12px 0 28px" }}>
         <div style={{ position:"absolute", top:-28, bottom:0, left:"-30vw", right:"-30vw", zIndex:-1, pointerEvents:"none", opacity:.45, borderRadius:20, overflow:"hidden" }}><BloodCellsAnimation /></div>
         <motion.div className="hero-copy" initial={{opacity:0,x:-24}} animate={{opacity:1,x:0}} transition={{duration:.6}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,padding:"7px 13px",borderRadius:30,background:"rgba(255,59,84,.1)",border:"1px solid rgba(255,59,84,.28)",marginBottom:20,fontSize:12,fontWeight:700,color:"#ff8293"}}>
-            <Heart size={14} fill="currentColor" /> Every drop can make a difference
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,padding:"8px 16px",borderRadius:30,background:"rgba(255,59,84,.1)",border:"1px solid rgba(255,59,84,.28)",marginBottom:20,fontSize:14,fontWeight:750,color:"#ff8293"}}>
+            <Heart size={16} fill="currentColor" /> Every drop can make a difference
           </div>
           <h1 className="headline hero-title" style={{margin:"0 0 20px",fontWeight:800}}>
             Be someone's <span style={{background:`linear-gradient(90deg,${COLORS.crimson},#ff8a9a ${"55%"},${COLORS.cyan})`,WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>lifeline.</span><br />
-            <span style={{fontSize:".76em",letterSpacing:"-1px"}}>Find blood. Give hope.</span>
+            <span style={{fontSize:".8em",letterSpacing:"-1px"}}>Find blood. Give hope.</span>
           </h1>
-          <p style={{fontSize:15.5,color:COLORS.textMuted,lineHeight:1.85,maxWidth:520,margin:0}}>
+          <p style={{fontSize:18,color:COLORS.textMuted,lineHeight:1.85,maxWidth:560,margin:0}}>
             BloodBridge brings donors, people seeking blood, and blood banks together. Find compatible donor support, register to help, and explore donation resources in one place.
           </p>
           <div className="hero-actions">
             </div>
-          <div style={{display:"flex",gap:16,flexWrap:"wrap",marginTop:22,color:COLORS.textMuted,fontSize:12}}>
-            <span style={{display:"inline-flex",alignItems:"center",gap:6}}><ShieldCheck size={15} color={COLORS.cyan}/> Verification-aware donor listings</span>
-            <span style={{display:"inline-flex",alignItems:"center",gap:6}}><MapPin size={15} color={COLORS.good}/> Location-based discovery</span>
+          <div style={{display:"flex",gap:20,flexWrap:"wrap",marginTop:24,color:COLORS.textMuted,fontSize:14}}>
+            <span style={{display:"inline-flex",alignItems:"center",gap:8}}><ShieldCheck size={18} color={COLORS.cyan}/> Verification-aware donor listings</span>
+            <span style={{display:"inline-flex",alignItems:"center",gap:8}}><MapPin size={18} color={COLORS.good}/> Location-based discovery</span>
           </div>
         </motion.div>
-        <motion.div className="hero-stats" style={{position:"relative",display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}} initial={{opacity:0,x:24}} animate={{opacity:1,x:0}} transition={{duration:.6,delay:.12}}>
-          <StatCard label="Registered donors" value={donors.length} icon={<Users size={18} color={COLORS.cyan}/>}/>
-          <StatCard label="Verified donors" value={verified} icon={<ShieldCheck size={18} color={COLORS.cyan}/>}/>
-          <StatCard label="Available verified donors" value={available} icon={<Activity size={18} color={COLORS.good}/>}/>
-          <StatCard label="Open requests" value={open} icon={<AlertTriangle size={18} color={COLORS.crimson}/>}/>
-          <div style={{gridColumn:"1 / -1",fontSize:11.5,lineHeight:1.6,color:COLORS.textMuted,padding:"0 4px"}}>Live totals from the records currently loaded by BloodBridge. Availability can change; please confirm details before travelling.</div>
+        <motion.div className="hero-stats" style={{position:"relative",display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}} initial={{opacity:0,x:24}} animate={{opacity:1,x:0}} transition={{duration:.6,delay:.12}}>
+          <StatCard label="Registered donors" value={donors.length} icon={<Users size={20} color={COLORS.cyan}/>}/>
+          <StatCard label="Verified donors" value={verified} icon={<ShieldCheck size={20} color={COLORS.cyan}/>}/>
+          <StatCard label="Available verified donors" value={available} icon={<Activity size={20} color={COLORS.good}/>}/>
+          <StatCard label="Open requests" value={open} icon={<AlertTriangle size={20} color={COLORS.crimson}/>}/>
+          <div style={{gridColumn:"1 / -1",fontSize:13.5,lineHeight:1.65,color:COLORS.textMuted,padding:"2px 4px"}}>Live totals from the records currently loaded by BloodBridge. Availability can change; please confirm details before travelling.</div>
         </motion.div>
       </section>
 
@@ -1181,9 +1183,9 @@ function Home({ donors, requests, goTo }) {
                   {item.tag && (
                     <span
                       style={{
-                        fontSize: 10,
+                        fontSize: 12,
                         fontWeight: 800,
-                        padding: "3px 9px",
+                        padding: "4px 11px",
                         borderRadius: 999,
                         background: "rgba(255, 255, 255, 0.045)",
                         border: "1px solid rgba(255, 255, 255, 0.09)",
@@ -1196,10 +1198,10 @@ function Home({ donors, requests, goTo }) {
                   )}
                 </div>
 
-                <h3 style={{ fontSize: 16, fontWeight: 800, margin: "0 0 7px", color: "#f3f4f6", letterSpacing: -0.3 }}>
+                <h3 style={{ fontSize: 18.5, fontWeight: 800, margin: "0 0 8px", color: "#f3f4f6", letterSpacing: -0.3 }}>
                   {item.title}
                 </h3>
-                <p style={{ fontSize: 12.5, lineHeight: 1.65, color: COLORS.textMuted, margin: "0 0 18px", flex: 1 }}>
+                <p style={{ fontSize: 14.5, lineHeight: 1.7, color: COLORS.textMuted, margin: "0 0 20px", flex: 1 }}>
                   {item.description}
                 </p>
 
@@ -1213,21 +1215,21 @@ function Home({ donors, requests, goTo }) {
                     alignSelf: "flex-start",
                     border: `1px solid ${item.tone}40`,
                     background: `linear-gradient(135deg, ${item.tone}1c 0%, ${item.tone}0a 100%)`,
-                    padding: "7px 15px",
+                    padding: "9px 18px",
                     borderRadius: 999,
                     color: "#ffffff",
-                    fontSize: 12.5,
+                    fontSize: 14,
                     fontWeight: 800,
                     cursor: "pointer",
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: 6,
+                    gap: 7,
                     boxShadow: `0 2px 10px ${item.tone}18`,
                     letterSpacing: -0.2,
                   }}
                 >
                   <span>{item.label}</span>
-                  <ArrowRight size={13} style={{ color: item.tone }} />
+                  <ArrowRight size={15} style={{ color: item.tone }} />
                 </button>
               </div>
             </motion.div>
@@ -3661,28 +3663,28 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                     <div style={{ padding: 19, display: "flex", flexDirection: "column", flex: 1 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                         <div style={{ minWidth: 0 }}>
-                          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 20, padding: "5px 8px", fontSize: 9, letterSpacing: 0.7, fontWeight: 850, textTransform: "uppercase", color: isPast ? COLORS.textMuted : COLORS.good, background: isPast ? "rgba(255,255,255,0.06)" : "rgba(52,211,153,0.1)", border: "1px solid " + (isPast ? "rgba(255,255,255,0.08)" : "rgba(52,211,153,0.2)") }}>
-                            <span style={{ width: 5, height: 5, borderRadius: "50%", background: isPast ? COLORS.textMuted : COLORS.good }} /> {isPast ? "Completed" : "Upcoming drive"}
+                          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 20, padding: "6px 11px", fontSize: 11, letterSpacing: 0.7, fontWeight: 850, textTransform: "uppercase", color: isPast ? COLORS.textMuted : COLORS.good, background: isPast ? "rgba(255,255,255,0.06)" : "rgba(52,211,153,0.1)", border: "1px solid " + (isPast ? "rgba(255,255,255,0.08)" : "rgba(52,211,153,0.2)") }}>
+                            <span style={{ width: 6, height: 6, borderRadius: "50%", background: isPast ? COLORS.textMuted : COLORS.good }} /> {isPast ? "Completed" : "Upcoming drive"}
                           </span>
-                          <h3 style={{ fontSize: 17, lineHeight: 1.35, margin: "11px 0 5px", fontWeight: 800, overflowWrap: "anywhere" }}>{c.title}</h3>
-                          {c.organizer && <div style={{ fontSize: 12, color: COLORS.textMuted }}>Organized by {c.organizer}</div>}
+                          <h3 style={{ fontSize: 19, lineHeight: 1.35, margin: "12px 0 6px", fontWeight: 800, overflowWrap: "anywhere" }}>{c.title}</h3>
+                          {c.organizer && <div style={{ fontSize: 14, color: COLORS.textMuted }}>Organized by {c.organizer}</div>}
                         </div>
-                        <div style={{ width: 55, minWidth: 55, borderRadius: 13, padding: "8px 4px", textAlign: "center", background: "rgba(255,59,84,0.09)", border: "1px solid rgba(255,59,84,0.16)" }}>
-                          <div style={{ fontSize: 10, textTransform: "uppercase", fontWeight: 850, color: COLORS.crimson }}>{date ? date.toLocaleDateString(undefined, { month: "short" }) : "TBD"}</div>
-                          <div className="headline" style={{ fontSize: 22, lineHeight: 1.25, fontWeight: 850 }}>{date ? date.getDate() : "—"}</div>
-                          <div style={{ fontSize: 9, color: COLORS.textMuted }}>{date ? date.getFullYear() : "DATE"}</div>
+                        <div style={{ width: 64, minWidth: 64, borderRadius: 14, padding: "10px 6px", textAlign: "center", background: "rgba(255,59,84,0.09)", border: "1px solid rgba(255,59,84,0.16)" }}>
+                          <div style={{ fontSize: 12, textTransform: "uppercase", fontWeight: 850, color: COLORS.crimson }}>{date ? date.toLocaleDateString(undefined, { month: "short" }) : "TBD"}</div>
+                          <div className="headline" style={{ fontSize: 25, lineHeight: 1.2, fontWeight: 850 }}>{date ? date.getDate() : "—"}</div>
+                          <div style={{ fontSize: 11, color: COLORS.textMuted }}>{date ? date.getFullYear() : "DATE"}</div>
                         </div>
                       </div>
-                      <div style={{ height: 1, background: "rgba(255,255,255,0.07)", margin: "16px 0 13px" }} />
-                      <div style={{ display: "flex", flexDirection: "column", gap: 10, color: COLORS.textMuted, fontSize: 12.5 }}>
-                        <div style={{ display: "flex", alignItems: "flex-start", gap: 9 }}><MapPin size={15} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 1 }} /><span style={{ lineHeight: 1.55 }}>{place || "Venue details to be confirmed"}</span></div>
-                        {c.contactPhone && <div style={{ display: "flex", alignItems: "center", gap: 9 }}><Phone size={14} color={COLORS.cyan} /><a href={"tel:" + String(c.contactPhone).replace(/[^\d+]/g, "")} style={{ color: COLORS.text, textDecoration: "none" }}>{c.contactPhone}</a></div>}
-                        {(c.startTime || c.endTime) && <div style={{ display: "flex", alignItems: "center", gap: 9 }}><Clock3 size={14} color={COLORS.cyan} /><span>{[c.startTime, c.endTime].filter(Boolean).join(" – ")}</span></div>}
-                        {Number(c.expectedDonors) > 0 && <div style={{ display: "flex", alignItems: "center", gap: 9 }}><Users size={14} color={COLORS.cyan} /><span>Expected participants: {c.expectedDonors}</span></div>}
+                      <div style={{ height: 1, background: "rgba(255,255,255,0.07)", margin: "16px 0 14px" }} />
+                      <div style={{ display: "flex", flexDirection: "column", gap: 12, color: COLORS.textMuted, fontSize: 14.5, lineHeight: 1.6 }}>
+                        <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}><MapPin size={17} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 2 }} /><span style={{ lineHeight: 1.55 }}>{place || "Venue details to be confirmed"}</span></div>
+                        {c.contactPhone && <div style={{ display: "flex", alignItems: "center", gap: 10 }}><Phone size={16} color={COLORS.cyan} /><a href={"tel:" + String(c.contactPhone).replace(/[^\d+]/g, "")} style={{ color: COLORS.text, textDecoration: "none", fontWeight: 650 }}>{c.contactPhone}</a></div>}
+                        {(c.startTime || c.endTime) && <div style={{ display: "flex", alignItems: "center", gap: 10 }}><Clock3 size={16} color={COLORS.cyan} /><span>{[c.startTime, c.endTime].filter(Boolean).join(" – ")}</span></div>}
+                        {Number(c.expectedDonors) > 0 && <div style={{ display: "flex", alignItems: "center", gap: 10 }}><Users size={16} color={COLORS.cyan} /><span>Expected participants: {c.expectedDonors}</span></div>}
                       </div>
-                      <div style={{ display: "flex", gap: 8, marginTop: "auto", paddingTop: 18 }}>
-                        <a href={mapsUrl} target="_blank" rel="noreferrer" style={{ ...buttonStyle(true), textDecoration: "none", flex: 1 }}><MapPin size={14} /> Get directions <ArrowRight size={13} /></a>
-                        {adminToken && <button onClick={() => removeCamp(c._id)} aria-label={"Remove " + c.title} style={{ ...buttonStyle(false), color: COLORS.crimson, padding: "10px 12px" }}><Trash2 size={14} /></button>}
+                      <div style={{ display: "flex", gap: 8, marginTop: "auto", paddingTop: 20 }}>
+                        <a href={mapsUrl} target="_blank" rel="noreferrer" style={{ ...buttonStyle(true), textDecoration: "none", flex: 1, fontSize: 14.5, padding: "11px 16px" }}><MapPin size={16} /> Get directions <ArrowRight size={15} /></a>
+                        {adminToken && <button onClick={() => removeCamp(c._id)} aria-label={"Remove " + c.title} style={{ ...buttonStyle(false), color: COLORS.crimson, padding: "11px 14px" }}><Trash2 size={16} /></button>}
                       </div>
                     </div>
                   </motion.article>;
@@ -3704,21 +3706,21 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                   const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent([b.name, place].filter(Boolean).join(" "));
                   return <motion.article key={b._id || b.name + i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(i * 0.04, 0.24) }}
                     style={{ ...panel, padding: 19, display: "flex", flexDirection: "column", minWidth: 0 }}>
-                    <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                      <div style={{ width: 47, height: 47, minWidth: 47, borderRadius: 14, display: "grid", placeItems: "center", color: COLORS.cyan, background: "rgba(34,211,238,0.1)", border: "1px solid rgba(34,211,238,0.13)" }}><Building2 size={21} /></div>
+                    <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                      <div style={{ width: 52, height: 52, minWidth: 52, borderRadius: 14, display: "grid", placeItems: "center", color: COLORS.cyan, background: "rgba(34,211,238,0.1)", border: "1px solid rgba(34,211,238,0.13)" }}><Building2 size={24} /></div>
                       <div style={{ minWidth: 0, flex: 1 }}>
-                        <div style={{ fontSize: 16, lineHeight: 1.4, fontWeight: 800, overflowWrap: "anywhere" }}>{b.name}</div>
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: 5, marginTop: 7, color: COLORS.cyan, fontSize: 9.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.7 }}><ShieldCheck size={12} /> Directory listing</div>
+                        <div style={{ fontSize: 18, lineHeight: 1.35, fontWeight: 800, overflowWrap: "anywhere" }}>{b.name}</div>
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 7, color: COLORS.cyan, fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.7 }}><ShieldCheck size={14} /> Directory listing</div>
                       </div>
-                      {adminToken && <button onClick={() => removeBank(b._id)} aria-label={"Remove " + b.name} style={{ background: "transparent", border: 0, color: COLORS.textMuted, cursor: "pointer", padding: 5 }}><Trash2 size={14} /></button>}
+                      {adminToken && <button onClick={() => removeBank(b._id)} aria-label={"Remove " + b.name} style={{ background: "transparent", border: 0, color: COLORS.textMuted, cursor: "pointer", padding: 5 }}><Trash2 size={16} /></button>}
                     </div>
-                    <div style={{ height: 1, background: "rgba(255,255,255,0.07)", margin: "16px 0 13px" }} />
-                    <div style={{ display: "flex", flexDirection: "column", gap: 10, color: COLORS.textMuted, fontSize: 12.5 }}>
-                      <div style={{ display: "flex", gap: 9, alignItems: "flex-start" }}><MapPin size={15} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 1 }} /><span>{place || "Location not provided"}</span></div>
-                      {b.phone && <div style={{ display: "flex", gap: 9, alignItems: "center" }}><Phone size={14} color={COLORS.cyan} /><a href={"tel:" + String(b.phone).replace(/[^\d+]/g, "")} style={{ color: COLORS.text, textDecoration: "none" }}>{b.phone}</a></div>}
-                      {b.openingHours && <div style={{ display: "flex", gap: 9, alignItems: "flex-start" }}><Clock3 size={14} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 2 }} /><span>{b.openingHours}</span></div>}
+                    <div style={{ height: 1, background: "rgba(255,255,255,0.07)", margin: "16px 0 14px" }} />
+                    <div style={{ display: "flex", flexDirection: "column", gap: 12, color: COLORS.textMuted, fontSize: 14.5, lineHeight: 1.6 }}>
+                      <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}><MapPin size={17} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 2 }} /><span>{place || "Location not provided"}</span></div>
+                      {b.phone && <div style={{ display: "flex", gap: 10, alignItems: "center" }}><Phone size={16} color={COLORS.cyan} /><a href={"tel:" + String(b.phone).replace(/[^\d+]/g, "")} style={{ color: COLORS.text, textDecoration: "none", fontWeight: 650 }}>{b.phone}</a></div>}
+                      {b.openingHours && <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}><Clock3 size={16} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 2 }} /><span>{b.openingHours}</span></div>}
                     </div>
-                    <div style={{ marginTop: "auto", paddingTop: 18 }}><a href={mapsUrl} target="_blank" rel="noreferrer" style={{ ...buttonStyle(false), textDecoration: "none", width: "100%", boxSizing: "border-box" }}><MapPin size={14} /> View location <ArrowRight size={13} /></a></div>
+                    <div style={{ marginTop: "auto", paddingTop: 20 }}><a href={mapsUrl} target="_blank" rel="noreferrer" style={{ ...buttonStyle(false), textDecoration: "none", width: "100%", boxSizing: "border-box", fontSize: 14.5, padding: "11px 16px" }}><MapPin size={16} /> View location <ArrowRight size={15} /></a></div>
                   </motion.article>;
                 })}
               </div>)}
