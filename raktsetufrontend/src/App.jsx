@@ -800,7 +800,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
             </div>
 
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:14,flexWrap:"wrap",borderTop:"1px solid "+(theme==="light"?"#e1e5eb":"rgba(255,255,255,.1)"),marginTop:34,paddingTop:18}}>
-              <span style={{fontSize:11.5,color:theme==="light"?"#737d8b":"#8e98a7"}}>© {new Date().getFullYear()} BloodBridge. Built with <span style={{color:COLORS.crimson}}>♥</span> to help save lives.</span>
+              <span style={{fontSize:11.5,color:theme==="light"?"#737d8b":"#8e98a7"}}>© {new Date().getFullYear()} BloodBridge · Made by Priyansh Bhatt for EPICS. Built with <span style={{color:COLORS.crimson}}>♥</span> to help save lives.</span>
               <div style={{display:"flex",gap:18,flexWrap:"wrap"}}>
                 {[["About Us","about"],["Privacy Policy","privacy"],["Terms & Conditions","terms"]].map(([label,destination])=>(
                   <button key={label} onClick={()=>{setTab(destination);window.scrollTo({top:0,behavior:"smooth"});}}
@@ -898,10 +898,15 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
           </section>)}
         </div>
         <section style={{...sectionStyle,textAlign:"center"}}>
-          <h2 style={{fontSize:26,color:red,margin:"0 0 8px"}}>The Project Team</h2>
-          <p style={paraStyle}>End-Semester Project · VIT Bhopal University & Surrounding Regional Network</p>
+          <div style={{display:"inline-flex",alignItems:"center",gap:8,padding:"6px 14px",borderRadius:999,background:"rgba(255,59,84,0.12)",border:"1px solid rgba(255,59,84,0.28)",color:"#ff7085",fontSize:12,fontWeight:800,letterSpacing:1,textTransform:"uppercase",marginBottom:14}}>
+            EPICS PROJECT · VIT BHOPAL UNIVERSITY
+          </div>
+          <h2 style={{fontSize:26,color:red,margin:"0 0 8px"}}>Made by Priyansh Bhatt for EPICS</h2>
+          <p style={paraStyle}>Engineering Projects in Community Service (EPICS) · VIT Bhopal University</p>
           <div style={{display:"flex",justifyContent:"center",flexWrap:"wrap",gap:12,marginTop:20}}>
-            {["Avinash","Deekshith Reddy","Shiva"].map(name=><span key={name} style={{border:"1px solid "+(light?"#edc7cc":"rgba(255,130,145,.28)"),background:light?"#fff4f5":"rgba(196,61,80,.12)",color:light?"#a62c40":"#ff9aaa",borderRadius:30,padding:"12px 22px",fontWeight:750,fontSize:14}}>{name}</span>)}
+            <span style={{border:"1px solid "+(light?"#edc7cc":"rgba(255,130,145,.38)"),background:light?"#fff4f5":"rgba(196,61,80,.16)",color:light?"#a62c40":"#ff9aaa",borderRadius:30,padding:"12px 28px",fontWeight:800,fontSize:15}}>
+              Priyansh Bhatt (Lead Developer &amp; Researcher)
+            </span>
           </div>
         </section>
       </>}
