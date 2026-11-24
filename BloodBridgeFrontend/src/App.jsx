@@ -606,6 +606,129 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       }
+
+      /* Clean Minimal Footer matching reference design */
+      .bloodbridge-footer {
+        background: #000000;
+        color: #f8fafc;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 68px 24px 34px;
+        margin-top: 48px;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Plus Jakarta Sans", "Segoe UI", Roboto, sans-serif;
+      }
+      .theme-light .bloodbridge-footer {
+        background: #ffffff;
+        color: #0f172a;
+        border-top-color: #e5e7eb;
+      }
+      .bloodbridge-footer-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+      }
+      .bloodbridge-footer-grid {
+        display: grid;
+        grid-template-columns: 2.2fr 1fr 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .bloodbridge-footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 36px 24px;
+        }
+      }
+      @media (max-width: 520px) {
+        .bloodbridge-footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+      }
+      .bloodbridge-footer-brand {
+        display: flex;
+        flex-direction: column;
+      }
+      .bloodbridge-footer-col {
+        display: flex;
+        flex-direction: column;
+      }
+      .bloodbridge-footer-title {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin: 0 0 20px;
+        color: #71717a;
+        user-select: none;
+      }
+      .theme-light .bloodbridge-footer-title {
+        color: #64748b;
+      }
+      .bloodbridge-footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .bloodbridge-footer-link {
+        border: 0;
+        padding: 0;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 450;
+        text-align: left;
+        cursor: pointer;
+        text-decoration: none;
+        line-height: 1.45;
+        color: #d4d4d8;
+        transition: color 0.15s ease;
+        display: inline-block;
+        width: fit-content;
+        font-family: inherit;
+      }
+      .theme-light .bloodbridge-footer-link {
+        color: #334155;
+      }
+      .bloodbridge-footer-link:hover {
+        color: #ffffff;
+      }
+      .theme-light .bloodbridge-footer-link:hover {
+        color: #0f172a;
+      }
+      .bloodbridge-footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 56px;
+        padding-top: 28px;
+      }
+      .theme-light .bloodbridge-footer-bottom {
+        border-top-color: #e5e7eb;
+      }
+      .bloodbridge-footer-cr {
+        font-size: 13px;
+        color: #71717a;
+        font-weight: 400;
+      }
+      .theme-light .bloodbridge-footer-cr {
+        color: #64748b;
+      }
+      .bloodbridge-footer-credit {
+        font-size: 13px;
+        color: #71717a;
+        font-weight: 400;
+      }
+      .theme-light .bloodbridge-footer-credit {
+        color: #64748b;
+      }
+      .bloodbridge-footer-credit strong {
+        color: #ffffff;
+        font-weight: 700 !important;
+      }
+      .theme-light .bloodbridge-footer-credit strong {
+        color: #0f172a;
+      }
     `}</style>
   );
 
@@ -728,78 +851,123 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       </div>
 
       {tab !== "admin" && (
-        <footer aria-label="BloodBridge site footer" style={{
-          background: theme === "light" ? "#f5f7fa" : "linear-gradient(145deg,#10141b 0%,#090b10 100%)",
-          color: theme === "light" ? "#17202b" : "#f3f4f6",
-          borderTop: "1px solid " + (theme === "light" ? "#e1e5eb" : "rgba(255,255,255,.1)"),
-          borderBottom: "3px solid " + COLORS.cyan,
-          padding: "42px 24px 18px",
-          marginTop: 12
-        }}>
-          <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(205px,1fr))", gap: "34px 42px", alignItems: "start" }}>
-              <div>
-                <button aria-label="BloodBridge home" onClick={() => { setTab("home"); window.scrollTo({top:0,behavior:"smooth"}); }}
-                  style={{ display:"inline-flex",alignItems:"center",gap:12,border:0,padding:0,background:"transparent",color:"inherit",cursor:"pointer",marginBottom:16 }}>
-                  <img src="/bloodbridge-logo.svg" alt="" width="42" height="42" style={{objectFit:"contain"}} />
-                  <span className="headline" style={{fontSize:26,fontWeight:800,letterSpacing:-.5}}>Blood<span style={{color:COLORS.crimson}}>Bridge</span></span>
-                </button>
-                <p style={{fontSize:15,lineHeight:1.8,color:theme==="light"?"#596474":"#a8b0bd",margin:"0 0 18px",maxWidth:340}}>
-                  Connecting blood donors, recipients and blood banks to help people find the blood they need, when it matters most.
-                </p>
-                <div style={{display:"inline-flex",alignItems:"center",gap:8,fontSize:13,fontWeight:750,color:theme==="light"?"#a51d32":"#ff8a9a",background:theme==="light"?"#fff0f2":"rgba(255,59,84,.09)",border:"1px solid "+(theme==="light"?"#f4cbd2":"rgba(255,59,84,.22)"),borderRadius:30,padding:"8px 14px"}}>
-                  <Heart size={15} fill="currentColor" /> Every donation can make a difference
+        <footer aria-label="BloodBridge site footer" className="bloodbridge-footer">
+          <div className="bloodbridge-footer-inner">
+            <div className="bloodbridge-footer-grid">
+              {/* Brand & Description Column */}
+              <div className="bloodbridge-footer-brand">
+                <div
+                  onClick={() => { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 10, cursor: "pointer", marginBottom: 16 }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); } }}
+                >
+                  <img src="/bloodbridge-logo.svg" alt="BloodBridge" width="30" height="30" style={{ display: "block", objectFit: "contain" }} />
+                  <span style={{ fontSize: 21, fontWeight: 750, letterSpacing: "-0.025em", color: theme === "light" ? "#0f172a" : "#ffffff" }}>
+                    BloodBridge
+                  </span>
                 </div>
+                <p style={{
+                  fontSize: 14,
+                  lineHeight: 1.65,
+                  color: theme === "light" ? "#64748b" : "#8a8f98",
+                  margin: 0,
+                  maxWidth: 320
+                }}>
+                  Free, direct blood donation matching. Search verified regional hospitals, emergency blood requests, and live donor availability across districts in real time.
+                </p>
               </div>
 
-              <div>
-                <h3 style={{fontSize:14,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 18px"}}>Quick links</h3>
-                <div style={{display:"grid",gap:14}}>
+              {/* Product Column */}
+              <div className="bloodbridge-footer-col">
+                <span className="bloodbridge-footer-title">Product</span>
+                <div className="bloodbridge-footer-links">
                   {[
-                    ["Home","home"],
-                    ["Emergency Requests","requests"],["Camps & Blood Banks","camps"],["Features","services"]
-                  ].map(([label,destination])=>(
-                    <button key={label} onClick={()=>{setTab(destination);window.scrollTo({top:0,behavior:"smooth"});}}
-                      style={{display:"block",width:"fit-content",border:0,padding:0,background:"transparent",color:theme==="light"?"#4b5563":"#c5cbd4",fontSize:15,fontWeight:600,textAlign:"left",cursor:"pointer",transition:"color .18s"}}>
-                      <span style={{color:COLORS.crimson,marginRight:8}}>›</span>{label}
+                    ["Features", "services"],
+                    ["Hospital Directory", "camps"],
+                    ["Live Availability", "available"],
+                    ["Emergency Requests", "requests"],
+                    ["Nearest Blood Bank", "nearest"],
+                  ].map(([label, destination]) => (
+                    <button
+                      key={label}
+                      type="button"
+                      onClick={() => { setTab(destination); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                      className="bloodbridge-footer-link"
+                    >
+                      {label}
                     </button>
                   ))}
                 </div>
               </div>
 
+              {/* Legal Column */}
+              <div className="bloodbridge-footer-col">
+                <span className="bloodbridge-footer-title">Legal</span>
+                <div className="bloodbridge-footer-links">
+                  {[
+                    ["Privacy Policy", "privacy"],
+                    ["Disclaimer", "terms"],
+                    ["Terms of Service", "terms"],
+                    ["Cookie Settings", "privacy"],
+                  ].map(([label, destination]) => (
+                    <button
+                      key={label}
+                      type="button"
+                      onClick={() => { setTab(destination); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                      className="bloodbridge-footer-link"
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-
-              <div>
-                <h3 style={{fontSize:14,fontWeight:800,letterSpacing:1.1,textTransform:"uppercase",margin:"5px 0 18px"}}>Contact us</h3>
-                <div style={{display:"grid",gap:16,fontSize:14.5}}>
-                  <a href="mailto:support.bloodbridge@gmail.com" style={{display:"flex",gap:12,alignItems:"flex-start",color:"inherit",textDecoration:"none",overflowWrap:"anywhere"}}>
-                    <MessageCircle size={19} color={COLORS.crimson} style={{flexShrink:0,marginTop:2}} />
-                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Email support</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>support.bloodbridge@gmail.com</span></span>
+              {/* Company Column */}
+              <div className="bloodbridge-footer-col">
+                <span className="bloodbridge-footer-title">Company</span>
+                <div className="bloodbridge-footer-links">
+                  <a
+                    href="mailto:support.bloodbridge@gmail.com"
+                    className="bloodbridge-footer-link"
+                  >
+                    Contact
                   </a>
-                  <a href="tel:+919132450XXX" style={{display:"flex",gap:12,alignItems:"flex-start",color:"inherit",textDecoration:"none"}}>
-                    <Phone size={19} color={COLORS.crimson} style={{flexShrink:0,marginTop:2}} />
-                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Mobile</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>+91 9132450XXX</span></span>
-                  </a>
-                  <div style={{display:"flex",gap:12,alignItems:"flex-start"}}>
-                    <MapPin size={19} color={COLORS.crimson} style={{flexShrink:0,marginTop:2}} />
-                    <span><span style={{display:"block",fontWeight:700,marginBottom:4}}>Location</span><span style={{color:theme==="light"?"#596474":"#a8b0bd"}}>VIT Bhopal University, MP</span></span>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => { setTab("about"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className="bloodbridge-footer-link"
+                  >
+                    About
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setTab("donor"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className="bloodbridge-footer-link"
+                  >
+                    Donor Portal
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setTab("bloodbank"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className="bloodbridge-footer-link"
+                  >
+                    Hospital Portal
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:16,flexWrap:"wrap",borderTop:"1px solid "+(theme==="light"?"#e1e5eb":"rgba(255,255,255,.1)"),marginTop:34,paddingTop:20}}>
-              <span style={{fontSize:14,fontWeight:600,color:theme==="light"?"#596474":"#a8b0bd"}}>© {new Date().getFullYear()} BloodBridge · Made by Priyansh Bhatt for EPICS. Built with <span style={{color:COLORS.crimson}}>♥</span> to help save lives.</span>
-              <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
-                {[["About Us","about"],["Privacy Policy","privacy"],["Terms & Conditions","terms"]].map(([label,destination])=>(
-                  <button key={label} onClick={()=>{setTab(destination);window.scrollTo({top:0,behavior:"smooth"});}}
-                    style={{border:0,padding:0,background:"transparent",color:theme==="light"?"#596474":"#a8b0bd",fontSize:14,fontWeight:600,cursor:"pointer"}}>{label}</button>
-                ))}
-              </div>
+            {/* Bottom Copyright & Credit Row */}
+            <div className="bloodbridge-footer-bottom">
+              <span className="bloodbridge-footer-cr">
+                © 2026 BloodBridge. All rights reserved.
+              </span>
+              <span className="bloodbridge-footer-credit">
+                Built with ❤️ by <strong>Priyansh Bhatt</strong>
+              </span>
             </div>
-            <p style={{fontSize:13,lineHeight:1.65,textAlign:"center",color:theme==="light"?"#717b87":"#8e98a7",margin:"14px 0 0"}}>
-              BloodBridge is a technology platform and does not replace medical advice or professional blood-bank screening.
-            </p>
           </div>
         </footer>
       )}
