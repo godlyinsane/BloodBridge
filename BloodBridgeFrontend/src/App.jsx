@@ -480,8 +480,8 @@ const ROUTE_MAP = {
   "nearest": "nearest",
   "available": "available",
   "listings": "available",
-  "requests": "requests",
-  "emergency": "requests",
+  "requests": "camps",
+  "emergency": "camps",
   "donor": "donor",
   "bloodbank": "bloodbank",
   "hospital": "bloodbank",
@@ -497,7 +497,7 @@ const TAB_TO_PATH = {
   camps: "/facilities",
   nearest: "/nearestbank",
   available: "/available",
-  requests: "/requests",
+  requests: "/facilities",
   donor: "/donor",
   bloodbank: "/bloodbank",
   services: "/features",
@@ -545,14 +545,6 @@ export default function BloodBridgeApp() {
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
-
-  useEffect(() => {
-    if (tab !== "requests") return;
-    const timer = window.setTimeout(() => {
-      document.getElementById("blood-request-sos")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 140);
-    return () => window.clearTimeout(timer);
-  }, [tab]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState(() => localStorage.getItem("bloodbridge-theme") || "dark");
@@ -1103,7 +1095,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                 { id: "home", label: "Home", path: "/" },
                 { id: "camps", label: "Blood Facilities", path: "/facilities" },
                 { id: "nearest", label: "Nearest Bank", path: "/nearestbank" },
-                { id: "requests", label: "Live Requests", path: "/requests" },
                 { id: "donor", label: "Donor Portal", path: "/donor" },
                 { id: "about", label: "About", path: "/about" },
               ].map((n) => (
@@ -1164,7 +1155,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
               { id: "home", label: "Home" },
               { id: "camps", label: "Blood Facilities" },
               { id: "nearest", label: "Nearest Bank" },
-              { id: "requests", label: "Live Requests" },
               { id: "donor", label: "Donor Portal" },
               { id: "about", label: "About" },
             ].map((n) => (
@@ -1204,14 +1194,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            {tab === "home" && <Home donors={donors} requests={requests} goTo={setTab} />}
+            {tab === "home" && <Home donors={donors} goTo={setTab} />}
             {tab === "available" && <P2PBloodListings apiBase={API_BASE} notify={notify} />}
             {tab === "nearest" && <NearestBloodBankMap apiBase={API_BASE} notify={notify} />}
             {tab === "donor" && <DonorView notify={notify} />}
             {tab === "bloodbank" && <BloodBankPortal notify={notify} />}
             {tab === "rare" && <RareDonorView notify={notify} />}
             
-            {tab === "requests" && <RequestsBoard notify={notify} requests={requests} refreshAll={refreshAll} />}
+            {tab === "requests" && <CampsAndBanksView notify={notify} adminToken={adminToken} goTo={setTab} />}
             {tab === "inventory" && <InventoryView theme={theme} />}
             {tab === "camps" && <CampsAndBanksView notify={notify} adminToken={adminToken} goTo={setTab} />}
             {tab === "services" && <FeatureHubPanel notify={notify} />}
@@ -1231,7 +1221,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                 <Logo size={28} /> BloodBridge
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground" style={{ margin: "16px 0", fontSize: "0.875rem", lineHeight: 1.7, color: "var(--muted-foreground)" }}>
-                Connecting blood donors, recipients and blood banks to help people find the blood they need, when it matters most.
+                Connecting people with verified blood facilities, hospitals, and voluntary donors to guide you to the blood you need, when it matters most.
               </p>
               <span className="inline-flex items-center gap-2 rounded-full bg-red/10 px-3 py-1.5 text-xs font-medium text-red" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 9999, background: "rgba(225, 29, 72, 0.1)", color: "var(--emergency)", fontSize: "0.8rem", fontWeight: 600 }}>
                 <Heart size={14} fill="currentColor" /> Every donation can make a difference
@@ -1242,7 +1232,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12, fontSize: "0.9rem" }}>
                 {[
                   ["home", "Home"],
-                  ["camps", "Emergency Requests & Facilities"],
+                  ["camps", "Blood Facilities & Directory"],
                   ["nearest", "Camps & Blood Banks"],
                   ["about", "Features & Mission"],
                 ].map(([to, label]) => (
@@ -1860,11 +1850,9 @@ const BLOOD_GROUP_INFO = {
   },
 };
 
-function Home({ donors, requests, goTo }) {
+function Home({ donors, goTo }) {
   const verified = donors.filter((d) => d.verified).length;
   const available = donors.filter((d) => d.available && d.verified).length;
-  const open = requests.filter((r) => r.status === "Open" || r.status === "Matched").length;
-  const fulfilled = requests.filter((r) => r.status === "Fulfilled" || r.status === "Completed").length;
   const [showDonorMap, setShowDonorMap] = useState(false);
   const [placesToDonate, setPlacesToDonate] = useState([
     {
@@ -2024,8 +2012,8 @@ function Home({ donors, requests, goTo }) {
             </div>
             <div className="h-3.5 w-px bg-border/60" />
             <div className="flex items-center" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span className="font-mono text-sm sm:text-base font-semibold text-sky-500">{fulfilled || 18}+</span>
-              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Lives Supported</span>
+              <span className="font-mono text-sm sm:text-base font-semibold text-sky-500">32+</span>
+              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Verified Facilities</span>
             </div>
           </div>
           <p className="w-full text-[11px] sm:text-xs text-muted-foreground border-t border-border/50 pt-2.5 sm:pt-3">
@@ -2114,10 +2102,10 @@ function Home({ donors, requests, goTo }) {
             </button>
             <button
               type="button"
-              onClick={() => goTo("requests")}
+              onClick={() => goTo("camps")}
               className="btn btn-primary text-xs whitespace-nowrap"
             >
-              <Plus className="size-3.5" /> Request Blood
+              <Building2 className="size-3.5" /> Find Blood Facilities
             </button>
           </div>
         </div>
@@ -2375,7 +2363,7 @@ function Home({ donors, requests, goTo }) {
           </div>
         </div>
         <p className="mt-6 text-center text-xs text-muted-foreground leading-relaxed">
-          BloodBridge helps people discover donation support; it does not replace medical advice, donor eligibility assessment, or blood-bank screening.
+          BloodBridge is a guidance and discovery directory connecting people with verified blood banks, hospitals, and registered voluntary donors. It does not handle, process, or accept blood requests.
         </p>
       </section>
     </div>
