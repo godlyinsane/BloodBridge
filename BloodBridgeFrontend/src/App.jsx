@@ -482,7 +482,7 @@ const ROUTE_MAP = {
   "listings": "available",
   "requests": "camps",
   "emergency": "camps",
-  "donor": "donor",
+  "donor": "camps",
   "bloodbank": "bloodbank",
   "hospital": "bloodbank",
   "features": "services",
@@ -498,7 +498,7 @@ const TAB_TO_PATH = {
   nearest: "/nearestbank",
   available: "/available",
   requests: "/facilities",
-  donor: "/donor",
+  donor: "/facilities",
   bloodbank: "/bloodbank",
   services: "/features",
   about: "/about",
@@ -1095,7 +1095,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                 { id: "home", label: "Home", path: "/" },
                 { id: "camps", label: "Blood Facilities", path: "/facilities" },
                 { id: "nearest", label: "Nearest Bank", path: "/nearestbank" },
-                { id: "donor", label: "Donor Portal", path: "/donor" },
                 { id: "about", label: "About", path: "/about" },
               ].map((n) => (
                 <a
@@ -1155,7 +1154,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
               { id: "home", label: "Home" },
               { id: "camps", label: "Blood Facilities" },
               { id: "nearest", label: "Nearest Bank" },
-              { id: "donor", label: "Donor Portal" },
               { id: "about", label: "About" },
             ].map((n) => (
               <button
@@ -1197,9 +1195,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
             {tab === "home" && <Home donors={donors} goTo={setTab} />}
             {tab === "available" && <P2PBloodListings apiBase={API_BASE} notify={notify} />}
             {tab === "nearest" && <NearestBloodBankMap apiBase={API_BASE} notify={notify} />}
-            {tab === "donor" && <DonorView notify={notify} />}
             {tab === "bloodbank" && <BloodBankPortal notify={notify} />}
-            {tab === "rare" && <RareDonorView notify={notify} />}
             
             {tab === "requests" && <CampsAndBanksView notify={notify} adminToken={adminToken} goTo={setTab} />}
             {tab === "inventory" && <InventoryView theme={theme} />}
@@ -1970,10 +1966,10 @@ function Home({ donors, goTo }) {
             </button>
             <button
               type="button"
-              onClick={() => goTo("donors")}
+              onClick={() => goTo("about")}
               className="btn btn-ghost !border-dashed text-xs sm:text-sm"
             >
-              <Users className="size-3.5" /> Become a Donor
+              <Info className="size-3.5" /> About BloodBridge
             </button>
           </div>
         </div>
@@ -2350,7 +2346,7 @@ function Home({ donors, goTo }) {
               A small act can make a life-changing difference.
             </h2>
             <p className="mt-4 text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255, 255, 255, 0.85)" }}>
-              Explore donation camps, blood banks, or register as a voluntary donor to save lives in your community.
+              Explore donation camps, verified hospitals, and regional blood banks to find support when it matters most.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <button
@@ -2362,11 +2358,11 @@ function Home({ donors, goTo }) {
               </button>
               <button
                 type="button"
-                onClick={() => goTo("donors")}
+                onClick={() => goTo("nearest")}
                 className="btn btn-ink"
                 style={{ color: "#ffffff", border: "1px solid rgba(255, 255, 255, 0.2)" }}
               >
-                <HeartHandshake className="size-4" /> Register as Donor
+                <Navigation className="size-4" /> Nearest bank
               </button>
             </div>
           </div>
