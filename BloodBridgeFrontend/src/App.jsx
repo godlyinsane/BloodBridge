@@ -2023,17 +2023,17 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* What do you need? */}
-      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+      <section className="mx-auto max-w-6xl px-4 pt-6 sm:pt-7">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
           <div>
-            <span className="eyebrow !text-red">Quick navigation</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">What do you need?</h2>
+            <span className="eyebrow !text-red" style={{ display: "block", marginBottom: 3 }}>Quick navigation</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold" style={{ margin: 0 }}>What do you need?</h2>
           </div>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
             Direct access to emergency centers, live routing, and community initiatives.
           </p>
         </div>
-        <div className="mt-5 sm:mt-6 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-4 sm:mt-5 grid gap-3.5 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             {
               id: "camps",
@@ -2061,20 +2061,30 @@ function Home({ donors, goTo }) {
               key={c.id}
               type="button"
               onClick={c.action}
-              className="tile group flex flex-col p-5 sm:p-6 text-left transition-all duration-200"
-              style={{ textAlign: "left", alignItems: "flex-start", width: "100%", borderRadius: 20 }}
+              className="tile group flex flex-col justify-between text-left transition-all duration-200"
+              style={{
+                textAlign: "left",
+                alignItems: "flex-start",
+                width: "100%",
+                borderRadius: 18,
+                padding: "16px 18px",
+                minHeight: 140,
+                overflow: "hidden",
+              }}
             >
-              <span
-                className="grid place-items-center rounded-2xl bg-red/10 text-red group-hover:bg-red group-hover:text-white transition-colors duration-200"
-                style={{ width: 42, height: 42, display: "grid", placeItems: "center", flexShrink: 0 }}
-              >
-                <c.icon className="size-5" />
-              </span>
-              <h3 className="mt-5 text-lg sm:text-xl font-semibold">{c.title}</h3>
-              <p className="mt-2 flex-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">{c.body}</p>
-              <div className="mt-5 flex items-center gap-2 text-sm font-medium text-red">
+              <div>
+                <span
+                  className="grid place-items-center rounded-xl bg-red/10 text-red group-hover:bg-red group-hover:text-white transition-colors duration-200"
+                  style={{ width: 34, height: 34, display: "grid", placeItems: "center", flexShrink: 0 }}
+                >
+                  <c.icon className="size-4" />
+                </span>
+                <h3 className="text-base font-semibold" style={{ margin: "10px 0 3px", fontSize: "1.02rem" }}>{c.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed" style={{ margin: 0, lineHeight: 1.45 }}>{c.body}</p>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs font-medium text-red" style={{ marginTop: 10 }}>
                 <span>Open view</span>
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </button>
           ))}
@@ -2085,8 +2095,8 @@ function Home({ donors, goTo }) {
       <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-5" style={{ marginBottom: 14 }}>
           <div>
-            <span className="eyebrow !text-red">Clinical Reference</span>
-            <h2 className="text-2xl sm:text-3xl font-semibold">Blood groups at a glance</h2>
+            <span className="eyebrow !text-red" style={{ display: "block", marginBottom: 3 }}>Clinical Reference</span>
+            <h2 className="text-2xl sm:text-3xl font-semibold" style={{ margin: 0 }}>Blood groups at a glance</h2>
             <p className="mt-1 text-xs text-muted-foreground">
               Compatibility facts, clinical roles, and population prevalence.
             </p>

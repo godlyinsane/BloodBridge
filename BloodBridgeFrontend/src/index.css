@@ -385,10 +385,21 @@ h1, h2, h3, h4, h5, h6 {
 .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
 .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.pt-4 { padding-top: 1rem; }
+.pt-5 { padding-top: 1.25rem; }
+.pt-6 { padding-top: 1.5rem; }
+.pt-7 { padding-top: 1.75rem; }
+.pt-8 { padding-top: 2rem; }
+.pt-10 { padding-top: 2.5rem; }
+.pt-12 { padding-top: 3rem; }
+.pt-14 { padding-top: 3.5rem; }
 .pt-16 { padding-top: 4rem; }
 .pt-20 { padding-top: 5rem; }
 .pt-24 { padding-top: 6rem; }
 .pt-28 { padding-top: 7rem; }
+.pb-8 { padding-bottom: 2rem; }
+.pb-12 { padding-bottom: 3rem; }
+.pb-16 { padding-bottom: 4rem; }
 .pb-20 { padding-bottom: 5rem; }
 .p-3 { padding: 0.75rem; }
 .p-4 { padding: 1rem; }
@@ -449,6 +460,14 @@ button.tile {
   .sm\:text-5xl { font-size: 3rem; line-height: 1; }
   .sm\:p-7 { padding: 1.75rem; }
   .sm\:p-12 { padding: 3rem; }
+  .sm\:pt-6 { padding-top: 1.5rem; }
+  .sm\:pt-7 { padding-top: 1.75rem; }
+  .sm\:pt-8 { padding-top: 2rem; }
+  .sm\:pt-10 { padding-top: 2.5rem; }
+  .sm\:pt-12 { padding-top: 3rem; }
+  .sm\:pt-14 { padding-top: 3.5rem; }
+  .sm\:pb-12 { padding-bottom: 3rem; }
+  .sm\:pb-16 { padding-bottom: 4rem; }
   .sm\:rounded-4xl { border-radius: 2rem; }
   .sm\:rounded-\[2\.25rem\] { border-radius: 2.25rem; }
 }
