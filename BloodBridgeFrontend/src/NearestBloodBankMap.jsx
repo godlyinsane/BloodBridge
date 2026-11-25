@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   MapPin, Navigation, Phone, Clock, Search, ArrowRight,
-  ExternalLink, Building2, AlertCircle, Compass, CheckCircle2
+  ExternalLink, Building2, AlertCircle, Compass, CheckCircle2, LocateFixed
 } from "lucide-react";
 
 export default function NearestBloodBankMap({ apiBase = "/api", initialLocation = null, notify }) {
@@ -76,7 +76,6 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
   };
 
   useEffect(() => {
-    // Initial fetch
     if (initialLocation?.lat && initialLocation?.lng) {
       fetchNearestBanks(initialLocation);
     } else {
@@ -85,278 +84,161 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
   }, []);
 
   return (
-    <div style={{ display: "grid", gap: 20 }}>
-      {/* Header and Controls */}
-      <div
-        style={{
-          background: "linear-gradient(135deg, rgba(2,132,199,0.12), rgba(15,23,42,0.6))",
-          border: "1px solid rgba(56,189,248,0.25)",
-          borderRadius: 16,
-          padding: 22,
-          display: "grid",
-          gap: 16,
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
-          <div>
-            <div style={{ fontSize: 13, fontWeight: 900, letterSpacing: 1.2, color: "#38bdf8", textTransform: "uppercase" }}>
-              GOOGLE MAPS &amp; GEOLOCATION ASSISTANT
-            </div>
-            <h2 style={{ fontSize: "clamp(26px, 4.2vw, 34px)", margin: "6px 0", fontWeight: 850 }}>
-              Find Nearest Blood Bank
-            </h2>
-            <p style={{ color: "#9ca3af", fontSize: 15.5, margin: 0, maxWidth: 660, lineHeight: 1.65 }}>
-              Instant live GPS matching with Google Maps directions, phone contacts, and operating hours. If location is denied, enter your city or pincode.
-            </p>
-          </div>
+    <div style={{ display: "grid", gap: 32 }} className="max-w-6xl mx-auto">
+      {/* Hero GPS Visualizer matching Redesign */}
+      <section className="tile flex flex-col items-center text-center p-8 md:p-12 relative overflow-hidden">
+        <div className="relative mx-auto grid place-items-center" style={{ width: 180, height: 180, position: "relative", marginBottom: 20 }}>
+          <div className="absolute inset-0 rounded-full dot-grid" style={{ maskImage: "radial-gradient(circle, black 30%, transparent 70%)", WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 70%)" }} />
+          {[0, 0.8, 1.6].map((d) => (
+            <span key={d} className="absolute rounded-full border-2 border-red animate-pulse-ring" style={{ width: 70, height: 70, borderRadius: "50%", border: "2px solid var(--emergency)", animationDelay: `${d}s`, position: "absolute" }} />
+          ))}
+          <span className="relative grid place-items-center rounded-full bg-blood text-emergency-foreground shadow-lift" style={{ width: 70, height: 70, borderRadius: "50%", display: "grid", placeItems: "center", background: "var(--gradient-blood)", color: "#fff", boxShadow: "var(--shadow-lift)" }}>
+            <LocateFixed size={28} />
+          </span>
+        </div>
 
-          {/* Big GPS Location Button */}
+        <p className="eyebrow">Live GPS Directions</p>
+        <h1 className="text-4xl md:text-5xl font-semibold mt-2" style={{ margin: "8px 0 12px" }}>
+          Nearest <span className="text-gradient">blood bank.</span>
+        </h1>
+        <p className="max-w-md text-muted-foreground" style={{ maxWidth: 500, margin: "0 auto 24px", lineHeight: 1.6 }}>
+          We'll use your live location to calculate precise distances and open turn-by-turn navigation to the closest blood bank.
+        </p>
+
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
           <button
             type="button"
             onClick={handleUseGPS}
             disabled={loading}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              background: "#0284c7",
-              color: "#ffffff",
-              border: "1px solid #38bdf8",
-              padding: "14px 24px",
-              borderRadius: 14,
-              fontWeight: 800,
-              fontSize: 16,
-              cursor: "pointer",
-              boxShadow: "0 4px 18px rgba(2,132,199,0.4)",
-            }}
+            aria-label="Use My Current Location"
+            className="btn btn-primary !px-6 !py-3"
           >
-            <Compass size={19} />
-            <span>Use My Current Location</span>
+            <Compass size={18} />
+            <span>{loading ? "Locating with GPS…" : "Use My Current Location"}</span>
           </button>
+          <a
+            href="https://www.google.com/maps/search/blood+bank+near+me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost !px-6 !py-3"
+          >
+            <ExternalLink size={16} /> Open in Google Maps
+          </a>
         </div>
 
-        {/* Fallback Manual Search Form */}
-        <form onSubmit={handleManualSearch} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <div style={{ position: "relative", flex: "1 1 280px" }}>
-            <Search size={16} style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }} />
+        {locationStatus && (
+          <div style={{ marginTop: 16, fontSize: 13, color: "var(--emergency)", display: "flex", alignItems: "center", gap: 6, fontWeight: 500 }}>
+            <AlertCircle size={15} />
+            <span>{locationStatus}</span>
+          </div>
+        )}
+      </section>
+
+      {/* Search Filter Bar */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+        <div>
+          <h3 style={{ margin: 0, fontSize: "1.25rem", fontWeight: 700 }}>Nearby Verified Blood Banks</h3>
+          <p className="text-sm text-muted-foreground" style={{ margin: "4px 0 0" }}>
+            {banks.length} certified centres found sorted by proximity
+          </p>
+        </div>
+
+        <form onSubmit={handleManualSearch} style={{ display: "flex", gap: 8, flex: "1 1 320px", maxWidth: 440 }}>
+          <label className="tile flex items-center gap-2 px-4 py-2 w-full" style={{ padding: "8px 16px", borderRadius: 9999, display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
+            <Search size={16} className="text-muted-foreground" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Manual fallback: enter city, district, or 6-digit pincode…"
-              style={{
-                width: "100%",
-                boxSizing: "border-box",
-                padding: "11px 14px 11px 40px",
-                background: "rgba(0,0,0,0.45)",
-                border: "1px solid rgba(255,255,255,0.18)",
-                borderRadius: 10,
-                color: "#ffffff",
-                fontSize: 13.5,
-                outline: "none",
-              }}
+              placeholder="Manual fallback: enter city, district, or pin…"
+              style={{ background: "transparent", border: "none", outline: "none", width: "100%", fontSize: 14, color: "var(--foreground)" }}
             />
-          </div>
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              padding: "11px 20px",
-              background: "rgba(255,255,255,0.1)",
-              border: "1px solid rgba(255,255,255,0.2)",
-              color: "#ffffff",
-              fontWeight: 700,
-              fontSize: 13,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            {loading ? "Searching…" : "Search"}
+          </label>
+          <button type="submit" disabled={loading} className="btn btn-ghost !py-2 !px-4 !text-sm">
+            Search
           </button>
         </form>
-
-        {locationStatus && (
-          <div style={{ fontSize: 12, color: "#93c5fd", display: "flex", alignItems: "center", gap: 6 }}>
-            <AlertCircle size={14} />
-            <span>{locationStatus}</span>
-          </div>
-        )}
       </div>
 
-      {/* Visual Map Overview & Quick Navigation Box */}
-      <div
-        style={{
-          background: "#0f172a",
-          border: "1px solid rgba(56,189,248,0.2)",
-          borderRadius: 16,
-          padding: 16,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 12,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(2,132,199,0.2)", display: "grid", placeItems: "center", color: "#38bdf8" }}>
-            <Navigation size={20} />
-          </div>
-          <div>
-            <div style={{ fontWeight: 800, fontSize: 14 }}>One-Tap Google Maps Directions</div>
-            <div style={{ fontSize: 12, color: "#9ca3af" }}>
-              {banks.length} nearby blood banks mapped and sorted by distance
-            </div>
-          </div>
-        </div>
-
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((searchQuery || "blood bank") + " near me")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            background: "rgba(255,255,255,0.08)",
-            color: "#ffffff",
-            padding: "8px 14px",
-            borderRadius: 8,
-            textDecoration: "none",
-            fontSize: 12.5,
-            fontWeight: 700,
-            border: "1px solid rgba(255,255,255,0.15)",
-          }}
-        >
-          <span>Open Fullscreen in Google Maps</span>
-          <ExternalLink size={13} />
-        </a>
-      </div>
-
-      {/* Results List */}
+      {/* Results Grid */}
       {loading ? (
-        <div style={{ textAlign: "center", padding: 40, color: "#9ca3af" }}>
+        <div style={{ textAlign: "center", padding: 60, color: "var(--muted-foreground)" }}>
           Finding closest blood banks…
         </div>
       ) : banks.length === 0 ? (
-        <div style={{ textAlign: "center", padding: 36, background: "rgba(255,255,255,0.02)", borderRadius: 16, border: "1px dashed rgba(255,255,255,0.1)" }}>
-          <Building2 size={32} color="#38bdf8" style={{ margin: "0 auto 10px" }} />
-          <h4 style={{ margin: "0 0 6px" }}>No blood banks located</h4>
-          <p style={{ color: "#9ca3af", fontSize: 13, margin: 0 }}>Try clicking "Use My Current Location" or typing a major district name.</p>
+        <div className="tile" style={{ textAlign: "center", padding: 48 }}>
+          <Building2 size={36} className="text-red" style={{ margin: "0 auto 12px" }} />
+          <h4 style={{ margin: "0 0 6px", fontSize: "1.15rem" }}>No blood banks located</h4>
+          <p className="text-sm text-muted-foreground" style={{ margin: 0 }}>Try clicking "Use My Current Location" or searching Bhopal, Sehore, or Raisen.</p>
         </div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))", gap: 14 }}>
-          {banks.map((bank, index) => {
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))", gap: 16 }}>
+          {banks.map((bank) => {
             const isSelected = selectedBankId === bank._id;
             return (
               <div
-                key={bank._id || index}
+                key={bank._id}
                 onClick={() => setSelectedBankId(bank._id)}
+                className="tile flex flex-col justify-between"
                 style={{
-                  background: isSelected ? "rgba(2, 132, 199, 0.12)" : "rgba(255, 255, 255, 0.03)",
-                  border: isSelected ? "1.5px solid #0284c7" : "1px solid rgba(255, 255, 255, 0.08)",
-                  borderRadius: 16,
-                  padding: 18,
+                  padding: "24px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 12,
-                  boxShadow: isSelected ? "0 4px 20px rgba(2, 132, 199, 0.2)" : "none",
+                  justifyContent: "space-between",
+                  borderColor: isSelected ? "var(--emergency)" : "var(--border)",
+                  boxShadow: isSelected ? "var(--shadow-lift)" : "var(--shadow-soft)",
                   cursor: "pointer",
                 }}
               >
-                {/* Bank Name and Distance Badge */}
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
-                  <div>
-                    <span style={{ fontSize: 11.5, fontWeight: 850, color: "#38bdf8", letterSpacing: 0.8, textTransform: "uppercase" }}>
-                      {bank.source || "BLOOD BANK"}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, marginBottom: 12 }}>
+                    <span className="grid place-items-center rounded-2xl bg-red/10 text-red" style={{ width: 44, height: 44, borderRadius: 14, display: "grid", placeItems: "center", background: "rgba(225, 29, 72, 0.1)", color: "var(--emergency)" }}>
+                      <Building2 size={20} />
                     </span>
-                    <h3 style={{ fontSize: 18.5, margin: "5px 0 0", fontWeight: 800, color: "#f3f4f6" }}>
-                      {bank.name}
-                    </h3>
+                    {bank.distanceKm != null && (
+                      <span className="eyebrow" style={{ background: "var(--secondary)", padding: "4px 10px", borderRadius: 9999, color: "var(--foreground)", fontWeight: 700 }}>
+                        {bank.distanceKm.toFixed(1)} km away
+                      </span>
+                    )}
                   </div>
 
-                  {bank.distanceKm != null && (
-                    <div
-                      style={{
-                        background: "rgba(2, 132, 199, 0.2)",
-                        border: "1px solid #0284c7",
-                        color: "#38bdf8",
-                        fontWeight: 900,
-                        fontSize: 14,
-                        padding: "5px 12px",
-                        borderRadius: 10,
-                        flexShrink: 0,
-                      }}
-                    >
-                      {bank.distanceKm < 1
-                        ? `${Math.round(bank.distanceKm * 1000)} m`
-                        : `${bank.distanceKm} km`}
-                    </div>
-                  )}
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 700, margin: "0 0 6px", lineHeight: 1.35 }}>
+                    {bank.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground" style={{ margin: "0 0 16px", lineHeight: 1.5 }}>
+                    {bank.address || `${bank.district || bank.city}, Madhya Pradesh`}
+                  </p>
+
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 13, color: "var(--muted-foreground)", marginBottom: 18 }}>
+                    {bank.openingHours && (
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <Clock size={14} className="text-red" />
+                        <span>{bank.openingHours}</span>
+                      </div>
+                    )}
+                    {bank.category && (
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <CheckCircle2 size={14} className="text-success" />
+                        <span>{bank.category} Centre</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Address */}
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 14.5, color: "#d1d5db", lineHeight: 1.55 }}>
-                  <MapPin size={17} color="#38bdf8" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span>{bank.address}</span>
-                </div>
-
-                {/* Opening Hours */}
-                <div style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 14, color: "#9ca3af" }}>
-                  <Clock size={16} color="#34d399" />
-                  <span>{bank.openingHours || "24x7 Emergency Services"}</span>
-                </div>
-
-                {/* Action Buttons: Phone & Get Directions */}
-                <div style={{ marginTop: "auto", paddingTop: 14, display: "flex", gap: 10, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                  {bank.phone && (
-                    <a
-                      href={`tel:${String(bank.phone).replace(/[^\d+]/g, "")}`}
-                      onClick={(e) => e.stopPropagation()}
-                      style={{
-                        flex: 1,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 8,
-                        background: "rgba(255,255,255,0.08)",
-                        color: "#ffffff",
-                        textDecoration: "none",
-                        fontWeight: 800,
-                        fontSize: 14.5,
-                        padding: "11px 14px",
-                        borderRadius: 10,
-                        border: "1px solid rgba(255,255,255,0.15)",
-                      }}
-                    >
-                      <Phone size={15} />
-                      <span>Call</span>
+                <div style={{ borderTop: "1px solid var(--border)", paddingTop: 16, display: "flex", gap: 10 }}>
+                  {bank.phone ? (
+                    <a href={`tel:${bank.phone.split(/[/,]/)[0].trim()}`} className="btn btn-ghost !py-2 !text-xs" style={{ flex: 1 }}>
+                      <Phone size={13} /> Call
                     </a>
-                  )}
-
+                  ) : null}
                   <a
-                    href={bank.directionsUrl}
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${bank.name} ${bank.city || bank.district || ""}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    style={{
-                      flex: 2,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: 8,
-                      background: "#0284c7",
-                      color: "#ffffff",
-                      textDecoration: "none",
-                      fontWeight: 800,
-                      fontSize: 14.5,
-                      padding: "11px 16px",
-                      borderRadius: 10,
-                      boxShadow: "0 2px 8px rgba(2,132,199,0.3)",
-                    }}
+                    className="btn btn-primary !py-2 !text-xs"
+                    style={{ flex: 1.3 }}
                   >
-                    <Navigation size={13} />
-                    <span>Get Directions</span>
-                    <ArrowRight size={13} />
+                    <Navigation size={13} /> Directions
                   </a>
                 </div>
               </div>

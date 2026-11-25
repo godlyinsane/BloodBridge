@@ -6,6 +6,7 @@ import {
   Sparkles, Gauge, Clock3, UserCheck, ShieldAlert, Shield,
   Phone, MessageCircle, Share2, Calendar, Building2, Plus, Trash2, Timer,
   Lock, LogOut, Upload, FileText, XCircle, BellRing, ChevronRight, Info, Mail, Navigation, Compass,
+  Hospital, PhoneCall, Sun, Moon, HeartHandshake, LocateFixed,
 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { QRCodeSVG } from "qrcode.react";
@@ -112,66 +113,165 @@ function visualMatchScore(distanceKm, urgency) {
 }
 
 // =================================================================
-// Design tokens
+// Design tokens matching new redesign
 // =================================================================
 const COLORS = {
-  bg: "#0A0B0E",
-  bg2: "#101216",
-  panel: "rgba(255,255,255,0.045)",
-  panelBorder: "rgba(255,255,255,0.09)",
-  crimson: "#FF3B54",
-  crimsonDeep: "#B3202A",
-  cyan: "#22D3EE",
-  text: "#F3F4F6",
-  textMuted: "#9CA3AF",
-  good: "#34D399",
-  warn: "#FBBF24",
+  bg: "var(--background)",
+  bg2: "var(--card)",
+  panel: "var(--card)",
+  panelBorder: "var(--border)",
+  crimson: "var(--emergency)",
+  crimsonDeep: "#9f1239",
+  cyan: "#0ea5e9",
+  text: "var(--foreground)",
+  textMuted: "var(--muted-foreground)",
+  good: "var(--success)",
+  warn: "#f59e0b",
 };
 
 const glassCard = {
-  background: "rgba(20, 22, 28, 0.7)",
-  border: `1px solid ${COLORS.panelBorder}`,
-  borderRadius: 18,
+  background: "var(--card)",
+  border: "1px solid var(--border)",
+  borderRadius: "calc(var(--radius) + 8px)",
+  color: "var(--foreground)",
 };
 
 const glowBtn = {
-  background: `linear-gradient(135deg, ${COLORS.crimson}, ${COLORS.crimsonDeep})`,
-  color: "#fff",
+  background: "var(--gradient-blood)",
+  color: "var(--emergency-foreground)",
   border: "none",
-  borderRadius: 14,
-  padding: "15px 28px",
-  fontSize: 16,
-  fontWeight: 700,
+  borderRadius: 9999,
+  padding: "12px 24px",
+  fontSize: 15,
+  fontWeight: 600,
   cursor: "pointer",
   display: "inline-flex",
   alignItems: "center",
-  gap: 10,
-  boxShadow: "0 8px 30px rgba(255,59,84,0.35)",
+  gap: 8,
+  boxShadow: "var(--shadow-glow)",
 };
 
 const ghostBtn = {
-  background: "rgba(255,255,255,0.04)",
-  color: COLORS.text,
-  border: `1px solid ${COLORS.panelBorder}`,
-  borderRadius: 14,
-  padding: "14px 26px",
-  fontSize: 15.5,
-  fontWeight: 650,
+  background: "var(--secondary)",
+  color: "var(--foreground)",
+  border: "1px solid var(--border)",
+  borderRadius: 9999,
+  padding: "11px 22px",
+  fontSize: 14.5,
+  fontWeight: 600,
   cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 8,
 };
 
 const inputStyle = {
   width: "100%",
-  padding: "14px 16px",
-  borderRadius: 12,
-  border: `1px solid ${COLORS.panelBorder}`,
-  fontSize: 16,
-  fontFamily: "Inter, sans-serif",
-  color: COLORS.text,
-  background: "rgba(255,255,255,0.03)",
+  padding: "12px 18px",
+  borderRadius: 9999,
+  border: "1px solid var(--border)",
+  fontSize: 15,
+  fontFamily: "var(--font-sans)",
+  color: "var(--foreground)",
+  background: "var(--card)",
   boxSizing: "border-box",
   outline: "none",
 };
+
+export function Logo({ size = 28 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <defs>
+        <linearGradient id="bb-logo-lg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="var(--drop-a, #f43f5e)" />
+          <stop offset="1" stopColor="var(--drop-b, #9f1239)" />
+        </linearGradient>
+      </defs>
+      <path d="M16 2C16 2 5 14 5 20.5A11 11 0 0 0 27 20.5C27 14 16 2 16 2Z" fill="url(#bb-logo-lg)" />
+      <path d="M14 15h4v3.5h3.5v4H18V26h-4v-3.5h-3.5v-4H14Z" fill="white" />
+    </svg>
+  );
+}
+
+function ThemeToggle({ dark, onToggle }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      title={dark ? "Switch to light mode" : "Switch to dark mode"}
+      style={{
+        height: 34,
+        borderRadius: 9999,
+        background: "var(--secondary)",
+        border: "1px solid var(--border)",
+        padding: "3px 10px 3px 6px",
+        position: "relative",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 6,
+        cursor: "pointer",
+        flexShrink: 0,
+      }}
+    >
+      <span
+        style={{
+          width: 22,
+          height: 22,
+          borderRadius: "50%",
+          display: "grid",
+          placeItems: "center",
+          background: "var(--card)",
+          color: "var(--foreground)",
+          boxShadow: "var(--shadow-soft)",
+          transition: "all 0.3s ease",
+        }}
+      >
+        {dark ? <Moon size={12} /> : <Sun size={12} />}
+      </span>
+      <span style={{ fontSize: 12, fontWeight: 600, color: "var(--foreground)", userSelect: "none" }}>
+        {dark ? "Light" : "Dark"}
+      </span>
+    </button>
+  );
+}
+
+const HERO_ORBIT_ICONS = [Building2, MapPin, Phone, Hospital, ShieldCheck, Navigation];
+
+function HeroArt() {
+  return (
+    <div style={{ width: "100%", maxWidth: 440, aspectRatio: "1/1", position: "relative", margin: "0 auto" }}>
+      <div className="dot-grid" style={{ position: "absolute", inset: 0, borderRadius: "50%", maskImage: "radial-gradient(circle, black 40%, transparent 70%)", WebkitMaskImage: "radial-gradient(circle, black 40%, transparent 70%)" }} />
+      {[100, 76, 52].map((s, i) => (
+        <div key={s} style={{ position: "absolute", inset: `${(100 - s) / 2}%`, borderRadius: "50%", border: `1px ${i === 1 ? "dashed" : "solid"} var(--border)` }} />
+      ))}
+      <div className="animate-spin-slow" style={{ position: "absolute", inset: 0 }}>
+        {HERO_ORBIT_ICONS.map((Icon, i) => {
+          const a = (i / HERO_ORBIT_ICONS.length) * Math.PI * 2;
+          return (
+            <div key={i} style={{ position: "absolute", left: `${50 + 38 * Math.cos(a)}%`, top: `${50 + 38 * Math.sin(a)}%`, transform: "translate(-50%, -50%)" }}>
+              <div className="glass shadow-soft" style={{ width: 40, height: 40, borderRadius: "50%", display: "grid", placeItems: "center", border: "1px solid var(--border)", animation: "spin-slow 40s linear infinite reverse" }}>
+                <Icon size={16} className="text-red" />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="animate-float" style={{ position: "absolute", inset: "31%", display: "grid", placeItems: "center" }}>
+        <svg viewBox="0 0 100 120" style={{ width: "100%", filter: "drop-shadow(0 30px 30px var(--shadow-drop))" }}>
+          <defs>
+            <linearGradient id="hero-drop-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="var(--drop-a, #f43f5e)" />
+              <stop offset="1" stopColor="var(--drop-b, #9f1239)" />
+            </linearGradient>
+          </defs>
+          <path d="M50 4C50 4 12 52 12 78a38 38 0 0 0 76 0C88 52 50 4 50 4Z" fill="url(#hero-drop-grad)" />
+          <polyline points="24,82 38,82 44,70 52,94 58,76 76,76" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
+    </div>
+  );
+}
 
 // =================================================================
 // Three.js particle field — subtle floating blood-cell-inspired points
@@ -316,17 +416,17 @@ function BloodCellsAnimation() {
 // =================================================================
 const Pill = ({ children, tone = "neutral" }) => {
   const tones = {
-    neutral: { bg: "rgba(255,255,255,0.06)", fg: COLORS.textMuted },
-    good: { bg: "rgba(52,211,153,0.12)", fg: COLORS.good },
-    warn: { bg: "rgba(255,59,84,0.12)", fg: COLORS.crimson },
-    info: { bg: "rgba(34,211,238,0.12)", fg: COLORS.cyan },
+    neutral: { bg: "var(--secondary)", fg: "var(--muted-foreground)" },
+    good: { bg: "rgba(16, 185, 129, 0.12)", fg: "var(--success)" },
+    warn: { bg: "rgba(225, 29, 72, 0.12)", fg: "var(--emergency)" },
+    info: { bg: "rgba(14, 165, 233, 0.12)", fg: "#0284c7" },
   };
-  const t = tones[tone];
+  const t = tones[tone] || tones.neutral;
   return (
     <span style={{
       background: t.bg, color: t.fg, fontSize: 11.5, fontWeight: 700,
-      padding: "4px 11px", borderRadius: 20, letterSpacing: 0.3, whiteSpace: "nowrap",
-      border: `1px solid ${t.fg}22`,
+      padding: "4px 12px", borderRadius: 9999, letterSpacing: 0.3, whiteSpace: "nowrap",
+      border: `1px solid ${t.fg}33`, display: "inline-flex", alignItems: "center", gap: 5,
     }}>{children}</span>
   );
 };
@@ -459,8 +559,17 @@ export default function BloodBridgeApp() {
   const toggleTheme = () => setTheme((current) => {
     const next = current === "dark" ? "light" : "dark";
     localStorage.setItem("bloodbridge-theme", next);
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.toggle("dark", next === "dark");
+    }
     return next;
   });
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    }
+  }, [theme]);
   const [donors, setDonors] = useState([]);
   const [requests, setRequests] = useState([]);
   const [toast, setToast] = useState(null);
@@ -512,52 +621,46 @@ export default function BloodBridgeApp() {
 
   const fontImport = (
     <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-
       * { box-sizing: border-box; }
       body, html {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", "SF Pro", "San Francisco", "Segoe UI", Roboto, sans-serif !important;
+        font-family: var(--font-sans) !important;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
+        letter-spacing: -0.011em;
       }
       h1, h2, h3, h4, h5, h6, .headline, strong, b {
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", "SF Pro", "San Francisco", sans-serif !important;
-        font-weight: 800 !important;
-        letter-spacing: -0.035em;
+        font-family: var(--font-sans) !important;
+        letter-spacing: -0.035em !important;
         -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
       }
       h1, .headline.hero-title {
-        font-weight: 900 !important;
-        letter-spacing: -0.04em;
+        font-weight: 700 !important;
+        letter-spacing: -0.04em !important;
       }
       body {
-        font-size: 17.5px;
-        line-height: 1.65;
+        font-size: 16px;
+        line-height: 1.6;
       }
       p {
-        line-height: 1.75;
-        font-weight: 450;
-        font-size: 15.5px;
-        letter-spacing: -0.01em;
+        line-height: 1.7;
+        font-size: 15px;
       }
       .navbtn {
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", sans-serif !important;
-        font-size: 16.5px !important;
-        font-weight: 700 !important;
+        font-family: var(--font-sans) !important;
+        font-size: 14.5px !important;
+        font-weight: 500 !important;
         letter-spacing: -0.015em;
       }
-      input:focus, select:focus { border-color: ${COLORS.cyan} !important; box-shadow: 0 0 0 3px rgba(34,211,238,0.15); }
+      input:focus, select:focus { border-color: var(--emergency) !important; outline: 2px solid var(--emergency) !important; }
       table { border-collapse: collapse; width: 100%; }
-      th, td { text-align: left; padding: 14px 16px; font-size: 15px; }
-      th { color: ${COLORS.textMuted}; font-weight: 700; border-bottom: 1px solid ${COLORS.panelBorder}; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; }
-      td { border-bottom: 1px solid rgba(255,255,255,0.05); color: ${COLORS.text}; }
-      .navbtn { background:none; border:none; cursor:pointer; font-size:16.5px; font-weight:700;
-                padding:10px 6px; color:${COLORS.textMuted}; position: relative; transition: color 0.18s ease; }
+      th, td { text-align: left; padding: 14px 16px; font-size: 14px; }
+      th { color: var(--muted-foreground); font-weight: 600; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; font-family: var(--font-mono); }
+      td { border-bottom: 1px solid var(--border); color: var(--foreground); }
+      .navbtn { background:none; border:none; cursor:pointer; font-size:14.5px; font-weight:500;
+                padding:8px 14px; color:var(--muted-foreground); position: relative; border-radius: 9999px; transition: all 0.2s ease; }
       @media (hover: hover) and (pointer: fine) {
-        .navbtn:hover { color: #fff; }
+        .navbtn:hover { color: var(--foreground); }
       }
       @media (hover: none), (pointer: coarse) {
         .navbtn:hover { color: inherit; }
@@ -964,135 +1067,120 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
   return (
     <div
-      className={theme === "light" ? "theme-light" : "theme-dark"}
+      className={theme === "dark" ? "dark" : ""}
       data-theme={theme}
       style={{
-        fontFamily: "Inter, -apple-system, sans-serif",
+        fontFamily: "var(--font-sans)",
         minHeight: "100vh",
-        color: theme === "light" ? "#0f172a" : COLORS.text,
-        background: theme === "light"
-          ? "#f8fafc"
-          : `radial-gradient(1200px 600px at 15% -10%, rgba(255,59,84,0.10), transparent 60%),
-             radial-gradient(1000px 500px at 90% 0%, rgba(34,211,238,0.08), transparent 60%),
-             ${COLORS.bg}`,
-        transition: "background 0.25s ease, color 0.25s ease",
+        color: "var(--foreground)",
+        backgroundColor: "var(--background)",
+        transition: "background-color 0.4s ease, color 0.4s ease",
       }}
     >
       {fontImport}
       <NetworkStatusBanner />
       <EmergencyBanner
-        apiBase={API_BASE}
         onFindNearestBank={() => {
           setTab("nearest");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       />
 
-      {/* Responsive BloodBridge navigation with Dark/Light toggle */}
-      <div className={`bloodbridge-topbar ${theme === "light" ? "theme-light" : "theme-dark"} ${mobileMenuOpen ? "mobile-menu-open" : ""}`} data-theme={theme} style={{ borderBottom: `1px solid ${theme === "light" ? "#e5e7eb" : COLORS.panelBorder}`, position: "sticky", top: 0, zIndex: 20, background: theme === "light" ? "#ffffff" : "#0d0f14" }}>
-        <div className="bloodbridge-topbar-inner" style={{ maxWidth: 1240, margin: "0 auto", padding: "12px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
-          <button aria-label="BloodBridge home" onClick={() => { setTab("home"); setMobileMenuOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: 0, border: 0, background: "transparent", color: theme === "light" ? "#171923" : "#fff", cursor: "pointer", textAlign: "left" }}>
-            <img src="/bloodbridge-logo.svg" alt="BloodBridge logo" width="42" height="42" style={{ display: "block", objectFit: "contain", flexShrink: 0 }} />
-            <span><span className="headline" style={{ display: "block", fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>BloodBridge</span><span style={{ display: "block", fontSize: 9.5, color: theme === "light" ? "#667085" : COLORS.textMuted, letterSpacing: .45, marginTop: 4 }}>BLOOD DONOR NETWORK</span></span>
+      {/* Redesigned Glass Sticky Header matching New Homepage Redesign */}
+      <header className="glass sticky top-0 z-40 border-b border-border/60" style={{ borderBottom: "1px solid var(--border)", position: "sticky", top: 0, zIndex: 40 }}>
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5" style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 20px", display: "flex", height: 64, alignItems: "center", justifyContent: "space-between" }}>
+          <button
+            onClick={() => { setTab("home"); setMobileMenuOpen(false); }}
+            style={{ display: "flex", alignItems: "center", gap: 10, background: "none", border: "none", cursor: "pointer", padding: 0, color: "var(--foreground)" }}
+          >
+            <Logo size={28} />
+            <span style={{ fontSize: "1.25rem", fontWeight: 700, letterSpacing: "-0.025em" }}>BloodBridge</span>
           </button>
           
-          <nav className="bloodbridge-nav" aria-label="Main navigation" style={{ display: "flex", alignItems: "center", gap: 20, flex: "1 1 auto", justifyContent: "center", minWidth: 0 }}>
+          <nav className="bloodbridge-nav" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.875rem" }}>
             {[
-              [ "home", "Home", "/" ],
-              [ "camps", "Blood Facilities", "/facilities" ],
-              [ "nearest", "Nearest Blood Bank", "/nearestbank" ]
-            ].map(([k, label, href]) => (
+              { id: "home", label: "Home", path: "/" },
+              { id: "camps", label: "Blood Facilities", path: "/facilities" },
+              { id: "nearest", label: "Nearest Bank", path: "/nearestbank" },
+              { id: "requests", label: "Live Requests", path: "/requests" },
+              { id: "donor", label: "Donor Portal", path: "/donor" },
+              { id: "about", label: "About", path: "/about" },
+            ].map((n) => (
               <a
-                key={k}
-                href={href}
-                className={`navbtn ${tab === k ? "active" : ""}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setTab(k);
-                  setMobileMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+                key={n.id}
+                href={n.path}
+                role="link"
+                onClick={(e) => { e.preventDefault(); setTab(n.id); setMobileMenuOpen(false); }}
+                className={`navbtn rounded-full transition cursor-pointer ${
+                  tab === n.id ? "active text-red bg-red/10 font-semibold" : "text-muted-foreground hover:text-foreground"
+                }`}
                 style={{
-                  background: "transparent",
-                  border: 0,
                   textDecoration: "none",
-                  color: theme === "light" ? (tab === k ? "#a51d32" : "#4b5563") : undefined,
-                  touchAction: "manipulation",
+                  border: "none",
+                  borderRadius: 9999,
+                  padding: "7px 14px",
+                  background: tab === n.id ? "rgba(225, 29, 72, 0.1)" : "transparent",
+                  color: tab === n.id ? "var(--emergency)" : "var(--muted-foreground)",
+                  fontWeight: tab === n.id ? 600 : 500,
+                  fontSize: "0.9rem",
                   cursor: "pointer",
+                  transition: "all 0.2s ease",
                 }}
               >
-                {label}
+                {n.label}
               </a>
             ))}
+            <ThemeToggle dark={theme === "dark"} onToggle={toggleTheme} />
           </nav>
 
-          {/* Topbar Right Controls: Theme Toggle & Mobile Menu */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {/* Dark mode & light mode toggle option on the top */}
+          {/* Mobile Menu Button */}
+          <div className="bloodbridge-menu-toggle-wrap" style={{ display: "none", alignItems: "center", gap: 10 }}>
+            <ThemeToggle dark={theme === "dark"} onToggle={toggleTheme} />
             <button
-              type="button"
-              className="theme-toggle-btn"
-              onClick={toggleTheme}
-              aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-              title={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 7,
-                height: 38,
-                padding: "0 13px",
-                borderRadius: 20,
-                border: `1px solid ${theme === "light" ? "#d0d5dd" : "rgba(255,255,255,0.14)"}`,
-                background: theme === "light" ? "#f1f5f9" : "rgba(255,255,255,0.06)",
-                color: theme === "light" ? "#1e293b" : "#f1f5f9",
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: "pointer",
-                transition: "all 0.18s ease",
-                userSelect: "none",
-              }}
-            >
-              {theme === "light" ? (
-                <>
-                  <span style={{ fontSize: 14 }}>🌙</span>
-                  <span style={{ fontSize: 12.5, letterSpacing: 0.2 }}>Dark</span>
-                </>
-              ) : (
-                <>
-                  <span style={{ fontSize: 14 }}>☀️</span>
-                  <span style={{ fontSize: 12.5, letterSpacing: 0.2 }}>Light</span>
-                </>
-              )}
-            </button>
-
-            <button
-              type="button"
-              className="bloodbridge-menu-toggle"
-              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={mobileMenuOpen}
               onClick={() => setMobileMenuOpen(v => !v)}
-              style={{
-                display: "none",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 40,
-                height: 40,
-                borderRadius: 12,
-                border: `1px solid ${theme === "light" ? "#d0d5dd" : COLORS.panelBorder}`,
-                color: theme === "light" ? "#344054" : "#fff",
-                background: "transparent",
-                cursor: "pointer",
-                flexShrink: 0,
-              }}
+              aria-label="Toggle navigation"
+              className="btn btn-ghost !p-2"
+              style={{ width: 40, height: 40, borderRadius: 12, padding: 0 }}
             >
-              <span style={{ fontSize: 24, lineHeight: 1 }}>{mobileMenuOpen ? "×" : "☰"}</span>
+              {mobileMenuOpen ? <XCircle size={20} /> : <span style={{ fontSize: 22, lineHeight: 1 }}>☰</span>}
             </button>
           </div>
         </div>
-      </div>
 
-      <div className="bloodbridge-content" style={{ maxWidth: 1120, margin: "0 auto", padding: "40px 24px 70px", position: "relative" }}>
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div style={{ borderTop: "1px solid var(--border)", background: "var(--card)", padding: "16px 20px", display: "flex", flexDirection: "column", gap: 8 }}>
+            {[
+              { id: "home", label: "Home" },
+              { id: "camps", label: "Need Blood (Facilities)" },
+              { id: "nearest", label: "Nearest Bank" },
+              { id: "requests", label: "Emergency Requests" },
+              { id: "donor", label: "Donor Portal" },
+              { id: "about", label: "About" },
+            ].map((n) => (
+              <button
+                key={n.id}
+                onClick={() => { setTab(n.id); setMobileMenuOpen(false); }}
+                style={{
+                  textAlign: "left",
+                  padding: "10px 14px",
+                  borderRadius: 12,
+                  border: "none",
+                  background: tab === n.id ? "rgba(225, 29, 72, 0.1)" : "transparent",
+                  color: tab === n.id ? "var(--emergency)" : "var(--foreground)",
+                  fontWeight: tab === n.id ? 700 : 500,
+                  fontSize: 15,
+                  cursor: "pointer",
+                }}
+              >
+                {n.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <div className="bloodbridge-content" style={{ maxWidth: 1200, margin: "0 auto", padding: "20px 20px 60px", position: "relative" }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
@@ -1121,124 +1209,83 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       </div>
 
       {tab !== "admin" && (
-        <footer aria-label="BloodBridge site footer" className="bloodbridge-footer">
-          <div className="bloodbridge-footer-inner">
-            <div className="bloodbridge-footer-grid">
-              {/* Brand & Description Column */}
-              <div className="bloodbridge-footer-brand">
-                <div
-                  onClick={() => { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 10, cursor: "pointer", marginBottom: 16 }}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); } }}
-                >
-                  <img src="/bloodbridge-logo.svg" alt="BloodBridge" width="30" height="30" style={{ display: "block", objectFit: "contain" }} />
-                  <span style={{ fontSize: 21, fontWeight: 750, letterSpacing: "-0.025em", color: theme === "light" ? "#0f172a" : "#ffffff" }}>
-                    BloodBridge
-                  </span>
-                </div>
-                <p style={{
-                  fontSize: 14,
-                  lineHeight: 1.65,
-                  color: theme === "light" ? "#64748b" : "#8a8f98",
-                  margin: 0,
-                  maxWidth: 320
-                }}>
-                  Free, direct blood donation matching. Search verified regional hospitals, emergency blood requests, and live donor availability across districts in real time.
-                </p>
+        <footer className="mt-24 border-t border-border bg-card" style={{ marginTop: 80, borderTop: "1px solid var(--border)", background: "var(--card)" }}>
+          <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-3" style={{ maxWidth: "72rem", margin: "0 auto", padding: "64px 20px", display: "grid", gap: 48 }}>
+            <div>
+              <div className="flex items-center gap-2 text-lg font-semibold" style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "1.25rem", fontWeight: 700 }}>
+                <Logo size={28} /> BloodBridge
               </div>
-
-              {/* Product Column */}
-              <div className="bloodbridge-footer-col">
-                <span className="bloodbridge-footer-title">Product</span>
-                <div className="bloodbridge-footer-links">
-                  {[
-                    ["Features", "services"],
-                    ["Hospital Directory", "camps"],
-                    ["Live Availability", "available"],
-                    ["Emergency Requests", "requests"],
-                    ["Nearest Blood Bank", "nearest"],
-                  ].map(([label, destination]) => (
-                    <button
-                      key={label}
-                      type="button"
-                      onClick={() => { setTab(destination); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                      className="bloodbridge-footer-link"
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Legal Column */}
-              <div className="bloodbridge-footer-col">
-                <span className="bloodbridge-footer-title">Legal</span>
-                <div className="bloodbridge-footer-links">
-                  {[
-                    ["Privacy Policy", "privacy"],
-                    ["Disclaimer", "terms"],
-                    ["Terms of Service", "terms"],
-                    ["Cookie Settings", "privacy"],
-                  ].map(([label, destination]) => (
-                    <button
-                      key={label}
-                      type="button"
-                      onClick={() => { setTab(destination); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                      className="bloodbridge-footer-link"
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Company Column */}
-              <div className="bloodbridge-footer-col">
-                <span className="bloodbridge-footer-title">Company</span>
-                <div className="bloodbridge-footer-links">
-                  <a
-                    href="mailto:support.bloodbridge@gmail.com"
-                    className="bloodbridge-footer-link"
-                  >
-                    Contact
-                  </a>
-                  <button
-                    type="button"
-                    onClick={() => { setTab("about"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                    className="bloodbridge-footer-link"
-                  >
-                    About
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => { setTab("donor"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                    className="bloodbridge-footer-link"
-                  >
-                    Donor Portal
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => { setTab("bloodbank"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                    className="bloodbridge-footer-link"
-                  >
-                    Hospital Portal
-                  </button>
-                </div>
-              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground" style={{ margin: "16px 0", fontSize: "0.875rem", lineHeight: 1.7, color: "var(--muted-foreground)" }}>
+                Connecting blood donors, recipients and blood banks to help people find the blood they need, when it matters most.
+              </p>
+              <span className="inline-flex items-center gap-2 rounded-full bg-red/10 px-3 py-1.5 text-xs font-medium text-red" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 9999, background: "rgba(225, 29, 72, 0.1)", color: "var(--emergency)", fontSize: "0.8rem", fontWeight: 600 }}>
+                <Heart size={14} fill="currentColor" /> Every donation can make a difference
+              </span>
             </div>
-
-            {/* Bottom Copyright & Credit Row */}
-            <div className="bloodbridge-footer-bottom">
-              <span className="bloodbridge-footer-cr">
-                © 2026 BloodBridge. All rights reserved.
-              </span>
-              <span className="bloodbridge-footer-credit">
-                Built with ❤️ by <strong>Priyansh Bhatt</strong>
-              </span>
+            <div>
+              <p className="eyebrow" style={{ margin: "0 0 16px" }}>Quick links</p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12, fontSize: "0.9rem" }}>
+                {[
+                  ["home", "Home"],
+                  ["camps", "Emergency Requests & Facilities"],
+                  ["nearest", "Camps & Blood Banks"],
+                  ["about", "Features & Mission"],
+                ].map(([to, label]) => (
+                  <li key={label}>
+                    <button
+                      onClick={() => { setTab(to); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                      className="group inline-flex items-center gap-1 hover:text-foreground cursor-pointer"
+                      style={{ background: "none", border: "none", padding: 0, color: "var(--muted-foreground)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6, fontSize: "inherit", fontFamily: "inherit" }}
+                    >
+                      <ChevronRight size={14} className="text-red" />
+                      <span>{label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="eyebrow" style={{ margin: "0 0 16px" }}>Contact us</p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16, fontSize: "0.875rem" }}>
+                <li style={{ display: "flex", gap: 12 }}>
+                  <Mail size={16} className="text-red" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <div>
+                    <p style={{ margin: "0 0 2px", fontWeight: 600 }}>Email support</p>
+                    <a href="mailto:support.bloodbridge@gmail.com" style={{ color: "var(--muted-foreground)", textDecoration: "none" }}>
+                      support.bloodbridge@gmail.com
+                    </a>
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: 12 }}>
+                  <Phone size={16} className="text-red" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <div>
+                    <p style={{ margin: "0 0 2px", fontWeight: 600 }}>Mobile</p>
+                    <p style={{ margin: 0, color: "var(--muted-foreground)" }}>+91 9132450XXX</p>
+                  </div>
+                </li>
+                <li style={{ display: "flex", gap: 12 }}>
+                  <MapPin size={16} className="text-red" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <div>
+                    <p style={{ margin: "0 0 2px", fontWeight: 600 }}>Location</p>
+                    <p style={{ margin: 0, color: "var(--muted-foreground)" }}>VIT Bhopal University, MP</p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
+          <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "24px 20px", borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 16, fontSize: "0.8rem", color: "var(--muted-foreground)" }}>
+            <p style={{ margin: 0 }}>
+              © 2026 BloodBridge · Made by Priyansh Bhatt for EPICS. Built with <Heart size={12} fill="currentColor" style={{ display: "inline", verticalAlign: -1, color: "var(--emergency)" }} /> to help save lives.
+            </p>
+            <div style={{ display: "flex", gap: 20 }}>
+              <button onClick={() => { setTab("about"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0 }}>About Us</button>
+              <button onClick={() => { setTab("privacy"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0 }}>Privacy Policy</button>
+              <button onClick={() => { setTab("terms"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0 }}>Terms &amp; Conditions</button>
+            </div>
+          </div>
+          <p style={{ paddingBottom: 32, textAlign: "center", fontSize: "0.75rem", color: "var(--muted-foreground)", margin: 0 }}>
+            BloodBridge is a technology platform and does not replace medical advice or professional blood-bank screening.
+          </p>
         </footer>
       )}
 
@@ -1267,11 +1314,11 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 function BloodBridgeInfoPage({ page, theme, goTo }) {
   const light = theme === "light";
-  const ink = light ? "#182230" : "#f4f6f9";
-  const muted = light ? "#596474" : "#a8b0bd";
-  const panel = light ? "#ffffff" : "#121821";
-  const line = light ? "#e4e7ec" : "rgba(255,255,255,.1)";
-  const red = "#c43d50";
+  const ink = "var(--foreground)";
+  const muted = "var(--muted-foreground)";
+  const panel = "var(--card)";
+  const line = "var(--border)";
+  const red = "var(--emergency)";
   const sectionStyle = { background: panel, border: "1px solid " + line, borderRadius: 16, padding: "clamp(18px,3vw,30px)", marginBottom: 18 };
   const headingStyle = { color: red, fontSize: 17, fontWeight: 800, margin: "0 0 10px" };
   const paraStyle = { color: muted, fontSize: 14, lineHeight: 1.85, margin: "0 0 12px" };
@@ -1739,6 +1786,57 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
 // HOME
 // =================================================================
 // =================================================================
+const BLOOD_GROUP_INFO = {
+  "O+": {
+    badge: "Most Demanded",
+    desc: "Most common blood group. High clinical demand; can give red cells to any Rh+ patient.",
+    givesTo: "O+, A+, B+, AB+",
+    receivesFrom: "O+, O-",
+  },
+  "O-": {
+    badge: "Universal Red Cell",
+    desc: "Universal red cell donor. First choice in emergency trauma, surgery, and infant transfusions.",
+    givesTo: "All blood types",
+    receivesFrom: "O- only",
+  },
+  "A+": {
+    badge: "Second Common",
+    desc: "Vital for scheduled hospital surgeries. Excellent source for critical platelet donations.",
+    givesTo: "A+, AB+",
+    receivesFrom: "A+, A-, O+, O-",
+  },
+  "A-": {
+    badge: "Rare Donor",
+    desc: "Can donate red blood cells to A and AB recipients. Highly valuable for sensitive patients.",
+    givesTo: "A-, A+, AB-, AB+",
+    receivesFrom: "A-, O-",
+  },
+  "B+": {
+    badge: "High Prevalence",
+    desc: "One of the most widespread groups across India. Essential for regular transfusions.",
+    givesTo: "B+, AB+",
+    receivesFrom: "B+, B-, O+, O-",
+  },
+  "B-": {
+    badge: "Rare Group",
+    desc: "Can donate red cells to B and AB patients. High demand in regional thalassemia care.",
+    givesTo: "B-, B+, AB-, AB+",
+    receivesFrom: "B-, O-",
+  },
+  "AB+": {
+    badge: "Universal Recipient",
+    desc: "Can receive red blood cells of any type. Also serves as universal plasma donor to all.",
+    givesTo: "AB+ only",
+    receivesFrom: "All blood types",
+  },
+  "AB-": {
+    badge: "Rarest Type",
+    desc: "Rarest blood group. Universal plasma donor along with AB+; plasma given to any group.",
+    givesTo: "AB-, AB+",
+    receivesFrom: "All Rh- types",
+  },
+};
+
 function Home({ donors, requests, goTo }) {
   const verified = donors.filter((d) => d.verified).length;
   const available = donors.filter((d) => d.available && d.verified).length;
@@ -1829,527 +1927,392 @@ function Home({ donors, requests, goTo }) {
     ? { lat: Math.round(Number(mapDonors[0].lat) * 100) / 100, lng: Math.round(Number(mapDonors[0].lng) * 100) / 100 }
     : null;
 
-  const quickActions = [
-    { icon: <Building2 size={21} />, title: "Need Blood? Explore Facilities", description: "Explore verified hospitals, government blood banks, and emergency facility contacts.", action: () => goTo("camps"), tone: COLORS.crimson, tag: "Need Blood", label: "Find facilities" },
-    { icon: <MapPin size={21} />, title: "Nearest Blood Bank", description: "Find the closest blood bank with Google Maps turn-by-turn navigation.", action: () => goTo("nearest"), tone: "#0ea5e9", tag: "Live GPS", label: "Locate bank" },
-    { icon: <Info size={21} />, title: "About Us", description: "Learn about the BloodBridge network, mission, and community values.", action: () => goTo("about"), tone: "#818cf8", tag: "Network", label: "About BloodBridge" },
-  ];
-
   return (
-    <div className="bloodbridge-home">
-      <style>{`
-        .bloodbridge-home .home-hero { isolation:isolate; }
-        .bloodbridge-home .hero-copy { min-width:0; }
-        .bloodbridge-home .hero-title { font-size:clamp(2.15rem,4.5vw,3.7rem); line-height:1.06; letter-spacing:-1.8px; }
-        .bloodbridge-home .hero-actions { display:flex; gap:12px; margin-top:26px; flex-wrap:wrap; }
-        .bloodbridge-home .home-section { margin-top:48px; }
-        .bloodbridge-home .quick-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
-        .bloodbridge-home .quick-card-inner {
-          min-height: 220px;
-          height: 100%;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: column;
-          padding: 22px 20px;
-          border-radius: 22px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
-          position: relative;
-          overflow: hidden;
-          transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-        }
-        @media (hover: hover) and (pointer: fine) {
-          .bloodbridge-home .quick-card-inner:hover {
-            border-color: var(--card-tone-border, rgba(255, 255, 255, 0.25));
-            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 25px -4px var(--card-tone-glow, rgba(255, 255, 255, 0.15)), 0 12px 28px -8px rgba(0, 0, 0, 0.6);
-          }
-        }
-        @media (hover: none), (pointer: coarse) {
-          .bloodbridge-home .quick-card-inner {
-            transform: none !important;
-          }
-          .bloodbridge-home .quick-card-inner:active {
-            border-color: var(--card-tone-border, rgba(255, 255, 255, 0.2));
-          }
-        }
-        .bloodbridge-home .quick-action-btn {
-          transition: filter 0.2s ease, box-shadow 0.2s ease;
-          touch-action: manipulation;
-          -webkit-tap-highlight-color: transparent;
-        }
-        @media (hover: hover) and (pointer: fine) {
-          .bloodbridge-home .quick-action-btn:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 0 16px var(--card-tone-glow, rgba(255, 255, 255, 0.25));
-          }
-        }
-        @media (hover: none), (pointer: coarse) {
-          .bloodbridge-home .quick-action-btn:active {
-            filter: brightness(0.95);
-          }
-        }
-        .bloodbridge-home .how-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-        .bloodbridge-home .section-heading { font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2; margin:0 0 8px; }
-        .bloodbridge-home .section-subtitle { color:${COLORS.textMuted}; font-size:14px; line-height:1.7; margin:0 0 20px; max-width:680px; }
-        .bloodbridge-home .quick-card { min-width:0; height:100%; display:flex; flex-direction:column; }
-        .bloodbridge-home .quick-card button { margin-top:auto; align-self:flex-start; }
-        .bloodbridge-home .blood-groups { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:9px; }
-        .bloodbridge-home .blood-group { text-align:center; border:1px solid ${COLORS.panelBorder}; border-radius:12px; padding:13px 5px; background:rgba(255,255,255,.035); }
-        .bloodbridge-home .blood-group strong { display:block; font-size:18px; color:#ff7d90; margin-bottom:4px; }
-        .bloodbridge-home .blood-group span { font-size:11px; color:${COLORS.textMuted}; }
-        .bloodbridge-home .step-number { width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:rgba(255,59,84,.12);color:#ff7d90;font-weight:800;margin-bottom:14px; }
-        @media(max-width:900px) {
-          .bloodbridge-home .home-hero { grid-template-columns:1fr !important; gap:24px !important; padding-top:18px; }
-          .bloodbridge-home .quick-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-          .bloodbridge-home .blood-groups { grid-template-columns:repeat(4,minmax(0,1fr)); }
-        }
-        @media(max-width:560px) {
-          .bloodbridge-home .home-hero { min-height:unset !important; }
-          .bloodbridge-home .hero-title { letter-spacing:-1px; }
-          .bloodbridge-home .hero-actions { display:grid; grid-template-columns:1fr; }
-          .bloodbridge-home .hero-actions button { width:100%; justify-content:center; }
-          .bloodbridge-home .hero-stats { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; }
-          .bloodbridge-home .quick-grid,.bloodbridge-home .how-grid { grid-template-columns:1fr; }
-          .bloodbridge-home .home-section { margin-top:36px; }
-        }
-      `}</style>
-
-      <section className="home-hero grid2" style={{ position:"relative", minHeight:500, display:"grid", gridTemplateColumns:"1.15fr .85fr", gap:34, alignItems:"center", marginBottom:16, padding:"12px 0 28px" }}>
-        <div style={{ position:"absolute", top:-28, bottom:0, left:"-30vw", right:"-30vw", zIndex:-1, pointerEvents:"none", opacity:.45, borderRadius:20, overflow:"hidden" }}><BloodCellsAnimation /></div>
-        <motion.div className="hero-copy" initial={{opacity:0,x:-24}} animate={{opacity:1,x:0}} transition={{duration:.6}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,padding:"8px 16px",borderRadius:30,background:"rgba(255,59,84,.1)",border:"1px solid rgba(255,59,84,.28)",marginBottom:20,fontSize:14,fontWeight:750,color:"#ff8293"}}>
-            <Heart size={16} fill="currentColor" /> Every drop can make a difference
-          </div>
-          <h1 className="headline hero-title" style={{margin:"0 0 20px",fontWeight:800}}>
-            Be someone's <span style={{background:`linear-gradient(90deg,${COLORS.crimson},#ff8a9a ${"55%"},${COLORS.cyan})`,WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>lifeline.</span><br />
-            <span style={{fontSize:".8em",letterSpacing:"-1px"}}>Find blood. Give hope.</span>
+    <div className="bloodbridge-home pb-16">
+      {/* Hero Section */}
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-8 md:grid-cols-[1.1fr_1fr] md:pt-16">
+        <div className="animate-rise">
+          <span className="eyebrow !text-red flex items-center gap-2">
+            <span className="inline-block size-2 rounded-full bg-red animate-pulse" />
+            Blood donor network · Madhya Pradesh
+          </span>
+          <h1 className="mt-5 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            Be someone's <span className="text-gradient">lifeline.</span>
           </h1>
-          <p style={{fontSize:18,color:COLORS.textMuted,lineHeight:1.85,maxWidth:560,margin:0}}>
-            BloodBridge brings donors, people seeking blood, and blood banks together. Find compatible donor support, register to help, and explore donation resources in one place.
+          <p className="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-muted-foreground">
+            Find verified blood banks, hospitals, and emergency donors across Sehore, Bhopal, and nearby regions — call or get turn-by-turn directions in one tap.
           </p>
-          <div className="hero-actions">
-            </div>
-          <div style={{display:"flex",gap:20,flexWrap:"wrap",marginTop:24,color:COLORS.textMuted,fontSize:14}}>
-            <span style={{display:"inline-flex",alignItems:"center",gap:8}}><ShieldCheck size={18} color={COLORS.cyan}/> Verification-aware donor listings</span>
-            <span style={{display:"inline-flex",alignItems:"center",gap:8}}><MapPin size={18} color={COLORS.good}/> Location-based discovery</span>
-          </div>
-        </motion.div>
-        <motion.div
-          className="hero-graphic-card"
-          initial={{ opacity: 0, scale: 0.96, x: 24 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.65, delay: 0.12 }}
-          style={{
-            position: "relative",
-            background: "linear-gradient(145deg, rgba(22, 27, 38, 0.85) 0%, rgba(12, 15, 22, 0.95) 100%)",
-            border: `1.5px solid rgba(255, 59, 84, 0.25)`,
-            borderRadius: 24,
-            padding: "26px 24px",
-            boxShadow: "0 20px 50px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.12)",
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            gap: 18,
-          }}
-        >
-          {/* Subtle Ambient Radial Glow */}
-          <div
-            style={{
-              position: "absolute",
-              top: "-40%",
-              right: "-30%",
-              width: "280px",
-              height: "280px",
-              borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(255,59,84,0.18) 0%, transparent 70%)",
-              pointerEvents: "none",
-            }}
-          />
-
-          {/* Top Live Status Indicator Header */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: 14 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ position: "relative", display: "flex", width: 12, height: 12 }}>
-                <span style={{ position: "absolute", display: "inline-flex", width: "100%", height: "100%", borderRadius: "50%", background: "#34D399", opacity: 0.75, animation: "ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite" }} />
-                <span style={{ position: "relative", display: "inline-flex", borderRadius: "50%", width: 12, height: 12, background: "#10B981" }} />
-              </span>
-              <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: 0.8, textTransform: "uppercase", color: "#34D399" }}>
-                Active Regional Network
-              </span>
-            </div>
-            <span style={{ fontSize: 12.5, fontWeight: 700, color: COLORS.textMuted, background: "rgba(255,255,255,0.05)", padding: "4px 10px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)" }}>
-              100 KM RADIUS
-            </span>
-          </div>
-
-          {/* Graphical Visualizer: Animated Pulse Radar / Compass */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: 16,
-              background: "rgba(10, 12, 18, 0.7)",
-              borderRadius: 18,
-              padding: "18px 20px",
-              border: "1px solid rgba(255,255,255,0.06)",
-              position: "relative",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-              <div
-                style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, rgba(255,59,84,0.2), rgba(34,211,238,0.15))",
-                  border: "1.5px solid rgba(255,59,84,0.4)",
-                  display: "grid",
-                  placeItems: "center",
-                  flexShrink: 0,
-                  boxShadow: "0 0 20px rgba(255,59,84,0.25)",
-                }}
-              >
-                <Activity size={26} color={COLORS.crimson} />
-              </div>
-              <div>
-                <h4 style={{ fontSize: 17.5, fontWeight: 800, margin: "0 0 4px", color: "#F3F4F6" }}>
-                  Verified Hospital &amp; Bank Network
-                </h4>
-                <p style={{ fontSize: 13.5, color: COLORS.textMuted, margin: 0, lineHeight: 1.5 }}>
-                  48+ Certified Facilities across Sehore, Bhopal, Raisen, Vidisha, Rajgarh, Shajapur, Narmadapuram &amp; Dewas.
-                </p>
-              </div>
-            </div>
-
-            {/* Visual Pill Matrix: Live Group Support */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, paddingTop: 6 }}>
-              {["O+", "A+", "B+", "AB+", "O-", "A-", "B-", "AB-"].map((grp) => (
-                <div
-                  key={grp}
-                  style={{
-                    background: "rgba(255,255,255,0.035)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    borderRadius: 10,
-                    padding: "7px 4px",
-                    textAlign: "center",
-                    fontSize: 13.5,
-                    fontWeight: 800,
-                    color: grp.includes("-") ? "#ff8293" : "#F3F4F6",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 5,
-                  }}
-                >
-                  <Droplet size={12} color={grp.includes("-") ? COLORS.crimson : COLORS.cyan} fill="currentColor" />
-                  <span>{grp}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Action Links inside the card */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 2 }}>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={() => goTo("camps")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 8,
-                background: "linear-gradient(135deg, rgba(255,59,84,0.18), rgba(255,59,84,0.06))",
-                border: "1px solid rgba(255,59,84,0.35)",
-                color: "#ff7d90",
-                padding: "12px 14px",
-                borderRadius: 12,
-                fontSize: 14.5,
-                fontWeight: 750,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
+              className="btn btn-primary"
             >
-              <Building2 size={16} />
-              <span>Browse 48+ Facilities</span>
+              <Building2 className="size-4" /> Browse facilities
             </button>
             <button
               type="button"
               onClick={() => goTo("nearest")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 8,
-                background: "linear-gradient(135deg, rgba(34,211,238,0.18), rgba(34,211,238,0.06))",
-                border: "1px solid rgba(34,211,238,0.35)",
-                color: "#38bdf8",
-                padding: "12px 14px",
-                borderRadius: 12,
-                fontSize: 14.5,
-                fontWeight: 750,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
+              className="btn btn-ghost"
             >
-              <Navigation size={16} />
-              <span>Find Nearest Bank</span>
+              <Navigation className="size-4" /> Nearest bank
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo("donors")}
+              className="btn btn-ghost !border-dashed text-xs sm:text-sm"
+            >
+              <Users className="size-3.5" /> Become a Donor
             </button>
           </div>
-
-          <div style={{ fontSize: 13, color: COLORS.textMuted, textAlign: "center", lineHeight: 1.5, marginTop: -4 }}>
-            Direct Google Maps navigation &amp; telephone contact verified for emergencies.
-          </div>
-        </motion.div>
+        </div>
+        <HeroArt />
       </section>
 
-            <section className="home-section">
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"end",gap:16,flexWrap:"wrap"}}>
-          <div><SectionLabel>Start here</SectionLabel><h2 className="headline section-heading">What do you need today?</h2><p className="section-subtitle">Choose a quick action to get to the right part of BloodBridge.</p></div>
-        </div>
-        <div className="quick-grid">
-          {quickActions.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.04, duration: 0.35, ease: "easeOut" }}
-            >
-              <div
-                className="quick-card-inner"
-                style={{
-                  "--card-tone-border": `${item.tone}60`,
-                  "--card-tone-glow": `${item.tone}35`,
-                  background: `radial-gradient(circle at 18% 14%, ${item.tone}16 0%, rgba(20, 24, 34, 0.72) 48%, rgba(12, 14, 20, 0.96) 100%)`,
-                }}
-              >
-                {/* Top Row: Icon squircle + Category badge */}
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
-                  <div
-                    style={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: 14,
-                      display: "grid",
-                      placeItems: "center",
-                      color: item.tone,
-                      background: `linear-gradient(135deg, ${item.tone}24, ${item.tone}0a)`,
-                      border: `1px solid ${item.tone}40`,
-                      boxShadow: `0 4px 14px ${item.tone}20`,
-                      flexShrink: 0,
-                    }}
-                  >
-                    {item.icon}
-                  </div>
-                  {item.tag && (
-                    <span
-                      style={{
-                        fontSize: 12,
-                        fontWeight: 800,
-                        padding: "4px 11px",
-                        borderRadius: 999,
-                        background: "rgba(255, 255, 255, 0.045)",
-                        border: "1px solid rgba(255, 255, 255, 0.09)",
-                        color: "#9ca3af",
-                        letterSpacing: 0.4,
-                      }}
-                    >
-                      {item.tag}
-                    </span>
-                  )}
-                </div>
-
-                <h3 style={{ fontSize: 18.5, fontWeight: 800, margin: "0 0 8px", color: "#f3f4f6", letterSpacing: -0.3 }}>
-                  {item.title}
-                </h3>
-                <p style={{ fontSize: 14.5, lineHeight: 1.7, color: COLORS.textMuted, margin: "0 0 20px", flex: 1 }}>
-                  {item.description}
-                </p>
-
-                {/* Tactile Action Button Pill */}
-                <button
-                  type="button"
-                  className="quick-action-btn"
-                  onClick={item.action}
-                  style={{
-                    marginTop: "auto",
-                    alignSelf: "flex-start",
-                    border: `1px solid ${item.tone}40`,
-                    background: `linear-gradient(135deg, ${item.tone}1c 0%, ${item.tone}0a 100%)`,
-                    padding: "9px 18px",
-                    borderRadius: 999,
-                    color: "#ffffff",
-                    fontSize: 14,
-                    fontWeight: 800,
-                    cursor: "pointer",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 7,
-                    boxShadow: `0 2px 10px ${item.tone}18`,
-                    letterSpacing: -0.2,
-                  }}
-                >
-                  <span>{item.label}</span>
-                  <ArrowRight size={15} style={{ color: item.tone }} />
-                </button>
+      {/* Active Regional Network Banner */}
+      <section className="mx-auto max-w-6xl px-4">
+        <div className="tile flex flex-wrap items-center justify-between gap-6 p-6 sm:p-7 hover:!translate-y-0">
+          <div className="flex items-center gap-4">
+            <span className="grid size-12 place-items-center rounded-2xl bg-red/10 text-red shrink-0">
+              <Activity className="size-5" />
+            </span>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="size-2 rounded-full bg-success" />
+                <span className="eyebrow">Active regional network</span>
               </div>
-            </motion.div>
+              <h3 className="mt-1 text-base sm:text-lg font-semibold">
+                32+ verified facilities within 100 km
+              </h3>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-base font-semibold text-red">{verified}</span>
+              <span className="text-muted-foreground text-xs">Verified Donors</span>
+            </div>
+            <div className="hidden sm:block h-4 w-px bg-border" />
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-base font-semibold text-emerald-500">{available}</span>
+              <span className="text-muted-foreground text-xs">Ready to Donate</span>
+            </div>
+            <div className="hidden sm:block h-4 w-px bg-border" />
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-base font-semibold text-sky-500">{fulfilled || 18}+</span>
+              <span className="text-muted-foreground text-xs">Lives Supported</span>
+            </div>
+          </div>
+          <p className="w-full text-xs text-muted-foreground border-t border-border/50 pt-3">
+            Coverage: Sehore · Bhopal · Ashta · Raisen · Hoshangabad · Vidisha
+          </p>
+        </div>
+      </section>
+
+      {/* What do you need? */}
+      <section className="mx-auto max-w-6xl px-4 pt-20">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+          <div>
+            <span className="eyebrow !text-red">Quick navigation</span>
+            <h2 className="mt-1 text-3xl font-semibold sm:text-4xl md:text-5xl">What do you need?</h2>
+          </div>
+          <p className="text-sm text-muted-foreground max-w-xs">
+            Direct access to emergency centers, live routing, and community initiatives.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+          {[
+            {
+              id: "camps",
+              icon: Building2,
+              title: "Explore facilities",
+              body: "Verified hospitals, government blood centers, and emergency facility contacts.",
+              action: () => goTo("camps"),
+            },
+            {
+              id: "nearest",
+              icon: MapPin,
+              title: "Nearest blood bank",
+              body: "Turn-by-turn directions with real-time GPS and Google Maps integration.",
+              action: () => goTo("nearest"),
+            },
+            {
+              id: "about",
+              icon: Info,
+              title: "About us",
+              body: "Learn about the BloodBridge mission, life-saving network, and community values.",
+              action: () => goTo("about"),
+            },
+          ].map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={c.action}
+              className="tile group flex flex-col p-7 text-left transition-all duration-200"
+              style={{ textAlign: "left", alignItems: "flex-start", width: "100%" }}
+            >
+              <span
+                className="grid place-items-center rounded-2xl bg-red/10 text-red group-hover:bg-red group-hover:text-white transition-colors duration-200"
+                style={{ width: 48, height: 48, display: "grid", placeItems: "center", flexShrink: 0 }}
+              >
+                <c.icon className="size-5" />
+              </span>
+              <h3 className="mt-8 text-xl font-semibold">{c.title}</h3>
+              <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{c.body}</p>
+              <div className="mt-6 flex items-center gap-2 text-sm font-medium text-red">
+                <span>Open view</span>
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </div>
+            </button>
           ))}
         </div>
       </section>
 
-      <section className="home-section">
-        <SectionLabel>Explore the donor pool</SectionLabel>
-        <h2 className="headline section-heading">Blood groups at a glance</h2>
-        <p className="section-subtitle">Counts below reflect donor records currently loaded, not confirmed blood-bank inventory. Only eligible verified donors are shown on the public donor map.</p>
-        <div className="blood-groups">{groupCounts.map(({group,count})=><div className="blood-group" key={group}><strong>{group}</strong><span>{count} donor{count===1?"":"s"}</span></div>)}</div>
-        <div style={{display:"flex",gap:10,flexWrap:"wrap",marginTop:18}}>
-          <button style={ghostBtn} onClick={()=>setShowDonorMap(v=>!v)} aria-expanded={showDonorMap}><MapPin size={15}/> {showDonorMap?"Hide donor map":"Show donor map"}</button>
+      {/* Blood Groups at a Glance */}
+      <section className="mx-auto max-w-6xl px-4 pt-20">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span className="eyebrow !text-red">Inventory & Availability</span>
+            <h2 className="mt-1 text-3xl font-semibold sm:text-4xl">Blood groups at a glance</h2>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowDonorMap((v) => !v)}
+              className="btn btn-ghost text-xs"
+            >
+              <LocateFixed className="size-3.5 text-red" />
+              {showDonorMap ? "Hide Map" : "View Live Donor Map"}
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo("requests")}
+              className="btn btn-primary text-xs"
+            >
+              <Plus className="size-3.5" /> Request Blood
+            </button>
+          </div>
         </div>
-      </section>
 
-      <AnimatePresence>{showDonorMap && <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} exit={{opacity:0,y:8}} style={{marginTop:20}}>
-        <SectionLabel>Live donor map</SectionLabel><Card hover={false} style={{padding:12}}>
-          {mapCenter ? <><div style={{color:COLORS.textMuted,fontSize:12.5,padding:"4px 8px 12px"}}>Approximate locations of available, verified donors.</div><DonorLocationsMap center={mapCenter} donors={mapDonors.map(d=>({lat:Math.round(Number(d.lat)*100)/100,lng:Math.round(Number(d.lng)*100)/100,label:(d.locality||"Registered area")+" · "+d.group}))} height={360}/></> : <div style={{minHeight:130,display:"grid",placeItems:"center",textAlign:"center",padding:24,color:COLORS.textMuted,fontSize:13,lineHeight:1.7}}>No available, verified donor locations are ready to display yet.</div>}
-        </Card>
-      </motion.div>}</AnimatePresence>
-
-      <section className="home-section">
-        <SectionLabel>Simple, connected, community-focused</SectionLabel><h2 className="headline section-heading">How BloodBridge works</h2><p className="section-subtitle">A clear path from searching for help to connecting with donation support.</p>
-        <div className="how-grid">{[
-          {n:"01",title:"Search or register",desc:"Recipients can start a blood request; eligible donors can create a donor profile."},
-          {n:"02",title:"Review compatible support",desc:"Use blood-group and location-based tools to explore relevant donor matches."},
-          {n:"03",title:"Confirm before you travel",desc:"Contact the relevant donor or blood bank and follow professional screening and transfusion guidance."}
-        ].map((step,i)=><motion.div key={step.n} initial={{opacity:0,y:14}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.07}}><Card style={{height:"100%",padding:22}}><div className="step-number">{step.n}</div><h3 style={{fontSize:16,margin:"0 0 9px"}}>{step.title}</h3><p style={{fontSize:13.5,color:COLORS.textMuted,lineHeight:1.8,margin:0}}>{step.desc}</p></Card></motion.div>)}</div>
-      </section>
-
-      <section className="home-section" style={{ marginTop: 52 }}>
-        <div style={{
-          padding: "clamp(24px, 4vw, 36px)",
-          borderRadius: 24,
-          border: "1px solid rgba(255, 59, 84, 0.28)",
-          background: "linear-gradient(135deg, rgba(255, 59, 84, 0.12) 0%, rgba(18, 22, 34, 0.82) 50%, rgba(34, 211, 238, 0.06) 100%)",
-          boxShadow: "0 24px 50px -12px rgba(0, 0, 0, 0.65)"
-        }}>
-          {/* Header Row */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 20, flexWrap: "wrap", marginBottom: 26 }}>
-            <div style={{ maxWidth: 620 }}>
-              <SectionLabel>Voluntary Blood Donation</SectionLabel>
-              <h2 className="headline" style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)", margin: "0 0 10px", fontWeight: 800 }}>
-                Donate Blood &amp; Save Lives
-              </h2>
-              <p style={{ color: COLORS.textMuted, fontSize: 14.5, lineHeight: 1.7, margin: 0 }}>
-                Walk into verified regional hospital blood banks, government medical centres, and charitable facilities across Madhya Pradesh accepting voluntary donations.
-              </p>
+        {/* Live Donor Locations Map */}
+        {showDonorMap && (
+          <div className="mt-6 tile overflow-hidden p-4">
+            <div className="flex items-center justify-between pb-3 border-b border-border mb-3">
+              <div className="flex items-center gap-2">
+                <span className="size-2 rounded-full bg-success animate-pulse" />
+                <span className="text-sm font-semibold">Verified Donor Map (Madhya Pradesh)</span>
+              </div>
+              <span className="text-xs text-muted-foreground">{mapDonors.length} active donors</span>
             </div>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-              <button
-                type="button"
-                style={{ ...glowBtn, padding: "13px 24px", fontSize: 15, fontWeight: 750 }}
-                onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              >
-                Donate Blood
-              </button>
-              <button
-                type="button"
-                style={{ ...ghostBtn, padding: "13px 20px", fontSize: 15, fontWeight: 700 }}
-                onClick={() => { goTo("nearest"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              >
-                Locate Nearest Centre
-              </button>
+            <div className="h-80 w-full rounded-2xl overflow-hidden">
+              <DonorLocationsMap donors={donors} />
             </div>
           </div>
+        )}
 
-          {/* Places where you can donate blood */}
-          <div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-              <span style={{ fontSize: 13, fontWeight: 750, textTransform: "uppercase", letterSpacing: 0.6, color: COLORS.textMuted }}>
-                Centres &amp; Hospitals Accepting Donations ({placesToDonate.length} Verified Facilities)
-              </span>
-              <button
-                type="button"
-                onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                style={{ background: "transparent", border: 0, color: COLORS.cyan, fontSize: 13.5, fontWeight: 750, cursor: "pointer", padding: 0 }}
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          {groupCounts.map(({ group, count }) => {
+            const info = BLOOD_GROUP_INFO[group] || {
+              badge: "Blood Group",
+              desc: "Volunteer donor availability in your region.",
+              givesTo: "Compatible types",
+              receivesFrom: "Compatible types",
+            };
+            return (
+              <div
+                key={group}
+                className="tile flex flex-col justify-between cursor-pointer hover:border-red/40 transition-all duration-200"
+                style={{
+                  padding: "16px 18px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+                onClick={() => goTo("donors")}
               >
-                View all 48 centres →
-              </button>
-            </div>
-
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))",
-              gap: 14
-            }}>
-              {placesToDonate.map((place, idx) => (
-                <div
-                  key={place.name + idx}
-                  style={{
-                    background: "rgba(16, 20, 30, 0.75)",
-                    border: "1px solid rgba(255, 255, 255, 0.08)",
-                    borderRadius: 18,
-                    padding: "18px 20px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    transition: "border-color 0.2s, transform 0.2s"
-                  }}
-                >
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                      <span style={{
-                        fontSize: 11,
-                        fontWeight: 800,
-                        textTransform: "uppercase",
-                        letterSpacing: 0.5,
-                        padding: "3px 8px",
-                        borderRadius: 6,
-                        background: place.category === "Government" ? "rgba(16, 185, 129, 0.15)" : place.category === "Red Cross" ? "rgba(239, 68, 68, 0.15)" : "rgba(59, 130, 246, 0.15)",
-                        color: place.category === "Government" ? "#34d399" : place.category === "Red Cross" ? "#f87171" : "#60a5fa",
-                        border: "1px solid rgba(255, 255, 255, 0.08)"
-                      }}>
-                        {place.category || "Verified Centre"}
+                <div>
+                  <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-border/50">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl font-bold font-mono tracking-tight text-foreground">
+                        {group}
                       </span>
-                      <span style={{ fontSize: 12, color: COLORS.textMuted, fontWeight: 600 }}>
-                        {place.district || place.city}
+                      <span
+                        className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-semibold whitespace-nowrap"
+                        style={{ whiteSpace: "nowrap" }}
+                      >
+                        {info.badge}
                       </span>
                     </div>
-
-                    <h4 style={{ fontSize: 16, fontWeight: 750, margin: "0 0 6px", color: "#f8fafc", lineHeight: 1.35 }}>
-                      {place.name}
-                    </h4>
-                    <p style={{ fontSize: 13, color: COLORS.textMuted, margin: "0 0 14px", lineHeight: 1.5 }}>
-                      {place.address || (place.district + ", Madhya Pradesh")}
-                    </p>
-                  </div>
-
-                  <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.06)", paddingTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-                    <span style={{ fontSize: 12, color: "#34d399", fontWeight: 700, display: "flex", alignItems: "center", gap: 5 }}>
-                      ● Walk-in Donations
+                    <span className="text-xs font-mono text-muted-foreground whitespace-nowrap" style={{ whiteSpace: "nowrap" }}>
+                      <span className="font-semibold text-foreground">{count}</span> donors
                     </span>
-                    {place.phone ? (
-                      <a
-                        href={`tel:${place.phone.split(/[/,]/)[0].trim()}`}
-                        style={{ fontSize: 12.5, color: COLORS.cyan, textDecoration: "none", fontWeight: 700 }}
-                      >
-                        {place.phone.split(/[/,]/)[0].trim()}
-                      </a>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                        style={{ background: "transparent", border: 0, color: COLORS.cyan, fontSize: 12, fontWeight: 700, cursor: "pointer", padding: 0 }}
-                      >
-                        Details
-                      </button>
-                    )}
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed" style={{ margin: "10px 0 0", lineHeight: 1.55 }}>
+                    {info.desc}
+                  </p>
+                </div>
+
+                <div
+                  className="mt-3.5 pt-2.5 border-t border-border/40 text-[11px] font-mono text-muted-foreground flex flex-col gap-1.5"
+                  style={{ marginTop: 14, paddingTop: 10, borderTop: "1px solid var(--border)", fontSize: 11 }}
+                >
+                  <div className="flex justify-between items-center" style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span className="opacity-75">Gives red cells:</span>
+                    <span className="font-semibold text-foreground">{info.givesTo}</span>
+                  </div>
+                  <div className="flex justify-between items-center" style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span className="opacity-75">Receives from:</span>
+                    <span className="font-semibold text-foreground">{info.receivesFrom}</span>
                   </div>
                 </div>
-              ))}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="mx-auto max-w-6xl px-4 pt-20">
+        <span className="eyebrow !text-red">Process</span>
+        <h2 className="mt-1 text-3xl font-semibold sm:text-4xl md:text-5xl">How it works.</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {[
+            { icon: Search, t: "Find", b: "Browse or search the verified facility and voluntary donor directory." },
+            { icon: PhoneCall, t: "Call", b: "Confirm real-time blood group availability directly before traveling." },
+            { icon: Navigation, t: "Go", b: "Open GPS directions in Google Maps and follow medical guidance." },
+          ].map((s, i) => (
+            <div key={s.t} className="tile p-7">
+              <div className="flex items-center justify-between">
+                <span
+                  className="grid place-items-center rounded-full border border-border"
+                  style={{ width: 44, height: 44, display: "grid", placeItems: "center", flexShrink: 0 }}
+                >
+                  <s.icon className="size-5 text-red" />
+                </span>
+                <span className="font-mono text-4xl font-semibold text-border">0{i + 1}</span>
+              </div>
+              <h3 className="mt-8 text-lg font-semibold">{s.t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.b}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Verified Centres */}
+      <section className="mx-auto max-w-6xl px-4 pt-20">
+        <div
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"
+          style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}
+        >
+          <div>
+            <span className="eyebrow !text-red">Direct Walk-In</span>
+            <h2 className="mt-1 text-3xl font-semibold sm:text-4xl">Donate Blood & Save Lives: Verified Centres</h2>
+          </div>
+          <button
+            type="button"
+            onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            className="btn btn-ghost text-xs"
+            style={{ width: "auto", flexShrink: 0 }}
+          >
+            View all 32+ facilities <ArrowRight className="size-3.5" />
+          </button>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {placesToDonate.map((p, idx) => (
+            <div key={p.name || idx} className="tile flex flex-col justify-between p-6">
+              <div>
+                <div className="flex items-start justify-between gap-2">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red/10 text-red border border-red/20">
+                    {p.category || "Verified Centre"}
+                  </span>
+                  <span className="text-xs font-mono text-muted-foreground">{p.district}</span>
+                </div>
+                <h3 className="mt-3 text-base font-semibold leading-snug">{p.name}</h3>
+                <p className="mt-2 text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                  {p.address}
+                </p>
+                {p.openingHours && (
+                  <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    {p.openingHours}
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between gap-2">
+                {p.phone ? (
+                  <a
+                    href={`tel:${p.phone.replace(/[^0-9+]/g, "")}`}
+                    className="btn btn-ghost !py-1.5 !px-3 text-xs"
+                  >
+                    <Phone className="size-3.5 text-red" />
+                    Call
+                  </a>
+                ) : (
+                  <span className="text-xs text-muted-foreground">Contact on site</span>
+                )}
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${p.name} ${p.address || p.district || ""}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary !py-1.5 !px-3 text-xs"
+                >
+                  <Navigation className="size-3.5" />
+                  Directions
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Dark Ink Banner CTA */}
+      <section className="mx-auto max-w-6xl px-4 pt-20">
+        <div className="relative overflow-hidden rounded-[2.25rem] bg-ink p-8 text-ink-foreground sm:p-12 md:p-16">
+          <svg className="absolute -right-24 -top-24 h-[28rem] w-[28rem] pointer-events-none" viewBox="0 0 200 200" aria-hidden>
+            {[90, 70, 50, 30].map((r, i) => (
+              <circle
+                key={r}
+                cx="100"
+                cy="100"
+                r={r}
+                fill="none"
+                stroke="var(--emergency)"
+                strokeOpacity={0.15 + i * 0.15}
+                strokeWidth="0.6"
+              />
+            ))}
+          </svg>
+          <div className="relative max-w-xl">
+            <span className="eyebrow !text-red">Join our mission</span>
+            <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+              A small act can make a life-changing difference.
+            </h2>
+            <p className="mt-4 text-sm sm:text-base opacity-75 leading-relaxed">
+              Explore donation camps, blood banks, or register as a voluntary donor to save lives in your community.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => goTo("camps")}
+                className="btn btn-primary"
+              >
+                <Building2 className="size-4" /> Camps & banks
+              </button>
+              <button
+                type="button"
+                onClick={() => goTo("donors")}
+                className="btn btn-ink"
+              >
+                <HeartHandshake className="size-4" /> Register as Donor
+              </button>
             </div>
           </div>
         </div>
+        <p className="mt-6 text-center text-xs text-muted-foreground leading-relaxed">
+          BloodBridge helps people discover donation support; it does not replace medical advice, donor eligibility assessment, or blood-bank screening.
+        </p>
       </section>
-      <p style={{fontSize:11.5,color:COLORS.textMuted,lineHeight:1.7,textAlign:"center",margin:"28px 0 0"}}>BloodBridge helps people discover donation support; it does not replace medical advice, donor eligibility assessment, or blood-bank screening.</p>
     </div>
   );
 }
@@ -4548,7 +4511,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
       .includes(q);
   });
 
-  const panel = { border: "1px solid rgba(255,255,255,0.09)", borderRadius: 14, background: "#11151b", boxShadow: "0 5px 18px rgba(0,0,0,0.12)" };
+  const panel = { border: "1px solid var(--border)", borderRadius: 18, background: "var(--card)", boxShadow: "var(--shadow-soft)", color: "var(--foreground)" };
   const buttonStyle = (active) => ({ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 13px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : COLORS.textMuted, background: active ? "linear-gradient(135deg, " + COLORS.crimson + ", " + COLORS.crimsonDeep + ")" : "rgba(255,255,255,0.035)", border: active ? "1px solid rgba(255,90,110,0.35)" : "1px solid rgba(255,255,255,0.08)", boxShadow: active ? "0 8px 22px rgba(255,59,84,0.18)" : "none", textDecoration: "none" });
   const field = { ...inputStyle, width: "100%", boxSizing: "border-box" };
   const changeTab = (tab) => { setDirectoryTab(tab); setQuery(""); setShowForm(false); setShowBankForm(false); };
