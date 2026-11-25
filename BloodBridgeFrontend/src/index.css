@@ -287,6 +287,11 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: scale(2.4); opacity: 0; }
 }
 
+@keyframes pulse-ring-subtle {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
 @keyframes rise {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
@@ -302,6 +307,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-pulse-ring {
   animation: pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+
+.animate-pulse-ring-subtle {
+  animation: pulse-ring-subtle 2s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
 }
 
 .animate-rise {

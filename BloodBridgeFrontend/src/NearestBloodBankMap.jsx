@@ -111,56 +111,82 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
   }, []);
 
   return (
-    <div style={{ display: "grid", gap: 32 }} className="max-w-6xl mx-auto">
-      {/* Hero GPS Visualizer matching Redesign */}
-      <section className="tile flex flex-col items-center text-center p-4 sm:p-6 relative overflow-hidden" style={{ borderRadius: "var(--radius-lg)" }}>
-        <div className="relative mx-auto grid place-items-center mb-2.5" style={{ width: 48, height: 48 }}>
-          <span className="absolute inset-0 rounded-full bg-emergency opacity-20 animate-pulse-ring" />
-          <span className="relative grid place-items-center rounded-full text-white" style={{ width: 40, height: 40, background: "var(--gradient-blood)", boxShadow: "0 0 16px rgba(255, 59, 84, 0.4)" }}>
-            <LocateFixed size={20} />
+    <div style={{ display: "grid", gap: 22 }} className="max-w-6xl mx-auto">
+      {/* Hero GPS Visualizer matching Redesign - Compact and screen-optimized */}
+      <section
+        className="tile flex flex-col items-center text-center relative overflow-hidden"
+        style={{ borderRadius: "var(--radius-lg)", padding: "16px 20px" }}
+      >
+        {/* Compact, optimized GPS target symbol */}
+        <div className="relative mx-auto grid place-items-center mb-1.5" style={{ width: 32, height: 32 }}>
+          <span className="absolute inset-0 rounded-full bg-emergency opacity-25 animate-pulse-ring-subtle" />
+          <span
+            className="relative grid place-items-center rounded-full text-white"
+            style={{
+              width: 26,
+              height: 26,
+              background: "var(--gradient-blood)",
+              boxShadow: "0 0 10px rgba(255, 59, 84, 0.4)",
+            }}
+          >
+            <LocateFixed size={14} strokeWidth={2.5} />
           </span>
         </div>
 
-        <p className="eyebrow" style={{ margin: "0 0 4px" }}>Live GPS Directions</p>
-        <h1 className="text-2xl sm:text-3xl font-semibold" style={{ margin: "0 0 6px" }}>
+        <p className="eyebrow" style={{ margin: "0 0 2px", fontSize: 11, letterSpacing: 0.8 }}>
+          Live GPS Directions
+        </p>
+        <h1
+          style={{
+            margin: "0 0 4px",
+            fontSize: "clamp(1.2rem, 3.2vw, 1.55rem)",
+            fontWeight: 700,
+            lineHeight: 1.25,
+          }}
+        >
           Nearest <span className="text-gradient">blood bank.</span>
         </h1>
-        <p className="max-w-md text-xs sm:text-sm text-muted-foreground" style={{ maxWidth: 460, margin: "0 auto 16px", lineHeight: 1.5 }}>
+        <p
+          className="text-muted-foreground"
+          style={{ maxWidth: 440, margin: "0 auto 12px", fontSize: "0.8125rem", lineHeight: 1.45 }}
+        >
           We'll use your live location to calculate precise distances and open turn-by-turn navigation to the closest blood bank.
         </p>
 
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", width: "100%" }}>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center", width: "100%" }}>
           <button
             type="button"
             onClick={handleUseGPS}
             disabled={loading}
             aria-label="Use My Current Location"
-            className="btn btn-primary !px-4 sm:!px-5 !py-2 text-xs sm:text-sm"
+            className="btn btn-primary"
+            style={{ padding: "6px 14px", fontSize: 12.5 }}
           >
-            <Compass size={16} />
+            <Compass size={14} />
             <span>{loading ? "Locating device…" : "Use My Current Location"}</span>
           </button>
           <a
             href="https://www.google.com/maps/search/blood+bank+near+me"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost !px-4 sm:!px-5 !py-2 text-xs sm:text-sm"
+            className="btn btn-ghost"
+            style={{ padding: "6px 14px", fontSize: 12.5 }}
           >
-            <ExternalLink size={15} /> Open in Google Maps
+            <ExternalLink size={13} /> Open in Google Maps
           </a>
         </div>
 
         {locationStatus && (
           <div style={{
-            marginTop: 12,
-            fontSize: 13,
+            marginTop: 8,
+            fontSize: 12,
             color: locationStatus.includes("denied") || locationStatus.includes("No blood") ? "var(--emergency)" : "var(--accent-teal, #10b981)",
             display: "flex",
             alignItems: "center",
             gap: 6,
             fontWeight: 500
           }}>
-            {locationStatus.includes("denied") || locationStatus.includes("No blood") ? <AlertCircle size={15} /> : <CheckCircle2 size={15} />}
+            {locationStatus.includes("denied") || locationStatus.includes("No blood") ? <AlertCircle size={14} /> : <CheckCircle2 size={14} />}
             <span>{locationStatus}</span>
           </div>
         )}
