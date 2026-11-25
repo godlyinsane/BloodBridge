@@ -1444,11 +1444,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                   lineHeight: 1.05,
                   margin: "0 auto 22px",
                   maxWidth: 820,
-                  background: light
-                    ? "linear-gradient(180deg, #111827 0%, #374151 100%)"
-                    : "linear-gradient(180deg, #FFFFFF 20%, #9CA3AF 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  color: ink,
                 }}
               >
                 Built to connect human lives when seconds matter most.
