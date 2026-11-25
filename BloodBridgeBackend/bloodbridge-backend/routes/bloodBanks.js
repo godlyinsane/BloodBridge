@@ -129,10 +129,6 @@ router.get("/nearest", async (req, res) => {
         matchesSearch = matchesAddress || matchesName;
       }
 
-      if (hasCoordinates && dist != null && dist > searchRadiusKm && !searchQuery) {
-        continue;
-      }
-
       if (matchesSearch) {
         results.push({
           _id: bank._id,
@@ -170,11 +166,22 @@ router.get("/nearest", async (req, res) => {
       return a.name.localeCompare(b.name);
     });
 
+    // If coordinates are provided and search radius is applied:
+    // If we have results within searchRadiusKm, prioritize them.
+    // Otherwise, keep the closest sorted results so the user is never left with an empty list.
+    let finalResults = results;
+    if (hasCoordinates && !searchQuery) {
+      const withinRadius = results.filter((r) => r.distanceKm != null && r.distanceKm <= searchRadiusKm);
+      if (withinRadius.length > 0) {
+        finalResults = withinRadius;
+      }
+    }
+
     res.json({
-      count: results.length,
+      count: finalResults.length,
       userLocation: hasCoordinates ? { lat: userLat, lng: userLng } : null,
       searchQuery: searchQuery || null,
-      results: results.slice(0, 30),
+      results: finalResults.slice(0, 30),
     });
   } catch (err) {
     res.status(500).json({ error: "Failed to find nearest blood banks: " + err.message });

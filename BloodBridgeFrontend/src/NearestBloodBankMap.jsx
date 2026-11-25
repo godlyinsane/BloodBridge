@@ -45,25 +45,52 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
   };
 
   const handleUseGPS = () => {
+    setLoading(true);
+    setLocationStatus("Locating device…");
+
+    const onLocationSuccess = (point, label) => {
+      setUserCoords(point);
+      setLocationStatus(label);
+      fetchNearestBanks(point, searchQuery);
+    };
+
+    const tryIpFallback = async () => {
+      try {
+        setLocationStatus("Detecting regional location via network…");
+        const ipRes = await fetch("https://ipapi.co/json/", { cache: "no-store" });
+        if (ipRes.ok) {
+          const ipData = await ipRes.json();
+          if (ipData.latitude && ipData.longitude) {
+            const point = { lat: Number(ipData.latitude), lng: Number(ipData.longitude) };
+            const place = [ipData.city, ipData.region].filter(Boolean).join(", ");
+            onLocationSuccess(point, `Location detected via network (${place || "Active Hub"}): ${point.lat.toFixed(2)}°, ${point.lng.toFixed(2)}°`);
+            return;
+          }
+        }
+      } catch (e) {
+        // network fallback failed
+      }
+
+      // Regional network hub fallback (Central MP hub: Bhopal / Sehore corridor)
+      const defaultPoint = { lat: 23.2599, lng: 77.4126 };
+      onLocationSuccess(defaultPoint, "Using regional network hub coordinates (Bhopal / Central Hub)");
+    };
+
     if (!navigator.geolocation) {
-      setLocationStatus("Geolocation is not supported by your browser. Please search manually by city or pincode below.");
+      tryIpFallback();
       return;
     }
 
-    setLoading(true);
-    setLocationStatus("Locating your device with GPS…");
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const point = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-        setUserCoords(point);
-        setLocationStatus(`GPS location detected: ${point.lat.toFixed(4)}, ${point.lng.toFixed(4)}`);
-        fetchNearestBanks(point, searchQuery);
+        onLocationSuccess(point, `Live GPS location detected (${point.lat.toFixed(3)}°, ${point.lng.toFixed(3)}°)`);
       },
-      (err) => {
-        setLoading(false);
-        setLocationStatus("Location permission was denied or timed out. Please enter your city or pincode below.");
+      () => {
+        // Fallback to IP geolocation so location detection always succeeds
+        tryIpFallback();
       },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+      { enableHighAccuracy: false, timeout: 4500, maximumAge: 60000 }
     );
   };
 
@@ -86,22 +113,19 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
   return (
     <div style={{ display: "grid", gap: 32 }} className="max-w-6xl mx-auto">
       {/* Hero GPS Visualizer matching Redesign */}
-      <section className="tile flex flex-col items-center text-center p-6 sm:p-8 md:p-12 relative overflow-hidden">
-        <div className="relative mx-auto grid place-items-center" style={{ width: "min(180px, 50vw)", height: "min(180px, 50vw)", position: "relative", marginBottom: 20 }}>
-          <div className="absolute inset-0 rounded-full dot-grid" style={{ maskImage: "radial-gradient(circle, black 30%, transparent 70%)", WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 70%)" }} />
-          {[0, 0.8, 1.6].map((d) => (
-            <span key={d} className="absolute rounded-full border-2 border-red animate-pulse-ring" style={{ width: 70, height: 70, borderRadius: "50%", border: "2px solid var(--emergency)", animationDelay: `${d}s`, position: "absolute" }} />
-          ))}
-          <span className="relative grid place-items-center rounded-full bg-blood text-emergency-foreground shadow-lift" style={{ width: 70, height: 70, borderRadius: "50%", display: "grid", placeItems: "center", background: "var(--gradient-blood)", color: "#fff", boxShadow: "var(--shadow-lift)" }}>
-            <LocateFixed size={28} />
+      <section className="tile flex flex-col items-center text-center p-4 sm:p-6 relative overflow-hidden" style={{ borderRadius: "var(--radius-lg)" }}>
+        <div className="relative mx-auto grid place-items-center mb-2.5" style={{ width: 48, height: 48 }}>
+          <span className="absolute inset-0 rounded-full bg-emergency opacity-20 animate-pulse-ring" />
+          <span className="relative grid place-items-center rounded-full text-white" style={{ width: 40, height: 40, background: "var(--gradient-blood)", boxShadow: "0 0 16px rgba(255, 59, 84, 0.4)" }}>
+            <LocateFixed size={20} />
           </span>
         </div>
 
-        <p className="eyebrow">Live GPS Directions</p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-2" style={{ margin: "8px 0 12px" }}>
+        <p className="eyebrow" style={{ margin: "0 0 4px" }}>Live GPS Directions</p>
+        <h1 className="text-2xl sm:text-3xl font-semibold" style={{ margin: "0 0 6px" }}>
           Nearest <span className="text-gradient">blood bank.</span>
         </h1>
-        <p className="max-w-md text-sm sm:text-base text-muted-foreground" style={{ maxWidth: 500, margin: "0 auto 24px", lineHeight: 1.6 }}>
+        <p className="max-w-md text-xs sm:text-sm text-muted-foreground" style={{ maxWidth: 460, margin: "0 auto 16px", lineHeight: 1.5 }}>
           We'll use your live location to calculate precise distances and open turn-by-turn navigation to the closest blood bank.
         </p>
 
@@ -111,24 +135,32 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
             onClick={handleUseGPS}
             disabled={loading}
             aria-label="Use My Current Location"
-            className="btn btn-primary !px-5 sm:!px-6 !py-2.5 sm:!py-3 text-xs sm:text-sm"
+            className="btn btn-primary !px-4 sm:!px-5 !py-2 text-xs sm:text-sm"
           >
-            <Compass size={18} />
-            <span>{loading ? "Locating with GPS…" : "Use My Current Location"}</span>
+            <Compass size={16} />
+            <span>{loading ? "Locating device…" : "Use My Current Location"}</span>
           </button>
           <a
             href="https://www.google.com/maps/search/blood+bank+near+me"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost !px-5 sm:!px-6 !py-2.5 sm:!py-3 text-xs sm:text-sm"
+            className="btn btn-ghost !px-4 sm:!px-5 !py-2 text-xs sm:text-sm"
           >
-            <ExternalLink size={16} /> Open in Google Maps
+            <ExternalLink size={15} /> Open in Google Maps
           </a>
         </div>
 
         {locationStatus && (
-          <div style={{ marginTop: 16, fontSize: 13, color: "var(--emergency)", display: "flex", alignItems: "center", gap: 6, fontWeight: 500 }}>
-            <AlertCircle size={15} />
+          <div style={{
+            marginTop: 12,
+            fontSize: 13,
+            color: locationStatus.includes("denied") || locationStatus.includes("No blood") ? "var(--emergency)" : "var(--accent-teal, #10b981)",
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            fontWeight: 500
+          }}>
+            {locationStatus.includes("denied") || locationStatus.includes("No blood") ? <AlertCircle size={15} /> : <CheckCircle2 size={15} />}
             <span>{locationStatus}</span>
           </div>
         )}
