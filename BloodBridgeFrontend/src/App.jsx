@@ -2039,7 +2039,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Active Regional Network Banner */}
-      <section className="mx-auto max-w-6xl px-4">
+      <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(24px, 3.5vw, 36px)" }}>
         <div
           className="tile flex flex-wrap items-center justify-between gap-3 hover:!translate-y-0"
           style={{ padding: "8px 16px", borderRadius: 14 }}
@@ -2082,7 +2082,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* What do you need? */}
-      <section className="mx-auto max-w-6xl px-4 pt-3.5 sm:pt-4">
+      <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-1.5 mb-3">
           <div>
             <span className="eyebrow !text-red block mb-1">Quick navigation</span>
@@ -2151,7 +2151,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Blood Groups at a Glance */}
-      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
+      <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3.5">
           <div>
             <span className="eyebrow !text-red block mb-1">Clinical Reference</span>
@@ -2238,7 +2238,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
+      <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
         <div>
           <span className="eyebrow !text-red block mb-1">Process</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight m-0">How it works.</h2>
@@ -2277,7 +2277,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Verified Centres */}
-      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
+      <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
         <div
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3.5"
           style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}
@@ -2355,7 +2355,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Dark Ink Banner CTA */}
-      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5 pb-5 sm:pb-6">
+      <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)", marginBottom: "clamp(40px, 5vw, 60px)" }}>
         <div
           data-ink-card
           className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-5 sm:p-8 md:p-10 text-ink-foreground"
