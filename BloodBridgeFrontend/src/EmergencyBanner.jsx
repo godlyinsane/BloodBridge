@@ -12,15 +12,16 @@ export default function EmergencyBanner({ onFindNearestBank }) {
         boxShadow: "0 4px 16px -2px rgba(255, 59, 84, 0.18)",
         paddingLeft: "env(safe-area-inset-left, 0px)",
         paddingRight: "env(safe-area-inset-right, 0px)",
+        overflowX: "hidden",
       }}
     >
-      <div className="mx-auto flex max-w-6xl flex-nowrap items-center justify-between gap-3 px-4 sm:px-5 py-2 text-xs">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 sm:gap-3 px-3 sm:px-5 py-1.5 sm:py-2 text-xs">
         {/* Left Side: Critical Dispatch with Glowing Badge & Text Shadow */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <div
-            className="flex items-center gap-2.5 rounded-full"
+            className="flex items-center gap-2 sm:gap-2.5 rounded-full"
             style={{
-              padding: "3.5px 14px",
+              padding: "3.5px 12px",
               background: "rgba(255, 59, 84, 0.12)",
               border: "1px solid rgba(255, 59, 84, 0.35)",
               boxShadow: "0 0 10px rgba(255, 59, 84, 0.2)",
@@ -44,7 +45,7 @@ export default function EmergencyBanner({ onFindNearestBank }) {
           </div>
 
           <span
-            className="hidden md:inline text-xs font-semibold whitespace-nowrap"
+            className="hidden lg:inline text-xs font-semibold whitespace-nowrap"
             style={{
               color: "#e2e8f0",
               textShadow: "0 1px 3px rgba(0, 0, 0, 0.8)",
@@ -56,11 +57,11 @@ export default function EmergencyBanner({ onFindNearestBank }) {
         </div>
 
         {/* Right Side: Bold, Shadowed Action Buttons */}
-        <div className="flex items-center gap-2 shrink-0 flex-nowrap">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
           <a
             href="tel:108"
             aria-label="Call InstAmbulance 108"
-            className="btn !py-1.5 !px-3.5 !text-xs whitespace-nowrap shrink-0 font-bold transition-transform active:scale-95"
+            className="btn emergency-banner-btn"
             style={{
               borderRadius: 9999,
               background: "linear-gradient(135deg, #ff3b54 0%, #d81e39 100%)",
@@ -70,7 +71,7 @@ export default function EmergencyBanner({ onFindNearestBank }) {
               letterSpacing: "0.2px",
             }}
           >
-            <Phone size={13} className="shrink-0" strokeWidth={2.5} />
+            <Phone size={12} className="shrink-0" strokeWidth={2.5} />
             <span>Call 108</span>
           </a>
 
@@ -78,7 +79,7 @@ export default function EmergencyBanner({ onFindNearestBank }) {
             type="button"
             aria-label="Choose 102 or secondary ambulance"
             onClick={() => { window.location.href = "tel:102"; }}
-            className="btn !py-1.5 !px-3.5 !text-xs whitespace-nowrap shrink-0 font-bold transition-transform active:scale-95"
+            className="btn emergency-banner-btn"
             style={{
               borderRadius: 9999,
               background: "rgba(255, 255, 255, 0.08)",
@@ -100,17 +101,19 @@ export default function EmergencyBanner({ onFindNearestBank }) {
                 onFindNearestBank();
               }
             }}
-            className="btn !py-1.5 !px-3.5 !text-xs whitespace-nowrap shrink-0 font-extrabold transition-transform active:scale-95"
+            className="btn emergency-banner-btn"
             style={{
               borderRadius: 9999,
               background: "#ffffff",
               color: "#0f172a",
               boxShadow: "0 2px 12px rgba(0, 0, 0, 0.3), 0 0 14px rgba(255, 255, 255, 0.35)",
               letterSpacing: "0.2px",
+              fontWeight: 800,
             }}
           >
-            <Navigation size={13} className="shrink-0 text-red" strokeWidth={2.5} />
-            <span>Nearest blood bank</span>
+            <Navigation size={12} className="shrink-0 text-red" strokeWidth={2.5} />
+            <span className="hidden sm:inline">Nearest blood bank</span>
+            <span className="sm:hidden">Nearest bank</span>
           </button>
         </div>
       </div>

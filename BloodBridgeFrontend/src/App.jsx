@@ -1317,7 +1317,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                   <Mail size={16} style={{ color: "var(--emergency)", marginTop: 2, flexShrink: 0 }} />
                   <div>
                     <p style={{ margin: "0 0 2px", fontWeight: 600, color: "#ffffff" }}>Email support</p>
-                    <a href="mailto:support.bloodbridge@gmail.com" style={{ color: "#94a3b8", textDecoration: "none" }}>
+                    <a href="mailto:support.bloodbridge@gmail.com" style={{ color: "#94a3b8", textDecoration: "none", wordBreak: "break-word", overflowWrap: "anywhere" }}>
                       support.bloodbridge@gmail.com
                     </a>
                   </div>
@@ -4648,7 +4648,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
         </div>
       </motion.section>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: 12 }}>
         {[
           { label: "Upcoming camps", value: upcomingCount, note: "Scheduled for today or later", icon: <Calendar size={17} />, color: COLORS.crimson },
           { label: "Blood banks", value: banks.length, note: "Directory listings", icon: <Building2 size={17} />, color: COLORS.cyan },
@@ -4829,7 +4829,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                 </button>
               ))}
 
-              <span style={{ width: 1, height: 18, background: "var(--border)", margin: "0 6px" }} />
+              <span className="hidden sm:inline-block" style={{ width: 1, height: 18, background: "var(--border)", margin: "0 6px" }} />
 
               <span style={{ fontSize: 11, fontWeight: 900, color: COLORS.textMuted, marginRight: 4, letterSpacing: 0.8, textTransform: "uppercase" }}>
                 Service:
