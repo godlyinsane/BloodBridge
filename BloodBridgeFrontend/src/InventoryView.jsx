@@ -238,7 +238,7 @@ export default function InventoryView({ theme = "dark" }) {
               { name: "AIIMS Bhopal Regional Blood Transfusion Centre", phone: "0755-2970010", address: "AIIMS Campus, Saket Nagar, Bhopal", timing: "24x7 Apex Transfusion & Apheresis" },
               { name: "Hamidia Hospital & GMC Model Blood Bank", phone: "0755-2540590", address: "Gandhi Medical College, Royal Market, Bhopal", timing: "24x7 State Model Centre" },
               { name: "BMHRC Blood Bank & Research Centre", phone: "0755-2740390", address: "Raisen Bypass Road, Karond, Bhopal", timing: "24x7 Component Dispensing" },
-              { name: "Red Cross State Blood Centre Bhopal", phone: "0755-2550187", address: "Shivaji Nagar, Link Road 1, Bhopal", timing: "24x7 Voluntary Donor Dispatch" },
+              { name: "Red Cross State Blood Centre Bhopal", phone: "0755-2550187", address: "Shivaji Nagar, Link Road 1, Bhopal", timing: "24x7 Emergency Blood Dispatch" },
               { name: "Bansal Hospital Blood Bank", phone: "0755-4086000", address: "Chuna Bhatti, Shahpura, Bhopal", timing: "24x7 Emergency Services" }
             ]
           },

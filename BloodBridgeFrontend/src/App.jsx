@@ -201,36 +201,75 @@ function ThemeToggle({ dark, onToggle }) {
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
       title={dark ? "Switch to light mode" : "Switch to dark mode"}
       style={{
+        width: 130,
         height: 34,
         borderRadius: 9999,
         background: "var(--secondary)",
         border: "1px solid var(--border)",
-        padding: "3px 10px 3px 6px",
+        padding: 3,
         position: "relative",
         display: "inline-flex",
         alignItems: "center",
-        gap: 6,
         cursor: "pointer",
         flexShrink: 0,
+        userSelect: "none",
+        outline: "none",
+        boxSizing: "border-box",
       }}
     >
+      {/* Sliding Active Pill */}
+      <span
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 3,
+          bottom: 3,
+          left: 3,
+          width: "calc(50% - 3px)",
+          borderRadius: 9999,
+          background: "var(--card)",
+          border: "1px solid var(--border)",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08)",
+          transform: dark ? "translateX(100%)" : "translateX(0%)",
+          transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, border-color 0.2s ease",
+          pointerEvents: "none",
+        }}
+      />
+      {/* Light Option */}
       <span
         style={{
-          width: 22,
-          height: 22,
-          borderRadius: "50%",
-          display: "grid",
-          placeItems: "center",
-          background: "var(--card)",
-          color: "var(--foreground)",
-          boxShadow: "var(--shadow-soft)",
-          transition: "all 0.3s ease",
+          flex: 1,
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 5,
+          zIndex: 1,
+          fontSize: 12,
+          fontWeight: !dark ? 750 : 500,
+          color: !dark ? "var(--emergency)" : "var(--muted-foreground)",
+          transition: "color 0.2s ease, font-weight 0.2s ease",
         }}
       >
-        {dark ? <Moon size={12} /> : <Sun size={12} />}
+        <Sun size={13} style={{ strokeWidth: !dark ? 2.5 : 2 }} />
+        <span>Light</span>
       </span>
-      <span style={{ fontSize: 12, fontWeight: 600, color: "var(--foreground)", userSelect: "none" }}>
-        {dark ? "Light" : "Dark"}
+      {/* Dark Option */}
+      <span
+        style={{
+          flex: 1,
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 5,
+          zIndex: 1,
+          fontSize: 12,
+          fontWeight: dark ? 750 : 500,
+          color: dark ? "var(--emergency)" : "var(--muted-foreground)",
+          transition: "color 0.2s ease, font-weight 0.2s ease",
+        }}
+      >
+        <Moon size={13} style={{ strokeWidth: dark ? 2.5 : 2 }} />
+        <span>Dark</span>
       </span>
     </button>
   );
@@ -1221,7 +1260,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                 <Logo size={28} /> BloodBridge
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground" style={{ margin: "16px 0", fontSize: "0.875rem", lineHeight: 1.7, color: "var(--muted-foreground)" }}>
-                Connecting people with verified blood facilities, hospitals, and voluntary donors to guide you to the blood you need, when it matters most.
+                Connecting people with verified blood banks, hospitals, and emergency distribution centers to guide you when it matters most.
               </p>
               <span className="inline-flex items-center gap-2 rounded-full bg-red/10 px-3 py-1.5 text-xs font-medium text-red" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 9999, background: "rgba(225, 29, 72, 0.1)", color: "var(--emergency)", fontSize: "0.8rem", fontWeight: 600 }}>
                 <Heart size={14} fill="currentColor" /> Every donation can make a difference
@@ -1983,56 +2022,58 @@ function Home({ donors, goTo }) {
       {/* Active Regional Network Banner */}
       <section className="mx-auto max-w-6xl px-4">
         <div
-          className="tile flex flex-wrap items-center justify-between gap-3 sm:gap-4 hover:!translate-y-0"
-          style={{ padding: "10px 18px", borderRadius: 14 }}
+          className="tile flex flex-wrap items-center justify-between gap-3 hover:!translate-y-0"
+          style={{ padding: "8px 16px", borderRadius: 14 }}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <span
               className="grid place-items-center rounded-xl bg-red/10 text-red shrink-0"
-              style={{ width: 32, height: 32, display: "grid", placeItems: "center", flexShrink: 0 }}
+              style={{ width: 28, height: 28, display: "grid", placeItems: "center", flexShrink: 0 }}
             >
-              <Activity className="size-4" />
+              <Activity className="size-3.5" />
             </span>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-success animate-pulse" />
                 <span className="eyebrow text-[10px]">Active regional network</span>
-                <span className="text-muted-foreground text-[11px] hidden md:inline">· Sehore, Bhopal, Raisen, Vidisha</span>
+                <span className="text-muted-foreground text-[11px] hidden sm:inline">· Bhopal, Sehore, Raisen, Vidisha, Ashta, Hoshangabad</span>
               </div>
-              <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight" style={{ margin: "2px 0 0" }}>
+              <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight" style={{ margin: "1px 0 0" }}>
                 32+ verified facilities within 100 km
               </h3>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-xs">
-            <div className="flex items-center gap-1.5">
-              <span className="font-mono font-bold text-xs sm:text-sm text-red">{verifiedCount}</span>
-              <span className="text-muted-foreground text-[11px]">Verified Donors</span>
-            </div>
-            <div className="h-3 w-px bg-border/60" />
-            <div className="flex items-center gap-1.5">
-              <span className="font-mono font-bold text-xs sm:text-sm text-emerald-500">{availableCount}</span>
-              <span className="text-muted-foreground text-[11px]">Ready to Donate</span>
-            </div>
-            <div className="h-3 w-px bg-border/60" />
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs">
             <div className="flex items-center gap-1.5">
               <span className="font-mono font-bold text-xs sm:text-sm text-sky-500">32+</span>
-              <span className="text-muted-foreground text-[11px]">Facilities</span>
+              <span className="text-muted-foreground text-[11px]">Verified Centres</span>
+            </div>
+            <div className="h-3 w-px bg-border/60" />
+            <div className="flex items-center gap-1.5">
+              <span className="font-mono font-bold text-xs sm:text-sm text-emerald-500">24x7</span>
+              <span className="text-muted-foreground text-[11px]">Emergency Access</span>
+            </div>
+            <div className="h-3 w-px bg-border/60" />
+            <div className="flex items-center gap-1.5">
+              <span className="font-mono font-bold text-xs sm:text-sm text-red">6</span>
+              <span className="text-muted-foreground text-[11px]">Districts</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* What do you need? */}
-      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
-        <div>
-          <span className="eyebrow !text-red" style={{ display: "block", marginBottom: 2 }}>Quick navigation</span>
-          <h2 className="text-2xl sm:text-3xl font-semibold" style={{ margin: 0 }}>What do you need?</h2>
-          <p className="text-xs sm:text-sm text-muted-foreground" style={{ margin: "3px 0 0" }}>
+      <section className="mx-auto max-w-6xl px-4 pt-3.5 sm:pt-4">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-1.5 mb-3">
+          <div>
+            <span className="eyebrow !text-red block mb-1">Quick navigation</span>
+            <h2 className="text-2xl sm:text-3xl font-semibold leading-tight text-foreground m-0">What do you need?</h2>
+          </div>
+          <p className="text-xs sm:text-sm text-muted-foreground m-0 sm:text-right max-w-md pb-0.5">
             Direct access to emergency centers, live routing, and community initiatives.
           </p>
         </div>
-        <div className="mt-3.5 sm:mt-4 grid gap-3.5 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-3 sm:gap-3.5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             {
               id: "camps",
@@ -2065,23 +2106,23 @@ function Home({ donors, goTo }) {
                 textAlign: "left",
                 alignItems: "flex-start",
                 width: "100%",
-                borderRadius: 18,
-                padding: "16px 18px",
-                minHeight: 140,
+                borderRadius: 16,
+                padding: "14px 16px",
+                minHeight: 120,
                 overflow: "hidden",
               }}
             >
               <div>
                 <span
                   className="grid place-items-center rounded-xl bg-red/10 text-red group-hover:bg-red group-hover:text-white transition-colors duration-200"
-                  style={{ width: 34, height: 34, display: "grid", placeItems: "center", flexShrink: 0 }}
+                  style={{ width: 32, height: 32, display: "grid", placeItems: "center", flexShrink: 0 }}
                 >
                   <c.icon className="size-4" />
                 </span>
-                <h3 className="text-base font-semibold" style={{ margin: "10px 0 3px", fontSize: "1.02rem" }}>{c.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed" style={{ margin: 0, lineHeight: 1.45 }}>{c.body}</p>
+                <h3 className="text-base font-semibold" style={{ margin: "8px 0 2px", fontSize: "1rem" }}>{c.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed" style={{ margin: 0, lineHeight: 1.4 }}>{c.body}</p>
               </div>
-              <div className="flex items-center gap-1.5 text-xs font-medium text-red" style={{ marginTop: 10 }}>
+              <div className="flex items-center gap-1.5 text-xs font-medium text-red" style={{ marginTop: 8 }}>
                 <span>Open view</span>
                 <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -2091,51 +2132,26 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Blood Groups at a Glance */}
-      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-5" style={{ marginBottom: 14 }}>
+      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3.5">
           <div>
-            <span className="eyebrow !text-red" style={{ display: "block", marginBottom: 3 }}>Clinical Reference</span>
-            <h2 className="text-2xl sm:text-3xl font-semibold" style={{ margin: 0 }}>Blood groups at a glance</h2>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <span className="eyebrow !text-red block mb-1">Clinical Reference</span>
+            <h2 className="text-2xl sm:text-3xl font-semibold leading-tight m-0">Blood groups at a glance</h2>
+            <p className="mt-1 text-xs sm:text-sm text-muted-foreground m-0">
               Compatibility facts, clinical roles, and population prevalence.
             </p>
           </div>
-          <div className="flex items-center gap-2 mt-2 sm:mt-0 flex-wrap">
-            <button
-              type="button"
-              onClick={() => setShowDonorMap((v) => !v)}
-              className="btn btn-ghost text-xs whitespace-nowrap"
-            >
-              <LocateFixed className="size-3.5 text-red" />
-              {showDonorMap ? "Hide Map" : "View Live Donor Map"}
-            </button>
-            <button
-              type="button"
-              onClick={() => goTo("camps")}
-              className="btn btn-primary text-xs whitespace-nowrap"
-            >
-              <Building2 className="size-3.5" /> Find Blood Facilities
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => goTo("camps")}
+            className="btn btn-primary text-xs whitespace-nowrap self-start sm:self-auto"
+            style={{ borderRadius: 9999, padding: "8px 16px" }}
+          >
+            <Building2 className="size-3.5" /> Find Blood Facilities
+          </button>
         </div>
 
-        {/* Live Donor Locations Map */}
-        {showDonorMap && (
-          <div className="mt-5 tile overflow-hidden p-4">
-            <div className="flex items-center justify-between pb-3 border-b border-border mb-3">
-              <div className="flex items-center gap-2">
-                <span className="size-2 rounded-full bg-success animate-pulse" />
-                <span className="text-sm font-semibold">Verified Donor Map (Madhya Pradesh)</span>
-              </div>
-              <span className="text-xs text-muted-foreground">{mapDonors.length} active donors</span>
-            </div>
-            <div className="h-80 w-full rounded-2xl overflow-hidden">
-              <DonorLocationsMap donors={donors} />
-            </div>
-          </div>
-        )}
-
-        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {GROUPS.map((group) => {
             const info = BLOOD_GROUP_INFO[group] || {
               badge: "Blood Group",
@@ -2149,52 +2165,52 @@ function Home({ donors, goTo }) {
                 key={group}
                 className="tile flex flex-col justify-between hover:border-red/50 hover:shadow-md transition-all duration-200"
                 style={{
-                  padding: "18px 20px",
+                  padding: "20px 22px",
                   borderRadius: 20,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  minHeight: 185,
+                  minHeight: 210,
                   overflow: "hidden",
                 }}
               >
                 <div>
-                  <div
-                    className="flex items-center justify-between gap-2 pb-2.5 border-b border-border/50"
-                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
-                  >
-                    <div className="flex items-center gap-2" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span className="text-2xl sm:text-3xl font-extrabold font-mono tracking-tight text-foreground" style={{ lineHeight: 1 }}>
+                  <div className="pb-3 border-b border-border/60">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-3xl sm:text-4xl font-extrabold font-mono tracking-tight text-foreground" style={{ lineHeight: 1 }}>
                         {group}
                       </span>
                       <span
-                        className="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-semibold whitespace-nowrap"
-                        style={{ whiteSpace: "nowrap", fontSize: 11, padding: "2px 8px", borderRadius: 9999 }}
+                        className="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-bold shrink-0"
                       >
                         {info.badge}
                       </span>
                     </div>
-                    <span
-                      className="text-xs font-mono text-muted-foreground whitespace-nowrap font-medium"
-                      style={{ fontSize: 12, whiteSpace: "nowrap", opacity: 0.85 }}
-                    >
-                      {info.prevalence}
-                    </span>
+                    <div className="mt-2 flex items-center justify-between text-xs font-mono text-muted-foreground">
+                      <span className="text-[11px]">Prevalence in India</span>
+                      <span className="font-semibold text-foreground font-mono text-xs">{info.prevalence.replace(/ in India/i, "")}</span>
+                    </div>
                   </div>
                   <p
-                    className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
-                    style={{ margin: "12px 0 0", fontSize: "0.85rem", lineHeight: 1.5 }}
+                    className="text-sm text-muted-foreground leading-relaxed font-normal"
+                    style={{ margin: "12px 0 0", lineHeight: 1.55 }}
                   >
                     {info.desc}
                   </p>
                 </div>
 
                 <div
-                  className="mt-4 pt-2.5 border-t border-border/50 text-xs font-mono text-muted-foreground flex justify-between items-center"
-                  style={{ marginTop: 14, paddingTop: 10, borderTop: "1px solid var(--border)", fontSize: 12, display: "flex", justifyContent: "space-between" }}
+                  className="mt-4 pt-3 border-t border-border/60 text-xs font-mono space-y-1.5 text-muted-foreground"
+                  style={{ marginTop: 14, paddingTop: 10 }}
                 >
-                  <span>Gives: <strong className="text-foreground font-semibold">{info.givesTo}</strong></span>
-                  <span>Gets: <strong className="text-foreground font-semibold">{info.receivesFrom}</strong></span>
+                  <div className="flex items-center justify-between gap-1.5">
+                    <span className="text-[11px]">Gives to:</span>
+                    <strong className="text-foreground font-bold px-1.5 py-0.5 rounded bg-muted/60 text-[11px]">{info.givesTo}</strong>
+                  </div>
+                  <div className="flex items-center justify-between gap-1.5">
+                    <span className="text-[11px]">Gets from:</span>
+                    <strong className="text-foreground font-bold px-1.5 py-0.5 rounded bg-muted/60 text-[11px]">{info.receivesFrom}</strong>
+                  </div>
                 </div>
               </div>
             );
@@ -2203,14 +2219,14 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6">
+      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
         <div>
-          <span className="eyebrow !text-red">Process</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">How it works.</h2>
+          <span className="eyebrow !text-red block mb-1">Process</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight m-0">How it works.</h2>
         </div>
-        <div className="mt-4 sm:mt-5 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-3.5 sm:mt-4 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
-            { icon: Search, t: "Find", b: "Browse or search the verified facility and voluntary donor directory." },
+            { icon: Search, t: "Find", b: "Browse or search verified hospitals, blood banks, and walk-in facilities." },
             { icon: PhoneCall, t: "Call", b: "Confirm real-time blood group availability directly before traveling." },
             { icon: Navigation, t: "Go", b: "Open GPS directions in Google Maps and follow medical guidance." },
           ].map((s, i) => (
@@ -2218,21 +2234,21 @@ function Home({ donors, goTo }) {
               key={s.t}
               className="tile flex flex-col justify-between"
               style={{
-                borderRadius: 18,
-                padding: "16px 18px",
+                borderRadius: 16,
+                padding: "14px 16px",
                 overflow: "hidden"
               }}
             >
               <div className="flex items-center justify-between">
                 <span
                   className="grid place-items-center rounded-full border border-border"
-                  style={{ width: 34, height: 34, display: "grid", placeItems: "center", flexShrink: 0 }}
+                  style={{ width: 32, height: 32, display: "grid", placeItems: "center", flexShrink: 0 }}
                 >
                   <s.icon className="size-4 text-red" />
                 </span>
-                <span className="font-mono text-xl sm:text-2xl font-semibold text-border">0{i + 1}</span>
+                <span className="font-mono text-lg sm:text-xl font-semibold text-border">0{i + 1}</span>
               </div>
-              <div style={{ marginTop: 12 }}>
+              <div style={{ marginTop: 10 }}>
                 <h3 className="font-semibold text-base sm:text-lg" style={{ margin: 0 }}>{s.t}</h3>
                 <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed" style={{ margin: "4px 0 0" }}>{s.b}</p>
               </div>
@@ -2242,26 +2258,26 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Verified Centres */}
-      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6">
+      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
         <div
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3.5"
           style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}
         >
           <div>
-            <span className="eyebrow !text-red">Direct Walk-In</span>
-            <h2 className="text-2xl sm:text-3xl sm:text-4xl font-semibold">Donate Blood & Save Lives: Verified Centres</h2>
+            <span className="eyebrow !text-red block mb-1">Direct Walk-In</span>
+            <h2 className="text-2xl sm:text-3xl sm:text-4xl font-semibold leading-tight m-0">Donate Blood &amp; Save Lives: Verified Centres</h2>
           </div>
           <button
             type="button"
             onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-            className="btn btn-ghost text-xs"
-            style={{ width: "auto", flexShrink: 0, borderRadius: 9999, border: "1px solid var(--border)" }}
+            className="btn btn-ghost text-xs self-start sm:self-auto"
+            style={{ width: "auto", flexShrink: 0, borderRadius: 9999, border: "1px solid var(--border)", padding: "7px 14px" }}
           >
             View all 32+ facilities <ArrowRight className="size-3.5" />
           </button>
         </div>
 
-        <div className="mt-5 sm:mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3.5 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {placesToDonate.map((p, idx) => (
             <div
               key={p.name || idx}
@@ -2320,7 +2336,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Dark Ink Banner CTA */}
-      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6 pb-6 sm:pb-8">
+      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5 pb-5 sm:pb-6">
         <div
           className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-5 sm:p-8 md:p-10 text-ink-foreground"
           style={{
@@ -2372,7 +2388,7 @@ function Home({ donors, goTo }) {
           </div>
         </div>
         <p className="mt-6 text-center text-xs text-muted-foreground leading-relaxed">
-          BloodBridge is a guidance and discovery directory connecting people with verified blood banks, hospitals, and registered voluntary donors. It does not handle, process, or accept blood requests.
+          BloodBridge is a guidance and discovery directory connecting people with verified blood banks, hospitals, and emergency healthcare centers. It does not handle, process, or accept blood requests.
         </p>
       </section>
     </div>
@@ -4650,105 +4666,10 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
           {directoryTab === "camps" && <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {[["upcoming", "Upcoming"], ["all", "All dates"], ["past", "Past"]].map(([key, label]) => <button key={key} onClick={() => setCampFilter(key)} style={{ ...buttonStyle(campFilter === key), padding: "10px 11px" }}>{label}</button>)}
           </div>}
-          {directoryTab === "camps" && <button onClick={() => { if (!organizerToken) { setOrganizerAuthMode("register"); setOrganizerAuthStage("form"); } else setShowOrganizerForm((v) => !v); }} style={buttonStyle(!showOrganizerForm)}><Plus size={15} /> {showOrganizerForm ? "Close organiser form" : "Organise a camp"}</button>}
           {adminToken && <button onClick={() => directoryTab === "camps" ? setShowForm((v) => !v) : setShowBankForm((v) => !v)} style={buttonStyle(true)}><Plus size={15} /> {directoryTab === "camps" ? (showForm ? "Close form" : "Add camp") : (showBankForm ? "Close form" : "Add bank")}</button>}
         </div>
 
-        {directoryTab === "camps" && (
-          <section style={{ ...panel, padding: "clamp(16px,3vw,24px)", borderColor: organizerToken ? "rgba(52,211,153,.3)" : "rgba(255,59,84,.24)" }}>
-            {!organizerToken ? (
-              <>
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-                  <div><div style={{ color: COLORS.crimson, fontSize: 10, letterSpacing: 1.2, fontWeight: 900 }}>CAMP ORGANIZER PORTAL</div><h2 className="headline" style={{ margin: "7px 0", fontSize: 24 }}>{organizerAuthMode === "register" ? "Create your organizer account" : organizerAuthMode === "forgot" ? "Recover your account" : "Organizer sign in"}</h2><p style={{ color: COLORS.textMuted, fontSize: 12.5, lineHeight: 1.65, margin: 0, maxWidth: 650 }}>Create an organizer account for your college, company, NGO, or community group to submit blood donation camps and track their approval status.</p></div>
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    <button type="button" style={buttonStyle(organizerAuthMode === "login")} onClick={() => { setOrganizerAuthMode("login"); setOrganizerAuthStage("form"); }}>Log in</button>
-                    <button type="button" style={buttonStyle(organizerAuthMode === "register")} onClick={() => { setOrganizerAuthMode("register"); setOrganizerAuthStage("form"); }}>Create account</button>
-                  </div>
-                </div>
-                {organizerAuthMode === "register" && organizerAuthStage !== "otp" && (
-                  <form onSubmit={sendOrganizerRegisterOtp} className="grid2" style={{ display: "grid", gridTemplateColumns: "repeat(2,minmax(0,1fr))", gap: 12, marginTop: 18 }}>
-                    <Field label="Organization type *"><select required style={field} value={organizerAuthForm.organizationType} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,organizationType:e.target.value})}><option>College / University</option><option>Company / Workplace</option><option>NGO / Charitable trust</option><option>Community / Resident group</option><option>Hospital / Healthcare organisation</option><option>Other organisation</option></select></Field>
-                    <Field label="Organization name *"><input required maxLength={160} style={field} value={organizerAuthForm.organizationName} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,organizationName:e.target.value})} placeholder="College, company or trust"/></Field>
-                    <Field label="Organizer full name *"><input required maxLength={100} style={field} value={organizerAuthForm.organizerName} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,organizerName:e.target.value})}/></Field>
-                    <Field label="Mobile number *"><input required type="tel" inputMode="numeric" pattern="[6-9][0-9]{9}" maxLength={10} style={field} value={organizerAuthForm.phone} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,phone:e.target.value.replace(/\D/g,"").slice(0,10)})} placeholder="10-digit Indian mobile"/></Field>
-                    <Field label="Email address *"><input required type="email" style={field} value={organizerAuthForm.email} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,email:e.target.value})}/></Field>
-                    <Field label="Password (min 8 characters) *"><input required minLength={8} type="password" style={field} value={organizerAuthForm.password} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,password:e.target.value})}/></Field>
-                    <Field label="Confirm password *"><input required minLength={8} type="password" style={field} value={organizerAuthForm.confirmPassword} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,confirmPassword:e.target.value})}/></Field>
-                    <div style={{ display:"flex", alignItems:"end" }}><button disabled={organizerAuthBusy} type="submit" style={{...glowBtn,justifyContent:"center",width:"100%",opacity:organizerAuthBusy ? 0.65 : 1}}>{organizerAuthBusy?"Generating OTP…":"Verify mobile with demo OTP"} <ArrowRight size={14}/></button></div>
-                  </form>
-                )}
-                {organizerAuthMode === "register" && organizerAuthStage === "otp" && (
-                  <form onSubmit={registerCampOrganizer} style={{ display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:12,marginTop:18,alignItems:"end" }}>
-                    <Field label={"Demo OTP sent for +91 " + organizerAuthForm.phone}><input required inputMode="numeric" maxLength={4} pattern="[0-9]{4}" style={field} value={organizerAuthForm.otp} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,otp:e.target.value.replace(/\D/g,"").slice(0,4)})} placeholder="4-digit OTP"/></Field>
-                    <button disabled={organizerAuthBusy} type="submit" style={{...glowBtn,justifyContent:"center",minHeight:44}}>{organizerAuthBusy?"Verifying…":"Verify & create account"}</button>
-                    <button type="button" style={ghostBtn} onClick={()=>setOrganizerAuthStage("form")}>Edit details</button>
-                  </form>
-                )}
-                {organizerAuthMode === "login" && (
-                  <form onSubmit={loginCampOrganizer} style={{ display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:12,marginTop:18,alignItems:"end" }}>
-                    <Field label="Registered mobile number"><input required type="tel" inputMode="numeric" pattern="[6-9][0-9]{9}" maxLength={10} style={field} value={organizerAuthForm.phone} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,phone:e.target.value.replace(/\D/g,"").slice(0,10)})} placeholder="10-digit mobile"/></Field>
-                    <Field label="Password"><input required type="password" style={field} value={organizerAuthForm.password} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,password:e.target.value})}/></Field>
-                    <button disabled={organizerAuthBusy} type="submit" style={{...glowBtn,justifyContent:"center",minHeight:44}}>{organizerAuthBusy?"Signing in…":"Login to portal"}</button>
-                    <button type="button" style={{...ghostBtn,minHeight:44}} onClick={()=>{setOrganizerAuthMode("forgot");setOrganizerAuthStage("form");}}>Forgot password?</button>
-                  </form>
-                )}
-                {organizerAuthMode === "forgot" && (
-                  <div style={{ marginTop:18 }}>
-                    {organizerAuthStage !== "reset" ? <form onSubmit={sendOrganizerRecoveryOtp} style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:12,alignItems:"end"}}>
-                      <Field label="Mobile number linked to account"><input required type="tel" inputMode="numeric" pattern="[6-9][0-9]{9}" maxLength={10} style={field} value={organizerAuthForm.phone} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,phone:e.target.value.replace(/\D/g,"").slice(0,10)})} placeholder="10-digit mobile"/></Field>
-                      <button disabled={organizerAuthBusy} type="submit" style={{...glowBtn,justifyContent:"center",minHeight:44}}>{organizerAuthBusy?"Generating OTP…":"Send demo reset OTP"}</button>
-                      <button type="button" style={ghostBtn} onClick={()=>{setOrganizerAuthMode("login");setOrganizerAuthStage("form");}}>Back to login</button>
-                    </form> : <form onSubmit={resetOrganizerPassword} style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:12,alignItems:"end"}}>
-                      <Field label="Demo reset OTP"><input required inputMode="numeric" maxLength={4} pattern="[0-9]{4}" style={field} value={organizerAuthForm.otp} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,otp:e.target.value.replace(/\D/g,"").slice(0,4)})}/></Field>
-                      <Field label="New password (min 8 characters)"><input required minLength={8} type="password" style={field} value={organizerAuthForm.newPassword} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,newPassword:e.target.value})}/></Field>
-                      <Field label="Confirm new password"><input required minLength={8} type="password" style={field} value={organizerAuthForm.confirmPassword} onChange={e=>setOrganizerAuthForm({...organizerAuthForm,confirmPassword:e.target.value})}/></Field>
-                      <button disabled={organizerAuthBusy} type="submit" style={{...glowBtn,justifyContent:"center",minHeight:44}}>{organizerAuthBusy?"Resetting…":"Reset password"}</button>
-                    </form>}
-                  </div>
-                )}
-              </>
-            ) : (
-              <>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:12,flexWrap:"wrap"}}>
-                  <div><div style={{color:COLORS.good,fontSize:10,letterSpacing:1.2,fontWeight:900}}>ORGANIZER DASHBOARD</div><h2 className="headline" style={{fontSize:24,margin:"7px 0"}}>{organizerProfile?.organizationName || "Your organization"}</h2><div style={{fontSize:12.5,color:COLORS.textMuted}}>{organizerProfile?.organizerName} · +91 {organizerProfile?.phone} · {organizerProfile?.email}</div></div>
-                  <div style={{display:"flex",gap:8,flexWrap:"wrap"}}><button type="button" style={buttonStyle(true)} onClick={()=>setShowOrganizerForm(v=>!v)}><Plus size={14}/>{showOrganizerForm?"Close camp form":"Propose a camp"}</button><button type="button" style={buttonStyle(false)} onClick={()=>loadOrganizerProposals(organizerToken)}>Refresh status</button><button type="button" style={buttonStyle(false)} onClick={logoutCampOrganizer}><LogOut size={14}/>Log out</button></div>
-                </div>
-                <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:10,marginTop:18}}>
-                  {[["Total proposals",organizerProposals.length],["Pending review",organizerProposals.filter(p=>["pending","under_review"].includes(p.status)).length],["Approved",organizerProposals.filter(p=>p.status==="approved").length],["Needs changes",organizerProposals.filter(p=>p.status==="rejected").length]].map(([label,value])=><div key={label} style={{border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:13,background:"rgba(255,255,255,.025)"}}><div style={{fontSize:11,color:COLORS.textMuted}}>{label}</div><strong style={{fontSize:25,display:"block",marginTop:4}}>{value}</strong></div>)}
-                </div>
-                <div style={{marginTop:17,fontSize:15,fontWeight:850}}>Your camp proposals</div>
-                {organizerProposals.length===0 ? <p style={{fontSize:12.5,color:COLORS.textMuted,lineHeight:1.7}}>No proposals yet. Choose <b>Propose a camp</b> to submit your first camp for admin review. Approved camps become visible in the public directory.</p> : <div style={{display:"grid",gap:9,marginTop:10}}>{organizerProposals.map(p=><article key={p._id} style={{border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:13,display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",flexWrap:"wrap"}}><div><strong>{p.title}</strong><div style={{fontSize:12,color:COLORS.textMuted,marginTop:4}}>{p.city}, {p.state} · {new Date(p.date).toLocaleDateString()} · {p.expectedDonors} expected donors</div><div style={{fontSize:11,color:COLORS.textMuted,marginTop:4}}>Reference: {p.reference}</div>{p.reviewReason&&<div style={{fontSize:12,color:COLORS.warn,marginTop:5}}>Review note: {p.reviewReason}</div>}</div><Pill tone={p.status==="approved"?"good":p.status==="rejected"?"warn":"info"}>{String(p.status||"pending").replaceAll("_"," ").toUpperCase()}</Pill></article>)}</div>}
-              </>
-            )}
-          </section>
-        )}
         <AnimatePresence initial={false}>
-          {directoryTab === "camps" && showOrganizerForm && <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} style={{ marginBottom: 17 }}>
-            <div style={{ ...panel, padding: 21 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}><Calendar size={20} color={COLORS.crimson}/><div style={{ fontSize: 18, fontWeight: 850 }}>Propose a blood donation camp</div></div>
-              <p style={{ margin: "0 0 17px", fontSize: 12.5, color: COLORS.textMuted, lineHeight: 1.7 }}>For colleges, companies, community groups and eligible organisations. Submissions are reviewed and coordinated with a blood bank before they can be published. This form is a request, not legal approval to collect blood.</p>
-              <form onSubmit={submitProposal} className="grid2" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 13 }}>
-                <Field label="Organisation type *"><select style={field} value={organizerForm.organizationType} onChange={e=>setOrganizerForm({...organizerForm,organizationType:e.target.value})}><option>College / University</option><option>Company / Workplace</option><option>NGO / Charitable trust</option><option>Community / Resident group</option><option>Hospital / Healthcare organisation</option><option>Other organisation</option></select></Field>
-                <Field label="Organisation name *"><input style={field} required maxLength={160} value={organizerForm.organizationName} onChange={e=>setOrganizerForm({...organizerForm,organizationName:e.target.value})} placeholder="College, company, trust…" /></Field>
-                <Field label="Organiser full name *"><input style={field} required maxLength={100} value={organizerForm.organizerName} onChange={e=>setOrganizerForm({...organizerForm,organizerName:e.target.value})} /></Field>
-                <Field label="Organiser mobile *"><input style={field} required type="tel" pattern="[0-9+() -]{10,18}" value={organizerForm.phone} onChange={e=>setOrganizerForm({...organizerForm,phone:e.target.value})} placeholder="Contact number" /></Field>
-                <Field label="Organiser email *"><input style={field} required type="email" value={organizerForm.email} onChange={e=>setOrganizerForm({...organizerForm,email:e.target.value})} /></Field>
-                <Field label="Camp name *"><input style={field} required maxLength={160} value={organizerForm.title} onChange={e=>setOrganizerForm({...organizerForm,title:e.target.value})} placeholder="Community blood donation camp" /></Field>
-                <Field label="Venue / full address *"><input style={field} required maxLength={300} value={organizerForm.location} onChange={e=>setOrganizerForm({...organizerForm,location:e.target.value})} placeholder="Building, street and landmark" /></Field>
-                <Field label="State / UT *"><select style={field} required value={organizerForm.state} onChange={e=>setOrganizerForm({...organizerForm,state:e.target.value,district:"",city:""})}><option value="">Select state</option>{(stateOptions.length?stateOptions:["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"]).map(st=><option key={st}>{st}</option>)}</select></Field><Field label="District *"><select style={field} required value={organizerForm.district||organizerForm.city} onChange={e=>setOrganizerForm({...organizerForm,district:e.target.value,city:e.target.value})} disabled={!organizerForm.state}><option value="">Select district</option>{districtOptions(organizerForm.state).map(x=><option key={x}>{x}</option>)}</select></Field>
-                <Field label="PIN code"><input style={field} inputMode="numeric" pattern="[0-9]{6}" maxLength={6} value={organizerForm.postalCode} onChange={e=>setOrganizerForm({...organizerForm,postalCode:e.target.value})} placeholder="6-digit PIN" /></Field>
-                <Field label="Proposed date *"><input style={field} type="date" min={new Date().toISOString().slice(0,10)} required value={organizerForm.date} onChange={e=>setOrganizerForm({...organizerForm,date:e.target.value})} /></Field>
-                <Field label="Expected donors *"><input style={field} type="number" min="1" max="5000" required value={organizerForm.expectedDonors} onChange={e=>setOrganizerForm({...organizerForm,expectedDonors:e.target.value})} /></Field>
-                <Field label="Start time"><input style={field} type="time" required value={organizerForm.startTime} onChange={e=>setOrganizerForm({...organizerForm,startTime:e.target.value})} /></Field>
-                <Field label="End time"><input style={field} type="time" required value={organizerForm.endTime} onChange={e=>setOrganizerForm({...organizerForm,endTime:e.target.value})} /></Field>
-                <Field label="Preferred blood bank (optional)"><input style={field} value={organizerForm.preferredBloodBank} onChange={e=>setOrganizerForm({...organizerForm,preferredBloodBank:e.target.value})} placeholder="Name, if already coordinated" /></Field>
-                <Field label="Venue / transport arrangement"><select style={field} value={organizerForm.arrangement} onChange={e=>setOrganizerForm({...organizerForm,arrangement:e.target.value})}><option>Venue provided by organizer</option><option>Request blood bank guidance</option><option>Need mobile collection setup</option><option>Not decided</option></select></Field>
-                <Field label="Refreshments"><select style={field} value={organizerForm.refreshments} onChange={e=>setOrganizerForm({...organizerForm,refreshments:e.target.value})}><option>Organizer will arrange</option><option>Request guidance</option><option>Not decided</option></select></Field>
-                <Field label="Notes / support needed"><input style={field} maxLength={1000} value={organizerForm.notes} onChange={e=>setOrganizerForm({...organizerForm,notes:e.target.value})} placeholder="Volunteer support, accessibility, other details" /></Field>
-                <div style={{ gridColumn: "1 / -1", display: "flex", justifyContent: "flex-end", gap: 9, flexWrap: "wrap" }}><button type="button" onClick={()=>setShowOrganizerForm(false)} style={buttonStyle(false)}>Cancel</button><button type="submit" disabled={proposalBusy} style={{...glowBtn,justifyContent:"center",opacity:proposalBusy ? 0.65 : 1}}>{proposalBusy?"Submitting…":"Submit for review"} <ArrowRight size={14}/></button></div>
-              </form>
-            </div>
-          </motion.div>}
           {adminToken && proposals.filter(p=>p.status==="pending"||p.status==="under_review").length>0 && <div style={{...panel,padding:18,marginBottom:17}}>
             <div style={{fontSize:16,fontWeight:850,marginBottom:12}}>Camp proposals awaiting review <span style={{color:COLORS.crimson}}>({proposals.filter(p=>p.status==="pending"||p.status==="under_review").length})</span></div>
             <div style={{display:"grid",gap:10}}>{proposals.filter(p=>p.status==="pending"||p.status==="under_review").map(p=><div key={p._id} style={{border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:13}}>
