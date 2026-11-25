@@ -215,6 +215,7 @@ function ThemeToggle({ dark, onToggle }) {
         userSelect: "none",
         outline: "none",
         boxSizing: "border-box",
+        transition: "background-color 0.25s ease, border-color 0.25s ease",
       }}
     >
       {/* Sliding Active Pill */}
@@ -231,7 +232,7 @@ function ThemeToggle({ dark, onToggle }) {
           border: "1px solid var(--border)",
           boxShadow: "0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08)",
           transform: dark ? "translateX(100%)" : "translateX(0%)",
-          transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, border-color 0.2s ease",
+          transition: "transform 0.25s cubic-bezier(0.34, 1.3, 0.64, 1), background-color 0.25s ease, border-color 0.25s ease",
           pointerEvents: "none",
         }}
       />
@@ -586,17 +587,26 @@ export default function BloodBridgeApp() {
   }, []);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(() => localStorage.getItem("bloodbridge-theme") || "dark");
-  const toggleTheme = () => setTheme((current) => {
-    const next = current === "dark" ? "light" : "dark";
-    localStorage.setItem("bloodbridge-theme", next);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("bloodbridge-theme") || "dark";
+    }
+    return "dark";
+  });
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    // Synchronously apply class and data-theme to documentElement immediately on click so style recalc and transitions begin with 0 delay
     if (typeof document !== "undefined") {
       document.documentElement.classList.toggle("dark", next === "dark");
       document.documentElement.classList.toggle("theme-light", next === "light");
       document.documentElement.setAttribute("data-theme", next);
     }
-    return next;
-  });
+    try {
+      localStorage.setItem("bloodbridge-theme", next);
+    } catch (e) {}
+    setTheme(next);
+  };
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -1102,14 +1112,12 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
   return (
     <div
-      className={theme === "dark" ? "dark" : "theme-light"}
-      data-theme={theme}
+      className="bloodbridge-app-root"
       style={{
         fontFamily: "var(--font-sans)",
         minHeight: "100vh",
         color: "var(--foreground)",
         backgroundColor: "var(--background)",
-        transition: "background-color 0.4s ease, color 0.4s ease",
       }}
     >
       {fontImport}

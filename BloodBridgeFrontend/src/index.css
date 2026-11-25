@@ -103,12 +103,33 @@ body {
   text-rendering: optimizeLegibility;
   line-height: 1.6;
   letter-spacing: -0.011em;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
   overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Smooth synchronized theme transitions across all surfaces with zero delay */
+html,
+body,
+.bloodbridge-app-root,
+header,
+footer,
+nav,
+.glass,
+.tile,
+.card,
+.btn-ghost,
+.navbtn,
+input,
+select,
+textarea {
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s ease,
+              box-shadow 0.25s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -183,7 +204,11 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1.35rem;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s ease;
 }
 
 .tile:hover {
