@@ -553,6 +553,8 @@ export default function BloodBridgeApp() {
     localStorage.setItem("bloodbridge-theme", next);
     if (typeof document !== "undefined") {
       document.documentElement.classList.toggle("dark", next === "dark");
+      document.documentElement.classList.toggle("theme-light", next === "light");
+      document.documentElement.setAttribute("data-theme", next);
     }
     return next;
   });
@@ -560,6 +562,8 @@ export default function BloodBridgeApp() {
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.classList.toggle("dark", theme === "dark");
+      document.documentElement.classList.toggle("theme-light", theme === "light");
+      document.documentElement.setAttribute("data-theme", theme);
     }
   }, [theme]);
   const [donors, setDonors] = useState([]);
@@ -1059,7 +1063,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
   return (
     <div
-      className={theme === "dark" ? "dark" : ""}
+      className={theme === "dark" ? "dark" : "theme-light"}
       data-theme={theme}
       style={{
         fontFamily: "var(--font-sans)",
@@ -4570,7 +4574,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
   });
 
   const panel = { border: "1px solid var(--border)", borderRadius: 18, background: "var(--card)", boxShadow: "var(--shadow-soft)", color: "var(--foreground)" };
-  const buttonStyle = (active) => ({ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 13px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : COLORS.textMuted, background: active ? "linear-gradient(135deg, " + COLORS.crimson + ", " + COLORS.crimsonDeep + ")" : "rgba(255,255,255,0.035)", border: active ? "1px solid rgba(255,90,110,0.35)" : "1px solid rgba(255,255,255,0.08)", boxShadow: active ? "0 8px 22px rgba(255,59,84,0.18)" : "none", textDecoration: "none" });
+  const buttonStyle = (active) => ({ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 13px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : "var(--foreground)", background: active ? "linear-gradient(135deg, " + COLORS.crimson + ", " + COLORS.crimsonDeep + ")" : "var(--secondary)", border: active ? "1px solid rgba(255,90,110,0.35)" : "1px solid var(--border)", boxShadow: active ? "0 8px 22px rgba(255,59,84,0.18)" : "none", textDecoration: "none" });
   const field = { ...inputStyle, width: "100%", boxSizing: "border-box" };
   const changeTab = (tab) => { setDirectoryTab(tab); setQuery(""); setShowForm(false); setShowBankForm(false); };
 
@@ -4596,9 +4600,9 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
               href="mailto:support.bloodbridge@gmail.com?subject=Blood%20Donation%20Centre%20or%20Hospital%20Not%20Listed&body=Hi%20BloodBridge%20Team%2C%0A%0AI%20would%20like%20to%20report%20a%20blood%20donation%20centre%20or%20hospital%20that%20is%20not%20mentioned%20on%20the%20platform%3A%0A%0AFacility%20Name%3A%20%0ALocation%2FCity%3A%20%0AContact%20Details%3A%20%0AAdditional%20Info%3A%20%0A"
               style={{
                 ...buttonStyle(false),
-                borderColor: "rgba(239, 68, 68, 0.4)",
-                color: "#ff9b9b",
-                background: "rgba(239, 68, 68, 0.08)",
+                borderColor: "rgba(225, 29, 72, 0.4)",
+                color: "var(--emergency)",
+                background: "rgba(225, 29, 72, 0.08)",
               }}
             >
               <Mail size={14} /> Hospital not listed? Report via email
@@ -4630,7 +4634,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
             <div style={{ fontSize: 10.5, letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 850, color: COLORS.textMuted }}>Explore recipient resources</div>
             <h2 className="headline" style={{ fontSize: 25, letterSpacing: -0.5, margin: "7px 0 0" }}>Blood Facilities &amp; Distribution Centers</h2>
           </div>
-          <div style={{ display: "flex", gap: 6, padding: 5, borderRadius: 15, background: "rgba(255,255,255,0.035)", border: "1px solid rgba(255,255,255,0.07)" }}>
+          <div style={{ display: "flex", gap: 6, padding: 5, borderRadius: 15, background: "var(--secondary)", border: "1px solid var(--border)" }}>
             <button onClick={() => changeTab("banks")} style={buttonStyle(directoryTab === "banks")}><Building2 size={14} /> Blood Banks <span>{banks.length}</span></button>
             <button onClick={() => changeTab("camps")} style={buttonStyle(directoryTab === "camps")}><Calendar size={14} /> Distribution Drives <span>{camps.length}</span></button>
           </div>
@@ -4807,7 +4811,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                     <div style={{ padding: 19, display: "flex", flexDirection: "column", flex: 1 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                         <div style={{ minWidth: 0 }}>
-                          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 20, padding: "6px 11px", fontSize: 11, letterSpacing: 0.7, fontWeight: 850, textTransform: "uppercase", color: isPast ? COLORS.textMuted : COLORS.good, background: isPast ? "rgba(255,255,255,0.06)" : "rgba(52,211,153,0.1)", border: "1px solid " + (isPast ? "rgba(255,255,255,0.08)" : "rgba(52,211,153,0.2)") }}>
+                          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 20, padding: "6px 11px", fontSize: 11, letterSpacing: 0.7, fontWeight: 850, textTransform: "uppercase", color: isPast ? COLORS.textMuted : COLORS.good, background: isPast ? "var(--secondary)" : "rgba(52,211,153,0.1)", border: "1px solid " + (isPast ? "var(--border)" : "rgba(52,211,153,0.2)") }}>
                             <span style={{ width: 6, height: 6, borderRadius: "50%", background: isPast ? COLORS.textMuted : COLORS.good }} /> {isPast ? "Completed" : "Upcoming drive"}
                           </span>
                           <h3 style={{ fontSize: 19, lineHeight: 1.35, margin: "12px 0 6px", fontWeight: 800, overflowWrap: "anywhere" }}>{c.title}</h3>
@@ -4819,7 +4823,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                           <div style={{ fontSize: 11, color: COLORS.textMuted }}>{date ? date.getFullYear() : "DATE"}</div>
                         </div>
                       </div>
-                      <div style={{ height: 1, background: "rgba(255,255,255,0.07)", margin: "16px 0 14px" }} />
+                      <div style={{ height: 1, background: "var(--border)", margin: "16px 0 14px" }} />
                       <div style={{ display: "flex", flexDirection: "column", gap: 12, color: COLORS.textMuted, fontSize: 14.5, lineHeight: 1.6 }}>
                         <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}><MapPin size={17} color={COLORS.cyan} style={{ flexShrink: 0, marginTop: 2 }} /><span style={{ lineHeight: 1.55 }}>{place || "Venue details to be confirmed"}</span></div>
                         {c.contactPhone && <div style={{ display: "flex", alignItems: "center", gap: 10 }}><Phone size={16} color={COLORS.cyan} /><a href={"tel:" + String(c.contactPhone).replace(/[^\d+]/g, "")} style={{ color: COLORS.text, textDecoration: "none", fontWeight: 650 }}>{c.contactPhone}</a></div>}
@@ -4883,7 +4887,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                 </button>
               ))}
 
-              <span style={{ width: 1, height: 18, background: "rgba(255,255,255,0.12)", margin: "0 6px" }} />
+              <span style={{ width: 1, height: 18, background: "var(--border)", margin: "0 6px" }} />
 
               <span style={{ fontSize: 11, fontWeight: 900, color: COLORS.textMuted, marginRight: 4, letterSpacing: 0.8, textTransform: "uppercase" }}>
                 Service:
@@ -4900,9 +4904,9 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                     borderRadius: 10,
                     background: bankServiceFilter === s.id
                       ? "linear-gradient(135deg, #0284c7, #0369a1)"
-                      : "rgba(255,255,255,0.035)",
-                    borderColor: bankServiceFilter === s.id ? "#38bdf8" : "rgba(255,255,255,0.08)",
-                    color: bankServiceFilter === s.id ? "#ffffff" : COLORS.textMuted,
+                      : "var(--secondary)",
+                    borderColor: bankServiceFilter === s.id ? "#38bdf8" : "var(--border)",
+                    color: bankServiceFilter === s.id ? "#ffffff" : "var(--foreground)",
                   }}
                 >
                   {s.label}
@@ -4954,7 +4958,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                               {b.category || "Hospital Blood Bank"}
                             </span>
                             {b.district && (
-                              <span style={{ fontSize: 10.5, fontWeight: 750, padding: "3px 8px", borderRadius: 6, background: "rgba(255,255,255,0.06)", color: "#d1d5db" }}>
+                              <span style={{ fontSize: 10.5, fontWeight: 750, padding: "3px 8px", borderRadius: 6, background: "var(--secondary)", color: "var(--foreground)", border: "1px solid var(--border)" }}>
                                 📍 {b.district}
                               </span>
                             )}
@@ -4962,7 +4966,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                               {isStorage ? "Need Blood Only (Issue)" : "Issue & Donation (Sec A & B)"}
                             </span>
                           </div>
-                          <h3 style={{ fontSize: 17.5, lineHeight: 1.35, fontWeight: 800, margin: 0, color: "#f3f4f6", overflowWrap: "anywhere" }}>
+                          <h3 style={{ fontSize: 17.5, lineHeight: 1.35, fontWeight: 800, margin: 0, color: "var(--foreground)", overflowWrap: "anywhere" }}>
                             {b.name}
                           </h3>
                           <div style={{ fontSize: 12, color: COLORS.textMuted, marginTop: 4 }}>
@@ -4973,7 +4977,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                       </div>
 
                       {b.components && (
-                        <div style={{ padding: "8px 12px", borderRadius: 8, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", fontSize: 12, color: "#9ca3af", display: "flex", gap: 6, alignItems: "center" }}>
+                        <div style={{ padding: "8px 12px", borderRadius: 8, background: "var(--secondary)", border: "1px solid var(--border)", fontSize: 12, color: "var(--muted-foreground)", display: "flex", gap: 6, alignItems: "center" }}>
                           <Droplet size={13} color={COLORS.crimson} style={{ flexShrink: 0 }} />
                           <span><strong>Components:</strong> {b.components}</span>
                         </div>
@@ -4989,7 +4993,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                             <Phone size={15} color={COLORS.good} style={{ flexShrink: 0 }} />
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                               {phoneNumbers.map((p, idx) => (
-                                <a key={idx} href={"tel:" + p.replace(/[^\d+]/g, "")} style={{ color: "#f3f4f6", textDecoration: "none", fontWeight: 700, padding: "2px 7px", borderRadius: 6, background: "rgba(255,255,255,0.06)" }}>
+                                <a key={idx} href={"tel:" + p.replace(/[^\d+]/g, "")} style={{ color: "var(--foreground)", textDecoration: "none", fontWeight: 700, padding: "3px 8px", borderRadius: 6, background: "var(--secondary)", border: "1px solid var(--border)" }}>
                                   {p}
                                 </a>
                               ))}
@@ -4999,7 +5003,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                         {b.email && (
                           <div style={{ display: "flex", gap: 9, alignItems: "center" }}>
                             <Mail size={15} color={COLORS.cyan} style={{ flexShrink: 0 }} />
-                            <a href={"mailto:" + b.email.split(",")[0].trim()} style={{ color: "#38bdf8", textDecoration: "none", fontSize: 12.5, overflowWrap: "anywhere" }}>
+                            <a href={"mailto:" + b.email.split(",")[0].trim()} style={{ color: "#0284c7", textDecoration: "none", fontSize: 12.5, overflowWrap: "anywhere" }}>
                               {b.email}
                             </a>
                           </div>
@@ -5011,7 +5015,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
                           </div>
                         )}
                         {b.notes && (
-                          <div style={{ fontSize: 12, color: "#9ca3af", fontStyle: "italic", borderLeft: "2px solid rgba(255,255,255,0.15)", paddingLeft: 8 }}>
+                          <div style={{ fontSize: 12, color: "var(--muted-foreground)", fontStyle: "italic", borderLeft: "2px solid var(--border)", paddingLeft: 8 }}>
                             ℹ {b.notes}
                           </div>
                         )}
@@ -5019,7 +5023,7 @@ function CampsAndBanksView({ notify, adminToken, goTo }) {
 
                       <div style={{ marginTop: "auto", paddingTop: 14, display: "grid", gridTemplateColumns: phoneNumbers.length > 0 ? "1fr 1fr" : "1fr", gap: 8 }}>
                         {phoneNumbers.length > 0 && (
-                          <a href={"tel:" + phoneNumbers[0].replace(/[^\d+]/g, "")} style={{ ...buttonStyle(false), textDecoration: "none", boxSizing: "border-box", fontSize: 13, padding: "9px 12px", background: "rgba(52,211,153,0.12)", color: "#34d399", borderColor: "rgba(52,211,153,0.3)" }}>
+                          <a href={"tel:" + phoneNumbers[0].replace(/[^\d+]/g, "")} style={{ ...buttonStyle(false), textDecoration: "none", boxSizing: "border-box", fontSize: 13, padding: "9px 12px", background: "rgba(52,211,153,0.12)", color: "#10b981", borderColor: "rgba(52,211,153,0.3)" }}>
                             <Phone size={14} /> Call Direct
                           </a>
                         )}

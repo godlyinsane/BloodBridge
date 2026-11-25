@@ -234,18 +234,19 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
       {/* Filter and Sort Toolbar */}
       <div
         style={{
-          background: "rgba(255, 255, 255, 0.03)",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
+          background: "var(--card)",
+          border: "1px solid var(--border)",
           borderRadius: 16,
           padding: 16,
           display: "flex",
           flexDirection: "column",
           gap: 14,
+          boxShadow: "var(--shadow-soft)",
         }}
       >
         {/* Blood Group Filter Pills */}
         <div>
-          <div style={{ fontSize: 11, fontWeight: 800, color: "#9ca3af", marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.8 }}>
+          <div style={{ fontSize: 11, fontWeight: 800, color: "var(--muted-foreground)", marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.8 }}>
             Filter By Blood Group:
           </div>
           <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
@@ -258,9 +259,9 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                 fontWeight: 800,
                 fontSize: 13,
                 cursor: "pointer",
-                border: selectedGroup === "ALL" ? "1px solid #ef4444" : "1px solid rgba(255,255,255,0.1)",
-                background: selectedGroup === "ALL" ? "#ef4444" : "rgba(255,255,255,0.04)",
-                color: selectedGroup === "ALL" ? "#ffffff" : "#d1d5db",
+                border: selectedGroup === "ALL" ? "1px solid var(--emergency)" : "1px solid var(--border)",
+                background: selectedGroup === "ALL" ? "var(--emergency)" : "var(--secondary)",
+                color: selectedGroup === "ALL" ? "#ffffff" : "var(--foreground)",
               }}
             >
               All Groups
@@ -276,9 +277,9 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                   fontWeight: 900,
                   fontSize: 13,
                   cursor: "pointer",
-                  border: selectedGroup === grp ? "1px solid #ef4444" : "1px solid rgba(255,255,255,0.1)",
-                  background: selectedGroup === grp ? "#ef4444" : "rgba(255,255,255,0.04)",
-                  color: selectedGroup === grp ? "#ffffff" : "#d1d5db",
+                  border: selectedGroup === grp ? "1px solid var(--emergency)" : "1px solid var(--border)",
+                  background: selectedGroup === grp ? "var(--emergency)" : "var(--secondary)",
+                  color: selectedGroup === grp ? "#ffffff" : "var(--foreground)",
                 }}
               >
                 {grp}
@@ -290,7 +291,7 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
         {/* Location / City Filter and Sort Info */}
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ position: "relative", flex: "1 1 240px" }}>
-            <Search size={15} style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }} />
+            <Search size={15} style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "var(--muted-foreground)" }} />
             <input
               type="text"
               value={searchCity}
@@ -300,16 +301,16 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                 width: "100%",
                 boxSizing: "border-box",
                 padding: "10px 14px 10px 36px",
-                background: "rgba(0,0,0,0.3)",
-                border: "1px solid rgba(255,255,255,0.15)",
+                background: "var(--secondary)",
+                border: "1px solid var(--border)",
                 borderRadius: 10,
-                color: "#f3f4f6",
+                color: "var(--foreground)",
                 fontSize: 13,
                 outline: "none",
               }}
             />
           </div>
-          <div style={{ fontSize: 12, color: "#9ca3af", display: "flex", alignItems: "center", gap: 5 }}>
+          <div style={{ fontSize: 12, color: "var(--muted-foreground)", display: "flex", alignItems: "center", gap: 5 }}>
             <Clock size={13} />
             <span>Sorted by: <strong>Most recent verified first</strong></span>
           </div>
@@ -318,7 +319,7 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
 
       {/* Listing Cards Grid */}
       {loading ? (
-        <div style={{ textAlign: "center", padding: 40, color: "#9ca3af", fontSize: 14 }}>
+        <div style={{ textAlign: "center", padding: 40, color: "var(--muted-foreground)", fontSize: 14 }}>
           Loading verified blood listings…
         </div>
       ) : listings.length === 0 ? (
@@ -326,14 +327,14 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
           style={{
             textAlign: "center",
             padding: "50px 20px",
-            background: "rgba(255, 255, 255, 0.02)",
+            background: "var(--card)",
             borderRadius: 16,
-            border: "1px dashed rgba(255, 255, 255, 0.15)",
+            border: "1px dashed var(--border)",
           }}
         >
-          <Droplet size={36} color="#ef4444" style={{ margin: "0 auto 12px" }} />
-          <h3 style={{ fontSize: 18, margin: "0 0 6px", fontWeight: 700 }}>No verified listings found</h3>
-          <p style={{ color: "#9ca3af", fontSize: 13, margin: 0, maxWidth: 420, marginInline: "auto" }}>
+          <Droplet size={36} color="var(--emergency)" style={{ margin: "0 auto 12px" }} />
+          <h3 style={{ fontSize: 18, margin: "0 0 6px", fontWeight: 700, color: "var(--foreground)" }}>No verified listings found</h3>
+          <p style={{ color: "var(--muted-foreground)", fontSize: 13, margin: 0, maxWidth: 420, marginInline: "auto" }}>
             No blood availability matching blood group "{selectedGroup}" and your city filter is currently live. Be the first to upload availability!
           </p>
           <button
@@ -344,9 +345,9 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
             }}
             style={{
               marginTop: 16,
-              background: "rgba(255,255,255,0.08)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              color: "#ffffff",
+              background: "var(--secondary)",
+              border: "1px solid var(--border)",
+              color: "var(--foreground)",
               padding: "8px 16px",
               borderRadius: 8,
               cursor: "pointer",
@@ -366,21 +367,21 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
               <div
                 key={item._id}
                 style={{
-                  background: "rgba(255, 255, 255, 0.035)",
-                  border: "1px solid rgba(255, 255, 255, 0.09)",
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
                   borderRadius: 16,
                   padding: 18,
                   display: "flex",
                   flexDirection: "column",
                   gap: 12,
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
-                  borderTop: "3px solid #ef4444",
+                  boxShadow: "var(--shadow-soft)",
+                  borderTop: "3px solid var(--emergency)",
                 }}
               >
                 {/* Card Top: Name & Blood Group */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
                   <div>
-                    <div style={{ fontSize: 16, fontWeight: 800, color: "#f3f4f6" }}>
+                    <div style={{ fontSize: 16, fontWeight: 800, color: "var(--foreground)" }}>
                       {item.name || "Available Donor"}
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
@@ -391,29 +392,28 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                           gap: 4,
                           fontSize: 10.5,
                           fontWeight: 800,
-                          color: "#34d399",
-                          background: "rgba(52, 211, 153, 0.12)",
+                          color: "#10b981",
+                          background: "rgba(16, 185, 129, 0.12)",
                           padding: "2px 8px",
                           borderRadius: 6,
-                          border: "1px solid rgba(52, 211, 153, 0.25)",
+                          border: "1px solid rgba(16, 185, 129, 0.25)",
                         }}
                       >
                         <ShieldCheck size={12} /> Verified Listing
                       </span>
-                      <span style={{ fontSize: 11, color: "#9ca3af" }}>• {formatTimeAgo(item.createdAt)}</span>
+                      <span style={{ fontSize: 11, color: "var(--muted-foreground)" }}>• {formatTimeAgo(item.createdAt)}</span>
                     </div>
                   </div>
 
                   <div
                     style={{
-                      background: "rgba(239, 68, 68, 0.15)",
-                      border: "1px solid rgba(239, 68, 68, 0.45)",
-                      color: "#f87171",
+                      background: "rgba(225, 29, 72, 0.12)",
+                      border: "1px solid rgba(225, 29, 72, 0.35)",
+                      color: "var(--emergency)",
                       fontWeight: 900,
                       fontSize: 16,
                       padding: "6px 14px",
                       borderRadius: 12,
-                      boxShadow: "0 2px 8px rgba(239, 68, 68, 0.2)",
                     }}
                   >
                     {item.bloodGroup}
@@ -421,8 +421,8 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                 </div>
 
                 {/* Location */}
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "#d1d5db" }}>
-                  <MapPin size={14} color="#ef4444" style={{ flexShrink: 0, marginTop: 2 }} />
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 13, color: "var(--foreground)" }}>
+                  <MapPin size={14} color="var(--emergency)" style={{ flexShrink: 0, marginTop: 2 }} />
                   <span>
                     <strong>{item.city}</strong>
                     {item.area ? `, ${item.area}` : ""}
@@ -434,11 +434,11 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                   <div
                     style={{
                       fontSize: 12,
-                      color: "#9ca3af",
-                      background: "rgba(0, 0, 0, 0.25)",
+                      color: "var(--muted-foreground)",
+                      background: "var(--secondary)",
                       padding: "8px 12px",
                       borderRadius: 8,
-                      borderLeft: "2px solid #ef4444",
+                      borderLeft: "2px solid var(--emergency)",
                       fontStyle: "italic",
                     }}
                   >
@@ -447,10 +447,10 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                 )}
 
                 {/* Contact Section: Masked until "Contact" is clicked */}
-                <div style={{ marginTop: "auto", paddingTop: 8, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                <div style={{ marginTop: "auto", paddingTop: 8, borderTop: "1px solid var(--border)" }}>
                   {!isRevealed ? (
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#9ca3af" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "var(--muted-foreground)" }}>
                         <Lock size={13} />
                         <span>{item.phoneMasked || "+91 xx xx xx xx"}</span>
                       </div>
@@ -462,8 +462,8 @@ export default function P2PBloodListings({ apiBase = "/api", notify }) {
                           display: "inline-flex",
                           alignItems: "center",
                           gap: 6,
-                          background: "#ffffff",
-                          color: "#111827",
+                          background: "var(--foreground)",
+                          color: "var(--background)",
                           border: 0,
                           fontWeight: 800,
                           fontSize: 12.5,
