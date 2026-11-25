@@ -1788,50 +1788,58 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
 // =================================================================
 const BLOOD_GROUP_INFO = {
   "O+": {
-    badge: "Most Demanded",
-    desc: "Most common blood group. High clinical demand; can give red cells to any Rh+ patient.",
-    givesTo: "O+, A+, B+, AB+",
+    badge: "Most Common",
+    prevalence: "~38% in India",
+    desc: "Can donate red cells to any Rh+ patient. High hospital trauma demand.",
+    givesTo: "Rh+ types",
     receivesFrom: "O+, O-",
   },
   "O-": {
-    badge: "Universal Red Cell",
-    desc: "Universal red cell donor. First choice in emergency trauma, surgery, and infant transfusions.",
+    badge: "Universal Donor",
+    prevalence: "~1.4% in India",
+    desc: "Universal red cell donor. Crucial in emergency trauma and surgery.",
     givesTo: "All blood types",
     receivesFrom: "O- only",
   },
   "A+": {
     badge: "Second Common",
-    desc: "Vital for scheduled hospital surgeries. Excellent source for critical platelet donations.",
+    prevalence: "~22% in India",
+    desc: "Can donate red cells to A+ and AB+. Ideal for platelet donations.",
     givesTo: "A+, AB+",
-    receivesFrom: "A+, A-, O+, O-",
+    receivesFrom: "A, O types",
   },
   "A-": {
-    badge: "Rare Donor",
-    desc: "Can donate red blood cells to A and AB recipients. Highly valuable for sensitive patients.",
-    givesTo: "A-, A+, AB-, AB+",
+    badge: "Rare Group",
+    prevalence: "~0.8% in India",
+    desc: "Can donate red cells to A and AB patients. Essential in scheduled care.",
+    givesTo: "A, AB types",
     receivesFrom: "A-, O-",
   },
   "B+": {
     badge: "High Prevalence",
-    desc: "One of the most widespread groups across India. Essential for regular transfusions.",
+    prevalence: "~32% in India",
+    desc: "Key group in India. Vital for regular transfusions and thalassemia care.",
     givesTo: "B+, AB+",
-    receivesFrom: "B+, B-, O+, O-",
+    receivesFrom: "B, O types",
   },
   "B-": {
     badge: "Rare Group",
-    desc: "Can donate red cells to B and AB patients. High demand in regional thalassemia care.",
-    givesTo: "B-, B+, AB-, AB+",
+    prevalence: "~1.4% in India",
+    desc: "Can donate red cells to B and AB patients. High clinical need.",
+    givesTo: "B, AB types",
     receivesFrom: "B-, O-",
   },
   "AB+": {
     badge: "Universal Recipient",
-    desc: "Can receive red blood cells of any type. Also serves as universal plasma donor to all.",
+    prevalence: "~8% in India",
+    desc: "Can receive red cells of any type. Universal plasma donor to all.",
     givesTo: "AB+ only",
     receivesFrom: "All blood types",
   },
   "AB-": {
-    badge: "Rarest Type",
-    desc: "Rarest blood group. Universal plasma donor along with AB+; plasma given to any group.",
+    badge: "Rarest Group",
+    prevalence: "~0.5% in India",
+    desc: "Rarest group. Universal plasma donor along with AB+ to all patients.",
     givesTo: "AB-, AB+",
     receivesFrom: "All Rh- types",
   },
@@ -2069,10 +2077,13 @@ function Home({ donors, requests, goTo }) {
 
       {/* Blood Groups at a Glance */}
       <section className="mx-auto max-w-6xl px-4 pt-20">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <span className="eyebrow !text-red">Inventory & Availability</span>
-            <h2 className="mt-1 text-3xl font-semibold sm:text-4xl">Blood groups at a glance</h2>
+            <span className="eyebrow !text-red">Clinical Reference</span>
+            <h2 className="mt-1 text-2xl sm:text-3xl font-semibold">Blood groups at a glance</h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Compatibility facts, clinical roles, and population prevalence.
+            </p>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -2095,7 +2106,7 @@ function Home({ donors, requests, goTo }) {
 
         {/* Live Donor Locations Map */}
         {showDonorMap && (
-          <div className="mt-6 tile overflow-hidden p-4">
+          <div className="mt-5 tile overflow-hidden p-4">
             <div className="flex items-center justify-between pb-3 border-b border-border mb-3">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-success animate-pulse" />
@@ -2109,60 +2120,64 @@ function Home({ donors, requests, goTo }) {
           </div>
         )}
 
-        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-          {groupCounts.map(({ group, count }) => {
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+          {GROUPS.map((group) => {
             const info = BLOOD_GROUP_INFO[group] || {
               badge: "Blood Group",
-              desc: "Volunteer donor availability in your region.",
+              prevalence: "Prevalent",
+              desc: "Clinical reference facts and compatibility.",
               givesTo: "Compatible types",
               receivesFrom: "Compatible types",
             };
             return (
               <div
                 key={group}
-                className="tile flex flex-col justify-between cursor-pointer hover:border-red/40 transition-all duration-200"
+                className="tile flex flex-col justify-between hover:border-red/40 transition-all duration-150"
                 style={{
-                  padding: "16px 18px",
+                  padding: "10px 13px",
+                  borderRadius: 14,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                 }}
-                onClick={() => goTo("donors")}
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-border/50">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold font-mono tracking-tight text-foreground">
+                  <div
+                    className="flex items-center justify-between gap-1.5 pb-1.5 border-b border-border/40"
+                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
+                  >
+                    <div className="flex items-center gap-1.5" style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      <span className="text-base font-bold font-mono tracking-tight text-foreground">
                         {group}
                       </span>
                       <span
-                        className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-semibold whitespace-nowrap"
-                        style={{ whiteSpace: "nowrap" }}
+                        className="text-[9.5px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-semibold whitespace-nowrap"
+                        style={{ whiteSpace: "nowrap", fontSize: 9.5, padding: "1px 6px" }}
                       >
                         {info.badge}
                       </span>
                     </div>
-                    <span className="text-xs font-mono text-muted-foreground whitespace-nowrap" style={{ whiteSpace: "nowrap" }}>
-                      <span className="font-semibold text-foreground">{count}</span> donors
+                    <span
+                      className="text-[10px] font-mono text-muted-foreground whitespace-nowrap"
+                      style={{ fontSize: 10, whiteSpace: "nowrap", opacity: 0.85 }}
+                    >
+                      {info.prevalence}
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed" style={{ margin: "10px 0 0", lineHeight: 1.55 }}>
+                  <p
+                    className="text-[11px] text-muted-foreground leading-snug"
+                    style={{ margin: "6px 0 0", fontSize: 11, lineHeight: 1.4 }}
+                  >
                     {info.desc}
                   </p>
                 </div>
 
                 <div
-                  className="mt-3.5 pt-2.5 border-t border-border/40 text-[11px] font-mono text-muted-foreground flex flex-col gap-1.5"
-                  style={{ marginTop: 14, paddingTop: 10, borderTop: "1px solid var(--border)", fontSize: 11 }}
+                  className="mt-2 pt-1.5 border-t border-border/40 text-[10px] font-mono text-muted-foreground flex justify-between items-center"
+                  style={{ marginTop: 8, paddingTop: 6, borderTop: "1px solid var(--border)", fontSize: 10, display: "flex", justifyContent: "space-between" }}
                 >
-                  <div className="flex justify-between items-center" style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span className="opacity-75">Gives red cells:</span>
-                    <span className="font-semibold text-foreground">{info.givesTo}</span>
-                  </div>
-                  <div className="flex justify-between items-center" style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span className="opacity-75">Receives from:</span>
-                    <span className="font-semibold text-foreground">{info.receivesFrom}</span>
-                  </div>
+                  <span>Gives: <strong className="text-foreground font-semibold">{info.givesTo}</strong></span>
+                  <span>Gets: <strong className="text-foreground font-semibold">{info.receivesFrom}</strong></span>
                 </div>
               </div>
             );
