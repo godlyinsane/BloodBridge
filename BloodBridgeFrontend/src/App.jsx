@@ -1814,10 +1814,11 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
           ))}
         </div>
       </>}
-      <div style={{display:"flex",gap:10,flexWrap:"wrap",marginTop:24}}>
-        <button onClick={()=>{goTo("home");window.scrollTo({top:0,behavior:"smooth"});}} style={{border:0,borderRadius:10,background:red,color:"#fff",fontWeight:750,padding:"12px 18px",cursor:"pointer"}}>Back to Home</button>
-        {page!=="about"&&<button onClick={()=>goTo("about")} style={{border:"1px solid "+line,borderRadius:10,background:"transparent",color:ink,fontWeight:700,padding:"12px 18px",cursor:"pointer"}}>About BloodBridge</button>}
-      </div>
+      {page !== "about" && (
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 }}>
+          <button onClick={() => goTo("about")} style={{ border: "1px solid " + line, borderRadius: 10, background: "transparent", color: ink, fontWeight: 700, padding: "12px 18px", cursor: "pointer" }}>About BloodBridge</button>
+        </div>
+      )}
     </div>
   );
 }
