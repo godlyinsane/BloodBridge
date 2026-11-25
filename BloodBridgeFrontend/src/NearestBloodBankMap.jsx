@@ -86,8 +86,8 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
   return (
     <div style={{ display: "grid", gap: 32 }} className="max-w-6xl mx-auto">
       {/* Hero GPS Visualizer matching Redesign */}
-      <section className="tile flex flex-col items-center text-center p-8 md:p-12 relative overflow-hidden">
-        <div className="relative mx-auto grid place-items-center" style={{ width: 180, height: 180, position: "relative", marginBottom: 20 }}>
+      <section className="tile flex flex-col items-center text-center p-6 sm:p-8 md:p-12 relative overflow-hidden">
+        <div className="relative mx-auto grid place-items-center" style={{ width: "min(180px, 50vw)", height: "min(180px, 50vw)", position: "relative", marginBottom: 20 }}>
           <div className="absolute inset-0 rounded-full dot-grid" style={{ maskImage: "radial-gradient(circle, black 30%, transparent 70%)", WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 70%)" }} />
           {[0, 0.8, 1.6].map((d) => (
             <span key={d} className="absolute rounded-full border-2 border-red animate-pulse-ring" style={{ width: 70, height: 70, borderRadius: "50%", border: "2px solid var(--emergency)", animationDelay: `${d}s`, position: "absolute" }} />
@@ -98,20 +98,20 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
         </div>
 
         <p className="eyebrow">Live GPS Directions</p>
-        <h1 className="text-4xl md:text-5xl font-semibold mt-2" style={{ margin: "8px 0 12px" }}>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-2" style={{ margin: "8px 0 12px" }}>
           Nearest <span className="text-gradient">blood bank.</span>
         </h1>
-        <p className="max-w-md text-muted-foreground" style={{ maxWidth: 500, margin: "0 auto 24px", lineHeight: 1.6 }}>
+        <p className="max-w-md text-sm sm:text-base text-muted-foreground" style={{ maxWidth: 500, margin: "0 auto 24px", lineHeight: 1.6 }}>
           We'll use your live location to calculate precise distances and open turn-by-turn navigation to the closest blood bank.
         </p>
 
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", width: "100%" }}>
           <button
             type="button"
             onClick={handleUseGPS}
             disabled={loading}
             aria-label="Use My Current Location"
-            className="btn btn-primary !px-6 !py-3"
+            className="btn btn-primary !px-5 sm:!px-6 !py-2.5 sm:!py-3 text-xs sm:text-sm"
           >
             <Compass size={18} />
             <span>{loading ? "Locating with GPS…" : "Use My Current Location"}</span>
@@ -120,7 +120,7 @@ export default function NearestBloodBankMap({ apiBase = "/api", initialLocation 
             href="https://www.google.com/maps/search/blood+bank+near+me"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost !px-6 !py-3"
+            className="btn btn-ghost !px-5 sm:!px-6 !py-2.5 sm:!py-3 text-xs sm:text-sm"
           >
             <ExternalLink size={16} /> Open in Google Maps
           </a>

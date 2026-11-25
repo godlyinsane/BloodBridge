@@ -240,7 +240,7 @@ const HERO_ORBIT_ICONS = [Building2, MapPin, Phone, Hospital, ShieldCheck, Navig
 
 function HeroArt() {
   return (
-    <div style={{ width: "100%", maxWidth: 440, aspectRatio: "1/1", position: "relative", margin: "0 auto" }}>
+    <div className="hero-art-container" style={{ width: "100%", maxWidth: "min(440px, 85vw)", aspectRatio: "1/1", position: "relative", margin: "0 auto" }}>
       <div className="dot-grid" style={{ position: "absolute", inset: 0, borderRadius: "50%", maskImage: "radial-gradient(circle, black 40%, transparent 70%)", WebkitMaskImage: "radial-gradient(circle, black 40%, transparent 70%)" }} />
       {[100, 76, 52].map((s, i) => (
         <div key={s} style={{ position: "absolute", inset: `${(100 - s) / 2}%`, borderRadius: "50%", border: `1px ${i === 1 ? "dashed" : "solid"} var(--border)` }} />
@@ -1097,64 +1097,74 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
             <span style={{ fontSize: "1.25rem", fontWeight: 700, letterSpacing: "-0.025em" }}>BloodBridge</span>
           </button>
           
-          <nav className="bloodbridge-nav" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.875rem" }}>
-            {[
-              { id: "home", label: "Home", path: "/" },
-              { id: "camps", label: "Blood Facilities", path: "/facilities" },
-              { id: "nearest", label: "Nearest Bank", path: "/nearestbank" },
-              { id: "requests", label: "Live Requests", path: "/requests" },
-              { id: "donor", label: "Donor Portal", path: "/donor" },
-              { id: "about", label: "About", path: "/about" },
-            ].map((n) => (
-              <a
-                key={n.id}
-                href={n.path}
-                role="link"
-                onClick={(e) => { e.preventDefault(); setTab(n.id); setMobileMenuOpen(false); }}
-                className={`navbtn rounded-full transition cursor-pointer ${
-                  tab === n.id ? "active text-red bg-red/10 font-semibold" : "text-muted-foreground hover:text-foreground"
-                }`}
-                style={{
-                  textDecoration: "none",
-                  border: "none",
-                  borderRadius: 9999,
-                  padding: "7px 14px",
-                  background: tab === n.id ? "rgba(225, 29, 72, 0.1)" : "transparent",
-                  color: tab === n.id ? "var(--emergency)" : "var(--muted-foreground)",
-                  fontWeight: tab === n.id ? 600 : 500,
-                  fontSize: "0.9rem",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                }}
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <nav className="bloodbridge-nav" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.875rem" }}>
+              {[
+                { id: "home", label: "Home", path: "/" },
+                { id: "camps", label: "Blood Facilities", path: "/facilities" },
+                { id: "nearest", label: "Nearest Bank", path: "/nearestbank" },
+                { id: "requests", label: "Live Requests", path: "/requests" },
+                { id: "donor", label: "Donor Portal", path: "/donor" },
+                { id: "about", label: "About", path: "/about" },
+              ].map((n) => (
+                <a
+                  key={n.id}
+                  href={n.path}
+                  role="link"
+                  onClick={(e) => { e.preventDefault(); setTab(n.id); setMobileMenuOpen(false); }}
+                  className={`navbtn rounded-full transition cursor-pointer ${
+                    tab === n.id ? "active text-red bg-red/10 font-semibold" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  style={{
+                    textDecoration: "none",
+                    border: "none",
+                    borderRadius: 9999,
+                    padding: "7px 14px",
+                    background: tab === n.id ? "rgba(225, 29, 72, 0.1)" : "transparent",
+                    color: tab === n.id ? "var(--emergency)" : "var(--muted-foreground)",
+                    fontWeight: tab === n.id ? 600 : 500,
+                    fontSize: "0.9rem",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  {n.label}
+                </a>
+              ))}
+            </nav>
+            <ThemeToggle dark={theme === "dark"} onToggle={toggleTheme} />
+            <div className="bloodbridge-menu-toggle-wrap">
+              <button
+                onClick={() => setMobileMenuOpen(v => !v)}
+                aria-label="Toggle navigation"
+                className="btn btn-ghost !p-2"
+                style={{ width: 40, height: 40, borderRadius: 12, padding: 0, display: "grid", placeItems: "center" }}
               >
-                {n.label}
-              </a>
-            ))}
-            <ThemeToggle dark={theme === "dark"} onToggle={toggleTheme} />
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="bloodbridge-menu-toggle-wrap" style={{ display: "none", alignItems: "center", gap: 10 }}>
-            <ThemeToggle dark={theme === "dark"} onToggle={toggleTheme} />
-            <button
-              onClick={() => setMobileMenuOpen(v => !v)}
-              aria-label="Toggle navigation"
-              className="btn btn-ghost !p-2"
-              style={{ width: 40, height: 40, borderRadius: 12, padding: 0 }}
-            >
-              {mobileMenuOpen ? <XCircle size={20} /> : <span style={{ fontSize: 22, lineHeight: 1 }}>☰</span>}
-            </button>
+                {mobileMenuOpen ? <XCircle size={20} /> : <span style={{ fontSize: 22, lineHeight: 1 }}>☰</span>}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div style={{ borderTop: "1px solid var(--border)", background: "var(--card)", padding: "16px 20px", display: "flex", flexDirection: "column", gap: 8 }}>
+          <div
+            className="animate-rise"
+            style={{
+              borderTop: "1px solid var(--border)",
+              background: "var(--card)",
+              padding: "14px 18px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+              boxShadow: "var(--shadow-lift)",
+            }}
+          >
             {[
               { id: "home", label: "Home" },
-              { id: "camps", label: "Need Blood (Facilities)" },
+              { id: "camps", label: "Blood Facilities" },
               { id: "nearest", label: "Nearest Bank" },
-              { id: "requests", label: "Emergency Requests" },
+              { id: "requests", label: "Live Requests" },
               { id: "donor", label: "Donor Portal" },
               { id: "about", label: "About" },
             ].map((n) => (
@@ -1163,7 +1173,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                 onClick={() => { setTab(n.id); setMobileMenuOpen(false); }}
                 style={{
                   textAlign: "left",
-                  padding: "10px 14px",
+                  padding: "11px 14px",
                   borderRadius: 12,
                   border: "none",
                   background: tab === n.id ? "rgba(225, 29, 72, 0.1)" : "transparent",
@@ -1171,9 +1181,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                   fontWeight: tab === n.id ? 700 : 500,
                   fontSize: 15,
                   cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  minHeight: 44,
                 }}
               >
-                {n.label}
+                <span>{n.label}</span>
+                {tab === n.id && <span className="size-2 rounded-full bg-emergency" />}
               </button>
             ))}
           </div>
@@ -1938,7 +1953,7 @@ function Home({ donors, requests, goTo }) {
   return (
     <div className="bloodbridge-home pb-16">
       {/* Hero Section */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-8 md:grid-cols-[1.1fr_1fr] md:pt-16">
+      <section className="mx-auto grid max-w-6xl items-center gap-8 sm:gap-12 px-4 pb-12 pt-6 sm:pb-16 sm:pt-8 md:grid-cols-[1.1fr_1fr] md:pt-16">
         <div className="animate-rise">
           <span className="eyebrow !text-red flex items-center gap-2">
             <span className="inline-block size-2 rounded-full bg-red animate-pulse" />
@@ -1950,7 +1965,7 @@ function Home({ donors, requests, goTo }) {
           <p className="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-muted-foreground">
             Find verified blood banks, hospitals, and emergency donors across Sehore, Bhopal, and nearby regions — call or get turn-by-turn directions in one tap.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={() => goTo("camps")}
@@ -1979,55 +1994,58 @@ function Home({ donors, requests, goTo }) {
 
       {/* Active Regional Network Banner */}
       <section className="mx-auto max-w-6xl px-4">
-        <div className="tile flex flex-wrap items-center justify-between gap-6 p-6 sm:p-7 hover:!translate-y-0">
-          <div className="flex items-center gap-4">
-            <span className="grid size-12 place-items-center rounded-2xl bg-red/10 text-red shrink-0">
+        <div className="tile flex flex-wrap items-center justify-between gap-4 sm:gap-6 p-5 sm:p-7 hover:!translate-y-0">
+          <div className="flex items-center gap-3.5 sm:gap-4">
+            <span
+              className="grid place-items-center rounded-2xl bg-red/10 text-red shrink-0"
+              style={{ width: 44, height: 44, display: "grid", placeItems: "center", flexShrink: 0 }}
+            >
               <Activity className="size-5" />
             </span>
             <div>
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-success" />
-                <span className="eyebrow">Active regional network</span>
+                <span className="eyebrow text-[10px] sm:text-xs">Active regional network</span>
               </div>
-              <h3 className="mt-1 text-base sm:text-lg font-semibold">
+              <h3 className="mt-1 text-sm sm:text-base md:text-lg font-semibold">
                 32+ verified facilities within 100 km
               </h3>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-base font-semibold text-red">{verified}</span>
-              <span className="text-muted-foreground text-xs">Verified Donors</span>
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm">
+            <div className="flex items-center" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <span className="font-mono text-sm sm:text-base font-semibold text-red">{verified}</span>
+              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Verified Donors</span>
             </div>
-            <div className="hidden sm:block h-4 w-px bg-border" />
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-base font-semibold text-emerald-500">{available}</span>
-              <span className="text-muted-foreground text-xs">Ready to Donate</span>
+            <div className="h-3.5 w-px bg-border/60" />
+            <div className="flex items-center" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <span className="font-mono text-sm sm:text-base font-semibold text-emerald-500">{available}</span>
+              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Ready to Donate</span>
             </div>
-            <div className="hidden sm:block h-4 w-px bg-border" />
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-base font-semibold text-sky-500">{fulfilled || 18}+</span>
-              <span className="text-muted-foreground text-xs">Lives Supported</span>
+            <div className="h-3.5 w-px bg-border/60" />
+            <div className="flex items-center" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <span className="font-mono text-sm sm:text-base font-semibold text-sky-500">{fulfilled || 18}+</span>
+              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Lives Supported</span>
             </div>
           </div>
-          <p className="w-full text-xs text-muted-foreground border-t border-border/50 pt-3">
+          <p className="w-full text-[11px] sm:text-xs text-muted-foreground border-t border-border/50 pt-2.5 sm:pt-3">
             Coverage: Sehore · Bhopal · Ashta · Raisen · Hoshangabad · Vidisha
           </p>
         </div>
       </section>
 
       {/* What do you need? */}
-      <section className="mx-auto max-w-6xl px-4 pt-20">
+      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
           <div>
             <span className="eyebrow !text-red">Quick navigation</span>
-            <h2 className="mt-1 text-3xl font-semibold sm:text-4xl md:text-5xl">What do you need?</h2>
+            <h2 className="mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">What do you need?</h2>
           </div>
-          <p className="text-sm text-muted-foreground max-w-xs">
+          <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
             Direct access to emergency centers, live routing, and community initiatives.
           </p>
         </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             {
               id: "camps",
@@ -2076,8 +2094,8 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* Blood Groups at a Glance */}
-      <section className="mx-auto max-w-6xl px-4 pt-20">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-5" style={{ marginBottom: 16 }}>
           <div>
             <span className="eyebrow !text-red">Clinical Reference</span>
             <h2 className="mt-1 text-2xl sm:text-3xl font-semibold">Blood groups at a glance</h2>
@@ -2085,11 +2103,11 @@ function Home({ donors, requests, goTo }) {
               Compatibility facts, clinical roles, and population prevalence.
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 mt-2 sm:mt-0 flex-wrap">
             <button
               type="button"
               onClick={() => setShowDonorMap((v) => !v)}
-              className="btn btn-ghost text-xs"
+              className="btn btn-ghost text-xs whitespace-nowrap"
             >
               <LocateFixed className="size-3.5 text-red" />
               {showDonorMap ? "Hide Map" : "View Live Donor Map"}
@@ -2097,7 +2115,7 @@ function Home({ donors, requests, goTo }) {
             <button
               type="button"
               onClick={() => goTo("requests")}
-              className="btn btn-primary text-xs"
+              className="btn btn-primary text-xs whitespace-nowrap"
             >
               <Plus className="size-3.5" /> Request Blood
             </button>
@@ -2186,16 +2204,16 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-4 pt-20">
+      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
         <span className="eyebrow !text-red">Process</span>
-        <h2 className="mt-1 text-3xl font-semibold sm:text-4xl md:text-5xl">How it works.</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <h2 className="mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">How it works.</h2>
+        <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             { icon: Search, t: "Find", b: "Browse or search the verified facility and voluntary donor directory." },
             { icon: PhoneCall, t: "Call", b: "Confirm real-time blood group availability directly before traveling." },
             { icon: Navigation, t: "Go", b: "Open GPS directions in Google Maps and follow medical guidance." },
           ].map((s, i) => (
-            <div key={s.t} className="tile p-7">
+            <div key={s.t} className="tile p-6 sm:p-7">
               <div className="flex items-center justify-between">
                 <span
                   className="grid place-items-center rounded-full border border-border"
@@ -2205,7 +2223,7 @@ function Home({ donors, requests, goTo }) {
                 </span>
                 <span className="font-mono text-4xl font-semibold text-border">0{i + 1}</span>
               </div>
-              <h3 className="mt-8 text-lg font-semibold">{s.t}</h3>
+              <h3 className="mt-6 sm:mt-8 text-lg font-semibold">{s.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.b}</p>
             </div>
           ))}
@@ -2213,14 +2231,14 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* Verified Centres */}
-      <section className="mx-auto max-w-6xl px-4 pt-20">
+      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
         <div
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"
           style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}
         >
           <div>
             <span className="eyebrow !text-red">Direct Walk-In</span>
-            <h2 className="mt-1 text-3xl font-semibold sm:text-4xl">Donate Blood & Save Lives: Verified Centres</h2>
+            <h2 className="mt-1 text-2xl sm:text-3xl sm:text-4xl font-semibold">Donate Blood & Save Lives: Verified Centres</h2>
           </div>
           <button
             type="button"
@@ -2232,9 +2250,9 @@ function Home({ donors, requests, goTo }) {
           </button>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 sm:mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {placesToDonate.map((p, idx) => (
-            <div key={p.name || idx} className="tile flex flex-col justify-between p-6">
+            <div key={p.name || idx} className="tile flex flex-col justify-between p-5 sm:p-6">
               <div>
                 <div className="flex items-start justify-between gap-2">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red/10 text-red border border-red/20">
@@ -2282,9 +2300,9 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* Dark Ink Banner CTA */}
-      <section className="mx-auto max-w-6xl px-4 pt-20">
-        <div className="relative overflow-hidden rounded-[2.25rem] bg-ink p-8 text-ink-foreground sm:p-12 md:p-16">
-          <svg className="absolute -right-24 -top-24 h-[28rem] w-[28rem] pointer-events-none" viewBox="0 0 200 200" aria-hidden>
+      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
+        <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] bg-ink p-6 sm:p-12 md:p-16 text-ink-foreground">
+          <svg className="absolute -right-24 -top-24 h-[20rem] sm:h-[28rem] w-[20rem] sm:w-[28rem] pointer-events-none" viewBox="0 0 200 200" aria-hidden>
             {[90, 70, 50, 30].map((r, i) => (
               <circle
                 key={r}
