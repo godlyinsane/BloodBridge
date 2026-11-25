@@ -2204,7 +2204,7 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
+      <section className="mx-auto max-w-6xl px-4 pt-10 sm:pt-14">
         <span className="eyebrow !text-red">Process</span>
         <h2 className="mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">How it works.</h2>
         <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
@@ -2213,7 +2213,7 @@ function Home({ donors, requests, goTo }) {
             { icon: PhoneCall, t: "Call", b: "Confirm real-time blood group availability directly before traveling." },
             { icon: Navigation, t: "Go", b: "Open GPS directions in Google Maps and follow medical guidance." },
           ].map((s, i) => (
-            <div key={s.t} className="tile p-6 sm:p-7">
+            <div key={s.t} className="tile p-6 sm:p-7" style={{ borderRadius: 22, overflow: "hidden" }}>
               <div className="flex items-center justify-between">
                 <span
                   className="grid place-items-center rounded-full border border-border"
@@ -2231,7 +2231,7 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* Verified Centres */}
-      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
         <div
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"
           style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}
@@ -2244,7 +2244,7 @@ function Home({ donors, requests, goTo }) {
             type="button"
             onClick={() => { goTo("camps"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             className="btn btn-ghost text-xs"
-            style={{ width: "auto", flexShrink: 0 }}
+            style={{ width: "auto", flexShrink: 0, borderRadius: 9999, border: "1px solid var(--border)" }}
           >
             View all 32+ facilities <ArrowRight className="size-3.5" />
           </button>
@@ -2252,10 +2252,13 @@ function Home({ donors, requests, goTo }) {
 
         <div className="mt-6 sm:mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {placesToDonate.map((p, idx) => (
-            <div key={p.name || idx} className="tile flex flex-col justify-between p-5 sm:p-6">
+            <div key={p.name || idx} className="tile flex flex-col justify-between p-5 sm:p-6" style={{ borderRadius: 22, overflow: "hidden" }}>
               <div>
                 <div className="flex items-start justify-between gap-2">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red/10 text-red border border-red/20">
+                  <span
+                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red/10 text-red border border-red/20"
+                    style={{ borderRadius: 9999 }}
+                  >
                     {p.category || "Verified Centre"}
                   </span>
                   <span className="text-xs font-mono text-muted-foreground">{p.district}</span>
@@ -2277,6 +2280,7 @@ function Home({ donors, requests, goTo }) {
                   <a
                     href={`tel:${p.phone.replace(/[^0-9+]/g, "")}`}
                     className="btn btn-ghost !py-1.5 !px-3 text-xs"
+                    style={{ borderRadius: 9999 }}
                   >
                     <Phone className="size-3.5 text-red" />
                     Call
@@ -2289,6 +2293,7 @@ function Home({ donors, requests, goTo }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary !py-1.5 !px-3 text-xs"
+                  style={{ borderRadius: 9999 }}
                 >
                   <Navigation className="size-3.5" />
                   Directions
@@ -2300,8 +2305,16 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* Dark Ink Banner CTA */}
-      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
-        <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] bg-ink p-6 sm:p-12 md:p-16 text-ink-foreground">
+      <section className="mx-auto max-w-6xl px-4 pt-10 sm:pt-12 pb-12 sm:pb-16">
+        <div
+          className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-6 sm:p-12 md:p-16 text-ink-foreground"
+          style={{
+            borderRadius: 28,
+            border: "1px solid rgba(255, 255, 255, 0.12)",
+            boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.4)",
+            overflow: "hidden"
+          }}
+        >
           <svg className="absolute -right-24 -top-24 h-[20rem] sm:h-[28rem] w-[20rem] sm:w-[28rem] pointer-events-none" viewBox="0 0 200 200" aria-hidden>
             {[90, 70, 50, 30].map((r, i) => (
               <circle
@@ -2318,10 +2331,10 @@ function Home({ donors, requests, goTo }) {
           </svg>
           <div className="relative max-w-xl">
             <span className="eyebrow !text-red">Join our mission</span>
-            <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+            <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl" style={{ color: "#ffffff" }}>
               A small act can make a life-changing difference.
             </h2>
-            <p className="mt-4 text-sm sm:text-base opacity-75 leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base leading-relaxed" style={{ color: "rgba(255, 255, 255, 0.85)" }}>
               Explore donation camps, blood banks, or register as a voluntary donor to save lives in your community.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -2336,6 +2349,7 @@ function Home({ donors, requests, goTo }) {
                 type="button"
                 onClick={() => goTo("donors")}
                 className="btn btn-ink"
+                style={{ color: "#ffffff", border: "1px solid rgba(255, 255, 255, 0.2)" }}
               >
                 <HeartHandshake className="size-4" /> Register as Donor
               </button>

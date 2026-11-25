@@ -163,7 +163,8 @@ h1, h2, h3, h4, h5, h6 {
 .tile {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) + 8px);
+  border-radius: 1.35rem;
+  overflow: hidden;
   box-shadow: var(--shadow-soft);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
@@ -268,6 +269,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-red\/10 {
   background-color: rgba(225, 29, 72, 0.1) !important;
+}
+
+.border-red\/20 {
+  border-color: rgba(225, 29, 72, 0.2) !important;
 }
 
 .text-emergency {
@@ -377,8 +382,11 @@ h1, h2, h3, h4, h5, h6 {
 .p-10 { padding: 2.5rem; }
 .whitespace-nowrap { white-space: nowrap; }
 .rounded-full { border-radius: 9999px; }
+.rounded-xl { border-radius: 0.75rem; }
 .rounded-2xl { border-radius: 1rem; }
 .rounded-3xl { border-radius: 1.5rem; }
+.rounded-4xl { border-radius: 2rem; }
+.rounded-\[1\.75rem\] { border-radius: 1.75rem; }
 .rounded-\[2\.25rem\] { border-radius: 2.25rem; }
 .relative { position: relative; }
 .absolute { position: absolute; }
@@ -424,6 +432,8 @@ button.tile {
   .sm\:text-5xl { font-size: 3rem; line-height: 1; }
   .sm\:p-7 { padding: 1.75rem; }
   .sm\:p-12 { padding: 3rem; }
+  .sm\:rounded-4xl { border-radius: 2rem; }
+  .sm\:rounded-\[2\.25rem\] { border-radius: 2.25rem; }
 }
 
 @media (min-width: 768px) {
