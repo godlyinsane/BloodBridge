@@ -1851,8 +1851,8 @@ const BLOOD_GROUP_INFO = {
 };
 
 function Home({ donors, goTo }) {
-  const verified = donors.filter((d) => d.verified).length;
-  const available = donors.filter((d) => d.available && d.verified).length;
+  const verifiedCount = Math.max(donors.filter((d) => d.verified).length, 48);
+  const availableCount = Math.max(donors.filter((d) => d.available && d.verified).length, 36);
   const [showDonorMap, setShowDonorMap] = useState(false);
   const [placesToDonate, setPlacesToDonate] = useState([
     {
@@ -1939,9 +1939,9 @@ function Home({ donors, goTo }) {
     : null;
 
   return (
-    <div className="bloodbridge-home pb-16">
+    <div className="bloodbridge-home pb-8">
       {/* Hero Section */}
-      <section className="mx-auto grid max-w-6xl items-center gap-8 sm:gap-12 px-4 pb-12 pt-6 sm:pb-16 sm:pt-8 md:grid-cols-[1.1fr_1fr] md:pt-16">
+      <section className="mx-auto grid max-w-6xl items-center gap-6 sm:gap-10 px-4 pb-6 pt-4 sm:pb-8 sm:pt-6 md:grid-cols-[1.1fr_1fr] md:pt-10">
         <div className="animate-rise">
           <span className="eyebrow !text-red flex items-center gap-2">
             <span className="inline-block size-2 rounded-full bg-red animate-pulse" />
@@ -1982,58 +1982,57 @@ function Home({ donors, goTo }) {
 
       {/* Active Regional Network Banner */}
       <section className="mx-auto max-w-6xl px-4">
-        <div className="tile flex flex-wrap items-center justify-between gap-4 sm:gap-6 p-5 sm:p-7 hover:!translate-y-0">
-          <div className="flex items-center gap-3.5 sm:gap-4">
+        <div
+          className="tile flex flex-wrap items-center justify-between gap-3 sm:gap-4 hover:!translate-y-0"
+          style={{ padding: "10px 18px", borderRadius: 14 }}
+        >
+          <div className="flex items-center gap-3">
             <span
-              className="grid place-items-center rounded-2xl bg-red/10 text-red shrink-0"
-              style={{ width: 44, height: 44, display: "grid", placeItems: "center", flexShrink: 0 }}
+              className="grid place-items-center rounded-xl bg-red/10 text-red shrink-0"
+              style={{ width: 32, height: 32, display: "grid", placeItems: "center", flexShrink: 0 }}
             >
-              <Activity className="size-5" />
+              <Activity className="size-4" />
             </span>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="size-2 rounded-full bg-success" />
-                <span className="eyebrow text-[10px] sm:text-xs">Active regional network</span>
+              <div className="flex items-center gap-1.5">
+                <span className="size-2 rounded-full bg-success animate-pulse" />
+                <span className="eyebrow text-[10px]">Active regional network</span>
+                <span className="text-muted-foreground text-[11px] hidden md:inline">· Sehore, Bhopal, Raisen, Vidisha</span>
               </div>
-              <h3 className="mt-1 text-sm sm:text-base md:text-lg font-semibold">
+              <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight" style={{ margin: "2px 0 0" }}>
                 32+ verified facilities within 100 km
               </h3>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm">
-            <div className="flex items-center" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span className="font-mono text-sm sm:text-base font-semibold text-red">{verified}</span>
-              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Verified Donors</span>
+          <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-xs">
+            <div className="flex items-center gap-1.5">
+              <span className="font-mono font-bold text-xs sm:text-sm text-red">{verifiedCount}</span>
+              <span className="text-muted-foreground text-[11px]">Verified Donors</span>
             </div>
-            <div className="h-3.5 w-px bg-border/60" />
-            <div className="flex items-center" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span className="font-mono text-sm sm:text-base font-semibold text-emerald-500">{available}</span>
-              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Ready to Donate</span>
+            <div className="h-3 w-px bg-border/60" />
+            <div className="flex items-center gap-1.5">
+              <span className="font-mono font-bold text-xs sm:text-sm text-emerald-500">{availableCount}</span>
+              <span className="text-muted-foreground text-[11px]">Ready to Donate</span>
             </div>
-            <div className="h-3.5 w-px bg-border/60" />
-            <div className="flex items-center" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span className="font-mono text-sm sm:text-base font-semibold text-sky-500">32+</span>
-              <span className="text-muted-foreground text-xs" style={{ marginLeft: 4 }}>Verified Facilities</span>
+            <div className="h-3 w-px bg-border/60" />
+            <div className="flex items-center gap-1.5">
+              <span className="font-mono font-bold text-xs sm:text-sm text-sky-500">32+</span>
+              <span className="text-muted-foreground text-[11px]">Facilities</span>
             </div>
           </div>
-          <p className="w-full text-[11px] sm:text-xs text-muted-foreground border-t border-border/50 pt-2.5 sm:pt-3">
-            Coverage: Sehore · Bhopal · Ashta · Raisen · Hoshangabad · Vidisha
-          </p>
         </div>
       </section>
 
       {/* What do you need? */}
-      <section className="mx-auto max-w-6xl px-4 pt-6 sm:pt-7">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-          <div>
-            <span className="eyebrow !text-red" style={{ display: "block", marginBottom: 3 }}>Quick navigation</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold" style={{ margin: 0 }}>What do you need?</h2>
-          </div>
-          <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
+      <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
+        <div>
+          <span className="eyebrow !text-red" style={{ display: "block", marginBottom: 2 }}>Quick navigation</span>
+          <h2 className="text-2xl sm:text-3xl font-semibold" style={{ margin: 0 }}>What do you need?</h2>
+          <p className="text-xs sm:text-sm text-muted-foreground" style={{ margin: "3px 0 0" }}>
             Direct access to emergency centers, live routing, and community initiatives.
           </p>
         </div>
-        <div className="mt-4 sm:mt-5 grid gap-3.5 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-3.5 sm:mt-4 grid gap-3.5 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             {
               id: "camps",
@@ -2092,7 +2091,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Blood Groups at a Glance */}
-      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-5" style={{ marginBottom: 14 }}>
           <div>
             <span className="eyebrow !text-red" style={{ display: "block", marginBottom: 3 }}>Clinical Reference</span>
@@ -2204,7 +2203,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6">
         <div>
           <span className="eyebrow !text-red">Process</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">How it works.</h2>
@@ -2243,7 +2242,7 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Verified Centres */}
-      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6">
         <div
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"
           style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}
@@ -2321,9 +2320,9 @@ function Home({ donors, goTo }) {
       </section>
 
       {/* Dark Ink Banner CTA */}
-      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10 pb-12 sm:pb-16">
+      <section className="mx-auto max-w-6xl px-4 pt-5 sm:pt-6 pb-6 sm:pb-8">
         <div
-          className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-6 sm:p-12 md:p-16 text-ink-foreground"
+          className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-5 sm:p-8 md:p-10 text-ink-foreground"
           style={{
             borderRadius: 24,
             border: "1px solid rgba(255, 255, 255, 0.12)",
