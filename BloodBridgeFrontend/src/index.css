@@ -337,8 +337,42 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--success) !important;
 }
 
-.bg-ink {
+.bg-ink,
+[data-ink-card],
+.theme-light .bg-ink,
+.theme-light [data-ink-card] {
   background-color: var(--ink) !important;
+  color: #ffffff !important;
+}
+
+.bg-ink h1, .bg-ink h2, .bg-ink h3, .bg-ink h4,
+[data-ink-card] h1, [data-ink-card] h2, [data-ink-card] h3, [data-ink-card] h4,
+.theme-light .bg-ink h1, .theme-light .bg-ink h2, .theme-light .bg-ink h3, .theme-light .bg-ink h4,
+.theme-light [data-ink-card] h1, .theme-light [data-ink-card] h2, .theme-light [data-ink-card] h3, .theme-light [data-ink-card] h4 {
+  color: #ffffff !important;
+}
+
+.bg-ink p,
+[data-ink-card] p,
+.theme-light .bg-ink p,
+.theme-light [data-ink-card] p {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.bg-ink .eyebrow,
+[data-ink-card] .eyebrow,
+.theme-light .bg-ink .eyebrow,
+.theme-light [data-ink-card] .eyebrow {
+  color: var(--emergency) !important;
+}
+
+.bg-ink .btn-ink,
+[data-ink-card] .btn-ink,
+.theme-light .bg-ink .btn-ink,
+.theme-light [data-ink-card] .btn-ink {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
 }
 
 .text-ink {

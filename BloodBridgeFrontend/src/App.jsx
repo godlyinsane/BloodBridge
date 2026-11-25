@@ -971,10 +971,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         background-color: #f8fafc !important;
         color: #0f172a !important;
       }
-      .theme-light .headline, .theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4 {
+      .theme-light .headline:not(.bg-ink *):not([data-ink-card] *),
+      .theme-light h1:not(.bg-ink *):not([data-ink-card] *),
+      .theme-light h2:not(.bg-ink *):not([data-ink-card] *),
+      .theme-light h3:not(.bg-ink *):not([data-ink-card] *),
+      .theme-light h4:not(.bg-ink *):not([data-ink-card] *) {
         color: #0f172a !important;
       }
-      .theme-light p {
+      .theme-light p:not(.bg-ink *):not([data-ink-card] *) {
         color: #475569 !important;
       }
 
@@ -2343,10 +2347,12 @@ function Home({ donors, goTo }) {
       {/* Dark Ink Banner CTA */}
       <section className="mx-auto max-w-6xl px-4 pt-4 sm:pt-5 pb-5 sm:pb-6">
         <div
+          data-ink-card
           className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-5 sm:p-8 md:p-10 text-ink-foreground"
           style={{
+            background: "var(--ink)",
             borderRadius: 24,
-            border: "1px solid rgba(255, 255, 255, 0.12)",
+            border: "1px solid rgba(255, 255, 255, 0.15)",
             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.4)",
             overflow: "hidden"
           }}
