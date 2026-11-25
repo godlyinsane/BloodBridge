@@ -2035,17 +2035,17 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* What do you need? */}
-      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
           <div>
             <span className="eyebrow !text-red">Quick navigation</span>
-            <h2 className="mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">What do you need?</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">What do you need?</h2>
           </div>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
             Direct access to emergency centers, live routing, and community initiatives.
           </p>
         </div>
-        <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-5 sm:mt-6 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             {
               id: "camps",
@@ -2073,18 +2073,18 @@ function Home({ donors, requests, goTo }) {
               key={c.id}
               type="button"
               onClick={c.action}
-              className="tile group flex flex-col p-7 text-left transition-all duration-200"
-              style={{ textAlign: "left", alignItems: "flex-start", width: "100%" }}
+              className="tile group flex flex-col p-5 sm:p-6 text-left transition-all duration-200"
+              style={{ textAlign: "left", alignItems: "flex-start", width: "100%", borderRadius: 20 }}
             >
               <span
                 className="grid place-items-center rounded-2xl bg-red/10 text-red group-hover:bg-red group-hover:text-white transition-colors duration-200"
-                style={{ width: 48, height: 48, display: "grid", placeItems: "center", flexShrink: 0 }}
+                style={{ width: 42, height: 42, display: "grid", placeItems: "center", flexShrink: 0 }}
               >
                 <c.icon className="size-5" />
               </span>
-              <h3 className="mt-8 text-xl font-semibold">{c.title}</h3>
-              <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{c.body}</p>
-              <div className="mt-6 flex items-center gap-2 text-sm font-medium text-red">
+              <h3 className="mt-5 text-lg sm:text-xl font-semibold">{c.title}</h3>
+              <p className="mt-2 flex-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">{c.body}</p>
+              <div className="mt-5 flex items-center gap-2 text-sm font-medium text-red">
                 <span>Open view</span>
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </div>
@@ -2094,11 +2094,11 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* Blood Groups at a Glance */}
-      <section className="mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-5" style={{ marginBottom: 16 }}>
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-5" style={{ marginBottom: 14 }}>
           <div>
             <span className="eyebrow !text-red">Clinical Reference</span>
-            <h2 className="mt-1 text-2xl sm:text-3xl font-semibold">Blood groups at a glance</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold">Blood groups at a glance</h2>
             <p className="mt-1 text-xs text-muted-foreground">
               Compatibility facts, clinical roles, and population prevalence.
             </p>
@@ -2204,27 +2204,39 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-6xl px-4 pt-10 sm:pt-14">
-        <span className="eyebrow !text-red">Process</span>
-        <h2 className="mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">How it works.</h2>
-        <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+        <div>
+          <span className="eyebrow !text-red">Process</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">How it works.</h2>
+        </div>
+        <div className="mt-4 sm:mt-5 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             { icon: Search, t: "Find", b: "Browse or search the verified facility and voluntary donor directory." },
             { icon: PhoneCall, t: "Call", b: "Confirm real-time blood group availability directly before traveling." },
             { icon: Navigation, t: "Go", b: "Open GPS directions in Google Maps and follow medical guidance." },
           ].map((s, i) => (
-            <div key={s.t} className="tile p-6 sm:p-7" style={{ borderRadius: 22, overflow: "hidden" }}>
+            <div
+              key={s.t}
+              className="tile flex flex-col justify-between"
+              style={{
+                borderRadius: 18,
+                padding: "16px 18px",
+                overflow: "hidden"
+              }}
+            >
               <div className="flex items-center justify-between">
                 <span
                   className="grid place-items-center rounded-full border border-border"
-                  style={{ width: 44, height: 44, display: "grid", placeItems: "center", flexShrink: 0 }}
+                  style={{ width: 34, height: 34, display: "grid", placeItems: "center", flexShrink: 0 }}
                 >
-                  <s.icon className="size-5 text-red" />
+                  <s.icon className="size-4 text-red" />
                 </span>
-                <span className="font-mono text-4xl font-semibold text-border">0{i + 1}</span>
+                <span className="font-mono text-xl sm:text-2xl font-semibold text-border">0{i + 1}</span>
               </div>
-              <h3 className="mt-6 sm:mt-8 text-lg font-semibold">{s.t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.b}</p>
+              <div style={{ marginTop: 12 }}>
+                <h3 className="font-semibold text-base sm:text-lg" style={{ margin: 0 }}>{s.t}</h3>
+                <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed" style={{ margin: "4px 0 0" }}>{s.b}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -2238,7 +2250,7 @@ function Home({ donors, requests, goTo }) {
         >
           <div>
             <span className="eyebrow !text-red">Direct Walk-In</span>
-            <h2 className="mt-1 text-2xl sm:text-3xl sm:text-4xl font-semibold">Donate Blood & Save Lives: Verified Centres</h2>
+            <h2 className="text-2xl sm:text-3xl sm:text-4xl font-semibold">Donate Blood & Save Lives: Verified Centres</h2>
           </div>
           <button
             type="button"
@@ -2250,9 +2262,13 @@ function Home({ donors, requests, goTo }) {
           </button>
         </div>
 
-        <div className="mt-6 sm:mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-5 sm:mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {placesToDonate.map((p, idx) => (
-            <div key={p.name || idx} className="tile flex flex-col justify-between p-5 sm:p-6" style={{ borderRadius: 22, overflow: "hidden" }}>
+            <div
+              key={p.name || idx}
+              className="tile flex flex-col justify-between"
+              style={{ borderRadius: 18, padding: "16px 18px", overflow: "hidden" }}
+            >
               <div>
                 <div className="flex items-start justify-between gap-2">
                   <span
@@ -2263,19 +2279,19 @@ function Home({ donors, requests, goTo }) {
                   </span>
                   <span className="text-xs font-mono text-muted-foreground">{p.district}</span>
                 </div>
-                <h3 className="mt-3 text-base font-semibold leading-snug">{p.name}</h3>
-                <p className="mt-2 text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                <h3 className="mt-2.5 text-base font-semibold leading-snug">{p.name}</h3>
+                <p className="mt-1.5 text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                   {p.address}
                 </p>
                 {p.openingHours && (
-                  <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                  <div className="mt-2.5 flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
                     <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     {p.openingHours}
                   </div>
                 )}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between gap-2">
+              <div className="mt-5 pt-3.5 border-t border-border flex items-center justify-between gap-2">
                 {p.phone ? (
                   <a
                     href={`tel:${p.phone.replace(/[^0-9+]/g, "")}`}
@@ -2305,11 +2321,11 @@ function Home({ donors, requests, goTo }) {
       </section>
 
       {/* Dark Ink Banner CTA */}
-      <section className="mx-auto max-w-6xl px-4 pt-10 sm:pt-12 pb-12 sm:pb-16">
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10 pb-12 sm:pb-16">
         <div
           className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-6 sm:p-12 md:p-16 text-ink-foreground"
           style={{
-            borderRadius: 28,
+            borderRadius: 24,
             border: "1px solid rgba(255, 255, 255, 0.12)",
             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.4)",
             overflow: "hidden"
