@@ -971,14 +971,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         background-color: #f8fafc !important;
         color: #0f172a !important;
       }
-      .theme-light .headline:not(.bg-ink *):not([data-ink-card] *),
-      .theme-light h1:not(.bg-ink *):not([data-ink-card] *),
-      .theme-light h2:not(.bg-ink *):not([data-ink-card] *),
-      .theme-light h3:not(.bg-ink *):not([data-ink-card] *),
-      .theme-light h4:not(.bg-ink *):not([data-ink-card] *) {
+      .theme-light .headline:not(.bg-ink *):not([data-ink-card] *):not(footer *),
+      .theme-light h1:not(.bg-ink *):not([data-ink-card] *):not(footer *),
+      .theme-light h2:not(.bg-ink *):not([data-ink-card] *):not(footer *),
+      .theme-light h3:not(.bg-ink *):not([data-ink-card] *):not(footer *),
+      .theme-light h4:not(.bg-ink *):not([data-ink-card] *):not(footer *) {
         color: #0f172a !important;
       }
-      .theme-light p:not(.bg-ink *):not([data-ink-card] *) {
+      .theme-light p:not(.bg-ink *):not([data-ink-card] *):not(footer *) {
         color: #475569 !important;
       }
 
@@ -1265,21 +1265,29 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       </div>
 
       {tab !== "admin" && (
-        <footer className="mt-24 border-t border-border bg-card" style={{ marginTop: 80, borderTop: "1px solid var(--border)", background: "var(--card)" }}>
+        <footer
+          className="mt-24 bloodbridge-persistent-footer"
+          style={{
+            marginTop: 80,
+            borderTop: "1.5px solid rgba(255, 255, 255, 0.14)",
+            background: "#0c0d11",
+            color: "#f4f4f5",
+          }}
+        >
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-3" style={{ maxWidth: "72rem", margin: "0 auto", padding: "64px 20px", display: "grid", gap: 48 }}>
             <div>
-              <div className="flex items-center gap-2 text-lg font-semibold" style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "1.25rem", fontWeight: 700 }}>
+              <div className="flex items-center gap-2 text-lg font-semibold" style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "1.25rem", fontWeight: 700, color: "#ffffff" }}>
                 <Logo size={28} /> BloodBridge
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground" style={{ margin: "16px 0", fontSize: "0.875rem", lineHeight: 1.7, color: "var(--muted-foreground)" }}>
+              <p className="mt-4 text-sm leading-relaxed" style={{ margin: "16px 0", fontSize: "0.875rem", lineHeight: 1.7, color: "#94a3b8" }}>
                 Connecting people with verified blood banks, hospitals, and emergency distribution centers to guide you when it matters most.
               </p>
-              <span className="inline-flex items-center gap-2 rounded-full bg-red/10 px-3 py-1.5 text-xs font-medium text-red" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 9999, background: "rgba(225, 29, 72, 0.1)", color: "var(--emergency)", fontSize: "0.8rem", fontWeight: 600 }}>
+              <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 9999, background: "rgba(225, 29, 72, 0.15)", color: "#f43f5e", fontSize: "0.8rem", fontWeight: 600 }}>
                 <Heart size={14} fill="currentColor" /> Every donation can make a difference
               </span>
             </div>
             <div>
-              <p className="eyebrow" style={{ margin: "0 0 16px" }}>Quick links</p>
+              <p className="eyebrow" style={{ margin: "0 0 16px", color: "#64748b" }}>Quick links</p>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12, fontSize: "0.9rem" }}>
                 {[
                   ["home", "Home"],
@@ -1290,10 +1298,12 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
                   <li key={label}>
                     <button
                       onClick={() => { setTab(to); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                      className="group inline-flex items-center gap-1 hover:text-foreground cursor-pointer"
-                      style={{ background: "none", border: "none", padding: 0, color: "var(--muted-foreground)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6, fontSize: "inherit", fontFamily: "inherit" }}
+                      className="group inline-flex items-center gap-1 cursor-pointer"
+                      style={{ background: "none", border: "none", padding: 0, color: "#cbd5e1", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6, fontSize: "inherit", fontFamily: "inherit", transition: "color 0.15s ease" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#cbd5e1")}
                     >
-                      <ChevronRight size={14} className="text-red" />
+                      <ChevronRight size={14} style={{ color: "var(--emergency)" }} />
                       <span>{label}</span>
                     </button>
                   </li>
@@ -1301,45 +1311,45 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
               </ul>
             </div>
             <div>
-              <p className="eyebrow" style={{ margin: "0 0 16px" }}>Contact us</p>
+              <p className="eyebrow" style={{ margin: "0 0 16px", color: "#64748b" }}>Contact us</p>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16, fontSize: "0.875rem" }}>
                 <li style={{ display: "flex", gap: 12 }}>
-                  <Mail size={16} className="text-red" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <Mail size={16} style={{ color: "var(--emergency)", marginTop: 2, flexShrink: 0 }} />
                   <div>
-                    <p style={{ margin: "0 0 2px", fontWeight: 600 }}>Email support</p>
-                    <a href="mailto:support.bloodbridge@gmail.com" style={{ color: "var(--muted-foreground)", textDecoration: "none" }}>
+                    <p style={{ margin: "0 0 2px", fontWeight: 600, color: "#ffffff" }}>Email support</p>
+                    <a href="mailto:support.bloodbridge@gmail.com" style={{ color: "#94a3b8", textDecoration: "none" }}>
                       support.bloodbridge@gmail.com
                     </a>
                   </div>
                 </li>
                 <li style={{ display: "flex", gap: 12 }}>
-                  <Phone size={16} className="text-red" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <Phone size={16} style={{ color: "var(--emergency)", marginTop: 2, flexShrink: 0 }} />
                   <div>
-                    <p style={{ margin: "0 0 2px", fontWeight: 600 }}>Mobile</p>
-                    <p style={{ margin: 0, color: "var(--muted-foreground)" }}>+91 9132450XXX</p>
+                    <p style={{ margin: "0 0 2px", fontWeight: 600, color: "#ffffff" }}>Mobile</p>
+                    <p style={{ margin: 0, color: "#94a3b8" }}>+91 9132450XXX</p>
                   </div>
                 </li>
                 <li style={{ display: "flex", gap: 12 }}>
-                  <MapPin size={16} className="text-red" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <MapPin size={16} style={{ color: "var(--emergency)", marginTop: 2, flexShrink: 0 }} />
                   <div>
-                    <p style={{ margin: "0 0 2px", fontWeight: 600 }}>Location</p>
-                    <p style={{ margin: 0, color: "var(--muted-foreground)" }}>VIT Bhopal University, MP</p>
+                    <p style={{ margin: "0 0 2px", fontWeight: 600, color: "#ffffff" }}>Location</p>
+                    <p style={{ margin: 0, color: "#94a3b8" }}>VIT Bhopal University, MP</p>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
-          <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "24px 20px", borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 16, fontSize: "0.8rem", color: "var(--muted-foreground)" }}>
-            <p style={{ margin: 0 }}>
+          <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "24px 20px", borderTop: "1.5px solid rgba(255, 255, 255, 0.14)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 16, fontSize: "0.8rem", color: "#94a3b8" }}>
+            <p style={{ margin: 0, color: "#94a3b8" }}>
               © 2026 BloodBridge · Made by Priyansh Bhatt for EPICS. Built with <Heart size={12} fill="currentColor" style={{ display: "inline", verticalAlign: -1, color: "var(--emergency)" }} /> to help save lives.
             </p>
             <div style={{ display: "flex", gap: 20 }}>
-              <button onClick={() => { setTab("about"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0 }}>About Us</button>
-              <button onClick={() => { setTab("privacy"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0 }}>Privacy Policy</button>
-              <button onClick={() => { setTab("terms"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0 }}>Terms &amp; Conditions</button>
+              <button onClick={() => { setTab("about"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", padding: 0 }} onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")} onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}>About Us</button>
+              <button onClick={() => { setTab("privacy"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", padding: 0 }} onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")} onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}>Privacy Policy</button>
+              <button onClick={() => { setTab("terms"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", padding: 0 }} onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")} onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}>Terms &amp; Conditions</button>
             </div>
           </div>
-          <p style={{ paddingBottom: 32, textAlign: "center", fontSize: "0.75rem", color: "var(--muted-foreground)", margin: 0 }}>
+          <p style={{ paddingBottom: 32, textAlign: "center", fontSize: "0.75rem", color: "#64748b", margin: 0 }}>
             BloodBridge is a technology platform and does not replace medical advice or professional blood-bank screening.
           </p>
         </footer>

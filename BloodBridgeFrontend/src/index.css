@@ -375,6 +375,27 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
 }
 
+/* Persistent Black Footer in both Light and Dark modes */
+footer,
+.bloodbridge-persistent-footer,
+.theme-light footer,
+.theme-light .bloodbridge-persistent-footer,
+[data-theme="light"] footer,
+[data-theme="light"] .bloodbridge-persistent-footer,
+.dark footer,
+.dark .bloodbridge-persistent-footer,
+[data-theme="dark"] footer,
+[data-theme="dark"] .bloodbridge-persistent-footer {
+  background-color: #0c0d11 !important;
+  color: #f4f4f5 !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+.bloodbridge-persistent-footer p,
+.theme-light .bloodbridge-persistent-footer p {
+  color: #94a3b8;
+}
+
 .text-ink {
   color: var(--ink) !important;
 }
