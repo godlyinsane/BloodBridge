@@ -18,8 +18,9 @@ export default function EmergencyBanner({ onFindNearestBank }) {
         {/* Left Side: Critical Dispatch with Glowing Badge & Text Shadow */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <div
-            className="flex items-center gap-2 px-2.5 py-0.5 rounded-full"
+            className="flex items-center gap-2.5 rounded-full"
             style={{
+              padding: "3.5px 14px",
               background: "rgba(255, 59, 84, 0.12)",
               border: "1px solid rgba(255, 59, 84, 0.35)",
               boxShadow: "0 0 10px rgba(255, 59, 84, 0.2)",
