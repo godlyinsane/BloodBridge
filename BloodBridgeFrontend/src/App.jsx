@@ -2138,7 +2138,7 @@ function Home({ donors, requests, goTo }) {
           </div>
         )}
 
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
           {GROUPS.map((group) => {
             const info = BLOOD_GROUP_INFO[group] || {
               badge: "Blood Group",
@@ -2150,49 +2150,51 @@ function Home({ donors, requests, goTo }) {
             return (
               <div
                 key={group}
-                className="tile flex flex-col justify-between hover:border-red/40 transition-all duration-150"
+                className="tile flex flex-col justify-between hover:border-red/50 hover:shadow-md transition-all duration-200"
                 style={{
-                  padding: "10px 13px",
-                  borderRadius: 14,
+                  padding: "18px 20px",
+                  borderRadius: 20,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  minHeight: 185,
+                  overflow: "hidden",
                 }}
               >
                 <div>
                   <div
-                    className="flex items-center justify-between gap-1.5 pb-1.5 border-b border-border/40"
+                    className="flex items-center justify-between gap-2 pb-2.5 border-b border-border/50"
                     style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
                   >
-                    <div className="flex items-center gap-1.5" style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <span className="text-base font-bold font-mono tracking-tight text-foreground">
+                    <div className="flex items-center gap-2" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span className="text-2xl sm:text-3xl font-extrabold font-mono tracking-tight text-foreground" style={{ lineHeight: 1 }}>
                         {group}
                       </span>
                       <span
-                        className="text-[9.5px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-semibold whitespace-nowrap"
-                        style={{ whiteSpace: "nowrap", fontSize: 9.5, padding: "1px 6px" }}
+                        className="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-semibold whitespace-nowrap"
+                        style={{ whiteSpace: "nowrap", fontSize: 11, padding: "2px 8px", borderRadius: 9999 }}
                       >
                         {info.badge}
                       </span>
                     </div>
                     <span
-                      className="text-[10px] font-mono text-muted-foreground whitespace-nowrap"
-                      style={{ fontSize: 10, whiteSpace: "nowrap", opacity: 0.85 }}
+                      className="text-xs font-mono text-muted-foreground whitespace-nowrap font-medium"
+                      style={{ fontSize: 12, whiteSpace: "nowrap", opacity: 0.85 }}
                     >
                       {info.prevalence}
                     </span>
                   </div>
                   <p
-                    className="text-[11px] text-muted-foreground leading-snug"
-                    style={{ margin: "6px 0 0", fontSize: 11, lineHeight: 1.4 }}
+                    className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
+                    style={{ margin: "12px 0 0", fontSize: "0.85rem", lineHeight: 1.5 }}
                   >
                     {info.desc}
                   </p>
                 </div>
 
                 <div
-                  className="mt-2 pt-1.5 border-t border-border/40 text-[10px] font-mono text-muted-foreground flex justify-between items-center"
-                  style={{ marginTop: 8, paddingTop: 6, borderTop: "1px solid var(--border)", fontSize: 10, display: "flex", justifyContent: "space-between" }}
+                  className="mt-4 pt-2.5 border-t border-border/50 text-xs font-mono text-muted-foreground flex justify-between items-center"
+                  style={{ marginTop: 14, paddingTop: 10, borderTop: "1px solid var(--border)", fontSize: 12, display: "flex", justifyContent: "space-between" }}
                 >
                   <span>Gives: <strong className="text-foreground font-semibold">{info.givesTo}</strong></span>
                   <span>Gets: <strong className="text-foreground font-semibold">{info.receivesFrom}</strong></span>
