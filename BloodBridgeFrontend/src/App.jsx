@@ -2314,6 +2314,12 @@ function CampsAndBanksView({ notify, goTo }) {
 
   useEffect(() => { loadCamps(); loadBanks(); }, [loadCamps, loadBanks]);
 
+    const dateValue = (value) => {
+    if (!value) return null;
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+  };
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const upcomingCount = camps.filter((c) => { const d = dateValue(c.date); return d && d >= today; }).length;
@@ -2372,7 +2378,7 @@ function CampsAndBanksView({ notify, goTo }) {
   const panel = { border: "1px solid var(--border)", borderRadius: 18, background: "var(--card)", boxShadow: "var(--shadow-soft)", color: "var(--foreground)" };
   const buttonStyle = (active) => ({ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 13px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : "var(--foreground)", background: active ? "linear-gradient(135deg, " + COLORS.crimson + ", " + COLORS.crimsonDeep + ")" : "var(--secondary)", border: active ? "1px solid rgba(255,90,110,0.35)" : "1px solid var(--border)", boxShadow: active ? "0 8px 22px rgba(255,59,84,0.18)" : "none", textDecoration: "none" });
   const field = { ...inputStyle, width: "100%", boxSizing: "border-box" };
-  const changeTab = (tab) => { setDirectoryTab(tab); setQuery(""); setShowForm(false); setShowBankForm(false); };
+  const changeTab = (tab) => { setDirectoryTab(tab); setQuery(""); };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 25 }}>
