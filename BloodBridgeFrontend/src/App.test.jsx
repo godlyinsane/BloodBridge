@@ -13,7 +13,7 @@ window.IntersectionObserver = MockIntersectionObserver;
 
 beforeEach(() => {
   localStorage.clear();
-  window.history.pushState({}, '', '/admin');
+  window.history.pushState({}, '', '/');
   global.fetch = vi.fn().mockResolvedValue({
     ok: true,
     json: async () => [],
@@ -26,14 +26,14 @@ afterEach(() => {
   window.history.pushState({}, '', '/');
 });
 
-test('opens the dedicated admin route at the admin login gate', () => {
+test('renders brand title and hero section', () => {
   render(<App />);
-  expect(screen.getByText('Admin access')).toBeInTheDocument();
-  expect(screen.getByText(/Restricted to authorized administrators only/i)).toBeInTheDocument();
+  const brandElements = screen.getAllByText(/BloodBridge/i);
+  expect(brandElements.length).toBeGreaterThan(0);
+  expect(screen.getByText(/lifeline/i)).toBeInTheDocument();
 });
 
 test('renders theme toggle and toggles between dark and light mode', async () => {
-  window.history.pushState({}, '', '/');
   render(<App />);
 
   const themeToggle = screen.getByRole('button', { name: /switch to (light|dark) mode/i });
@@ -48,12 +48,24 @@ test('renders theme toggle and toggles between dark and light mode', async () =>
   expect(themeToggle).toHaveTextContent(/Dark/i);
 });
 
-test('loads /facilities directly when url starts at /facilities', () => {
+test('loads /facilities directly when url starts at /facilities', async () => {
   window.history.pushState({}, '', '/facilities');
-  render(<App />);
+  await act(async () => {
+    render(<App />);
+  });
 
-  // Should have "Blood Facilities" nav link active or facilities view content
   const facilitiesNav = screen.getByRole('link', { name: /Blood Facilities/i });
   expect(facilitiesNav).toBeInTheDocument();
   expect(facilitiesNav).toHaveClass('active');
+});
+
+test('loads /about directly when url starts at /about', async () => {
+  window.history.pushState({}, '', '/about');
+  await act(async () => {
+    render(<App />);
+  });
+
+  const aboutNav = screen.getByRole('link', { name: /About/i });
+  expect(aboutNav).toBeInTheDocument();
+  expect(aboutNav).toHaveClass('active');
 });
