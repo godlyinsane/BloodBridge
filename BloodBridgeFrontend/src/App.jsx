@@ -4,7 +4,7 @@ import {
   Heart, MapPin, ShieldCheck, Bell, Activity, Droplet,
   Search, ArrowRight, Clock3, Calendar, Building2,
   ChevronRight, Info, Mail, Navigation, Compass,
-  Phone, PhoneCall, Sun, Moon, LocateFixed, Hospital, Sparkles, HeartHandshake, CheckCircle2, ShieldAlert
+  Phone, PhoneCall, Sun, Moon, LocateFixed, Hospital, Sparkles, HeartHandshake, CheckCircle2, ShieldAlert, Users, FileText, XCircle
 } from "lucide-react";
 import EmergencyBanner from "./EmergencyBanner";
 import NearestBloodBankMap from "./NearestBloodBankMap";
