@@ -1561,7 +1561,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                 { name: "Deeptanshu", role: "Overall Review & QA", dot: "#A78BFA" },
                 { name: "Krishna Thakkar", role: "Project Report & Documentation", dot: "#FBBF24" },
                 { name: "Abhijit Chauhan", role: "Preliminary Testing & Feedback", dot: "#F472B6" },
-                { name: "Jayesh Joshi", role: "General Coordination & Support", dot: "#FB7185" },
+                { name: "Jayesh Joshi", role: "Bug Hunting & Testing", dot: "#FB7185" },
               ].map((member) => (
                 <div
                   key={member.name}
