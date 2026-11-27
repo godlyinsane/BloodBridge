@@ -1709,11 +1709,6 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
           ))}
         </div>
       </>}
-      {page === "terms" && (
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24, maxWidth: 740, marginLeft: "auto", marginRight: "auto" }}>
-          <button onClick={() => goTo("about")} style={{ border: "1px solid " + line, borderRadius: 10, background: "transparent", color: ink, fontWeight: 700, padding: "12px 18px", cursor: "pointer" }}>About BloodBridge</button>
-        </div>
-      )}
     </div>
   );
 }
