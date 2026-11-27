@@ -871,6 +871,16 @@ a,
   .home-network-banner {
     padding: 14px 16px !important;
   }
+
+  .emergency-banner-inner {
+    justify-content: center !important;
+  }
+
+  .emergency-banner-left,
+  .emergency-banner-actions {
+    width: 100% !important;
+    justify-content: center !important;
+  }
 }
 
 /* Ultra-compact devices (<= 420px) */

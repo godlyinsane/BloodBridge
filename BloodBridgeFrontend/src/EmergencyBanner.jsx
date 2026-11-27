@@ -16,7 +16,7 @@ export default function EmergencyBanner({ onFindNearestBank }) {
       }}
     >
       <div
-        className="mx-auto flex max-w-6xl flex-wrap items-center justify-between text-xs"
+        className="mx-auto flex max-w-6xl flex-wrap items-center justify-between text-xs emergency-banner-inner"
         style={{
           maxWidth: "72rem",
           margin: "0 auto",
@@ -29,7 +29,7 @@ export default function EmergencyBanner({ onFindNearestBank }) {
         }}
       >
         {/* Left Side: Critical Dispatch with Glowing Badge & Text Shadow */}
-        <div className="flex items-center shrink-0" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div className="flex items-center shrink-0 emergency-banner-left" style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div
             className="flex items-center rounded-full"
             style={{
@@ -72,7 +72,7 @@ export default function EmergencyBanner({ onFindNearestBank }) {
         </div>
 
         {/* Right Side: Bold, Shadowed Action Buttons */}
-        <div className="flex items-center flex-wrap" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+        <div className="flex items-center flex-wrap emergency-banner-actions" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
           <a
             href="tel:108"
             aria-label="Call InstAmbulance 108"
