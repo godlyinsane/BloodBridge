@@ -69,3 +69,18 @@ test('loads /about directly when url starts at /about', async () => {
   expect(aboutNav).toBeInTheDocument();
   expect(aboutNav).toHaveClass('active');
 });
+
+test('loads /privacy and /terms without crashing', async () => {
+  window.history.pushState({}, '', '/privacy');
+  await act(async () => {
+    render(<App />);
+  });
+  expect(screen.getByRole('heading', { name: /Privacy Policy/i })).toBeInTheDocument();
+
+  cleanup();
+  window.history.pushState({}, '', '/terms');
+  await act(async () => {
+    render(<App />);
+  });
+  expect(screen.getByRole('heading', { name: /Terms of Service/i })).toBeInTheDocument();
+});
