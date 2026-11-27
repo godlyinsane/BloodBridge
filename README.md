@@ -2,7 +2,7 @@
 
 > A modern, clean full-stack web platform connecting people with verified blood banks, hospitals, and emergency distribution centers across India.
 
-**Made by Priyansh Bhatt for EPICS.**
+**Developed by Priyansh Bhatt for EPICS.**
 
 ---
 

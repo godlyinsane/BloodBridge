@@ -1195,7 +1195,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
           </div>
           <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "24px 20px", borderTop: "1.5px solid rgba(255, 255, 255, 0.14)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 16, fontSize: "0.8rem", color: "#94a3b8" }}>
             <p style={{ margin: 0, color: "#94a3b8" }}>
-              © 2026 BloodBridge · Made by Priyansh Bhatt for EPICS. Built with <Heart size={12} fill="currentColor" style={{ display: "inline", verticalAlign: -1, color: "var(--emergency)" }} /> to help save lives.
+              © 2026 BloodBridge · Developed by Priyansh Bhatt for EPICS. Built with <Heart size={12} fill="currentColor" style={{ display: "inline", verticalAlign: -1, color: "var(--emergency)" }} /> to help save lives.
             </p>
             <div style={{ display: "flex", gap: 20 }}>
               <button onClick={() => { setTab("about"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", padding: 0 }} onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")} onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}>About Us</button>
@@ -1547,30 +1547,40 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                 color: ink,
               }}
             >
-              Made by <span style={{ color: COLORS.crimson }}>Priyansh Bhatt</span> for EPICS
+              Developed by <span style={{ color: COLORS.crimson }}>Priyansh Bhatt</span> for EPICS
             </h2>
 
             <p style={{ fontSize: 16.5, color: muted, maxWidth: 580, margin: "0 auto 28px", lineHeight: 1.65 }}>
               Engineering Projects in Community Service (EPICS) · School of Computing Science and Engineering, VIT Bhopal University.
             </p>
 
-            <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: 14 }}>
-              <div
-                className="about-author-pill"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "12px 24px",
-                  borderRadius: 20,
-                  background: light ? "#f9fafb" : "rgba(255,255,255,0.04)",
-                  border: `1px solid ${light ? "rgba(15, 23, 42, 0.2)" : "rgba(255,255,255,0.08)"}`,
-                }}
-              >
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#34D399" }} />
-                <span style={{ fontSize: 15, fontWeight: 750, color: ink }}>Priyansh Bhatt</span>
-                <span style={{ fontSize: 13, color: muted }}>· Lead Developer &amp; Researcher</span>
-              </div>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, maxWidth: 880, margin: "0 auto" }}>
+              {[
+                { name: "Priyansh Bhatt", role: "Lead Developer & Researcher", dot: "#34D399" },
+                { name: "Varun Kumar", role: "Presentation & Pitch Lead", dot: "#38BDF8" },
+                { name: "Deeptanshu", role: "Overall Review & QA", dot: "#A78BFA" },
+                { name: "Krishna Thakkar", role: "Project Report & Documentation", dot: "#FBBF24" },
+                { name: "Abhijit Chauhan", role: "Data Curation & Field Research", dot: "#F472B6" },
+                { name: "Jayesh Joshi", role: "Bug Tracking & Testing", dot: "#FB7185" },
+              ].map((member) => (
+                <div
+                  key={member.name}
+                  className="about-author-pill"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    padding: "11px 20px",
+                    borderRadius: 20,
+                    background: light ? "#f9fafb" : "rgba(255,255,255,0.04)",
+                    border: `1px solid ${light ? "rgba(15, 23, 42, 0.2)" : "rgba(255,255,255,0.08)"}`,
+                  }}
+                >
+                  <div style={{ width: 9, height: 9, borderRadius: "50%", background: member.dot, flexShrink: 0 }} />
+                  <span style={{ fontSize: 14.5, fontWeight: 750, color: ink }}>{member.name}</span>
+                  <span style={{ fontSize: 12.5, color: muted }}>· {member.role}</span>
+                </div>
+              ))}
             </div>
 
             <div style={{ marginTop: 32, display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
