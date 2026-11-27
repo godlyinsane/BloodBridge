@@ -224,6 +224,17 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-lift);
 }
 
+.nearest-bank-card {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nearest-bank-card:hover {
+  border-color: var(--emergency) !important;
+  box-shadow: var(--shadow-lift) !important;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -697,5 +708,182 @@ input:focus, select:focus, textarea:focus {
 @media (min-width: 768px) and (max-width: 1024px) {
   .hero-art-container {
     max-width: 360px !important;
+  }
+}
+
+/* =================================================================
+   Cross-Device Mobile, Tablet & Touch Optimizations
+   (Strictly scoped to <= 1024px / touchscreens so PC layout is untouched)
+   ================================================================= */
+
+/* Prevent tap highlight flash & 300ms delay across iOS / Android */
+button,
+a,
+[role="button"],
+[role="link"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent sticky :hover states on touchscreens */
+@media (hover: none), (pointer: coarse) {
+  .tile:hover {
+    transform: none;
+    box-shadow: var(--shadow-soft);
+  }
+  .nearest-bank-card:hover {
+    border-color: var(--border) !important;
+    box-shadow: var(--shadow-soft) !important;
+  }
+  .btn:hover,
+  .btn-primary:hover,
+  .btn-ghost:hover {
+    transform: none;
+  }
+}
+
+/* Prevent iOS Safari auto-zoom on form input focus */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .bloodbridge-persistent-footer > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding: 36px 16px !important;
+  }
+
+  .bloodbridge-persistent-footer > div:nth-child(2) {
+    padding: 20px 16px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .bloodbridge-persistent-footer > p:last-child {
+    padding: 0 16px calc(28px + env(safe-area-inset-bottom, 0px)) !important;
+    text-align: left !important;
+  }
+}
+
+/* Clean search pill focus without clipped inner outline */
+.nearest-search-input:focus {
+  outline: none !important;
+}
+
+.nearest-search-pill:focus-within {
+  border-color: var(--emergency);
+  box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.16);
+}
+
+/* Small & standard smartphones (<= 640px) */
+@media (max-width: 640px) {
+  .px-4,
+  .px-5 {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+  }
+
+  .about-hero-card {
+    padding: 28px 18px !important;
+    border-radius: 22px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .about-hero-card h1 {
+    font-size: clamp(26px, 7.5vw, 34px) !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.12 !important;
+  }
+
+  .about-bento-card {
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .about-quote-card,
+  .about-credit-card {
+    padding: 24px 18px !important;
+    border-radius: 22px !important;
+  }
+
+  .about-author-pill {
+    padding: 10px 16px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-align: center !important;
+  }
+
+  .facilities-hero-card {
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
+  }
+
+  .facilities-hero-pills,
+  .facilities-section-pills {
+    width: 100% !important;
+  }
+
+  .facilities-hero-pills > button,
+  .facilities-section-pills > button {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+  }
+
+  .facilities-filter-row {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    max-width: 100%;
+  }
+
+  .facilities-filter-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .facilities-filter-row > * {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .facilities-card {
+    padding: 16px !important;
+  }
+
+  .facilities-camp-inner {
+    padding: 16px !important;
+  }
+
+  .nearest-hero-card {
+    padding: 18px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .hero-art-container {
+    max-width: 280px !important;
+  }
+
+  .home-network-banner {
+    padding: 14px 16px !important;
+  }
+}
+
+/* Ultra-compact devices (<= 420px) */
+@media (max-width: 420px) {
+  .facilities-card-actions {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Ultra-compact devices (<= 380px, e.g. iPhone SE 1st gen / Galaxy Fold cover) */
+@media (max-width: 380px) {
+  .emergency-banner-btn {
+    padding: 4px 8px !important;
+    font-size: 10.5px !important;
   }
 }

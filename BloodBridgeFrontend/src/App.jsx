@@ -668,7 +668,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         .bloodbridge-content h1 { font-size: clamp(28px, 8vw, 38px) !important; line-height: 1.12 !important; overflow-wrap: anywhere; }
         .bloodbridge-content h2 { overflow-wrap: anywhere; }
         .bloodbridge-content input, .bloodbridge-content select, .bloodbridge-content textarea { min-width: 0; max-width: 100%; font-size: 16px !important; }
-        .bloodbridge-content button { min-height: 42px; max-width: 100%; }
+        .bloodbridge-content button { max-width: 100%; }
         .bloodbridge-content table { min-width: 680px; }
         .bloodbridge-content [style*="grid-template-columns"] { min-width: 0; }
         .bloodbridge-content [style*="gap: 26px"] { gap: 14px !important; }
@@ -687,7 +687,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         .bloodbridge-content p, .bloodbridge-content label, .bloodbridge-content h1,
         .bloodbridge-content h2, .bloodbridge-content h3, .bloodbridge-content span,
         .bloodbridge-content button, .bloodbridge-content a {
-          overflow-wrap: break-word; word-break: normal; hyphens: auto;
+          overflow-wrap: break-word; word-break: normal; hyphens: none;
         }
         .bloodbridge-content .home-hero {
           grid-template-columns: minmax(0, 1fr) !important; gap: 22px !important;
@@ -725,8 +725,10 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         }
         .bloodbridge-content .recipient-layout .bloodbridge-map, .bloodbridge-content .recipient-layout iframe { max-width: 100%; }
       }
+      @media (max-width: 640px) {
+        .grid2 { grid-template-columns: minmax(0, 1fr) !important; }
+      }
       @media (max-width: 390px) {
-        .grid2 { grid-template-columns: 1fr !important; }
         .bloodbridge-nav { gap: 15px !important; }
         .navbtn { font-size: 12.5px !important; }
       }
@@ -1259,9 +1261,10 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
   return (
     <div style={{ color: ink, paddingBottom: 20 }}>
       {page === "about" && (
-        <div style={{ maxWidth: 1040, margin: "0 auto", padding: "10px 0 40px" }}>
+        <div className="about-page-wrap" style={{ maxWidth: 1040, margin: "0 auto", padding: "10px 0 40px" }}>
           {/* Apple-style Hero Showcase */}
           <section
+            className="tile nearest-bank-card about-hero-card"
             style={{
               position: "relative",
               textAlign: "center",
@@ -1271,7 +1274,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
               background: light
                 ? "radial-gradient(circle at 50% 0%, #ffffff 0%, #f4f6fa 100%)"
                 : "radial-gradient(circle at 50% -20%, rgba(255, 59, 84, 0.18) 0%, rgba(34, 211, 238, 0.08) 50%, rgba(13, 16, 23, 0.95) 100%)",
-              border: `1px solid ${light ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.08)"}`,
+              border: `1px solid ${light ? "rgba(15, 23, 42, 0.22)" : "rgba(255,255,255,0.08)"}`,
               boxShadow: light ? "0 20px 60px rgba(0,0,0,0.04)" : "0 30px 80px rgba(0,0,0,0.6)",
               marginBottom: 32,
             }}
@@ -1298,7 +1301,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                   padding: "7px 18px",
                   borderRadius: 999,
                   background: light ? "rgba(255,59,84,0.08)" : "rgba(255,59,84,0.12)",
-                  border: `1px solid ${light ? "rgba(255,59,84,0.2)" : "rgba(255,59,84,0.3)"}`,
+                  border: `1px solid ${light ? "rgba(15, 23, 42, 0.24)" : "rgba(255,59,84,0.3)"}`,
                   color: "#ff6579",
                   fontSize: 12.5,
                   fontWeight: 800,
@@ -1349,14 +1352,15 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
           </section>
 
           {/* 3 Large Apple-style Bento Highlights */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))", gap: 20, marginBottom: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 290px), 1fr))", gap: 20, marginBottom: 32 }}>
             {/* Bento Card 1: The Mission */}
             <motion.div
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
+              className="nearest-bank-card about-bento-card"
               style={{
                 background: light ? "#ffffff" : "rgba(255,255,255,0.035)",
-                border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                border: `1px solid ${light ? "rgba(15, 23, 42, 0.2)" : "rgba(255,255,255,0.08)"}`,
                 borderRadius: 26,
                 padding: "36px 30px",
                 display: "flex",
@@ -1370,7 +1374,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                   height: 52,
                   borderRadius: 16,
                   background: "linear-gradient(135deg, rgba(255,59,84,0.2), rgba(255,59,84,0.05))",
-                  border: "1px solid rgba(255,59,84,0.3)",
+                  border: `1px solid ${light ? "rgba(15, 23, 42, 0.24)" : "rgba(255,59,84,0.3)"}`,
                   display: "grid",
                   placeItems: "center",
                   color: COLORS.crimson,
@@ -1389,11 +1393,12 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
 
             {/* Bento Card 2: The Architecture */}
             <motion.div
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
+              className="nearest-bank-card about-bento-card"
               style={{
                 background: light ? "#ffffff" : "rgba(255,255,255,0.035)",
-                border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                border: `1px solid ${light ? "rgba(15, 23, 42, 0.2)" : "rgba(255,255,255,0.08)"}`,
                 borderRadius: 26,
                 padding: "36px 30px",
                 display: "flex",
@@ -1407,7 +1412,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                   height: 52,
                   borderRadius: 16,
                   background: "linear-gradient(135deg, rgba(34,211,238,0.2), rgba(34,211,238,0.05))",
-                  border: "1px solid rgba(34,211,238,0.3)",
+                  border: `1px solid ${light ? "rgba(15, 23, 42, 0.24)" : "rgba(34,211,238,0.3)"}`,
                   display: "grid",
                   placeItems: "center",
                   color: COLORS.cyan,
@@ -1426,11 +1431,12 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
 
             {/* Bento Card 3: The Geographic Scope */}
             <motion.div
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
+              className="nearest-bank-card about-bento-card"
               style={{
                 background: light ? "#ffffff" : "rgba(255,255,255,0.035)",
-                border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                border: `1px solid ${light ? "rgba(15, 23, 42, 0.2)" : "rgba(255,255,255,0.08)"}`,
                 borderRadius: 26,
                 padding: "36px 30px",
                 display: "flex",
@@ -1444,7 +1450,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                   height: 52,
                   borderRadius: 16,
                   background: "linear-gradient(135deg, rgba(52,211,153,0.2), rgba(52,211,153,0.05))",
-                  border: "1px solid rgba(52,211,153,0.3)",
+                  border: `1px solid ${light ? "rgba(15, 23, 42, 0.24)" : "rgba(52,211,153,0.3)"}`,
                   display: "grid",
                   placeItems: "center",
                   color: COLORS.good,
@@ -1464,6 +1470,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
 
           {/* Apple-style Editorial Quote / Statement Section */}
           <section
+            className="tile nearest-bank-card about-quote-card"
             style={{
               position: "relative",
               borderRadius: 30,
@@ -1471,7 +1478,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
               background: light
                 ? "linear-gradient(135deg, #fff5f6 0%, #ffffff 100%)"
                 : "linear-gradient(135deg, rgba(255,59,84,0.1) 0%, rgba(18,22,30,0.8) 100%)",
-              border: `1.5px solid ${light ? "rgba(255,59,84,0.2)" : "rgba(255,59,84,0.25)"}`,
+              border: `1.5px solid ${light ? "rgba(15, 23, 42, 0.24)" : "rgba(255,59,84,0.25)"}`,
               marginBottom: 32,
               textAlign: "left",
             }}
@@ -1500,9 +1507,10 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
 
           {/* Designer / Author Signature Showcase — Apple Style Credit */}
           <section
+            className="tile nearest-bank-card about-credit-card"
             style={{
               background: light ? "#ffffff" : "rgba(20, 24, 34, 0.75)",
-              border: `1px solid ${light ? "#e2e6ec" : "rgba(255,255,255,0.09)"}`,
+              border: `1px solid ${light ? "rgba(15, 23, 42, 0.22)" : "rgba(255,255,255,0.09)"}`,
               borderRadius: 30,
               padding: "clamp(32px, 5vw, 48px) clamp(20px, 4vw, 36px)",
               textAlign: "center",
@@ -1517,7 +1525,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                 padding: "7px 16px",
                 borderRadius: 999,
                 background: "rgba(255,59,84,0.12)",
-                border: "1px solid rgba(255,59,84,0.3)",
+                border: `1px solid ${light ? "rgba(15, 23, 42, 0.24)" : "rgba(255,59,84,0.3)"}`,
                 color: "#ff7085",
                 fontSize: 12.5,
                 fontWeight: 800,
@@ -1548,6 +1556,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
 
             <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: 14 }}>
               <div
+                className="about-author-pill"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -1555,7 +1564,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                   padding: "12px 24px",
                   borderRadius: 20,
                   background: light ? "#f9fafb" : "rgba(255,255,255,0.04)",
-                  border: `1px solid ${light ? "#e5e7eb" : "rgba(255,255,255,0.08)"}`,
+                  border: `1px solid ${light ? "rgba(15, 23, 42, 0.2)" : "rgba(255,255,255,0.08)"}`,
                 }}
               >
                 <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#34D399" }} />
@@ -1586,6 +1595,7 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
                   fontSize: 15,
                   padding: "13px 24px",
                   borderRadius: 14,
+                  ...(light ? { border: "1px solid rgba(15, 23, 42, 0.26)" } : {}),
                 }}
               >
                 <Navigation size={18} />
@@ -1879,8 +1889,8 @@ function Home({ goTo }) {
       {/* Active Regional Network Banner */}
       <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(24px, 3.5vw, 36px)" }}>
         <div
-          className="tile flex flex-wrap items-center justify-between gap-3 hover:!translate-y-0"
-          style={{ padding: "8px 16px", borderRadius: 14 }}
+          className="tile home-network-banner flex flex-wrap items-center justify-between gap-3 hover:!translate-y-0"
+          style={{ padding: "12px 20px", borderRadius: 16 }}
         >
           <div className="flex items-center gap-2.5">
             <span
@@ -1921,7 +1931,7 @@ function Home({ goTo }) {
 
       {/* What do you need? */}
       <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-1.5 mb-3">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-1.5" style={{ marginBottom: 20 }}>
           <div>
             <span className="eyebrow !text-red block mb-1">Quick navigation</span>
             <h2 className="text-2xl sm:text-3xl font-semibold leading-tight text-foreground m-0">What do you need?</h2>
@@ -1958,14 +1968,14 @@ function Home({ goTo }) {
               key={c.id}
               type="button"
               onClick={c.action}
-              className="tile group flex flex-col justify-between text-left transition-all duration-200"
+              className="tile nearest-bank-card group flex flex-col justify-between text-left transition-all duration-200"
               style={{
                 textAlign: "left",
                 alignItems: "flex-start",
                 width: "100%",
-                borderRadius: 16,
-                padding: "14px 16px",
-                minHeight: 120,
+                borderRadius: 18,
+                padding: "18px 20px",
+                minHeight: 128,
                 overflow: "hidden",
               }}
             >
@@ -1990,7 +2000,7 @@ function Home({ goTo }) {
 
       {/* Blood Groups at a Glance */}
       <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3.5">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3" style={{ marginBottom: 22 }}>
           <div>
             <span className="eyebrow !text-red block mb-1">Clinical Reference</span>
             <h2 className="text-2xl sm:text-3xl font-semibold leading-tight m-0">Blood groups at a glance</h2>
@@ -2020,7 +2030,7 @@ function Home({ goTo }) {
             return (
               <div
                 key={group}
-                className="tile flex flex-col justify-between hover:border-red/50 hover:shadow-md transition-all duration-200"
+                className="tile nearest-bank-card flex flex-col justify-between transition-all duration-200"
                 style={{
                   padding: "20px 22px",
                   borderRadius: 20,
@@ -2038,7 +2048,8 @@ function Home({ goTo }) {
                         {group}
                       </span>
                       <span
-                        className="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-red/10 text-red border border-red/20 font-bold shrink-0"
+                        className="text-[11px] font-mono uppercase tracking-wider rounded-full bg-red/10 text-red border border-red/20 font-bold shrink-0"
+                        style={{ padding: "5px 12px", borderRadius: 9999, lineHeight: 1.2 }}
                       >
                         {info.badge}
                       </span>
@@ -2062,11 +2073,11 @@ function Home({ goTo }) {
                 >
                   <div className="flex items-center justify-between gap-1.5">
                     <span className="text-[11px]">Gives to:</span>
-                    <strong className="text-foreground font-bold px-1.5 py-0.5 rounded bg-muted/60 text-[11px]">{info.givesTo}</strong>
+                    <strong className="text-foreground font-bold rounded bg-muted/60 text-[11px]" style={{ padding: "4px 10px", borderRadius: 8 }}>{info.givesTo}</strong>
                   </div>
                   <div className="flex items-center justify-between gap-1.5">
                     <span className="text-[11px]">Gets from:</span>
-                    <strong className="text-foreground font-bold px-1.5 py-0.5 rounded bg-muted/60 text-[11px]">{info.receivesFrom}</strong>
+                    <strong className="text-foreground font-bold rounded bg-muted/60 text-[11px]" style={{ padding: "4px 10px", borderRadius: 8 }}>{info.receivesFrom}</strong>
                   </div>
                 </div>
               </div>
@@ -2077,11 +2088,11 @@ function Home({ goTo }) {
 
       {/* How it works */}
       <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
-        <div>
+        <div style={{ marginBottom: 20 }}>
           <span className="eyebrow !text-red block mb-1">Process</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight m-0">How it works.</h2>
         </div>
-        <div className="mt-3.5 sm:mt-4 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             { icon: Search, t: "Find", b: "Browse or search verified hospitals, blood banks, and walk-in facilities." },
             { icon: PhoneCall, t: "Call", b: "Confirm real-time blood group availability directly before traveling." },
@@ -2089,10 +2100,10 @@ function Home({ goTo }) {
           ].map((s, i) => (
             <div
               key={s.t}
-              className="tile flex flex-col justify-between"
+              className="tile nearest-bank-card flex flex-col justify-between"
               style={{
-                borderRadius: 16,
-                padding: "14px 16px",
+                borderRadius: 18,
+                padding: "18px 20px",
                 overflow: "hidden"
               }}
             >
@@ -2117,8 +2128,8 @@ function Home({ goTo }) {
       {/* Verified Centres */}
       <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)" }}>
         <div
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3.5"
-          style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"
+          style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12, marginBottom: 22 }}
         >
           <div>
             <span className="eyebrow !text-red block mb-1">Direct Walk-In</span>
@@ -2138,14 +2149,14 @@ function Home({ goTo }) {
           {placesToDonate.map((p, idx) => (
             <div
               key={p.name || idx}
-              className="tile flex flex-col justify-between"
-              style={{ borderRadius: 18, padding: "16px 18px", overflow: "hidden" }}
+              className="tile nearest-bank-card flex flex-col justify-between"
+              style={{ borderRadius: 18, padding: "20px 22px", overflow: "hidden" }}
             >
               <div>
                 <div className="flex items-start justify-between gap-2">
                   <span
-                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red/10 text-red border border-red/20"
-                    style={{ borderRadius: 9999 }}
+                    className="inline-flex items-center rounded-full text-xs font-medium bg-red/10 text-red border border-red/20"
+                    style={{ borderRadius: 9999, padding: "5px 12px", lineHeight: 1.2 }}
                   >
                     {p.category || "Verified Centre"}
                   </span>
@@ -2196,10 +2207,11 @@ function Home({ goTo }) {
       <section className="mx-auto max-w-6xl px-4" style={{ marginTop: "clamp(48px, 6vw, 68px)", marginBottom: "clamp(40px, 5vw, 60px)" }}>
         <div
           data-ink-card
-          className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-5 sm:p-8 md:p-10 text-ink-foreground"
+          className="tile nearest-bank-card relative overflow-hidden rounded-3xl sm:rounded-4xl bg-ink p-5 sm:p-8 md:p-10 text-ink-foreground"
           style={{
             background: "var(--ink)",
             borderRadius: 24,
+            padding: "clamp(24px, 4.5vw, 44px)",
             border: "1px solid rgba(255, 255, 255, 0.15)",
             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.4)",
             overflow: "hidden"
@@ -2376,15 +2388,16 @@ function CampsAndBanksView({ notify, goTo }) {
   });
 
   const panel = { border: "1px solid var(--border)", borderRadius: 18, background: "var(--card)", boxShadow: "var(--shadow-soft)", color: "var(--foreground)" };
-  const buttonStyle = (active) => ({ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 13px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : "var(--foreground)", background: active ? "linear-gradient(135deg, " + COLORS.crimson + ", " + COLORS.crimsonDeep + ")" : "var(--secondary)", border: active ? "1px solid rgba(255,90,110,0.35)" : "1px solid var(--border)", boxShadow: active ? "0 8px 22px rgba(255,59,84,0.18)" : "none", textDecoration: "none" });
+  const buttonStyle = (active) => ({ position: "relative", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 13px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : "var(--foreground)", background: active ? "linear-gradient(135deg, " + COLORS.crimson + ", " + COLORS.crimsonDeep + ")" : "var(--secondary)", border: active ? "1px solid rgba(255,90,110,0.35)" : "1px solid var(--border)", boxShadow: active ? "0 8px 22px rgba(255,59,84,0.18)" : "none", textDecoration: "none", transition: "color 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, transform 0.18s ease" });
+  const tabPillBtnStyle = (active) => ({ position: "relative", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7, borderRadius: 12, padding: "10px 14px", fontSize: 12, fontWeight: 750, cursor: "pointer", color: active ? "#fff" : "var(--foreground)", background: "transparent", border: "1px solid transparent", textDecoration: "none", transition: "color 0.22s ease" });
   const field = { ...inputStyle, width: "100%", boxSizing: "border-box" };
   const changeTab = (tab) => { setDirectoryTab(tab); setQuery(""); };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 25 }}>
-      <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-        style={{ ...panel, position: "relative", overflow: "hidden", padding: "clamp(22px, 4vw, 38px)" }}>
-        <div aria-hidden="true" style={{ position: "absolute", width: 5, left: 0, top: 0, bottom: 0, background: COLORS.crimson }} />
+      <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -4 }}
+        className="tile nearest-bank-card facilities-hero-card"
+        style={{ borderRadius: 18, color: "var(--foreground)", position: "relative", overflow: "hidden", padding: "clamp(22px, 4vw, 38px)" }}>
         <div style={{ position: "relative", zIndex: 1, maxWidth: 720 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 7, border: "1px solid rgba(255,90,110,0.25)", background: "rgba(255,59,84,0.08)", color: "#ff8797", borderRadius: 30, padding: "7px 11px", fontSize: 10, fontWeight: 850, letterSpacing: 1, textTransform: "uppercase" }}>
             <MapPin size={13} /> EMERGENCY &amp; RECIPIENT FACILITIES DIRECTORY
@@ -2396,8 +2409,32 @@ function CampsAndBanksView({ notify, goTo }) {
             Find emergency blood facilities, hospital blood banks, and verified distribution centers across India. Browse contact details, check locations, or call direct emergency lines.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 23 }}>
-            <button onClick={() => changeTab("banks")} style={buttonStyle(directoryTab === "banks")}><Building2 size={15} /> Hospital blood banks</button>
-            <button onClick={() => { changeTab("camps"); setCampFilter("upcoming"); }} style={buttonStyle(directoryTab === "camps")}><Calendar size={15} /> Active blood distribution drives</button>
+            <div className="facilities-hero-pills" style={{ display: "inline-flex", flexWrap: "wrap", gap: 6, padding: 4, borderRadius: 15, background: "var(--secondary)", border: "1px solid var(--border)" }}>
+              <button onClick={() => changeTab("banks")} style={tabPillBtnStyle(directoryTab === "banks")}>
+                {directoryTab === "banks" && (
+                  <motion.span
+                    layoutId="heroDirPill"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                    style={{ position: "absolute", inset: 0, borderRadius: 11, background: `linear-gradient(135deg, ${COLORS.crimson}, ${COLORS.crimsonDeep})`, boxShadow: "0 8px 22px rgba(255,59,84,0.22)", border: "1px solid rgba(255,90,110,0.35)" }}
+                  />
+                )}
+                <span style={{ position: "relative", zIndex: 1, display: "inline-flex", alignItems: "center", gap: 7 }}>
+                  <Building2 size={15} /> Hospital blood banks
+                </span>
+              </button>
+              <button onClick={() => { changeTab("camps"); setCampFilter("upcoming"); }} style={tabPillBtnStyle(directoryTab === "camps")}>
+                {directoryTab === "camps" && (
+                  <motion.span
+                    layoutId="heroDirPill"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                    style={{ position: "absolute", inset: 0, borderRadius: 11, background: `linear-gradient(135deg, ${COLORS.crimson}, ${COLORS.crimsonDeep})`, boxShadow: "0 8px 22px rgba(255,59,84,0.22)", border: "1px solid rgba(255,90,110,0.35)" }}
+                  />
+                )}
+                <span style={{ position: "relative", zIndex: 1, display: "inline-flex", alignItems: "center", gap: 7 }}>
+                  <Calendar size={15} /> Active blood distribution drives
+                </span>
+              </button>
+            </div>
             <a
               href="mailto:support.bloodbridge@gmail.com?subject=Blood%20Donation%20Centre%20or%20Hospital%20Not%20Listed&body=Hi%20BloodBridge%20Team%2C%0A%0AI%20would%20like%20to%20report%20a%20blood%20donation%20centre%20or%20hospital%20that%20is%20not%20mentioned%20on%20the%20platform%3A%0A%0AFacility%20Name%3A%20%0ALocation%2FCity%3A%20%0AContact%20Details%3A%20%0AAdditional%20Info%3A%20%0A"
               style={{
@@ -2419,7 +2456,7 @@ function CampsAndBanksView({ notify, goTo }) {
           { label: "Blood banks", value: banks.length, note: "Directory listings", icon: <Building2 size={17} />, color: COLORS.cyan },
           { label: "Public phone numbers", value: camps.filter((c) => c.contactPhone).length + banks.filter((b) => b.phone).length, note: "Listings with a contact number", icon: <Phone size={17} />, color: COLORS.good },
         ].map((s) => (
-          <div key={s.label} style={{ ...panel, padding: "16px 17px", minWidth: 0 }}>
+          <div key={s.label} className="tile nearest-bank-card" style={{ borderRadius: 18, color: "var(--foreground)", padding: "16px 17px", minWidth: 0 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 7 }}>
               <span style={{ fontSize: 11, color: COLORS.textMuted, fontWeight: 650 }}>{s.label}</span>
               <span style={{ width: 31, height: 31, borderRadius: 10, display: "grid", placeItems: "center", color: s.color, background: s.color + "18" }}>{s.icon}</span>
@@ -2436,9 +2473,31 @@ function CampsAndBanksView({ notify, goTo }) {
             <div style={{ fontSize: 10.5, letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 850, color: COLORS.textMuted }}>Explore recipient resources</div>
             <h2 className="headline" style={{ fontSize: 25, letterSpacing: -0.5, margin: "7px 0 0" }}>Blood Facilities &amp; Distribution Centers</h2>
           </div>
-          <div style={{ display: "flex", gap: 6, padding: 5, borderRadius: 15, background: "var(--secondary)", border: "1px solid var(--border)" }}>
-            <button onClick={() => changeTab("banks")} style={buttonStyle(directoryTab === "banks")}><Building2 size={14} /> Blood Banks <span>{banks.length}</span></button>
-            <button onClick={() => changeTab("camps")} style={buttonStyle(directoryTab === "camps")}><Calendar size={14} /> Distribution Drives <span>{camps.length}</span></button>
+          <div className="facilities-section-pills" style={{ display: "flex", gap: 6, padding: 5, borderRadius: 15, background: "var(--secondary)", border: "1px solid var(--border)" }}>
+            <button onClick={() => changeTab("banks")} style={tabPillBtnStyle(directoryTab === "banks")}>
+              {directoryTab === "banks" && (
+                <motion.span
+                  layoutId="sectionDirPill"
+                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  style={{ position: "absolute", inset: 0, borderRadius: 11, background: `linear-gradient(135deg, ${COLORS.crimson}, ${COLORS.crimsonDeep})`, boxShadow: "0 8px 22px rgba(255,59,84,0.22)", border: "1px solid rgba(255,90,110,0.35)" }}
+                />
+              )}
+              <span style={{ position: "relative", zIndex: 1, display: "inline-flex", alignItems: "center", gap: 7 }}>
+                <Building2 size={14} /> Blood Banks <span>{banks.length}</span>
+              </span>
+            </button>
+            <button onClick={() => changeTab("camps")} style={tabPillBtnStyle(directoryTab === "camps")}>
+              {directoryTab === "camps" && (
+                <motion.span
+                  layoutId="sectionDirPill"
+                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  style={{ position: "absolute", inset: 0, borderRadius: 11, background: `linear-gradient(135deg, ${COLORS.crimson}, ${COLORS.crimsonDeep})`, boxShadow: "0 8px 22px rgba(255,59,84,0.22)", border: "1px solid rgba(255,90,110,0.35)" }}
+                />
+              )}
+              <span style={{ position: "relative", zIndex: 1, display: "inline-flex", alignItems: "center", gap: 7 }}>
+                <Calendar size={14} /> Distribution Drives <span>{camps.length}</span>
+              </span>
+            </button>
           </div>
         </div>
 
@@ -2447,12 +2506,21 @@ function CampsAndBanksView({ notify, goTo }) {
             <Search size={16} color={COLORS.textMuted} style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }} />
             <input aria-label={directoryTab === "camps" ? "Search donation camps" : "Search blood banks"} value={query} onChange={(e) => setQuery(e.target.value)}
               placeholder={directoryTab === "camps" ? "Search camps, venues, cities…" : "Search banks, cities, states…"}
-              style={{ ...field, paddingLeft: 42, minHeight: 44, borderRadius: 13 }} />
+              style={{ ...field, padding: "11px 16px 11px 42px", minHeight: 44, borderRadius: 13 }} />
           </div>
           {directoryTab === "camps" && <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {[["upcoming", "Upcoming"], ["all", "All dates"], ["past", "Past"]].map(([key, label]) => <button key={key} onClick={() => setCampFilter(key)} style={{ ...buttonStyle(campFilter === key), padding: "10px 11px" }}>{label}</button>)}
           </div>}
           </div>
+
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={directoryTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          >
 
         {directoryTab === "camps" && (loading
           ? <div style={{ ...panel, padding: 34, textAlign: "center", color: COLORS.textMuted }}>Loading donation camps…</div>
@@ -2469,10 +2537,10 @@ function CampsAndBanksView({ notify, goTo }) {
                   const isPast = date && date < today;
                   const place = [c.location, c.city, c.state].filter(Boolean).join(", ");
                   const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place || c.title || "");
-                  return <motion.article key={c._id || c.title + i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(i * 0.04, 0.24) }}
-                    style={{ ...panel, padding: 0, overflow: "hidden", display: "flex", flexDirection: "column", minWidth: 0 }}>
-                    <div style={{ height: 4, background: isPast ? "rgba(255,255,255,0.13)" : "linear-gradient(90deg, " + COLORS.crimson + ", #ff8a70, " + COLORS.cyan + ")" }} />
-                    <div style={{ padding: 19, display: "flex", flexDirection: "column", flex: 1 }}>
+                  return <motion.article key={c._id || c.title + i} whileHover={{ y: -4 }} transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="tile nearest-bank-card"
+                    style={{ borderRadius: 18, color: "var(--foreground)", padding: 0, overflow: "hidden", display: "flex", flexDirection: "column", minWidth: 0 }}>
+                    <div className="facilities-camp-inner" style={{ padding: 19, display: "flex", flexDirection: "column", flex: 1 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                         <div style={{ minWidth: 0 }}>
                           <span style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 20, padding: "6px 11px", fontSize: 11, letterSpacing: 0.7, fontWeight: 850, textTransform: "uppercase", color: isPast ? COLORS.textMuted : COLORS.good, background: isPast ? "var(--secondary)" : "rgba(52,211,153,0.1)", border: "1px solid " + (isPast ? "var(--border)" : "rgba(52,211,153,0.2)") }}>
@@ -2481,7 +2549,7 @@ function CampsAndBanksView({ notify, goTo }) {
                           <h3 style={{ fontSize: 19, lineHeight: 1.35, margin: "12px 0 6px", fontWeight: 800, overflowWrap: "anywhere" }}>{c.title}</h3>
                           {c.organizer && <div style={{ fontSize: 14, color: COLORS.textMuted }}>Organized by {c.organizer}</div>}
                         </div>
-                        <div style={{ width: 64, minWidth: 64, borderRadius: 14, padding: "10px 6px", textAlign: "center", background: "rgba(255,59,84,0.09)", border: "1px solid rgba(255,59,84,0.16)" }}>
+                        <div style={{ width: 64, minWidth: 64, flexShrink: 0, borderRadius: 14, padding: "10px 6px", textAlign: "center", background: "rgba(255,59,84,0.09)", border: "1px solid rgba(255,59,84,0.16)" }}>
                           <div style={{ fontSize: 12, textTransform: "uppercase", fontWeight: 850, color: COLORS.crimson }}>{date ? date.toLocaleDateString(undefined, { month: "short" }) : "TBD"}</div>
                           <div className="headline" style={{ fontSize: 25, lineHeight: 1.2, fontWeight: 850 }}>{date ? date.getDate() : "—"}</div>
                           <div style={{ fontSize: 11, color: COLORS.textMuted }}>{date ? date.getFullYear() : "DATE"}</div>
@@ -2506,7 +2574,7 @@ function CampsAndBanksView({ notify, goTo }) {
         {directoryTab === "banks" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 18 }}>
             {/* Filter Group 1: District Filter */}
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6 }}>
+            <div className="facilities-filter-row" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6 }}>
               <span style={{ fontSize: 11, fontWeight: 900, color: COLORS.textMuted, marginRight: 4, letterSpacing: 0.8, textTransform: "uppercase" }}>
                 District:
               </span>
@@ -2531,7 +2599,7 @@ function CampsAndBanksView({ notify, goTo }) {
             </div>
 
             {/* Filter Group 2: Type & Service Filter */}
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6 }}>
+            <div className="facilities-filter-row" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6 }}>
               <span style={{ fontSize: 11, fontWeight: 900, color: COLORS.textMuted, marginRight: 4, letterSpacing: 0.8, textTransform: "uppercase" }}>
                 Type:
               </span>
@@ -2610,8 +2678,9 @@ function CampsAndBanksView({ notify, goTo }) {
                   const badgeColor = isRedCross ? COLORS.crimson : isGov ? COLORS.cyan : isCharitable ? COLORS.good : isStorage ? "#f59e0b" : "#a855f7";
 
                   return (
-                    <motion.article key={b._id || b.name + i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(i * 0.03, 0.24) }}
-                      style={{ ...panel, padding: 20, display: "flex", flexDirection: "column", minWidth: 0, gap: 14 }}>
+                    <motion.article key={b._id || b.name + i} whileHover={{ y: -4 }} transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="tile nearest-bank-card facilities-card"
+                      style={{ borderRadius: 18, color: "var(--foreground)", padding: 20, display: "flex", flexDirection: "column", minWidth: 0, gap: 14 }}>
                       <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                         <div style={{ width: 48, height: 48, minWidth: 48, borderRadius: 12, display: "grid", placeItems: "center", color: badgeColor, background: badgeColor + "18", border: "1px solid " + badgeColor + "33" }}>
                           <Building2 size={22} />
@@ -2685,7 +2754,7 @@ function CampsAndBanksView({ notify, goTo }) {
                         )}
                       </div>
 
-                      <div style={{ marginTop: "auto", paddingTop: 14, display: "grid", gridTemplateColumns: phoneNumbers.length > 0 ? "1fr 1fr" : "1fr", gap: 8 }}>
+                      <div className="facilities-card-actions" style={{ marginTop: "auto", paddingTop: 14, display: "grid", gridTemplateColumns: phoneNumbers.length > 0 ? "1fr 1fr" : "1fr", gap: 8 }}>
                         {phoneNumbers.length > 0 && (
                           <a href={"tel:" + phoneNumbers[0].replace(/[^\d+]/g, "")} style={{ ...buttonStyle(false), textDecoration: "none", boxSizing: "border-box", fontSize: 13, padding: "9px 12px", background: "rgba(52,211,153,0.12)", color: "#10b981", borderColor: "rgba(52,211,153,0.3)" }}>
                             <Phone size={14} /> Call Direct
@@ -2699,6 +2768,8 @@ function CampsAndBanksView({ notify, goTo }) {
                   );
                 })}
               </div>)}
+          </motion.div>
+        </AnimatePresence>
       </section>
 
       
