@@ -521,6 +521,14 @@ export default function BloodBridgeApp() {
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      /* jsdom fallback */
+    }
+  }, [tab]);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [toast, setToast] = useState(null);
   const notify = useCallback((msg) => {
