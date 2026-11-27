@@ -1616,17 +1616,17 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
         </div>
       )}
       {page === "privacy" && <>
-        <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 34px" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 48, height: 48, borderRadius: 12, background: "rgba(255,59,84,0.1)", border: "1px solid rgba(255,59,84,0.25)", color: red, marginBottom: 12 }}>
-            <Shield size={22} />
+        <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 36px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 52, height: 52, borderRadius: 14, background: "rgba(255,59,84,0.1)", border: "1px solid rgba(255,59,84,0.25)", color: red, marginBottom: 14 }}>
+            <Shield size={24} />
           </div>
-          <h1 style={{ fontSize: "clamp(28px, 4vw, 38px)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.5px" }}>Privacy Policy</h1>
-          <p style={{ color: muted, fontSize: 15, margin: "0 auto", lineHeight: 1.65 }}>
+          <h1 style={{ fontSize: "clamp(32px, 4.5vw, 44px)", fontWeight: 900, margin: "0 0 12px", letterSpacing: "-0.5px" }}>Privacy Policy</h1>
+          <p style={{ color: muted, fontSize: 17, margin: "0 auto", lineHeight: 1.7 }}>
             At BloodBridge, we believe in radical transparency. We literally store nothing except what is publicly available on Google regarding blood banks, hospitals, and donation centres.
           </p>
         </div>
 
-        <div style={{ maxWidth: 680, margin: "0 auto", display: "grid", gap: 20 }}>
+        <div style={{ maxWidth: 740, margin: "0 auto", display: "grid", gap: 20 }}>
           {[
             {
               title: "1. Information We Store (Zero Private Data)",
@@ -1649,25 +1649,25 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
               body: "If any public blood bank or hospital listing needs correction or removal from the directory, email us directly at support.bloodbridge@gmail.com."
             }
           ].map((item) => (
-            <section key={item.title} style={{ ...sectionStyle, padding: "22px 24px", marginBottom: 0, borderRadius: 16 }}>
-              <h2 style={{ ...headingStyle, fontSize: 17, fontWeight: 800, margin: "0 0 8px", color: red }}>{item.title}</h2>
-              <p style={{ ...paraStyle, margin: 0, fontSize: 14.5, lineHeight: 1.75, color: muted }}>{item.body}</p>
+            <section key={item.title} style={{ ...sectionStyle, padding: "24px 26px", marginBottom: 0, borderRadius: 16 }}>
+              <h2 style={{ ...headingStyle, fontSize: 20, fontWeight: 800, margin: "0 0 10px", color: red }}>{item.title}</h2>
+              <p style={{ ...paraStyle, margin: 0, fontSize: 16, lineHeight: 1.8, color: muted }}>{item.body}</p>
             </section>
           ))}
         </div>
       </>}
       {page === "terms" && <>
-        <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 34px" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 48, height: 48, borderRadius: 12, background: "rgba(255,59,84,0.1)", border: "1px solid rgba(255,59,84,0.25)", color: red, marginBottom: 12 }}>
-            <FileText size={22} />
+        <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 36px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 52, height: 52, borderRadius: 14, background: "rgba(255,59,84,0.1)", border: "1px solid rgba(255,59,84,0.25)", color: red, marginBottom: 14 }}>
+            <FileText size={24} />
           </div>
-          <h1 style={{ fontSize: "clamp(28px, 4vw, 38px)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.5px" }}>Terms of Service</h1>
-          <p style={{ color: muted, fontSize: 15, margin: "0 auto", lineHeight: 1.65 }}>
+          <h1 style={{ fontSize: "clamp(32px, 4.5vw, 44px)", fontWeight: 900, margin: "0 0 12px", letterSpacing: "-0.5px" }}>Terms of Service</h1>
+          <p style={{ color: muted, fontSize: 17, margin: "0 auto", lineHeight: 1.7 }}>
             By accessing and using BloodBridge, you agree to be bound by these Terms of Service. Please read them carefully.
           </p>
         </div>
 
-        <div style={{ maxWidth: 680, margin: "0 auto", display: "grid", gap: 20 }}>
+        <div style={{ maxWidth: 740, margin: "0 auto", display: "grid", gap: 20 }}>
           {[
             {
               title: "1. Community Welfare & Zero Liability",
@@ -1702,15 +1702,15 @@ function BloodBridgeInfoPage({ page, theme, goTo }) {
               body: "For community suggestions, corrections to unlisted or outdated hospital and blood donation centers, or questions regarding these terms, contact support.bloodbridge@gmail.com."
             }
           ].map((item) => (
-            <section key={item.title} style={{ ...sectionStyle, padding: "22px 24px", marginBottom: 0, borderRadius: 16 }}>
-              <h2 style={{ ...headingStyle, fontSize: 17, fontWeight: 800, margin: "0 0 8px", color: red }}>{item.title}</h2>
-              <p style={{ ...paraStyle, margin: 0, fontSize: 14.5, lineHeight: 1.75, color: muted }}>{item.body}</p>
+            <section key={item.title} style={{ ...sectionStyle, padding: "24px 26px", marginBottom: 0, borderRadius: 16 }}>
+              <h2 style={{ ...headingStyle, fontSize: 20, fontWeight: 800, margin: "0 0 10px", color: red }}>{item.title}</h2>
+              <p style={{ ...paraStyle, margin: 0, fontSize: 16, lineHeight: 1.8, color: muted }}>{item.body}</p>
             </section>
           ))}
         </div>
       </>}
-      {page !== "about" && (
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 }}>
+      {page === "terms" && (
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24, maxWidth: 740, marginLeft: "auto", marginRight: "auto" }}>
           <button onClick={() => goTo("about")} style={{ border: "1px solid " + line, borderRadius: 10, background: "transparent", color: ink, fontWeight: 700, padding: "12px 18px", cursor: "pointer" }}>About BloodBridge</button>
         </div>
       )}
