@@ -15,13 +15,28 @@ export default function EmergencyBanner({ onFindNearestBank }) {
         overflowX: "hidden",
       }}
     >
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 sm:gap-3 px-3 sm:px-5 py-1.5 sm:py-2 text-xs">
+      <div
+        className="mx-auto flex max-w-6xl flex-wrap items-center justify-between text-xs"
+        style={{
+          maxWidth: "72rem",
+          margin: "0 auto",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "10px 14px",
+          padding: "10px 16px",
+        }}
+      >
         {/* Left Side: Critical Dispatch with Glowing Badge & Text Shadow */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <div className="flex items-center shrink-0" style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div
-            className="flex items-center gap-2 sm:gap-2.5 rounded-full"
+            className="flex items-center rounded-full"
             style={{
-              padding: "3.5px 12px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "5px 14px",
               background: "rgba(255, 59, 84, 0.12)",
               border: "1px solid rgba(255, 59, 84, 0.35)",
               boxShadow: "0 0 10px rgba(255, 59, 84, 0.2)",
@@ -57,7 +72,7 @@ export default function EmergencyBanner({ onFindNearestBank }) {
         </div>
 
         {/* Right Side: Bold, Shadowed Action Buttons */}
-        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+        <div className="flex items-center flex-wrap" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
           <a
             href="tel:108"
             aria-label="Call InstAmbulance 108"
