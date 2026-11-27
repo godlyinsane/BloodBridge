@@ -25,11 +25,5 @@
       "src": "/.*",
       "dest": "/index.html"
     }
-  ],
-  "crons": [
-    {
-      "path": "/api/features/backup/cron",
-      "schedule": "0 3 * * *"
-    }
   ]
 }
