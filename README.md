@@ -14,7 +14,7 @@
   <img src="https://img.shields.io/badge/Framer_Motion-13.2-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
   <img src="https://img.shields.io/badge/Node.js-%3E%3D20-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js >= 20" />
   <img src="https://img.shields.io/badge/Express-4.19-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
-  <img src="https://img.shields.io/badge/JSON_DB_/_Mongoose-8.5-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="JSON DB / Mongoose" />
+  <img src="https://img.shields.io/badge/Database-Local_JSON_DB-47A248?style=for-the-badge&logo=json&logoColor=white" alt="Local JSON DB" />
   <img src="https://img.shields.io/badge/Vercel-Single_Project-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
   <img src="https://img.shields.io/badge/Vitest_%26_Playwright-Tested-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest & Playwright" />
   <img src="https://img.shields.io/badge/Version-1.0.0-F43F5E?style=for-the-badge" alt="Version 1.0.0" />
@@ -67,7 +67,7 @@ During medical emergencies, families often lose critical time searching fragment
 | 🧬 | **Clinical Blood Group Reference** | Interactive 8-group (`O+` to `AB-`) compatibility matrix detailing Indian prevalence, clinical roles, and donor/recipient matching rules. |
 | 🌓 | **Theme & Smooth Motion System** | Instant dark/light theme persistence (`localStorage`), Framer Motion spring-gliding tab pills (`layoutId`), and hover elevation/border cues. |
 | 📱 | **Cross-Device & PWA Ready** | Touch-optimized responsive rules (`index.css`), iOS input zoom prevention, safe-area insets, and offline-resilient service worker (`public/sw.js`). |
-| 🗄️ | **Zero-Config Storage Engine** | Lightweight `jsonMongoose.js` adapter backed by `data/json-db/*.json` out of the box, with optional `MONGO_URI` connection support. |
+| 🗄️ | **Zero-Config Local JSON Storage** | Lightweight `jsonMongoose.js` adapter backed directly by `data/json-db/*.json`—zero external database setup required. |
 
 ---
 
@@ -85,11 +85,8 @@ flowchart TD
     Express -->|"Mounted Routes"| R2["routes/camps.js"]
 
     R1 -->|"Optional Places API"| GMaps["Google Places API\n(if GOOGLE_MAPS_API_KEY set)"]
-    R1 --> DBGate{"MONGO_URI\nconfigured?"}
-    R2 --> DBGate
-
-    DBGate -->|"No (Default / Zero-Config)"| JSONEng["utils/jsonMongoose.js\n(In-Memory + File Adapter)"]
-    DBGate -->|"Yes"| Mongo[("MongoDB Cluster\nvia Mongoose")]
+    R1 --> JSONEng["utils/jsonMongoose.js\n(In-Memory + File Adapter)"]
+    R2 --> JSONEng
     JSONEng --> JSONFiles[("data/json-db/\nbloodbank.json\ndonationcamp.json")]
 ```
 
@@ -241,7 +238,7 @@ BloodBridge/
 <details>
 <summary><b>🛠️ Troubleshooting & Common Issues</b></summary>
 
-- **Backend starts without a database connection string:** This is expected! By default, `server.js` swaps `mongoose` in Node's `require.cache` with `utils/jsonMongoose.js` and serves records directly from `data/json-db/`.
+- **No external database setup needed:** `server.js` loads `utils/jsonMongoose.js` and serves all records directly from `data/json-db/` (`bloodbank.json` and `donationcamp.json`).
 - **Frontend API calls fail in local dev:** Ensure the backend is running on port `5000` (`http://localhost:5000/api`) or set `VITE_API_BASE_URL` in `BloodBridgeFrontend/.env`.
 - **Geolocation blocked or denied on desktop/mobile:** `NearestBloodBankMap.jsx` automatically falls back to `https://ipapi.co/json/` and also provides a manual city/district/PIN search bar.
 - **CORS error on custom port/domain:** Add your frontend origin to `CLIENT_ORIGIN` in `BloodBridgeBackend/bloodbridge-backend/.env` (comma-separated, no trailing slash).
