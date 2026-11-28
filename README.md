@@ -61,7 +61,7 @@ During medical emergencies, families often lose critical time searching fragment
 | Emoji | Feature | Technical Implementation |
 | :---: | :--- | :--- |
 | 🚨 | **Critical Dispatch Emergency Bar** | Persistent top bar (`EmergencyBanner.jsx`) with one-tap `tel:108`, `tel:102`, and quick jump to the nearest blood bank view. |
-| 📍 | **Live GPS Nearest Bank Locator** | Browser Geolocation + IP geolocation fallback (`ipapi.co`) paired with Haversine distance sorting and optional Google Places enrichment (`/api/blood-banks/nearest`). |
+| 📍 | **Live GPS Nearest Bank Locator** | Browser Geolocation + IP geolocation fallback (`ipapi.co`) paired with local Haversine distance sorting (`/api/blood-banks/nearest`). |
 | 🏥 | **Verified Facilities & Drives Directory** | Searchable directory (`CampsAndBanksView`) filtering 32+ hospitals, government/Red Cross centres, and distribution drives by district, category, and service type. |
 | 🧬 | **Clinical Blood Group Reference** | Interactive 8-group (`O+` to `AB-`) compatibility matrix detailing Indian prevalence, clinical roles, and donor/recipient matching rules. |
 | 🌓 | **Theme & Smooth Motion System** | Instant dark/light theme persistence (`localStorage`), Framer Motion spring-gliding tab pills (`layoutId`), and hover elevation/border cues. |
@@ -82,7 +82,6 @@ flowchart TD
     Express -->|"Mounted Routes"| R1["routes/bloodBanks.js"]
     Express -->|"Mounted Routes"| R2["routes/camps.js"]
 
-    R1 -->|"Optional Places API"| GMaps["Google Places API\n(if GOOGLE_MAPS_API_KEY set)"]
     R1 --> JSONEng["utils/jsonMongoose.js\n(In-Memory + File Adapter)"]
     R2 --> JSONEng
     JSONEng --> JSONFiles[("data/json-db/\nbloodbank.json\ndonationcamp.json")]
@@ -158,8 +157,6 @@ npm --prefix BloodBridgeFrontend run test:e2e
 | :--- | :--- | :--- | :--- |
 | `PORT` | Backend | `5000` | Port the Express server listens on. |
 | `CLIENT_ORIGIN` | Backend | `http://localhost:5173` | Comma-separated list of allowed CORS origins. |
-| `GOOGLE_MAPS_API_KEY` | Backend | *(unset)* | Optional Google Places API key to augment `/api/blood-banks/nearest` with live Places results. |
-| `VITE_GOOGLE_MAPS_API_KEY` | Backend / Frontend | *(unset)* | Optional fallback key checked by `routes/bloodBanks.js` for Google Places queries. |
 | `VITE_API_BASE_URL` | Frontend | `http://localhost:5000/api` (dev) / `/api` (prod) | Overrides the backend API base URL at build time. |
 
 ---
@@ -174,24 +171,22 @@ BloodBridge/
 ├── BloodBridgeBackend/
 │   └── bloodbridge-backend/
 │       ├── data/
-│       │   ├── indiaDistrictCentres.json   # Regional district coordinate reference
 │       │   └── json-db/
 │       │       ├── bloodbank.json          # Local JSON store for blood bank listings
 │       │       └── donationcamp.json       # Local JSON store for donation camps
 │       ├── models/
-│       │   ├── BloodBank.js                # Mongoose schema for blood bank facilities
-│       │   └── DonationCamp.js             # Mongoose schema for donation drives
+│       │   ├── BloodBank.js                # Schema for blood bank facilities
+│       │   └── DonationCamp.js             # Schema for donation drives
 │       ├── routes/
-│       │   ├── bloodBanks.js               # Directory listing & Haversine/Places nearest-bank search
+│       │   ├── bloodBanks.js               # Directory listing & Haversine nearest-bank search
 │       │   └── camps.js                    # Public donation camp listing endpoint
 │       ├── test/
 │       │   └── bloodListingsAndNearestBanks.test.js
 │       ├── utils/
-│       │   └── jsonMongoose.js             # Lightweight Mongoose-compatible JSON file engine
+│       │   └── jsonMongoose.js             # Lightweight JSON file storage engine
 │       ├── .env.example                    # Environment variable template
 │       ├── package.json
-│       ├── seed.js                         # Database seed script
-│       └── server.js                       # Express entrypoint, CORS, health checks, DB switcher
+│       └── server.js                       # Express entrypoint, CORS, health checks, JSON DB loader
 ├── BloodBridgeFrontend/
 │   ├── e2e/
 │   │   └── mobile.spec.js                  # Playwright mobile responsiveness tests
@@ -224,7 +219,7 @@ BloodBridge/
 | `GET` | `/api/health` | — | Liveness check reporting `status`, `database` (`local-json` or Mongoose state), and `runtime`. |
 | `GET` | `/api/health/ready` | — | Readiness check after database initialization. |
 | `GET` | `/api/blood-banks` | `district`, `city`, `category` | Lists all blood banks sorted alphabetically by name with optional case-insensitive filters. |
-| `GET` | `/api/blood-banks/nearest` | `lat`, `lng`, `query`, `radius` (5–200 km, default 50) | Calculates Haversine distances from GPS coordinates (or matches text query) across `BloodBank` records and optional Google Places results, returning up to 30 sorted centres. |
+| `GET` | `/api/blood-banks/nearest` | `lat`, `lng`, `query`, `radius` (5–200 km, default 50) | Calculates Haversine distances from GPS coordinates (or matches text query) across local `BloodBank` records, returning up to 30 sorted centres. |
 | `GET` | `/api/camps` | — | Lists all blood donation camps sorted ascending by `date`. |
 
 </details>
