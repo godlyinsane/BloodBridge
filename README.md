@@ -15,7 +15,6 @@
   <img src="https://img.shields.io/badge/Node.js-%3E%3D20-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js >= 20" />
   <img src="https://img.shields.io/badge/Express-4.19-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
   <img src="https://img.shields.io/badge/Database-Local_JSON_DB-47A248?style=for-the-badge&logo=json&logoColor=white" alt="Local JSON DB" />
-  <img src="https://img.shields.io/badge/Vercel-Single_Project-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
   <img src="https://img.shields.io/badge/Vitest_%26_Playwright-Tested-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest & Playwright" />
   <img src="https://img.shields.io/badge/Version-1.0.0-F43F5E?style=for-the-badge" alt="Version 1.0.0" />
   <img src="https://img.shields.io/badge/License-EPICS_Academic-10B981?style=for-the-badge" alt="License" />
@@ -78,8 +77,7 @@ flowchart TD
     User["User Browser / Mobile PWA"] -->|"SPA Routes: /, /facilities, /nearestbank, /about, /privacy, /terms"| FE["BloodBridgeFrontend\n(React 19 + Vite + Framer Motion)"]
     FE -->|"Fallback Geolocation"| IPAPI["ipapi.co JSON\n(IP Geolocation)"]
     FE -->|"fetch('/india-districts.json')"| Static["Static Public Assets\n(india-districts.json, sw.js)"]
-    FE -->|"GET /api/blood-banks\nGET /api/blood-banks/nearest\nGET /api/camps"| Proxy["Vercel Serverless Proxy\n(api/[...path].js)"]
-    Proxy --> Express["Express App\n(BloodBridgeBackend/bloodbridge-backend/server.js)"]
+    FE -->|"GET /api/blood-banks\nGET /api/blood-banks/nearest\nGET /api/camps"| Express["Express App\n(BloodBridgeBackend/bloodbridge-backend/server.js)"]
 
     Express -->|"Mounted Routes"| R1["routes/bloodBanks.js"]
     Express -->|"Mounted Routes"| R2["routes/camps.js"]
@@ -158,12 +156,11 @@ npm --prefix BloodBridgeFrontend run test:e2e
 
 | Variable | Scope | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `PORT` | Backend | `5000` | Port the Express server listens on when not running on Vercel. |
+| `PORT` | Backend | `5000` | Port the Express server listens on. |
 | `CLIENT_ORIGIN` | Backend | `http://localhost:5173` | Comma-separated list of allowed CORS origins. |
 | `GOOGLE_MAPS_API_KEY` | Backend | *(unset)* | Optional Google Places API key to augment `/api/blood-banks/nearest` with live Places results. |
 | `VITE_GOOGLE_MAPS_API_KEY` | Backend / Frontend | *(unset)* | Optional fallback key checked by `routes/bloodBanks.js` for Google Places queries. |
 | `VITE_API_BASE_URL` | Frontend | `http://localhost:5000/api` (dev) / `/api` (prod) | Overrides the backend API base URL at build time. |
-| `VERCEL` / `VERCEL_URL` | Platform | *(set by Vercel)* | Enables serverless export mode (`VERCEL=1`) and adds the deployment URL to CORS allowed origins. |
 
 ---
 
@@ -174,8 +171,6 @@ npm --prefix BloodBridgeFrontend run test:e2e
 
 ```text
 BloodBridge/
-├── api/
-│   └── [...path].js                        # Vercel serverless catch-all forwarding /api/* to Express
 ├── BloodBridgeBackend/
 │   └── bloodbridge-backend/
 │       ├── data/
@@ -215,8 +210,7 @@ BloodBridge/
 │   ├── package.json
 │   ├── playwright.config.js
 │   └── vite.config.js
-├── package.json                            # Root build & start scripts for Vercel
-└── vercel.json                             # Vercel static-build & serverless API routing config
+├── package.json                            # Root build & start scripts
 ```
 
 </details>
